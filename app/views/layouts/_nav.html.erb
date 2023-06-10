@@ -1,0 +1,17 @@
+<section class="my_nav">
+	<div class="center"><%= link_to "project pluto", root_path, class:"pluto-header title is-3 mt-2"%></div>
+	<hr />
+	<div class="my_nav_links center">
+			<%= link_to "About", about_path,    class:"nav-link mx-5 mb-3" %>
+			<%= link_to "Browse", collections_path,  class:"nav-link mx-5 mb-3" %>
+			<%= link_to "Collection", collections_path,  class:"nav-link mx-5 mb-3" %>
+			<%= link_to "Database", posts_path, class:"nav-link mx-5 mb-3" %>
+			<% if user_signed_in? %>
+				<%=link_to "Profile", user_path(current_user), class:"nav-link mx-5 mb-3"%>
+			<% else %>
+				<%= link_to "Log in", new_user_session_path,   class:"nav-link mx-5 mb-3" %>
+			<% end %>
+	</div>		
+
+
+</section>

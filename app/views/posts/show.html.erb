@@ -1,0 +1,92 @@
+
+<section class="section">
+  <div class="columns">
+    
+    <div class="column bpx center">
+      <% if @post.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
+      <%=image_tag (@post.image_as_profile), class:"bp p-3"%>
+      <% else %>  
+      <%= image_tag ("download.jpg"), class: "immmg"  %>
+      <% end %>
+    </div>
+
+    <div class="column bpx">
+
+      <div class="show-info">
+        <div class="mt-3 mb-0 title is-3"><%=@post.title %></div>
+
+        <% @post.brands.each do |brand|%>
+          <%= link_to brand do %>
+            <div class="my-2 title is-5 purp-link"><%= brand.name%></div>
+           <% end%>
+         <% end %>
+
+        <div><%= number_to_currency(@post.price) %></div>
+
+        <div class="mt-4 bpb">
+          <div class="mb-4 button is-link">Like</div>
+          <div class="mb-4 button purp-btn">Visit</div>
+          <div class="mb-4 button is-success">Share</div>
+          <div class="mb-4 button is-warning">Save</div>
+          <div><%#= link_to "Closet", closets_update_path(post: @post), id: 'closet_link, class:"mb-4 button is-danger" %></div>
+        </div>
+        <%# EDITOR/CREATOR BOX-----------------------------------------------------------------------------------------------------------------%>
+        <%if not current_user == @post.user %>
+        <div class=" flexed-c mt-4 bpb">
+          <div class="mb-4 button is-warning">ID: <%=@post.id%></div>
+          <div class="mx-2 mb-4 button is-primary"><%= pluralize(@post.views,"view")%></div>
+          <div class="mx-2 mb-4"><%= link_to "Edit", edit_post_path(@post), class:"button is-warning" %></div>
+          <div class="mx-2 mb-4"><%= button_to "Destroy", @post, method: :delete, class:"button is-danger" %></div>   
+        </div>
+        <%end %>
+
+        <div class="mt-4 bp tag-box center-down">
+          <div><strong>Tags:</strong></div>
+          <div class="center flexed-w">
+          <% @post.tags.each do |tag| %>
+            <%= link_to tag, style: "text-decoration:none" do %>
+              <span class="tag m-1"><%= tag.name.capitalize%></span>
+            <% end %>
+          <% end %>
+        </div>
+        </div>
+        <%# INFO BOX-----------------------------------------------------------------------------------------------------------------%>
+        <div class="notification mt-4 p-3 info-box">
+           <ul>
+              <li class="purp-link"><strong>Information:</strong></li>
+              <li><strong class="mx-2">Type:</strong><%=if @post.sub_category.nil? then "undefined" else @post.category end%></li>
+              <li><strong class="mx-2">Sub-Type:</strong><%= if @post.sub_category.nil? then "undefined" else @post.sub_category end%></li>
+              <li><strong class="mx-2">Uploaded_by:</strong><%=link_to "@"+ @post.user.username, user_path(@post.user), class:"purp-link"%>
+              <li><strong class="mx-2">Amazon:</strong><span class="tag is-link is-light">Link</span></li>
+           </ul>
+        </div>
+
+      </div> 
+    </div>
+  </div>
+
+<%# DESCRIPTION Form-----------------------------------------------------------------------------------------------------------------%>
+<% if not @post.body.nil?%>
+  <div class="center">
+  <div class="notification w70 desc-box content">
+     <h2><u>Description</u></h2>
+     <div class="notification has-background-white"><p><%= @post.body%></p></div>
+  </div>
+  </div>
+<% end %>   
+</section>
+
+<%# Comment Form-----------------------------------------------------------------------------------------------------------------%>
+<section class="section center bp">
+<%= render 'comments/form' , post: @post %>
+</section>
+<%# Comment Section-----------------------------------------------------------------------------------------------------------------%>
+<section class="section center-down">
+<% @comments.each do |comment| %>
+  <%= render 'comments/comment', post: @post, comment: comment %>
+<% end %>
+</section>
+
+
+
+

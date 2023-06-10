@@ -1,0 +1,13 @@
+<div>
+  <p>
+    <strong>Tag:</strong>
+    <%= brand.name %>
+  </p>
+  <hr />
+
+  <% brand.brandables.each do |brandable| %>
+    <%= render 'posts/post', post: brandable.post %>
+    <hr />
+  <% end %>
+
+</div>

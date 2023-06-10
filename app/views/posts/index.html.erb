@@ -1,0 +1,16 @@
+
+<section class="section is-medium purpF">
+  <div class="center"><h1 class="helv">project pluto</h1></div>
+  <div><%= link_to "New post", new_post_path, class:"button is-warning" %></div>
+  <hr />
+  <div class="center"><%= render 'posts/searchbar' %></div>
+
+</section>
+
+<section class="section black-border flexed-w center">
+  <% @posts.each do |post| %>
+      <div class=""><%= render post %></div>
+  <% end %>
+</section>
+
+

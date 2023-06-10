@@ -1,0 +1,16 @@
+  <div class="w50">
+    <%= search_form_for @query do |f| %>
+      <div class="center mt-2">Search:</div>
+      <%= f.search_field :title_or_body_i_cont_any, class:"input", placeholder:"Search here..." %>
+
+      <% if true == false %>
+      <div class="center mt-2">Brand</div>
+      <%= f.search_field :brands_name_cont, class:"input", placeholder:"Search here..." %>
+      <div class="center mt-2">Tags:</div>
+      <%= f.search_field :tags_name_cont, class:"input my-2", placeholder:"Search here..." %>
+      <% end %>
+
+
+      <%= f.submit "search!", class:"button is-warning my-2 " %>
+    <% end %>
+  </div>

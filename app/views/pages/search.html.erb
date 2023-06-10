@@ -1,0 +1,8 @@
+<h1>Search</h1>
+
+<div class="center"><h1 class="is-size-3"style="color:black;"><%= pluralize(@posts.count, "Result")%></h1></div>
+
+<%= render 'pages/searchbar' %>
+<% @posts.each do |post| %>
+	<%= render 'posts/post', post: post %>
+<% end %>

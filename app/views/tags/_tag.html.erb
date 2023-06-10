@@ -1,0 +1,13 @@
+<div>
+  <p>
+    <strong>Tag:</strong>
+    <%= tag.name %>
+  </p>
+  <hr />
+
+  <% tag.taggables.each do |taggable| %>
+    <%= render 'posts/post', post: taggable.post %>
+    <hr />
+  <% end %>
+
+</div>

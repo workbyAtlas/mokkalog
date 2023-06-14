@@ -2,8 +2,8 @@
 
 <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
 
-<section class="section">
-  <div class="container w30">
+<section class="section ">
+  <div class="container rw30">
     <div class="notification">
       <div class="notification is-white">
         <div class="title is-3">Sign in</div>
@@ -21,6 +21,10 @@
           <div class="control">
             <%= f.password_field :password, autocomplete: "current-password", class:"input"%>
           </div>
+        </div>
+
+        <div>
+          Don't have an account? <%=link_to "Register here", new_user_registration_path, class:"p-link"%>
         </div>
 
 

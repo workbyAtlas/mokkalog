@@ -1,7 +1,35 @@
-<h1>Users#profile</h1>
-<p>Find me in app/views/users/profile.html.erb</p>
 
-<%=@user.name %>
-<%=@user.views %>
+<div class="notification columns">
+	<div class="column bp center">
+		<%if @user.avatar.attached?%>
+		<%=image_tag @user.image_as_profile_page_pic%>
+		<%end%>
+	</div>
+	<div class="column">
+		<div><%=link_to "Profile", edit_user_registration_path, class:"nav-link mx-5 mb-3"%></div>
+		<ul>
+			<li><strong>Name:</strong><%=@user.name %></li>
+			<li><strong>Username:</strong>@<%=@user.username %></li>
+			<li><strong>Views:</strong><%=@user.views %></li>
+			<li><strong>Clothing added:</strong><%=@user.posts.size%></li>
+			<li><strong>Edit: <%=link_to "Edit", edit_user_registration_path %></</li>
+		</ul>
+	</div>
+</div>
 
-<%=link_to "Profile", edit_user_registration_path, class:"nav-link mx-5 mb-3"%>
+<section class="section">
+	<div class="flexed-w">
+	<% @posts.each do |post| %>
+	<div class="bp m-2 center-down">
+		<% if post.image.attached?%>
+			<%= image_tag(post.image_as_thumbnail) if post.image.attached? %>
+		<% else %>
+		    <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
+		<% end %>
+		<%=link_to post.title, post %>
+	</div>
+	<%end%>
+	</div>
+</section>
+
+

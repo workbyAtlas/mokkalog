@@ -2,7 +2,6 @@
   <% if post.errors.any? %>
     <div style="color: red">
       <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
-
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
@@ -12,24 +11,28 @@
   <% end %>
 
  <section class ="section">
-  <div class="container w50">
+  <div class="container rw70">
     <div class="notification">
-    <div class="subtitle is-3">New Entry</div>
+
+    <div class="subtitle is-3 center">Item</div>
+    <div class="subtitle is-5 has-text-grey">Image Upload</div>
     <div class="center">
-      <div class="file is-boxed is-warning">
+
+      <div class="file is-warning">
         <label class="file-label">
-          <%= form.file_field :image, class:"file-input" %>
+            <%= form.file_field :image, class:"file-input" %>
           <span class="file-cta">
             <span class="file-icon">
               <i class="fas fa-upload"></i>
             </span>
             <span class="file-label">
-              Choose a file…
+              Image Upload
             </span>
           </span>
         </label>
       </div>
     </div>
+
     <hr class="border-purp-top" />
     <div class="columns">
       <div class="column">
@@ -53,12 +56,13 @@
             <%= form.text_field :price, class:"input",placeholder:"text input" %>
           </div>
         </div>
-        <div class="field">
-          <label class="label">Don't Input</label>
-          <div class="control">
-            <%= form.text_field :uindexID, class:"input",placeholder:"text input" %>
+          <div class="field">
+            <label class="label">Category</label>
+                <span class="select">
+                  <%= form.select :gen_type, ['Neutral', 'Men', 'Women']%>
+                </span>
+   
           </div>
-        </div>
         </div>
       </div>
     <hr class="border-purp-top" />
@@ -67,21 +71,17 @@
         <div class="column">
           <div class="field">
             <label class="label">Category</label>
-              <p class="control has-icons-left">
                 <span class="select">
-                  <%= form.select :category, ['Top', 'Pants', 'Full','Shoes','Shorts','Accessories']%>
+                  <%= form.select :category, ['', 'Top', 'Pants', 'Full','Shoes','Shorts','Outerwear','Accessories']%>
                 </span>
-              </p>
           </div>
         </div>
         <div class="column">
           <div class="field">
-            <label class="label">Sub Cat</label>
-              <p class="control has-icons-left">
+            <label class="label">Sub Category</label>
                 <span class="select">
-                  <%= form.select :sub_category, ['Jeans','T-Shirt','Overall','Scarf','Winter Coat','Sneakers']%>
+                  <%= form.select :sub_category, ['', 'Jeans','T-Shirt','Overall','Scarf','Winter Coat','Sneakers']%>
                 </span>
-              </p>
           </div>
         </div>
         <div class="column">
@@ -89,7 +89,7 @@
             <label class="label">Color</label>
               <p class="control has-icons-left">
                 <span class="select">
-                  <%= form.select :color, ['White', 'Blue', 'Green','Brown','Royal Purple']%>
+                  <%= form.select :color, ['', 'White', 'Blue', 'Green','Brown','Royal Purple']%>
                 </span>
               </p>
           </div>
@@ -110,6 +110,7 @@
 
       <div class="field">
         <label class="label">Tags</label>
+        <label class="label has-text-grey">Seperate each tag by using ,(Example: nyc, concert,)</label>
         <div class="control">
           <%= form.text_field :tags, value: post.tags.map(&:name).join(","), class:"input" %>
         </div>
@@ -119,7 +120,7 @@
       <div class="field">
         <label class="label">Description</label>
         <div class="control">
-          <%= form.text_field :body, class:"input",placeholder:"text input" %>
+          <%= form.text_area :body, class:"textarea",placeholder:"Description" %>
         </div>
       </div>
 

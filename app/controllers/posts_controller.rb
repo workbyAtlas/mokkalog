@@ -1,8 +1,14 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy ]
+  before_action :set_post, only: %i[ show edit update destroy]
   before_action :authenticate_user!, only: %i[new edit update destroy]
 
   # GET /posts or /posts.json
+
+  def visit
+    @post = Post.find(params[:id])
+    
+  end
+
   def index
     #@posts = Post.all
     @query = Post.ransack(params[:q])
@@ -79,7 +85,13 @@ class PostsController < ApplicationController
 
     def create_or_delete_posts_brands(post, brands)
       post.brandables.destroy_all
-      post.brands << Brand.find_or_create_by(name: brands.downcase)
+      if brand = Brand.find_by(name: brands.downcase)
+        post.brands << Brand.find_or_create_by(name: brands.downcase)
+      else
+        post.brands << Brand.find_or_create_by(name: brands.downcase, user_id: current_user.id)
+      end
+
+      #post.brands << brand
     end
   
 

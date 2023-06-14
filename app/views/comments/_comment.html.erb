@@ -1,53 +1,32 @@
 
-<% if true == false %>
-<article class="message b-comment">
-  <div class="message-header">
-    <p><%=link_to comment.user.username, user_path(comment.user)%>
-    <%if comment.c_type == "Reg" %>
-    <span class="mx-4 tag"><%=comment.c_type %></span>
-    <%elsif comment.c_type == "Buy" %>
-    <span class="mx-4 tag is-success"><%=comment.c_type %></span>
-    <%elsif comment.c_type == "Sell" %>
-    <span class="mx-4 tag is-danger"><%=comment.c_type %></span>
-    <% end %>
-
-	<%if comment.link.present? %>
-		<%=link_to "link", comment.link ,target: '_blank', class:"tag is-link is-light" %>
-	<% end %>
-
-
-	</p>
-
-	<% if current_user == comment.user %>
-		<div><%= button_to "Delete", [post, comment], class:"delete", method: :delete %></div>
-	<%end %>
-  </div>
-  <div class="message-body">
-  	<%= comment.body %>
-  </div>
-</article>
-<%end%>
 
 <%# TRUE COMMENT STARTS HERE-------------------------------------------------------------------------------------- %>
 
-<div class="card comment-form my-2">
+<div class="card rw50 my-2">
   <div class="card-content bp">
 
     <div class="media">
+      <%#IMAGE%>
       <div class="media-left">
-        <figure class="image is-48x48">
-          <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
-        </figure>
+          <% if comment.user.avatar.attached?%>
+            <%= image_tag comment.user.image_as_avatar %>
+          <%else%>
+            <figure class="image is-48x48">
+              <img src="https://bulma.io/images/placeholders/96x96.png" alt="Placeholder image">
+            </figure>
+          <%end%>
       </div>
+
       <div class="media-content">
         <p class="title is-4"><%= comment.user.name %></p>
-        <p class="subtitle is-6"><%=link_to "@"+ comment.user.username, user_path(comment.user), class:"purp-link"%></p>
-
+        <p class="subtitle is-6"><%=link_to "@"+ comment.user.username, user_path(comment.user), class:"p-link"%></p>
       </div>
+
   <%#Delete Button%>
 	<% if current_user == comment.user %>
-		<%= button_to "Delete", [post, comment], class:"delete", method: :delete %>
+    <%= button_to "Delete", [post, comment], method: :delete, data: { turbo_confirm: "Are you sure?" }, class:"delete" %>
 	<%end %>
+
     </div>
 
   <%#Type of Comment%>
@@ -59,7 +38,7 @@
 	    <%elsif comment.c_type == "Sell" %>
 	    <span class="tag is-danger my-1"><%=comment.c_type %></span>
 	    <% end %>
-
+  <%#ADD LINK IF LINK EXISTS%>
 			<%if comment.link.present? %>
 				<%=link_to "link", comment.link ,target: '_blank', class:"my-1 mx-2 tag is-link is-light" %>
 			<% end %>	
@@ -68,10 +47,11 @@
 			<%=comment.body%>
 
       <ul class="mx-0 mt-1">
-         <li class="comment-b purp-link">Like</li>
-         <li class="comment-b purp-link mx-2">Reply</li>
-         <% if current_user == comment.user %><li class="comment-b purp-link">Edit</li><%end%>
-         <li class="comment-b float-r"><%=comment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime(" %I:%M %p %Z - %B %d, %Y")%></li>
+         <li class="comment-b p-link">Like</li>
+         <li class="comment-b p-link mx-2">Reply</li>
+         <% if current_user == comment.user %><li class="comment-b p-link">Edit</li><%end%>
+
+         <li class="comment-b comment-date float-r"><%=comment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime(" %I:%M %p %Z - %B %d, %Y")%></li>
       </ul>
     </div>
   </div>

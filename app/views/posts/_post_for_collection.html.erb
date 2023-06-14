@@ -1,16 +1,16 @@
 <div class="black-border post-card center-down">
   <% if post.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
-    <div class="center"><%= image_tag(post.image_as_thumbnail) %></div>
+    <div class="center"><%=link_to (image_tag(post.image_as_thumbnail)), post%></div>
   <% else %>
     <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
   <% end %>
 
-  <div class="title is-5" style="margin: 0;"><strong><div class="purp"><%= post.title%></div></strong></div>
+  <div class="title is-5" style="margin: 0;"><strong><%=link_to post.title, post, class:"secondary"%></strong></div>
   
     <div><i>
       <% post.brands.each do |brand|%>
       <%= link_to brand do %>
-        <span class="brand-link"><%= brand.name%></span>
+        <span class="brand-link"><%= brand.name.capitalize%></span>
       <% end%>
     <% end %>
     </i></div>

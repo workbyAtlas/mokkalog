@@ -1,6 +1,6 @@
   <div class="w50">
     <%= search_form_for @query do |f| %>
-      <div class="center mt-2">Search:</div>
+      <div class="center my-2 title is-5">Search:</div>
       <%= f.search_field :title_or_body_i_cont_any, class:"input", placeholder:"Search here..." %>
 
       <% if true == false %>
@@ -11,6 +11,6 @@
       <% end %>
 
 
-      <%= f.submit "search!", class:"button is-warning my-2 " %>
+      <%= f.submit "search!", class:"button s-btn my-2 bs" %>
     <% end %>
   </div>

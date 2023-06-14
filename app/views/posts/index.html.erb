@@ -1,13 +1,25 @@
 
-<section class="section is-medium purpF">
-  <div class="center"><h1 class="helv">project pluto</h1></div>
+<section class="section is-small prime">
+  <div class="center title is-4">buddon</div>
   <div><%= link_to "New post", new_post_path, class:"button is-warning" %></div>
-  <hr />
+  <hr class="bst" />
   <div class="center"><%= render 'posts/searchbar' %></div>
 
 </section>
 
-<section class="section black-border flexed-w center">
+<section class="section notification columns">
+  <div class="column">
+    <div class="title is-4">Sort:</div>
+    <%= sort_link(@query, :views, "HOT", default_order: :asc, class:"button is-warning")%>
+    <%= sort_link(@query, :title, "Name", class:"button is-warning")%>
+    <%= sort_link(@query, :price, "Price", class:"button is-warning")%>
+  </div>
+  <div class="column">
+    <div class="title is-4">Filter:</div>
+  </div>
+</section>
+
+<section class="section black-border flexed-wc">
   <% @posts.each do |post| %>
       <div class=""><%= render post %></div>
   <% end %>

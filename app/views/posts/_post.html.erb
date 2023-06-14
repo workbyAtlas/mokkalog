@@ -1,5 +1,5 @@
-<div class="black-border post-card">
-  <% if post.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
+<div class="post-card m-2">
+  <% if post.image.attached?%>
     <div class="center"><%=link_to (image_tag (post.image_as_thumbnail)), post %></div>
   <% else %>
     <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
@@ -10,7 +10,7 @@
     <div><i>
       <% post.brands.each do |brand|%>
       <%= link_to brand do %>
-        <span class="brand-link"><%= brand.name%></span>
+        <span class="brand-link"><%= brand.name.capitalize%></span>
       <% end%>
     <% end %>
     </i></div>

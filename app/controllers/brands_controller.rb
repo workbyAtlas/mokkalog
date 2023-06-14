@@ -4,11 +4,13 @@ class BrandsController < ApplicationController
 
   # GET /brands or /brands.json
   def index
-    @brands = Brand.all
+    @query = Brand.ransack(params[:q])
+    @brands = @query.result(distinct: true)
   end
 
   # GET /brands/1 or /brands/1.json
   def show
+    @brand.update(views: @brand.views + 1)
   end
 
   # GET /brands/new
@@ -66,6 +68,6 @@ class BrandsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def brand_params
-      params.require(:brand).permit(:name)
+      params.require(:brand).permit(:name, :image, :user_id, :body, :views)
     end
 end

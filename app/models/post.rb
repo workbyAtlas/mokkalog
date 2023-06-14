@@ -1,6 +1,12 @@
 class Post < ApplicationRecord
 	validates :title, presence: true, length: {minimum:3, maximum: 30}
-	validates :body, length: {minimum:3, maximum: 3000}
+	#validates :brand, presence: true, length: {minimum:3, maximum: 30}
+	validates :body, length: { maximum: 3000 }, allow_blank: true
+  	validates :web_link, format: { with: /\Ahttp:\/\//, message: "should start with 'http://" }, allow_blank: true
+	validate :check_for_image
+
+
+
 
 	has_one_attached :image
 
@@ -40,8 +46,13 @@ class Post < ApplicationRecord
 		image.variant(resize_to_fill: [400,400]).processed
 	end
 
+	def check_for_image
+	    if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/webp])
+	      errors.add(:image, "The file must be, JPEG, PNG, or WEBP")
+	    end
+	end
 
-
+	#i think this is deletable
 	def image_validation
 		return unless image.content_type.in?(%w[image/jpeg image/png image/webp])	
 	    

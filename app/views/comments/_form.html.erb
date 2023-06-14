@@ -1,6 +1,6 @@
 
 <%=form_with(model: [post, post.comments.build]) do |f| %>
-  <div class="f-comment notification">
+  <div class="mx-auto rw70 notification">
      <div class="title is-5">Comment</div>
 
      <div class="flexed-c">
@@ -26,7 +26,7 @@
      </div>
      <%= f.text_area :body, class:"textarea my-2", placeholder: "Write you comment here!" %>
 	 <%= f.text_field :link, class:"input", placeholder: "Put your link here (make sure you include http://)" %>
-     <%= f.submit "Reply", class: "button purp-btn my-2"%>
+     <%= f.submit "Reply", class: "button s-btn my-2"%>
   </div>
 
    <% end %>

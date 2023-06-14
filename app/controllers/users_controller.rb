@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
   def profile
     @user.update(views: @user.views + 1)
+    @posts = @user.posts.order(created_at: :desc)
   end
 
   private

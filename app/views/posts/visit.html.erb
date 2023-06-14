@@ -1,0 +1,25 @@
+<%= turbo_frame_tag "modal" do %>
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+  <div class="notification center-down">
+    <% if not @post.web_link.blank?%>
+      <div class="my-3">You are about to go to <%= @post.web_link%></div>
+    <div>
+      <%=link_to "Visit", @post.web_link, target: "_blank", class:"button s-btn"%>
+      <%=link_to "Close", "#", data:{controller: "modals", action: "modals#close"}, class:"button is-danger"%>
+    </div>
+    <%else%>
+      <div class="my-3">No Link at the moment:(</div>
+    <% end%>
+
+<%=link_to "x", "#", data:{
+  controller: "modals",
+  action: "modals#close"
+  }, class:"modal-close is-large"%>
+
+</div>
+</div>
+</div>
+
+<%end%>

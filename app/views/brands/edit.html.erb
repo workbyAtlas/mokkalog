@@ -1,10 +1,24 @@
-<h1>Editing brand</h1>
+<%= turbo_frame_tag "modal" do %>
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+  <div class="notification">
+<div class="title is-5">Editing: <%=@brand.name%></div>
 
 <%= render "form", brand: @brand %>
 
 <br>
-
 <div>
-  <%= link_to "Show this brand", @brand %> |
-  <%= link_to "Back to brands", brands_path %>
+  <%= link_to "Back to brands", brands_path, class:"button is-warning" %>
 </div>
+
+<%=link_to "x", "#", data:{
+  controller: "modals",
+  action: "modals#close"
+  }, class:"modal-close is-large"%>
+
+</div>
+</div>
+</div>
+
+<%end%>

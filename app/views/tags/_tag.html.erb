@@ -1,13 +1,10 @@
-<div>
-  <p>
-    <strong>Tag:</strong>
-    <%= tag.name %>
-  </p>
-  <hr />
+<div class="flexed-wc">
+
 
   <% tag.taggables.each do |taggable| %>
+  <div class="m-2 bs">
     <%= render 'posts/post', post: taggable.post %>
-    <hr />
+  </div>
   <% end %>
 
 </div>

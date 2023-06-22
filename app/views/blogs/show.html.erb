@@ -1,0 +1,48 @@
+<section class="section prime is-medium relative">
+  <%=link_to "Back", blogs_path, class:"button is-warning hide-btn-r m-4"%>
+  <div class="title is-3 center"><%=@blog.title%></div>
+  <hr class="bst"/>
+  <div class="center subtitle is-5 ">
+
+    <div class="bs p-0"><%= image_tag @blog.user.image_as_avatar_blog %></div>
+
+    <%=link_to "@"+@blog.user.username, user_path(@blog.user), class:"s-link mx-2"%>
+      
+  </div>
+</section>
+
+<section class="section center lgrey">
+  <div class="rw70"><%=@blog.text%></div>
+</section>
+
+<%if @auth%>
+<div id="dev-tool" class="relative">
+<div class="hide-btn" onclick="hidediv('dev-tool')">[hide]</div>
+<div class="title is-4"><u>Dev Tool</u></div>
+<div>Pinned?:<%=@blog.pinned%></div>
+<div>Blog Type:<%=@blog.blog_type%></div>
+<div>Author:<%=@blog.user.username%></div>
+<div>
+  <%= link_to "Edit", edit_blog_path(@blog) %> |
+  <%= link_to "Back", blogs_path %>
+  <%= button_to "Delete", @blog, method: :delete %>
+</div>
+</div>
+
+<%end%>
+
+
+<%# Comment Form--------------------------------------------------%>
+<%if user_signed_in?%>
+<section class="section bp">
+<%= render partial: 'comments/form' , locals: {commentable: @blog} %>
+</section>
+<%end%>
+<%# Comment Section------------------------------------------------%>
+
+<section class="section center-down p-0">
+<% @comments.each do |comment| %>
+
+  <%= render partial: 'comments/comment', locals: {commentable: @blog, comment: comment} %>
+<% end %>
+</section>

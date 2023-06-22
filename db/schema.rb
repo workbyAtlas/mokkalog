@@ -10,12 +10,22 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_12_003927) do
+ActiveRecord::Schema[7.0].define(version: 2023_06_22_143635) do
+  create_table "action_text_rich_texts", force: :cascade do |t|
+    t.string "name", null: false
+    t.text "body"
+    t.string "record_type", null: false
+    t.bigint "record_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["record_type", "record_id", "name"], name: "index_action_text_rich_texts_uniqueness", unique: true
+  end
+
   create_table "active_storage_attachments", force: :cascade do |t|
     t.string "name", null: false
     t.string "record_type", null: false
-    t.integer "record_id", null: false
-    t.integer "blob_id", null: false
+    t.bigint "record_id", null: false
+    t.bigint "blob_id", null: false
     t.datetime "created_at", null: false
     t.index ["blob_id"], name: "index_active_storage_attachments_on_blob_id"
     t.index ["record_type", "record_id", "name", "blob_id"], name: "index_active_storage_attachments_uniqueness", unique: true
@@ -34,9 +44,20 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_003927) do
   end
 
   create_table "active_storage_variant_records", force: :cascade do |t|
-    t.integer "blob_id", null: false
+    t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "blogs", force: :cascade do |t|
+    t.string "title"
+    t.text "text"
+    t.string "blog_type"
+    t.string "pinned"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_blogs_on_user_id"
   end
 
   create_table "brandables", force: :cascade do |t|
@@ -55,6 +76,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_003927) do
     t.text "body"
     t.integer "views", default: 0
     t.integer "user_id", null: false
+    t.string "link"
+    t.string "brand_color", default: "0"
+    t.string "brand_text", default: "0"
     t.index ["user_id"], name: "index_brands_on_user_id"
   end
 
@@ -89,12 +113,22 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_003927) do
     t.text "body"
     t.string "c_type"
     t.text "link"
-    t.integer "post_id", null: false
+    t.string "commentable_type", null: false
+    t.integer "commentable_id", null: false
     t.integer "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_comments_on_post_id"
+    t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
     t.index ["user_id"], name: "index_comments_on_user_id"
+  end
+
+  create_table "likeables", force: :cascade do |t|
+    t.integer "user_id", null: false
+    t.integer "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_likeables_on_post_id"
+    t.index ["user_id"], name: "index_likeables_on_user_id"
   end
 
   create_table "posts", force: :cascade do |t|
@@ -105,11 +139,14 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_003927) do
     t.string "category"
     t.string "sub_category"
     t.string "web_link"
-    t.integer "likes"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "views", default: 0
+    t.string "c_type"
+    t.string "material"
+    t.text "amazon_link"
+    t.string "edited_by"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -139,12 +176,23 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_003927) do
     t.string "name"
     t.string "username"
     t.integer "views", default: 0
+    t.string "last_name"
+    t.text "link1"
+    t.text "link2"
+    t.string "primary_color", default: "#cbb595;"
+    t.string "secondary_color", default: "#654321;"
+    t.string "text_color", default: "black"
+    t.integer "role", default: 0
+    t.string "link1_title"
+    t.string "link2_title"
+    t.text "description"
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "blogs", "users"
   add_foreign_key "brandables", "brands"
   add_foreign_key "brandables", "posts"
   add_foreign_key "brands", "users"
@@ -152,8 +200,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_12_003927) do
   add_foreign_key "closets", "users"
   add_foreign_key "collectibles", "collections"
   add_foreign_key "collectibles", "posts"
-  add_foreign_key "comments", "posts"
   add_foreign_key "comments", "users"
+  add_foreign_key "likeables", "posts"
+  add_foreign_key "likeables", "users"
   add_foreign_key "posts", "users"
   add_foreign_key "taggables", "posts"
   add_foreign_key "taggables", "tags"

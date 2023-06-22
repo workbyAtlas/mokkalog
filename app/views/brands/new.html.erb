@@ -1,4 +1,4 @@
-<%= turbo_frame_tag "modal" do %>
+<%#= turbo_frame_tag "modal" do %>
 <div class="modal is-active">
   <div class="modal-background"></div>
   <div class="modal-content">
@@ -11,12 +11,12 @@
 <br>
 
 <div>
-  <%= link_to "Back to brands", brands_path, class:"button is-warning" %>
+  <%#= link_to "Back to brands", brands_path, class:"button is-warning" %>
 </div>
 
 
 
-<%=link_to "x", "#", data:{
+<%#=link_to "x", "#", data:{
   controller: "modals",
   action: "modals#close"
   }, class:"modal-close is-large"%>
@@ -25,4 +25,4 @@
 </div>
 </div>
 
-<%end%>
+<%#end%>

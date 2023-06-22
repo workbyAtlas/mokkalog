@@ -1,13 +1,18 @@
 <%= form_with(model: post) do |form| %>
   <% if post.errors.any? %>
-    <div style="color: red">
-      <h2><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+
+    <div class="message is-danger">
+      <div class="message-header">
+        <h2 class="title is-5 has-text-white"><%= pluralize(post.errors.count, "error") %> prohibited this post from being saved:</h2>
+      </div>
+    <div class="message-body">
       <ul>
         <% post.errors.each do |error| %>
           <li><%= error.full_message %></li>
         <% end %>
       </ul>
     </div>
+  </div>
   <% end %>
 
  <section class ="section">
@@ -23,7 +28,7 @@
             <%= form.file_field :image, class:"file-input" %>
           <span class="file-cta">
             <span class="file-icon">
-              <i class="fas fa-upload"></i>
+              <i class="fa-solid fa-download"></i>
             </span>
             <span class="file-label">
               Image Upload
@@ -39,13 +44,13 @@
         <div class="field">
           <label class="label">Name</label>
           <div class="control">
-            <%= form.text_field :title, class:"input",placeholder:"text input" %>
+            <%= form.text_field :title, class:"input",placeholder:"name of the clothing" %>
           </div>
         </div>
         <div class="field">
           <label class="label">Brand</label>
           <div class="control">
-            <%= form.text_field :brands, value: post.brands.map(&:name), class:"input",placeholder:"text input" %>
+            <%= form.text_field :brands, value: post.brands.map(&:name), class:"input",placeholder:"brand name" %>
           </div>
         </div>
       </div>
@@ -53,13 +58,13 @@
         <div class="field">
           <label class="label">Price</label>
           <div class="control">
-            <%= form.text_field :price, class:"input",placeholder:"text input" %>
+            <%= form.number_field :price, class:"input",placeholder:"#N/A" %>
           </div>
         </div>
           <div class="field">
-            <label class="label">Category</label>
+            <label class="label">Type</label>
                 <span class="select">
-                  <%= form.select :gen_type, ['Neutral', 'Men', 'Women']%>
+                  <%= form.select :c_type, ['Neutral', 'Men', 'Women']%>
                 </span>
    
           </div>
@@ -72,10 +77,11 @@
           <div class="field">
             <label class="label">Category</label>
                 <span class="select">
-                  <%= form.select :category, ['', 'Top', 'Pants', 'Full','Shoes','Shorts','Outerwear','Accessories']%>
+                  <%= form.select :category, ['', 'T-Shirt', "Shirt", 'Long Pants', 'Denim', 'Shorts', 'Sweater', 'Hat', 'Skirt', 'Dress', 'Suit','Shoes','Shorts','Outerwear', 'Socks','Accessories']%>
                 </span>
           </div>
         </div>
+        <%if true == false %>
         <div class="column">
           <div class="field">
             <label class="label">Sub Category</label>
@@ -84,16 +90,30 @@
                 </span>
           </div>
         </div>
+        <%end%>
+
         <div class="column">
           <div class="field">
             <label class="label">Color</label>
               <p class="control has-icons-left">
                 <span class="select">
-                  <%= form.select :color, ['', 'White', 'Blue', 'Green','Brown','Royal Purple']%>
+                  <%= form.select :color, ['', 'White', 'Black', 'Blue', 'Red', 'Yellow', 'Green', 'Orange', 'Brown','Purple', 'Navy', 'Olive', 'Tan','Grey']%>
                 </span>
               </p>
           </div>
         </div>
+
+        <div class="column">
+          <div class="field">
+            <label class="label">Materials</label>
+              <p class="control has-icons-left">
+                <span class="select">
+                  <%= form.select :material, ["","Cotton", "Polyester", "Silk", "Denim","Wool", "Linen", "Corduroy","Rayon", "Nylon", "Spandex", "Acrylic", "Cashmere", "Leather", "Denim", "Viscose", "Tencel", "Fleece", "Chiffon", "Satin", "Velvet", "Organza"]%>
+                </span>
+              </p>
+          </div>
+        </div>
+
       </div>
 
 
@@ -102,10 +122,17 @@
       <div class="field">
         <label class="label">Link</label>
         <div class="control">
-          <%= form.text_field :web_link, class:"input",placeholder:"text input" %>
+          <%= form.text_field :web_link, class:"input",placeholder:"link to this clothing" %>
         </div>
       </div>
-
+      <%if @auth%>
+      <div class="field">
+        <label class="label">Amazon Link</label>
+        <div class="control">
+          <%= form.text_field :amazon_link, class:"input",placeholder:"text input" %>
+        </div>
+      </div>
+      <%end%>
       <hr class="border-purp-top" />
 
       <div class="field">
@@ -124,7 +151,7 @@
         </div>
       </div>
 
-      <%= form.hidden_field :user_id, value: current_user.id %>
+      <%# form.hidden_field :user_id, value: current_user.id %>
 
       <hr class="border-purp-top" />
       <div><%= form.submit "Create", class:"button is-warning"%></div>

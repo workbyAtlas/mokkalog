@@ -29,10 +29,35 @@
     </span>
   </label>
 </div>
+
+<%= form.label "Banner image:", style: "display: block" %>
+<div class="file is-small is-warning">
+  <label class="file-label">
+      <%= form.file_field :banner, class:"file-input" %>
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Choose a file…
+      </span>
+    </span>
+  </label>
+</div>
   
   <div>
     <%= form.label :Name, style: "display: block" %>
     <%= form.text_field :name, class:"input" %>
+  </div>
+
+  <div>
+    <%= form.label "Text Color", style: "display: block" %>
+    <%= form.text_field :brand_text, class:"input" %>
+  </div>
+
+  <div>
+    <%= form.label :Link, style: "display: block" %>
+    <%= form.text_field :link, class:"input" %>
   </div>
 
   <div>
@@ -42,9 +67,14 @@
 
   <%= form.hidden_field :user_id, value: current_user.id %>
 
-  <div>
+  <div class="flexed my-2">
     <%#= form.submit, class: "button" %>
-    <%= form.submit%>
+    <%= form.submit "Submit", class:"button p-btn bs"%>
+    <% if current_page?(new_brand_path)%>
+    <%= link_to "Cancel", brands_path, class:"button is-danger mx-2" %>
+    <%else%>
+    <%= link_to "Back", brands_path, class:"button is-danger mx-2" %>
+    <%end%>
     <%#= form.submit "Submit", formtarget: "#my-frame" %>
 
   </div>

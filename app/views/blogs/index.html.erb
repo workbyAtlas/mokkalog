@@ -1,0 +1,54 @@
+<section class="section is-medium prime">
+  <div class="center title is-4">Blogs</div>
+  <hr class="bst" />
+</section>
+
+
+<section class="section lgrey">
+  <div class="title is-4 mb-0">Pinned</div>
+  <hr class="bst mt-1" />
+  <div class="blog-pinned-section bs p-2">
+
+    <% @blogs_pinned.each do |blog| %>
+      <%= render blog %>
+    <% end %>
+
+
+  </div>
+
+</section>
+
+<section class="section lgrey">
+  <div class="title is-4 mb-0">Type</div>
+  <hr class="bst mt-1" />
+  <div class="blog-pinned-section bs p-2">
+
+<div class="blog-long bp p-4 my-3 prime">
+  <%=link_to "Dev Notes", dev_blogs_path, class:"blog-title title is-5"%>
+  <%=link_to "Go", dev_blogs_path, class:"button is-warning float-r"%>
+</div>
+
+<div class="blog-long bp p-4 my-3 prime">
+  <%=link_to "Articles", article_blogs_path, class:"blog-title title is-5"%>
+  <%=link_to "Go", article_blogs_path, class:"button is-warning float-r"%>
+</div>
+
+
+  </div>
+
+</section>
+
+<section class="section lgrey">
+  <div class="title is-4 mb-0">All</div>
+  <hr class="bst mt-1" />
+  <div class="blog-pinned-section bs p-2">
+
+    <% @blogs.each do |blog| %>
+      <%= render blog %>
+    <% end %>
+
+
+  </div>
+
+</section>
+

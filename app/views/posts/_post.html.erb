@@ -5,7 +5,7 @@
     <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
   <% end %>
 
-  <div class="title is-5" style="margin: 0;"><strong><%=link_to post.title, post, class:"purp"%></strong></div>
+  <div class="title is-5" style="margin: 0;"><strong><%=link_to post.title.capitalize, post, class:"secondary-t"%></strong></div>
   
     <div><i>
       <% post.brands.each do |brand|%>
@@ -18,7 +18,11 @@
 
 
   <div><i><%#= post.brand %></i></div>
-  <div><%= number_to_currency(post.price)%></div>
+  <div><%=if post.price.blank? then "#N/A" else number_to_currency(post.price) end%></div>
+  <%if true == false %>
+  <div class="flexed-end ml-2"><%=post.likes.count%></div>
+  <%end%>
+  <%#=render 'likes/private_button', post: post, like_status: like_status %>
 
 
 </div>

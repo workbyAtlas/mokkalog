@@ -1,8 +1,6 @@
 <section class="section is-small prime">
   <div class="center title is-4">brands</div>
-  <div class="center">
-    add your new brands here.
-  </div>
+  <br/>
   <hr class="bst" />
   <div class="center"><%= render "searchbar" %></div>
 </section>
@@ -11,12 +9,13 @@
 <div class="notification columns">
   <div class="column">
     <div class="title is-4">Sort:</div>
-    <%= sort_link(@query, :views, "HOT", default_order: :asc, class:"button is-warning")%>
+    <%= sort_link(@query, :views, "Trending", default_order: :asc, class:"button is-warning")%>
     <%= sort_link(@query, :name, "Name", class:"button is-warning")%>
   </div>
   <div class="column">
     <div class="title is-4">Add New:</div>
-    <div><%= link_to "New", new_brand_path, data: {turbo_frame: "modal"}, class:"button purp-btn" %></div>
+    <div><%#= link_to "New", new_brand_path, data: {turbo_frame: "modal"}, class:"button s-btn" %></div>
+    <div><%= link_to "New", new_brand_path, class:"button p-btn bs secondary-t" %></div>
   </div>
 
 </div>
@@ -30,7 +29,7 @@
     <% else %>
       <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
     <% end %>
-      <div class="p-link"><strong><%=link_to brand.name.capitalize, brand, class:"purp-link" %></strong></div>
+      <div class="p-link"><strong><%=link_to brand.name.capitalize, brand, class:"s-link" %></strong></div>
       <%#=link_to brand.views, brand, class:"purp-link" %>     
     
 

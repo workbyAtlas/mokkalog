@@ -1,0 +1,13 @@
+
+
+<span class="flexed" id="<%="post_#{@post.id} private_likes"%>">
+	<% like_text = like_status ? "Unlike" : "Like" %>
+	<div class="button mr-2 bs"><%=pluralize(post.likes.count, "Like")%></div>
+	<%=button_to like_text, like_post_path(id: post.id), class:"button p-btn bs" %>
+
+</span>
+
+<%#= button_to like_post_path(id: post.id), method: :post, class: 'button is-link' do %>
+  <%#= icon('fas', 'fa-thumbs-up') %>
+<%# end %>
+<%#=render 'likes/like_counter', post: post%>

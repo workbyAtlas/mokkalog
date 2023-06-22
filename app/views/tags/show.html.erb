@@ -1,10 +1,12 @@
-<p style="color: green"><%= notice %></p>
 
+<section class="section prime">
+  <div class="title is-3">Tag:&nbsp;<%=@tag.name%></div>
+</section>
+<div class="notification">
+  <%= link_to "Edit this tag", edit_tag_path(@tag) %> 
+  <%= button_to "Destroy this tag", @tag, method: :delete %>
+</div>
 <%= render @tag %>
 
-<div>
-  <% link_to "Edit this tag", edit_tag_path(@tag) %> |
-  <% link_to "Back to tags", tags_path %>
 
-  <% button_to "Destroy this tag", @tag, method: :delete %>
-</div>
+

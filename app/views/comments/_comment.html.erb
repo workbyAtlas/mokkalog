@@ -24,7 +24,8 @@
 
   <%#Delete Button%>
 	<% if current_user == comment.user %>
-    <%= button_to "Delete", [post, comment], method: :delete, data: { turbo_confirm: "Are you sure?" }, class:"delete" %>
+    <%=button_to "Delete", comment_path(comment), method: :delete, data: {turbo_confirm: "Are you sure?"}, class:"delete"%>
+    <%# button_to "Delete", [ commentable, comment], method: :delete, data: { turbo_confirm: "Are you sure?" }, class:"delete" %>
 	<%end %>
 
     </div>
@@ -47,12 +48,28 @@
 			<%=comment.body%>
 
       <ul class="mx-0 mt-1">
+        <%if true == false%>
          <li class="comment-b p-link">Like</li>
          <li class="comment-b p-link mx-2">Reply</li>
-         <% if current_user == comment.user %><li class="comment-b p-link">Edit</li><%end%>
+        <%end%>
+         <% if current_user == comment.user %>
+         <li class="comment-b p-link">
+          <%= link_to "Edit", edit_comment_path(comment), class:"p-link"%>   
+         </li>
+         <%end%>
 
-         <li class="comment-b comment-date float-r"><%=comment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime(" %I:%M %p %Z - %B %d, %Y")%></li>
+         <%if (comment.updated_at - comment.created_at) > 1%>
+           <li class="comment-b comment-date float-r">
+            Edited <%=time_ago_in_words(comment.updated_at)%>
+           </li>
+         <%else%>
+           <li class="comment-b comment-date float-r">
+            <%=time_ago_in_words(comment.created_at)%>
+            <%#comment.created_at.in_time_zone("Eastern Time (US & Canada)").strftime(" %I:%M %p %Z - %B %d, %Y")%>
+           </li>
+         <%end%>
       </ul>
+
     </div>
   </div>
 </div>

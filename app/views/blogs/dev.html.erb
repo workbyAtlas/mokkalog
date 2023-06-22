@@ -1,0 +1,20 @@
+<section class="section prime is-medium relative">
+  <%=link_to "Back", blogs_path, class:"button is-warning hide-btn-r m-4"%>
+  <div class="title is-4 center"><u>blogs</u></div>
+  <hr class="bst"/>
+  <div class="title is-5 center">Dev Notes</div>
+</section>
+
+<section class="section lgrey">
+  <div class="title is-4 mb-0">Dev Notes</div>
+  <hr class="bst mt-1" />
+  <div class="blog-pinned-section bs p-2">
+
+    <% @blogs_dev.each do |blog| %>
+      <%= render blog %>
+    <% end %>
+
+
+  </div>
+
+</section>

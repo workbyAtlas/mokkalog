@@ -1,24 +1,73 @@
+<div class="d-none" id="share"><%=request.url%></div>
+<section class="section is-medium" style="background-color:<%=@user.primary_color%>">
+	<div class="center title is-3" style="color:<%=@user.text_color%>">
+		Profile
+	</div>
+	<hr class="bst"/>
 
-<div class="notification columns">
-	<div class="column bp center">
+</section>
+<section class="relative profile-holder">
+	<div class="profile">
 		<%if @user.avatar.attached?%>
-		<%=image_tag @user.image_as_profile_page_pic%>
+		<%=image_tag @user.image_as_profile_page_pic%>	
 		<%end%>
 	</div>
-	<div class="column">
-		<div><%=link_to "Profile", edit_user_registration_path, class:"nav-link mx-5 mb-3"%></div>
-		<ul>
-			<li><strong>Name:</strong><%=@user.name %></li>
-			<li><strong>Username:</strong>@<%=@user.username %></li>
-			<li><strong>Views:</strong><%=@user.views %></li>
-			<li><strong>Clothing added:</strong><%=@user.posts.size%></li>
-			<li><strong>Edit: <%=link_to "Edit", edit_user_registration_path %></</li>
-		</ul>
+</section>
+
+<section>
+
+<div class="columns">
+	<div class="column is-two-fifths"></div>
+	<div class="column profile-text">
+		<div class="title is-4 my-2"><%=@user.name%><%=@user.last_name%></div>
+		<div><u>@<%=@user.username%></u></div>
+		<div class="mt-2 title is-6">
+			Views: <%=@user.views%> | Entries Added:<%=@user.posts.size%> | <span id="share-btn" class="tag bs pointer" id="share" onclick="copy('share','share-btn')">Share +</span>
+		</div>
+		<%# LINKS---------------------------------------------------------- %>
+		<%if not @user.link1.blank?%>
+		<div class="my-2">
+			<strong><%=if @user.link1_title.blank? then "Link1" else @user.link1_title end%>:</strong>
+			<%=link_to @user.link1 , @user.link1, target: "_blank", class:"tag bp"%>
+		</div>
+		<%end%>
+
+		<%if not @user.link2.blank?%>		
+			<strong><%=if @user.link2_title.blank? then "Link2" else @user.link2_title end%>:</strong>
+			<%=link_to @user.link2 , @user.link2, target: "_blank", class:"tag bp"%>
+		<%end%>
+
+		<div class="my-4 profile-desc"><%=@user.description%></div>
 	</div>
 </div>
+</section>
 
+<%if current_user == @user or @auth%>
+<div class="notification bs relative" id="profilebox">
+<div class="hide-btn" onclick="hidediv('profilebox')">[hide]</div>
+<div class="title is-4">Edit Profile</div>
+<div class="flexed">
+  <%=link_to "Edit", edit_user_registration_path,class:"button is-warning mx-2" %> 
+	<%=button_to "Log Out", destroy_user_session_path, method: :delete, class:"button is-danger"%>
+</div>
+<%if @auth%>
+
+<hr class="bst"/>
+<div class="title is-4">Dev Tool</div>
+<div><strong>Role:</strong><%=@user.role%></div>
+<div><strong>Link_to:</strong><%=link_to "Admin Room", adroom_path, class:"s-link"%></div>
+<div><strong>Role:</strong><%=@user.role%></div>
+<%end%>
+
+</div>
+<%end%>
+
+
+<br/>
+<hr class="bst"/>
 <section class="section">
-	<div class="flexed-w">
+	<div class="title is-4 center">Entries Added:</div>
+	<div class="flexed-wc">
 	<% @posts.each do |post| %>
 	<div class="bp m-2 center-down">
 		<% if post.image.attached?%>
@@ -26,7 +75,7 @@
 		<% else %>
 		    <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
 		<% end %>
-		<%=link_to post.title, post %>
+		<%=link_to post.title, post, class:"s-link" %>
 	</div>
 	<%end%>
 	</div>

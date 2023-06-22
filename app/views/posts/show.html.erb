@@ -1,7 +1,6 @@
-
+<div class="d-none" id="share"><%=request.url%></div>
 <section class="section">
   <div class="columns">
-    
     <div class="column bpx center">
       <% if @post.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
       <%=image_tag (@post.image_as_profile), class:"bp p-3"%>
@@ -12,33 +11,44 @@
 
     <div class="column bpx">
 
-      <div class="show-info">
+      <div class="show-info ">
         <div class="mt-3 mb-0 title is-3"><%=@post.title %></div>
 
         <% @post.brands.each do |brand|%>
           <%= link_to brand do %>
-            <div class="my-2 title is-5 purp-link"><%= brand.name%></div>
+            <div class="my-2 title is-5 purp-link"><%= brand.name.capitalize%></div>
            <% end%>
          <% end %>
 
-        <div><%= number_to_currency(@post.price) %></div>
+        <div><%=if @post.price.blank? then "#N/A" else number_to_currency(@post.price) end%></div>
 
-        <div class="mt-4 bpb">
-          <div class="mb-4 button is-link">Like</div>
-          <%=link_to "Visit", post_visit_path(@post),data: {turbo_frame: "modal"}, class:"button s-btn mb-4" %>
-          <div class="mb-4 button is-success">Share</div>
-          <div class="mb-4 button is-warning">Save</div>
+        <div class="mt-4 bpb flexed">
+          <%#LIKE BUTTON%>
+          <div class="mx-1 mb-4">
+            <%if current_user%>
+            <%= render "posts/like_btn_private", post: @post, like_status: current_user.liked?(@post) %>
+            <%else%>
+            <%= render "posts/components/like_btn_public", post: @post%>
+
+
+
+            <%end%>  
+          </div>
+          <div class="mx-1 mb-4 button is-link" onclick="showdiv('visitmodal')">Visit</div>
+          <div class="mx-1 mb-4 button is-success" onclick="copy('share','share-button')" id="share-button">Share</div>
           <div><%#= link_to "Closet", closets_update_path(post: @post), id: 'closet_link, class:"mb-4 button is-danger" %></div>
         </div>
-        <%# EDITOR/CREATOR BOX-----------------------------------------------------------------------------------------------------------------%>
-        <%if current_user == @post.user %>
+        <%# DEV BOX------------------------------------------%>
+
+<%if current_user == @post.user or @auth_e == "editor"%>
         <div class=" flexed-c mt-4 bpb">
-          <div class="mx-1 mb-4 button p-btn">ID: <%=@post.id%></div>
-          <div class="mx-1 mb-4 button is-primary"><%= pluralize(@post.views,"view")%></div>
+          <div class="mx-1 mb-4 button bs">ID: <%=@post.id%></div>
+          <div class="mx-1 mb-4 button p-btn bs"><%= pluralize(@post.views,"view")%></div>
           <div class="mx-1 mb-4"><%= link_to "Edit", edit_post_path(@post), class:"button is-warning" %></div>
           <div class="mx-1 mb-4"><%= button_to "Destroy", @post, method: :delete,data: { turbo_confirm: "Are you sure?" }, class:"button is-danger" %></div>   
         </div>
-        <%end %>
+<%end%>
+        <%# TAG BOX-------------------------------------------%>
         <% if not @post.tags.blank?%>
         <div class="mt-4 bp tag-box center-down">
           <div><strong>Tags:</strong></div>
@@ -51,22 +61,14 @@
         </div>
         </div>
         <%end%>
-        <%# INFO BOX-----------------------------------------------------------------------------------------------------------------%>
-        <div class="notification mt-4 p-3 bs info-box">
-           <ul>
-              <li class="purp-link"><strong>Information:</strong></li>
-              <li><strong class="mx-2">Type:</strong><%=if @post.sub_category.nil? then "undefined" else @post.category end%></li>
-              <li><strong class="mx-2">Sub-Type:</strong><%= if @post.sub_category.nil? then "undefined" else @post.sub_category end%></li>
-              <li><strong class="mx-2">Uploaded_by:</strong><%=link_to "@"+ @post.user.username, user_path(@post.user), class:"purp-link"%>
-              <li><strong class="mx-2">Amazon:</strong><span class="tag is-link is-light">Link</span></li>
-           </ul>
-        </div>
+        <%# INFO BOX-------------------------------------------%>
+        <%= render "posts/components/info_box"%>
 
       </div> 
     </div>
   </div>
 
-<%# DESCRIPTION Form-----------------------------------------------------------------------------------------------------------------%>
+<%# DESCRIPTION Form---------------------------------------------%>
 <% if not @post.body.blank?%>
   <div class="center">
   <div class="notification w70 desc-box content bs">
@@ -77,19 +79,25 @@
 <% end %>   
 </section>
 
-<%# Comment Form-----------------------------------------------------------------------------------------------------------------%>
+<%# Comment Form--------------------------------------------------%>
 <section class="section bp">
-<%= render 'comments/form' , post: @post %>
+<%= render partial: 'comments/form' , locals: {commentable: @post} %>
 </section>
-<%# Comment Section-----------------------------------------------------------------------------------------------------------------%>
+<%# Comment Section------------------------------------------------%>
 
 <section class="section center-down p-0">
 <% @comments.each do |comment| %>
-  <%= render 'comments/comment', post: @post, comment: comment %>
+  <%= render partial: 'comments/comment', locals: {commentable: @post, comment: comment} %>
 <% end %>
 </section>
 
+<div class="d-none" id="visitmodal">
+<%=render 'posts/components/visit_modal'%>
+</div>
 
+<div class="d-none" id="sharemodal">
+<%=render 'posts/components/share_modal'%>
+</div>
 
 
 

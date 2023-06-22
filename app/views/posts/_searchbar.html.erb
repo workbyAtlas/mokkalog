@@ -1,16 +1,34 @@
-  <div class="w50">
+  <div class="w50 relative">
+    <div class="hide-btn secondary-t" onclick="showdiv('advanced-search')">[advanced]</div>
     <%= search_form_for @query do |f| %>
       <div class="center my-2 title is-5">Search:</div>
-      <%= f.search_field :title_or_body_i_cont_any, class:"input", placeholder:"Search here..." %>
+      <%= f.search_field :title_or_material_or_category_or_tags_name_or_brands_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
 
-      <% if true == false %>
+
+
+
+   
+      <div id="advanced-search" class="d-none">
+        <div class="my-2">^ will search name, material, category, tag, brand</div>
+        <hr class="bst"/>
+        <%=f.label :name, class:"label"%>
+        <%= f.search_field :title_i_cont_any, class:"input", placeholder:"Search here..." %>
+
+        <%=f.label :brand, class:"label my-2"%>
+        <%= f.search_field :brands_name_cont, class:"input", placeholder:"Search here..." %>
+
+        <div class="label my-2">Tags:</div>
+        <%= f.search_field :tags_name_cont, class:"input my-2", placeholder:"Search here..." %>
+
+      <%  if false %>
       <div class="center mt-2">Brand</div>
       <%= f.search_field :brands_name_cont, class:"input", placeholder:"Search here..." %>
       <div class="center mt-2">Tags:</div>
       <%= f.search_field :tags_name_cont, class:"input my-2", placeholder:"Search here..." %>
       <% end %>
+    </div>
 
 
-      <%= f.submit "search!", class:"button s-btn my-2 bs" %>
+      <%= f.submit "search!", class:"button is-warning my-2 bs" %>
     <% end %>
   </div>

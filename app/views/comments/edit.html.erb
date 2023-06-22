@@ -1,0 +1,38 @@
+<%=form_with(model: @comment, url:comment_path(@comment), method: :patch) do |f| %>
+
+<%#form_for([@post,@comment],
+url: post_comment_path(@post,@comment), 
+method: :patch) do |f|%>
+
+<div class="mx-auto rw70 notification">
+     <div class="title is-5">Comment</div>
+
+     <div class="flexed-c">
+
+		<div class="select">
+		<%= f.select :c_type, ['Reg', 'Buy', 'Sell']%>
+		</div>
+        <% if true == false%>
+        <div class="file mx-2 is-warning">
+          <label class="file-label">
+            <input class="file-input" type="file" name="resume">
+            <span class="file-cta">
+              <span class="file-icon">
+                <i class="fas fa-upload"></i>
+              </span>
+              <span class="file-label">
+                Choose a file…
+              </span>
+            </span>
+          </label>
+        </div>
+        <%end%>
+
+     </div>
+     <%= f.text_area :body, class:"textarea my-2", placeholder: "Write you comment here!" %>
+	 <%= f.text_field :link, class:"input", placeholder: "Put your link here (make sure you include http://)" %>
+     <%= f.submit "Reply", class: "button s-btn my-2"%>
+  </div>
+  
+<%end%>
+

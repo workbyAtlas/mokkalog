@@ -1,0 +1,26 @@
+
+<%if @auth %>
+<section class="section purp is-medium">
+  <div class="center title is-3 has-text-white">Admin Room</div>
+  <hr />
+ 
+</section>
+
+<section class="section">
+  <%= link_to "New blog", new_blog_path, class:"button s-btn" %>
+  <br>
+  <ul>
+    <li>User count:<%=@users.count%></li>
+<% @users.each do |x| %>
+  <li><%=x.email %> | <%= x.name %> | <%= x.role %></li>
+<% end %>
+  </ul>
+</section>
+
+<%end%>
+
+
+
+
+<%#VIST#POST%>
+<%#link_to "Visit", post_visit_path(@post),data: {turbo_frame: "modal"}, class:"button s-btn" %>

@@ -5,7 +5,10 @@ class BrandsController < ApplicationController
   # GET /brands or /brands.json
   def index
     @query = Brand.ransack(params[:q])
-    @brands = @query.result(distinct: true)
+    #brands = @query.result(distinct: true)
+    @brands = @query.result.includes(:posts)
+
+
   end
 
   # GET /brands/1 or /brands/1.json
@@ -24,7 +27,10 @@ class BrandsController < ApplicationController
 
   # POST /brands or /brands.json
   def create
+
     @brand = Brand.new(brand_params)
+    @brand.brand_text = "black"
+
 
     respond_to do |format|
       if @brand.save
@@ -68,6 +74,6 @@ class BrandsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def brand_params
-      params.require(:brand).permit(:name, :image, :user_id, :body, :views)
+      params.require(:brand).permit(:name, :image, :user_id, :body, :views, :link, :banner, :brand_color, :brand_text)
     end
 end

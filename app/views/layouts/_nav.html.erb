@@ -1,17 +1,28 @@
 <section class="section">
-	<div class="center"><%= link_to "project pluto", root_path, class:"pluto-header title is-3 mt-2"%></div>
-	<hr />
-	<div class="center nav-link-holder">
-			<%= link_to "About", about_path,    class:"nav-link mx-5 mb-3" %>
-			<%= link_to "Blogs", collections_path,  class:"nav-link mx-5 mb-3" %>
-			<%= link_to "Brands", brands_path,  class:"nav-link mx-5 mb-3" %>
-			<%= link_to "Database", posts_path, class:"nav-link mx-5 mb-3" %>
-			<% if user_signed_in? %>
-				<%=link_to "Profile", user_path(current_user), class:"nav-link mx-5 mb-3"%>
-			<% else %>
-				<%= link_to "Log in", new_user_session_path,   class:"nav-link mx-5 mb-3" %>
-			<% end %>
-	</div>		
+    <div class="center">
+    	<%=link_to "mokka", root_path, class:"title is-3 mt-2" %>(alpha)
+    </div>
+    <hr />
+    <div class="nav-button-holder center">
 
+    <div id="nav-btn" class="nav-button pointer" onclick="myFunction()">
+    	<span class="icon"><i class="fas fa-bars"></i></span>
+    </div>
 
+    </div>
+
+    <div class="nav-link-holder" id="nav-bar">
+		<%= link_to "About", about_path,        class:"nav-link mx-5 mb-3" %>
+		<%= link_to "Blogs", blogs_path,        class:"nav-link mx-5 mb-3" %>
+		<%= link_to "Brands", brands_path,      class:"nav-link mx-5 mb-3" %>
+		<%= link_to "Catalog", posts_path,     class:"nav-link mx-5 mb-3" %>
+		<% if user_signed_in? %>
+			<%=link_to "Profile", user_path(current_user), class:"nav-link mx-5 mb-3"%>
+		<% else %>
+			<%= link_to "Log in", new_user_session_path,   class:"nav-link mx-5 mb-3" %>
+		<% end %>
+        <div class="nav-button mt-2" onclick="myFF()">
+       		<span class="icon pointer"><i class="fas fa-xmark"></i></span>
+        </div>
+    </div>
 </section>

@@ -1,9 +1,10 @@
 class Post < ApplicationRecord
 	validates :title, presence: true, length: {minimum:3, maximum: 30}
-	#validates :brand, presence: true, length: {minimum:3, maximum: 30}
 	validates :body, length: { maximum: 3000 }, allow_blank: true
-  	validates :web_link, format: { with: /\Ahttp:\/\//, message: "should start with 'http://" }, allow_blank: true
+  	validates :web_link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true
 	validate :check_for_image
+	validates :image, presence: true
+	#validates :price, numericality: { less_than: 5,000,000 }, allows_blank: true
 
 
 
@@ -17,10 +18,13 @@ class Post < ApplicationRecord
 	has_many :brandables, dependent: :destroy
 	has_many :brands, through: :brandables
 
+	has_many :likeables, dependent: :destroy
+	has_many :likes, through: :likeables, source: :user
+
 	has_many :collectibles, dependent: :destroy
 	has_many :collections, through: :collectibles
 
-	has_many :comments, dependent: :destroy
+	has_many :comments, as: :commentable, dependent: :destroy
 
 	belongs_to :user
 	before_save :downcase_fields
@@ -29,7 +33,7 @@ class Post < ApplicationRecord
 
 	#validate :image, :image_validation
   	def self.ransackable_attributes(auth_object = nil)
-    	["body", "category", "color", "created_at", "id", "likes", "price", "sub_category", "title", "updated_at", "web_link"]
+    	["body", "category", "color", "id",  "price", "sub_category", "title", "updated_at", "material", "category", "tags", "brands"]
  	end
 
 	 def self.ransackable_associations(auth_object = nil)

@@ -32,15 +32,21 @@
 .bb{border: 2px solid black;}
 .nopad{padding:0;}
 .testsection{width:100%;background-color:blue;}
+.pointer{cursor: pointer;}
+.hide-btn{position:absolute;top:5px;right:5px;color:grey; cursor:pointer;}
+.hide-btn-r{position:absolute;top:5px;left:5px;color:grey; cursor:pointer;}
+.d-none{display:none;}
 
 /*NEED TO GET RID OFF PURP#9xf5f9f*/
 .purpF{background-color:#cbb595;}
-.purp{color:#654321;}
+.purp{background-color:#9f5f9f;}
 .bp{border: 2px solid #654321;}
 .border-purp-top{border:1px solid; border-color:#654321;}
 .bpb{border-bottom:2px solid; border-color:#654321;}
 .purp-link{color:#654321;text-decoration: underline #654321; cursor: pointer;}
-
+.purp-btn:hover{background-color:#8f558f;color:white;}
+/*COLORS*/
+.lgrey{background-color:#f5f5f5;}
 
 
 /*PRIME COLOR#cxbb595;*/
@@ -48,19 +54,21 @@
 .b{border: 2px solid #654321;}
 .border-purp-top{border:1px solid; border-color:#654321;}
 .bpb{border-bottom:2px solid; border-color:#654321;}
+.bpt{border-top:2px solid; border-color:#cbb595;}
 
-.p-btn{background-color:#cbb595;color:#black;}
-.p-btn:hover{background-color:#8f558f;color:white;}
+.p-btn{background-color:#cbb595;color:#654321; border:2px solid; border-color:#654321;}
+.p-btn:hover{background-color:#b29162;color:#654321;border:2px solid; border-color:#654321;}
 
 .p-link{color:#654321;text-decoration: underline #654321; cursor: pointer;}
 
 /*SECONDARY#cxbb595;*/
-.secondary{color:#654321;}
+.secondary{background-color:#654321;}
+.secondary-t{color:#654321;}
 .bst{border-top:2px solid; border-color:#654321;}
 .bs{border:2px solid; border-color:#654321;}
 
 .s-btn{background-color:#654321;color:white;}
-.s-btn:hover{background-color:#8f558f;color:white;}
+.s-btn:hover{background-color:#52361b;color:white;}
 
 .s-link{color:#654321;text-decoration: underline #654321; cursor: pointer;}
 
@@ -86,6 +94,7 @@
 .flexed-baby{flex:1;}
 .flexed-c{display:flex;flex-direction:row;}
 .flexed-r{display:flex;flex-direction:row;}
+.flexed-end{display:flex;justify-content:flex-end;}
 .float-r{float:right;}
 
 /*Post*/
@@ -98,7 +107,7 @@
 .show-info{display: flex;flex-direction:column;justify-content: center;align-items: center;}
 .tag-box{width:50%;}
 .info-box{width:80%;min-height:120px;}
-.desc-box{min-height:400px;}
+.desc-box{min-height:150px;}
 
 
 /*Comment*/
@@ -111,6 +120,7 @@
 
 .comment-date{font-size:12px;}
 .comment-b{display:inline;}
+.no-style{list-style-type:none;}
 
 
 
@@ -118,21 +128,61 @@
 
 /*Nav*/
 .nav-link{color:#654321; font-weight:600;}
+.nav-link:hover{color:#cbb595;}
+
+.nav-link-holder{display: flex;justify-content: center;align-items: center;}
+.nav-button-holder{display:none;}
+.nav-button{display:none; background:none; border:none;}
+
+
+/*PROFILE PICTURE*/
+.relative{position:relative;}
+.profile{
+    position:absolute;
+    top:-50px;
+    left:15%;
+    height:200px;
+    width:200px;
+    border:3px solid #fff;
+    border-radius:50%;
+    background-color:grey;
+    overflow:hidden;
+}
+.profile-text{min-height:400px;max-width:500px;}
+.pdrofile-desc{max-width:200px;}
+
+
+.option-form{background-color:green;}
+.option-form option{background-color:green;}
+
+/*BLOGS*/
+/*BLOGS-index*/
+.blog-pinned-section{min-height:200px;}
+.blog-section{}
+.blog-long{height:80px; }
+.blog-title{text-decoration:none;color:black;}
 
 @media (max-width: 800px){
     .post-card{width:200px;}
     .rw50,.rw60,.rw70,.rw80,.rw90{width:90%;}
     .comment-date{font-size:12px;}
+    .profile-holder{height:140px;}
 
     }    
 
+@media screen and (max-width: 481px){.nav-link-holder{display:flex;}
 
 @media (max-width: 480px){
     .post-card{width:200px;}
     .rw50,.rw60,.rw70,.rw80,.rw90{width:90%;}
     .comment-date{font-size:8px;}
-    .nav-link-holder{background-color:yellow;position:absoulte;}
-    }
+
+    .nav-link-holder{display:none;flex-direction:column;justify-content: center;align-items: center;}
+    .nav-button-holder{display:flex;}
+    .nav-button{display:block;}
+
+    .profile{left:50%;top:25%;transform: translate(-50%,-50%);}
+    .profile-text{display:flex; justify-content:center; align-items:center;flex-direction:column;}
 
 
 @media (max-width: 370px){

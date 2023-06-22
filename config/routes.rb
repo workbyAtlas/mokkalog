@@ -1,4 +1,16 @@
 Rails.application.routes.draw do
+  
+  resources :blogs do
+    resources :comments, only: [:create, :show]
+    collection do       
+      get :dev
+      get :article
+    end
+  end
+  resources :comments, only: [:destroy, :edit, :update]
+  #resources :comments, only: [:edit, :update]
+    
+  
   resources :collections
   get 'users/profile'
   get 'closets/update'
@@ -8,7 +20,7 @@ Rails.application.routes.draw do
     registrations: 'users/registrations'
   }
 
-  get '/u/:id', to: 'users#profile', as: 'user'
+  #get '/u/:id', to: 'users#profile', as: 'user'
 
   #resources :posts
   resources :brands
@@ -18,17 +30,20 @@ Rails.application.routes.draw do
   
   get 'about'  => 'pages#about'
   get 'search' => 'pages#search'
+  get 'adroom' => 'pages#admin_room'
 
+  get '/u/:id', to: 'users#profile', as: 'user'
   #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
   get 'posts/:id/visit', to: 'posts#visit', as: 'post_visit'
+  post 'like/:id', to: 'posts#like', as: 'like_post'
 
   resources :posts do
-    resources :comments
+    resources :comments, only: :create
     #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
     #get "visit"
   end
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
-  # Defines the root path route ("/")xx
+  # Defines the root path route ("/")xxx
   # root "articles#index"
 end

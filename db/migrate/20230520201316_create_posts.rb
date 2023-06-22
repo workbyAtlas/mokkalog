@@ -5,11 +5,11 @@ class CreatePosts < ActiveRecord::Migration[7.0]
       t.text :body
       t.float :price
       t.string :color
-      t.string :brand
+      #t.string :brand
       t.string :category
       t.string :sub_category
       t.string :web_link
-      t.integer :likes
+      #t.integer :likes
 
       t.timestamps
     end

@@ -17,7 +17,8 @@ Rails.application.routes.draw do
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
-    registrations: 'users/registrations'
+    registrations: 'users/registrations',
+    confirmable:  'users/confirmations'
   }
 
   #get '/u/:id', to: 'users#profile', as: 'user'

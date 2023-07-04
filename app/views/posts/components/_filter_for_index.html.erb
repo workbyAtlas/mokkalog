@@ -1,0 +1,10 @@
+  <div class="column">
+    <div class="title is-4">Sort:</div>
+    <%= sort_link(@query, :views, "Trending", default_order: :asc, class:"button is-warning")%>
+    <%= sort_link(@query, :title, "Name", class:"button is-warning")%>
+    <%= sort_link(@query, :price, "Price", class:"button is-warning")%>
+  </div>
+  <div class="column">
+    <div class="title is-4">Add New Entry:</div>
+    <%= link_to "New post", new_post_path, class:"button p-btn" %>
+  </div>

@@ -107,7 +107,7 @@ class PostsController < ApplicationController
 
     def create_or_delete_posts_brands(post, brands)
       post.brandables.destroy_all
-      brand = brands.downcase!
+      brand = brands
       if brand = Brand.find_by(name: brands)
         post.brands << Brand.find_or_create_by(name: brands)
       else

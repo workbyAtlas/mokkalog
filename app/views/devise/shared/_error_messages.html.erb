@@ -1,5 +1,7 @@
+
 <% if resource.errors.any? %>
-  <div id="error_explanation" data-turbo-cache="false" class="message is-danger">
+<section class="center">
+  <div id="error_explanation" data-turbo-cache="false" class="message is-danger rw50">
     <div class="message-header">
       <%= I18n.t("errors.messages.not_saved",
                  count: resource.errors.count,
@@ -14,4 +16,5 @@
     </ul>
   </div>
   </div>
+</section>
 <% end %>

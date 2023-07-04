@@ -20,7 +20,8 @@
     <%= yield %>
 
     <script>
-    function myFunction() {
+    let isVisible = true;
+    function myFunction(){
       document.getElementById("nav-bar").style.display = "flex";
       document.getElementById("nav-btn").style.display = "none";
     }
@@ -42,6 +43,20 @@
       navigator.clipboard.writeText(url);
       document.getElementById(id2).innerHTML = "Copied!";
 
+    }
+
+    function advanced(id,button1){
+      if (isVisible){
+        document.getElementById(id).style.display= "block";
+        document.getElementById(button1).innerHTML= "[hide]";
+        isVisible = false;
+      }else{
+        document.getElementById(id).style.display= "none";
+        document.getElementById(button1).innerHTML= "[advanced]";
+        isVisible = true;
+
+
+      }
     }
 
 

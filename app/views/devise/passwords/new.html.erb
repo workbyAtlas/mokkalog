@@ -1,16 +1,25 @@
-<h2>Forgot your password?</h2>
-
 <%= form_for(resource, as: resource_name, url: password_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+<section class="section center">
+<div class="notification rw30 has-background-white">
+<div class="center-down">
+<h2 class="title is-3">Forgot your password?</h2>
+
+
+
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <div class="label">Email</div>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input" %>
   </div>
 
   <div class="actions">
-    <%= f.submit "Send me reset password instructions" %>
+    <%= f.submit "Send me reset password instructions", class:"button is-warning" %>
   </div>
 <% end %>
-
-<%= render "devise/shared/links" %>
+<br/>
+<%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+<%= link_to "Go back to Sign in", new_session_path(resource_name) %>
+</div>
+</div>
+</section>

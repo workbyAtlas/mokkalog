@@ -1,4 +1,5 @@
 <div class="d-none" id="share"><%=request.url%></div>
+
 <section class="section is-medium" style="background-color:<%=@user.primary_color%>">
 	<div class="center title is-3" style="color:<%=@user.text_color%>">
 		Profile
@@ -6,6 +7,7 @@
 	<hr class="bst"/>
 
 </section>
+
 <section class="relative profile-holder">
 	<div class="profile">
 		<%if @user.avatar.attached?%>
@@ -42,23 +44,12 @@
 </div>
 </section>
 
-<%if current_user == @user or @auth%>
-<div class="notification bs relative" id="profilebox">
-<div class="hide-btn" onclick="hidediv('profilebox')">[hide]</div>
-<div class="title is-4">Edit Profile</div>
-<div class="flexed">
-  <%=link_to "Edit", edit_user_registration_path,class:"button is-warning mx-2" %> 
-	<%=button_to "Log Out", destroy_user_session_path, method: :delete, class:"button is-danger"%>
-</div>
 <%if @auth%>
-
-<hr class="bst"/>
+<div class="notification">
 <div class="title is-4">Dev Tool</div>
 <div><strong>Role:</strong><%=@user.role%></div>
 <div><strong>Link_to:</strong><%=link_to "Admin Room", adroom_path, class:"s-link"%></div>
 <div><strong>Role:</strong><%=@user.role%></div>
-<%end%>
-
 </div>
 <%end%>
 

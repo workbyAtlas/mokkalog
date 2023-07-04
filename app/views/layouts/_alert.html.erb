@@ -1,13 +1,11 @@
 <% if notice %>
-<article class="message is-success">
-<div clas="message-body">
-<p class="alert"><%= notice %></p>
+<div class="has-background-success-light p-2">
+<p class="alert mx-6"><%= notice %></p>
 </div>
 </article>
+
 <% elsif alert %>
-<article class="message is-danger">
-<div clas="message-body">
-<p class="alert"><%= alert %></p>
+<div class="has-background-danger-light p-2">
+<p class="alert mx-6"><%= alert %></p>
 </div>
-</article>
 <%end %>

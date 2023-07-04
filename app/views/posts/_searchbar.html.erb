@@ -1,16 +1,20 @@
-  <div class="w50 relative">
-    <div class="hide-btn secondary-t" onclick="showdiv('advanced-search')">[advanced]</div>
+  <div class="relative rw50">
+
+    <div id="adv1" class="hide-btn secondary-t" onclick="advanced('advanced-search','adv1')">[advanced]</div>
     <%= search_form_for @query do |f| %>
       <div class="center my-2 title is-5">Search:</div>
+    <div class="center">
       <%= f.search_field :title_or_material_or_category_or_tags_name_or_brands_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
+    </div>
 
 
 
 
    
       <div id="advanced-search" class="d-none">
-        <div class="my-2">^ will search name, material, category, tag, brand</div>
         <hr class="bst"/>
+        <br/>
+        <div class="title is-6 center">Specific Search</div>
         <%=f.label :name, class:"label"%>
         <%= f.search_field :title_i_cont_any, class:"input", placeholder:"Search here..." %>
 

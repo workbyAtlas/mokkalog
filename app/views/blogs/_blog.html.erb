@@ -1,4 +1,11 @@
-<div class="blog-long bp p-4 my-3 prime">
-  <%=link_to blog.title, blog, class:"blog-title title is-5"%>
-  <%=link_to "View", blog, class:"button is-warning float-r"%>
+<div class="blog-long p-4 my-3 columns" style="max-width:800px;">
+  <div class="column"><%=link_to (image_tag (blog.cover_image)), blog %></div>
+  <div class="mt-4 column">
+    <div class="mb-0"><%=link_to blog.title, blog, class:"blog-text title is-2"%></div>
+    <div class="subtitle is-5 mb-0 secondary-t"><%=blog.blog_type.capitalize%></div>
+    <div class>By:&nbsp;
+      <%=blog.user.name%>&nbsp;<%=blog.user.last_name%>&nbsp;/
+      <%=time_ago_in_words(blog.created_at)%>
+    </div>
+  </div>
 </div>

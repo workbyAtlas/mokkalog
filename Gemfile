@@ -73,7 +73,9 @@ group :test do
   gem "webdrivers"
 end
 
+#added by wbA
 gem "ransack", "~> 4.0"
+gem 'aws-sdk-s3', require: false
 
 
 group :production do

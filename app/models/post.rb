@@ -4,13 +4,12 @@ class Post < ApplicationRecord
   	validates :web_link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true
 	validate :check_for_image
 	validates :image, presence: true
-	#validates :price, numericality: { less_than: 5,000,000 }, allows_blank: true
+	validates :price, numericality: { greater_than: 0, less_than: 99999 }
 
+	validate :clean_word
 
-
-
+#Associations
 	has_one_attached :image
-
 
 	has_many :taggables, dependent: :destroy
 	has_many :tags, through: :taggables
@@ -28,6 +27,7 @@ class Post < ApplicationRecord
 
 	belongs_to :user
 	before_save :downcase_fields
+
 
 
 
@@ -63,6 +63,10 @@ class Post < ApplicationRecord
   	end
 
   	private
+
+    def clean_word
+      validate_bad_words(:title)
+    end
 
   	def downcase_fields
 

@@ -1,0 +1,13 @@
+
+<div class="w30">
+<%= search_form_for @query do |f| %>
+    <div class="center">
+<%= f.search_field :title_or_material_or_category_or_tags_name_or_brands_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
+    </div>
+<%= f.submit "search!", class:"button is-warning my-2 bs d-none" %>
+<% end %>
+</div>
+
+<div class="mx-3"><strong>or</strong></div>
+
+<div><%=link_to "Upload your own", new_post_path, class:"button is-warning"%></div>

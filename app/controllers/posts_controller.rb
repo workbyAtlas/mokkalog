@@ -21,7 +21,9 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    @post.update(views: @post.views + 1)
+    if not current_user = @post.user
+      @post.update(views: @post.views + 1)
+    end 
     @comments =@post.comments.order(created_at: :asc)
   end
 

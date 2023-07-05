@@ -11,27 +11,30 @@
       <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input"%>
     </div>
   </div>
-
-  <div class="field">
-    <label class="label">First Name</label>
-    <div class="control">
-      <%= f.text_field :name, class:"input" %>
-    </div>
-  </div>
-
-  <div class="field">
-    <label class="label">Last Name</label>
-    <div class="control">
-      <%= f.text_field :last_name, class:"input" %>
-    </div>
-  </div>
-
+  
   <div class="field">
     <label class="label">Username</label>
     <div class="control">
       <%= f.text_field :username, class:"input" %>
     </div>
-  </div>
+</div>
+
+  <div class="columns">
+    <div class="field column">
+      <label class="label">First Name</label>
+      <div class="control">
+        <%= f.text_field :name, class:"input" %>
+      </div>
+    </div>
+
+    <div class="field column">
+      <label class="label">Last Name</label>
+      <div class="control">
+        <%= f.text_field :last_name, class:"input" %>
+      </div>
+    </div>
+    </div>
+
   <hr class="bst"/>
 
 

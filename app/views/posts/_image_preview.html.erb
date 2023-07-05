@@ -1,0 +1,38 @@
+
+
+<div data-controller="previews">
+
+
+    <%= form.label :image, style: "display: block" %>
+
+<div class="file is-warning center">
+  <label class="file-label">
+
+    <%= form.file_field :image,
+    direct_upload: true,
+    data: { previews_target: "input", action: "change->previews#preview"}, class:"file-input" %>
+
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Primary file…
+      </span>
+    </span>
+  </label>
+</div>
+
+    <% if post.image.attached?%>
+        <div class="subtitle is-6 center mt-2">Image Preview</div>
+        <div>
+        <%= image_tag post.image, data: { previews_target: 'preview' }, style:"width:300px; height:auto;"%>
+        </div>
+    <%else%>
+        <div>
+        <%= image_tag "", data: { previews_target: 'preview' }, style:"width:300px; height:auto;"%>
+        </div>
+    <%end%>
+
+
+</div>

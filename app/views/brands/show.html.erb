@@ -1,6 +1,7 @@
 <%#Purple Section--------------------------------------------------------------------%>
 <% if @brand.banner.attached?%>
-<section  class="section is-medium" style="background-image: url('<%= url_for@brand.banner %>');">
+<section  class="section is-medium" 
+style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= url_for@brand.banner %>');background-size: cover;">
       <div class="flexed">
     <% if @brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
       <%=image_tag (@brand.image_as_thumbnail) %>

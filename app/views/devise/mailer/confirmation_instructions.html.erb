@@ -1,5 +1,12 @@
-<p>Welcome <%= @email %>!</p>
 
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bulma@0.9.4/css/bulma.min.css">
+<br/>
+<div class="content mx-2">
+<p>Hi there,</p>
+<br/>
+<p>Thank you for signing up for Mokka!</p>
 <p>You can confirm your account email through the link below:</p>
-
-<p><%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token) %></p>
+<br/>
+<%= link_to 'Confirm my account', confirmation_url(@resource, confirmation_token: @token), class:"button is-warning" %>
+<hr />
+</div>

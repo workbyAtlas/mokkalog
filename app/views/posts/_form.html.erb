@@ -23,19 +23,7 @@
     <div class="subtitle is-5 has-text-grey">Image Upload</div>
     <div class="center">
 
-      <div class="file is-warning">
-        <label class="file-label">
-            <%= form.file_field :image, class:"file-input" %>
-          <span class="file-cta">
-            <span class="file-icon">
-              <i class="fa-solid fa-download"></i>
-            </span>
-            <span class="file-label">
-              Image Upload
-            </span>
-          </span>
-        </label>
-      </div>
+      <%= render "image_preview", form: form, post: post %>
     </div>
 
     <hr class="border-purp-top" />

@@ -2,26 +2,12 @@
   <div class="title is-3 center">welcome</div>
 </section>
 
-<section class="section lgrey center">
-    <hr class="bst" />
-
-<div class="notification bp rw50 center-down">
-  <div class="title is-5">Where do I start?</div>
-  <p>
-    <ol>
-      <li>Check out our <%=link_to "database", posts_path, class:"p-link"%></li>
-      <li>Upload a new clothing to our 
-        <%=link_to "database", new_post_path, class:"p-link"%>    
-      </li>
-      <%if user_signed_in?%>
-      <li>Customize your 
-        <%=link_to "profile", user_path(current_user), class:"p-link"%>    
-      </li>
-      <%end%>
-      <li>Check out our <%=link_to "blog", blogs_path, class:"p-link"%> posts and give us some input!</li>
-    </ol>
-  </p>
-</div>
+<section class="section lgey">
+  <div class="center title is-4 m-3">#1 Catalog in the World.</div>
+  <br />
+  <div  class="center">
+    <%= render 'posts/components/searchbar_for_root'%>
+  </div>
 </section>
 
 

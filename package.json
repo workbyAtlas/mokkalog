@@ -1,6 +1,5 @@
 {
   "dependencies": {
-    "stimulus": "^3.2.1",
-    "stimulus-carousel": "^5.0.1"
+    "stimulus": "^3.2.1"
   }
 }

@@ -12,39 +12,11 @@
     </div>
   <% end %>
 
+<%= render "image_preview", form: form, brand: brand %>
 
+<%= render "image_preview_for_banner", form: form, brand: brand %>
 
-
-<%= form.label "Image:", style: "display: block" %>
-<div class="file is-small is-warning">
-  <label class="file-label">
-      <%= form.file_field :image, class:"file-input" %>
-    <span class="file-cta">
-      <span class="file-icon">
-        <i class="fas fa-upload"></i>
-      </span>
-      <span class="file-label">
-        Choose a file…
-      </span>
-    </span>
-  </label>
-</div>
-
-<%= form.label "Banner image:", style: "display: block" %>
-<div class="file is-small is-warning">
-  <label class="file-label">
-      <%= form.file_field :banner, class:"file-input" %>
-    <span class="file-cta">
-      <span class="file-icon">
-        <i class="fas fa-upload"></i>
-      </span>
-      <span class="file-label">
-        Choose a file…
-      </span>
-    </span>
-  </label>
-</div>
-  
+  <br/>
   <div>
     <%= form.label :Name, style: "display: block" %>
     <%= form.text_field :name, class:"input" %>

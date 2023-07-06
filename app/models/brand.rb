@@ -1,5 +1,5 @@
 class Brand < ApplicationRecord
-  validates :name, presence: true, length: {maximum: 30}
+  validates :name, uniqueness: true, presence: true, length:{ maximum: 20}
 
   validate :check_for_image
   validate :check_for_banner
@@ -51,7 +51,5 @@ class Brand < ApplicationRecord
   end
 
   private
-  def downcase_fields
-      self.name.downcase
-  end
+
 end

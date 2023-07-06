@@ -1,0 +1,21 @@
+<%= turbo_stream.update :checkbox do %>
+
+	Attributes
+	<%= @check_post.attributes%>
+	Valid?
+	<%=@check_post.valid?%>
+	Errors:
+	<%= @check_post.errors.full_messages %>
+<%end%>
+
+<%= turbo_stream.update :namebox do %>
+	<%= "Errors:" + @check_post.errors.full_messages_for(:title).to_sentence %>
+<%end%>
+
+<%= turbo_stream.update :pricebox do %>
+	<%= "Errors:" + @check_post.errors.full_messages_for(:price).to_sentence %>
+<%end%>
+
+<%= turbo_stream.update :linkbox do %>
+	<%= "Errors: " + @check_post.errors.full_messages_for(:web_link).to_sentence %>
+<%end%>

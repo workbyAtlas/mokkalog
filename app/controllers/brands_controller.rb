@@ -1,6 +1,6 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, only: %i[edit update destroy]
+  before_action :authenticate_user!, except: %i[index show]
 
   # GET /brands or /brands.json
   def index
@@ -13,7 +13,9 @@ class BrandsController < ApplicationController
 
   # GET /brands/1 or /brands/1.json
   def show
-    @brand.update(views: @brand.views + 1)
+    if not current_user == @brand.user
+      @brand.update(views: @brand.views + 1)
+    end
   end
 
   # GET /brands/new

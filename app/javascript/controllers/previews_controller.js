@@ -3,9 +3,7 @@ import { Controller } from "@hotwired/stimulus"
 // Connects to data-controller="previews"
 export default class extends Controller {
   static targets = ["input","preview"];
-  connect() {
-    console.log("Hello, Stimulus!", this.element);
-  }
+  connect() {}
   preview(){
     let input = this.inputTarget;
     let preview = this.previewTarget;

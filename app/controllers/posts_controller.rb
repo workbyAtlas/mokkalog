@@ -21,10 +21,13 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
-    if not current_user = @post.user
+    if not current_user == @post.user
       @post.update(views: @post.views + 1)
     end 
     @comments =@post.comments.order(created_at: :asc)
+
+    @new_web_link = @post.web_link.start_with?('http://', 'https://') ? @web_link : "https://#{@web_link}"
+
   end
 
   # GET /posts/new
@@ -90,6 +93,14 @@ class PostsController < ApplicationController
       end
     end
     #redirect_to posts_url
+  end
+
+  def check
+    #redirect_to request.url, notice: Time.zone.now
+    @check_post = Post.new(post_params.except(:tags, :brands))
+    respond_to do |format|
+      format.turbo_stream
+    end
   end
 
   private

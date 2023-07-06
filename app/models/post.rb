@@ -1,11 +1,10 @@
 class Post < ApplicationRecord
-	validates :title, presence: true, length: {minimum:3, maximum: 30}
+	validates :title, presence: {message: "Name can't be blank"}, length: {maximum: 20}
 	validates :body, length: { maximum: 3000 }, allow_blank: true
-  	validates :web_link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true
+  validates :web_link, format: { with: /\Ahttps?:\/\//, message: 'should start with http:// or https://' }, allow_blank: true
 	validate :check_for_image
 	validates :image, presence: true
-	validates :price, numericality: { greater_than: 0, less_than: 99999 }
-
+	validates :price, numericality: { greater_than: 0, less_than: 99999 }, allow_blank: true
 	validate :clean_word
 
 #Associations
@@ -26,7 +25,7 @@ class Post < ApplicationRecord
 	has_many :comments, as: :commentable, dependent: :destroy
 
 	belongs_to :user
-	before_save :downcase_fields
+	#before_save :downcase_fields
 
 
 

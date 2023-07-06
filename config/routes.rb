@@ -14,6 +14,7 @@ Rails.application.routes.draw do
   resources :collections
   get 'users/profile'
   get 'closets/update'
+  #get 'users/check'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
@@ -39,6 +40,9 @@ Rails.application.routes.draw do
   post 'like/:id', to: 'posts#like', as: 'like_post'
 
   resources :posts do
+    collection do
+      post :check      
+    end
     resources :comments, only: :create
     #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
     #get "visit"

@@ -3,6 +3,7 @@
 class Users::RegistrationsController < Devise::RegistrationsController
   before_action :configure_sign_up_params, only: [:create]
   before_action :configure_account_update_params, only: [:update]
+  #skip_before_action :require_password, only: [:edit]
 
   # GET /resource/sign_up
   # def new
@@ -40,8 +41,16 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
   protected
 
+  def update_resource(resource, params)
+    resource.update_without_password(params)
+  end
+
   def after_sign_up_path_for(resource)
     posts_path
+  end
+
+  def after_update_path_for(resource)
+    user_path(current_user)
   end
 
   # If you have extra params to permit, append them to the sanitizer.

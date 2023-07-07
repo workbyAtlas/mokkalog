@@ -1,149 +1,175 @@
-x
+
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
 
 
-<section class="section center">
-    <div class="w50 notification">
-          <div class="subtitle is-5 has-text-grey">Edit Information</div>
+<%#__________________________________________________________________________%>
 
-          <label class="label">Avatar</label>
-          <div class="file is-warning my-2">
-            <label class="file-label">
-              <%= f.file_field :avatar, class:"file-input"%>
-              <span class="file-cta">
-                <span class="file-icon">
-                  <i class="fas fa-upload"></i>
-                </span>
-                <span class="file-label">
-                  Choose a file…
-                </span>
-              </span>
-            </label>
-          </div>
+<%# IMAGE PREVIEW CONTROLLER STARTS%>
+<section class="section is-medium" style="background-color:<%=@user.primary_color%>">
+  <div class="center title is-3" style="color:<%=@user.text_color%>">
+    Customize Your Profile
+  </div>
+  <hr class="bst"/>
 
-          <div class="field">
-            <label class="label">First Name</label>
-            <div class="control">
-              <%= f.text_field :name, class:"input" %>
-            </div>
-          </div>
+</section>
+<div class="relative profile-holder" data-controller="previews">
 
-          <div class="field">
-            <label class="label">Last Name</label>
-            <div class="control">
-              <%= f.text_field :last_name, class:"input" %>
-            </div>
-          </div>
 
-          <hr class="bst" />
+<%#IMAGE PREVIEW%>
 
-          <div class="subtitle is-5 has-text-grey">Customize Profile</div>
-          
-          <div class="field">
-            <label class="label">Link 1 Title</label>
-            <div class="control">
-              <%= f.text_field :link1_title, class:"input" %>
-            </div>
-          </div>
+<% if @user.avatar.attached?%>
+<section class="relative profile-holder">
+  <div class="profile">
+    <%= image_tag @user.image_as_profile_page_pic, data: { previews_target: 'preview' }, style:"max-width:300px; max-height:300px;"%>
+  </div>
+</section>
+<%else%>
+    <div class="center mt-2">
+    <%= image_tag "download.jpg", data: { previews_target: 'preview' }, style:"width:300px; height:300px;"%>
+    </div>
+<%end%>
 
-          <div class="field">
-            <label class="label">Link 1</label>
-            <div class="control">
-              <%= f.text_field :link1, class:"input" %>
-            </div>
-          </div>
+<%#IMAGE PREVIEW ENDS%>
 
-          <hr class="bpt" />
+<%#FORM%>
 
-          <div class="field">
-            <label class="label">Link 2 Title</label>
-            <div class="control">
-              <%= f.text_field :link2_title, class:"input" %>
-            </div>
-          </div>
+<div class="fup-profile">
 
-          <div class="field">
-            <label class="label">Link 2</label>
-            <div class="control">
-              <%= f.text_field :link2, class:"input" %>
-            </div>
-          </div>
+<div class="file is-warning center">
+  <label class="file-label">
 
-          <hr class="bpt" />
-          <div class="field">
-            <label class="label">Description</label>
-            <div class="control">
-              <%= f.text_area :description, class:"textarea" %>
-            </div>
-          </div>
-          <hr class="bst" />
+    <%= f.file_field :avatar,
+    direct_upload: true,
+    data: { previews_target: "input", action: "change->previews#preview"}, class:"file-input" %>
 
-          <div class="field">
-            <label class="label">Primary Color</label>
-                <span class="select">
-                  <%= f.select :primary_color, ['#cbb595;', '#c88595;', '#9f5f9f;' ], class:"option-form"%>
-                </span>
-          </div>
-          
-          <div class="field">
-            <label class="label">Secondary Color</label>
-            <div class="control">
-              <%= f.text_field :secondary_color, class:"input" %>
-            </div>
-          </div>
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Avatar Upload
+      </span>
+    </span>
+  </label>
+</div>
+<span class="red">*Image Preview is off</span>
+</div>
+</div>
+<%# IMAGE PREVIEW CONTROLLER ENDS%>
 
-          <div class="field">
-            <label class="label">Text Color</label>
-                <span class="select">
-                  <%= f.select :text_color, ['black', 'white' ], class:"option-form"%>
-                </span>
-          </div>
+<%# BIO SECTIOM%>
+<div class="my-4 d-block-mobile"></div>
+<section>
+<div class="columns">
+  <div class="column is-two-fifths"></div>
+  <div class="column profile-text">
 
-          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-            <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
-          <% end %>
+    <%# INPUT NAME %>
+    <div class="title is-4 my-2 columns">
+      <div class="column">
+        <%=f.label "First Name", class:"label"%>
+        <%= f.text_field :name, class:"input is-small" %>
+      </div>
+      <div class="column">
+        <%=f.label "Last Name", class:"label"%>
+        <%= f.text_field :last_name, class:"input is-small" %>
+      </div>  
+    </div>
+      <%# INPUT NAME ENDS %>
 
-          <hr class="bst" />
-          <div class="subtitle is-5 has-text-grey">Change Password</div>
+    <div>@<u><%=@user.username%></u></div>
+    <div class="mt-2 title is-6">
+      Views: <%=@user.views%> | Entries Added:<%=@user.posts.size%> | <span class="tag bs pointer">Share +</span>
+    </div>
+    <%# LINKS---------------------------------------------------------- %>
+    <div class="bs p-4">
+    <div>
+    <div class="title is-5">Pointers</div>
+    <div class="subtitle is-7 mb-2">Pointer can be a link or a title. The first input is the title for the pointer and the second input is the body. If you put a valid link(must start with "http:// or https://" the body will convert to a link.
+    </div>
+    <div class="b p-2"><div>
+    <div class=" mt-2 title is-6 mb-2">Example:</div>
+    <div class="title is-7 mb-0">Link:</div>    
+    <div>
+      <strong>IG:</strong>
+      <%=link_to "https://www.instagram.com" , "https://instagram.com", target: "_blank", class:"tag bp"%>
+    </div> 
 
-          <div class="field">
-            <label class="label">Password</label>
-            <div class="control">
-              <%= f.password_field :password, autocomplete: "new-password", class:"input", placeholder:"leave blank if you don't want to change it" %>
-            </div>
+    <div class="title is-7 mt-2 mb-0">Not-Link:</div>    
+    <div>
+      <strong>Favorite Place:</strong>
+      Mokka
+    </div>
 
-            <% if @minimum_password_length %>
-            <br />
-            <em><%= @minimum_password_length %> characters minimum</em>
-            <% end %>
+    <div class="title is-7 mt-2 mb-0">If Title is blank:</div>    
+    <div class="mx-2">
+      <%=link_to "https://www.instagram.com" , "https://instagram.com", target: "_blank", class:"tag bp"%>
+    </div>
+    </div>
+    </div>
+    <hr class="bst" />
+    <%=f.label "Pointer1", class:"label mb-0"%>
+    <div class="flexed">
+      <%= f.text_field :link1_title, class:"input is-small", style:"width:20%;" %>
+      <strong class="mx-1">:</strong>
+      <%= f.text_field :link1, class:"input is-small", style:"width:60%;" %>
+    </div>
 
-          </div>
-
-          <div class="field">
-            <label class="label">Password Confirm</label>
-            <div class="control">
-              <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input"%>
-            </div>
-          </div>
-          <hr class="bst" />
-          <div class="subtitle is-4">Confirm</div>         
-          <div class="field">
-            <label class="label">Put Password to save changes:</label>
-            <div class="control">
-              <%= f.password_field :current_password, autocomplete: "current-password", class:"input" %>
-            </div>
-          </div>
-          <%= f.submit "Update", class:"button is-warning" %>
-          
+    <%=f.label "Pointer2", class:"label mb-0 mt-2"%>
+    <div class="flexed">
+      <%= f.text_field :link2_title, class:"input is-small", style:"width:20%;" %>
+      <strong class="mx-1">:</strong>
+      <%= f.text_field :link2, class:"input is-small", style:"width:60%;" %>
+    </div>
 
     </div>
+    <%#=LINKS END%>
+    <hr class="bst"/>
+    <%=f.label "Bio", class:"label"%>
+    <div class="my-4 profile-desc">
+        <%= f.text_area :description, class:"textarea", placeholder:"write a short description about yourself." %>
+    </div>
+  </div>
+  </div>
+</div>
+</section>
+<%#BIO SECTION END%>
+
+
+<section class="bp mx-auto rw50 mt-4 p-4">
+<div class="title is-5 center"><u>Customize</u></div>
+<div class="columns">
+  <div class="column center-down">
+    <label class="label">Primary Color</label>
+    <span class="select">
+      <%= f.select :primary_color, ['#cbb595;', '#c88595;', '#9f5f9f;' ], class:"option-form"%>
+    </span>
+  </div>
+
+  <div class="column center-down">
+    <label class="label">Secondary Color</label>
+    <span class="select">
+      <%= f.select :secondary_color, ['#cbb595;', '#c88595;', '#9f5f9f;' ], class:"option-form"%>
+    </span>
+  </div>
+
+    <div class="column center-down">
+    <label class="label">Text Color</label>
+    <span class="select">
+      <%= f.select :text_color, ['black','white', '#c88595;', '#9f5f9f;' ], class:"option-form"%>
+    </span>
+  </div>
+
+</div>
+
 </section>
 
-
-
+<div class="rw50 mx-auto mt-2">
+<%= f.submit "Update", class:"button is-warning float-r" %>
+</div>        
 <% end %>
 
 <% if true == false%>

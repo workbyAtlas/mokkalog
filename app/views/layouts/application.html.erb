@@ -13,12 +13,12 @@
   </head>
 
   <body>
-
+    <div style="max-width:1800px; min-height:2000px;margin:auto;">
     <%= render "layouts/nav"   %>
     <%= render "layouts/alert" %>
     <% turbo_frame_tag "modal" %>
     <%= yield %>
-
+    </div>
     <script>
     let isVisible = true;
     function myFunction(){

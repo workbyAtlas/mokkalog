@@ -12,12 +12,10 @@ class PagesController < ApplicationController
   def about
   end
 
-  def search
-    @query = Post.ransack(params[:q])
-    @posts = @query.result(distinct: true)
-  end
+
 
   def admin_room
     @users =User.all
+    @posts =Post.all
   end
 end

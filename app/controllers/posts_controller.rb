@@ -14,6 +14,7 @@ class PostsController < ApplicationController
     #@posts = Post.all
     @q = Post.ransack(params[:q])
     @query = Post.ransack(params[:q])
+    #@query.build_condition_color("Red")
     @posts = @query.result(distinct: true).includes(:tags, :brands)#.post(params[:post])
     #@posts =@posts.(distinct: true)
     @user_gid = current_user.to_gid_param if current_user

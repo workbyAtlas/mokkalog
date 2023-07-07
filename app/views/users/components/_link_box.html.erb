@@ -1,0 +1,20 @@
+<div>
+<%if not @user.link1.blank?%>
+
+<div class="my-2">
+	<strong><%=if @user.link1_title.blank? then "Link1" else @user.link1_title end%>:</strong>
+	<%=link_to @user.link1 , @user.link1, target: "_blank", class:"tag bp"%>
+</div>
+
+
+<%end%>
+
+<%if not @user.link2.blank?%>	
+
+<div class="my-2">
+	<strong><%=if @user.link2_title.blank? then "Link2" else @user.link2_title end%>:</strong>
+	<%=link_to @user.link2 , @user.link2, target: "_blank", class:"tag bp"%>
+
+</div>	
+<%end%>
+</div>

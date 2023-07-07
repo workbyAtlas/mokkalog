@@ -28,13 +28,8 @@
 }
  */
 
-.slide {
-  display: none;
-}
 
-.slide.active {
-  display: block;
-}
+
 /*DEV TOOL*/
 .bb{border: 2px solid black;}
 .nopad{padding:0;}
@@ -43,6 +38,7 @@
 .hide-btn{position:absolute;top:5px;right:5px;color:grey; cursor:pointer;}
 .hide-btn-r{position:absolute;top:5px;left:5px;color:grey; cursor:pointer;}
 .d-none{display:none;}
+.absolute{position:absolute;}
 
 .button-like-text {
     background: none;
@@ -62,7 +58,8 @@
   }
 /*COLOR*/
 .white{color:white;}
-
+.grey{color:grey;}
+.red{color:red;}
 /*NEED TO GET RID OFF PURP#9xf5f9f*/
 .purpF{background-color:#cbb595;}
 .purp{background-color:#9f5f9f;}
@@ -77,7 +74,7 @@
 
 /*PRIME COLOR#cxbb595;*/
 .prime{background-color:#cbb595;}
-.b{border: 2px solid #654321;}
+.b{border: 2px solid #cbb595;}
 .border-purp-top{border:1px solid; border-color:#654321;}
 .bpb{border-bottom:2px solid; border-color:#654321;}
 .bpt{border-top:2px solid; border-color:#cbb595;}
@@ -136,9 +133,17 @@
 .carousel-lbtn{position:absolute;top:50%; left:3%;}
 .carousel-rbtn{position:absolute;top:50%; right:3%;}
 
+.slide {
+  display: none;
+}
+
+.slide[data-active] {
+  display: block;
+  }
+
 
 /*HOTWIRE*/
-.image-preview{height:300px;}
+.image-preview{min-height:300px;}
 /*Post-Show*/
 .show-info{display: flex;flex-direction:column;justify-content: center;align-items: center;}
 .tag-box{width:50%;}
@@ -193,9 +198,10 @@
     display: none;
     position: absolute;
     background-color: #f9f9f9;
-    min-width: 120px;
+    min-width: 100px;
+    padding: 10px 15px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
-    padding: 12px 16px;
+
     z-index: 1;
   }
   
@@ -216,6 +222,10 @@
     background-color:grey;
     overflow:hidden;
 }
+.fup-profile{position:absolute;top:180px;left:17%;}
+
+
+
 .profile-text{min-height:400px;max-width:500px;}
 .pdrofile-desc{max-width:200px;}
 
@@ -237,13 +247,15 @@
     .rw30{width:50%;}
     .rw50,.rw60,.rw70,.rw80,.rw90{width:90%;}
     .comment-date{font-size:12px;}
-    .profile-holder{height:140px;}
+    .profile-holder{min-height:140px;}
 
     }    
 
 @media screen and (max-width: 481px){.nav-link-holder{display:flex;}
 
 @media (max-width: 480px){
+    .d-none-mobile{display:none;}
+    .d-block-mobile{display:block;}
     .root_search{width:95%;}
     .mobile-collapse{width:95%; margin:auto;display: flex;justify-content: center;align-items: center;}
     .post-card{width:200px;}
@@ -256,6 +268,7 @@
     .nav-button{display:block;}
 
     .profile{left:50%;top:25%;transform: translate(-50%,-50%);}
+    .fup-profile{left:50%;top:120%;transform: translate(-50%,-50%);}
     .profile-text{display:flex; justify-content:center; align-items:center;flex-direction:column;}
 
 

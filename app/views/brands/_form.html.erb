@@ -12,33 +12,38 @@
     </div>
   <% end %>
 
-<%= render "image_preview", form: form, brand: brand %>
 
-<%= render "image_preview_for_banner", form: form, brand: brand %>
 
   <br/>
   <div>
-    <%= form.label :Name, style: "display: block" %>
+    <%= form.label :Name, class:"label mt-2" %>
     <%= form.text_field :name, class:"input" %>
   </div>
 
   <div>
-    <%= form.label "Text Color", style: "display: block" %>
+    <%= form.label :Link, class:"label mt-2" %>
+    <%= form.text_field :link, class:"input", placeholder:"Please include https://" %>
+  </div>
+
+  <div>
+    <%= form.label "Description", class:"label mt-2" %>
+    <%= form.text_area :body, class:"textarea", placeholder:"Write a short description!" %>
+  </div>
+
+<%= render "image_preview", form: form, brand: brand %>
+<hr class="bst"/>
+<div class="title is-4 has-text--grey center">Customize Brand Page</div>
+<div class="subtitle is-6 center">Customize the brand showcase page to make it more presentable</div>
+<%= render "image_preview_for_banner", form: form, brand: brand %>
+
+  <div>
+    <%= form.label "Text Color", class:"label" %>
+    <div class="grey">You can put hex-color(ex.#00000;), text(white), or. If Banner Image is uploaded, we recommend white as the text color.</div>
     <%= form.text_field :brand_text, class:"input" %>
   </div>
 
-  <div>
-    <%= form.label :Link, style: "display: block" %>
-    <%= form.text_field :link, class:"input" %>
-  </div>
-
-  <div>
-    <%= form.label "Description", style: "display: block" %>
-    <%= form.text_area :body, class:"textarea" %>
-  </div>
-
   <%= form.hidden_field :user_id, value: current_user.id %>
-
+<hr class="bst"/>
   <div class="flexed my-2">
     <%#= form.submit, class: "button" %>
     <%= form.submit "Submit", class:"button p-btn bs"%>

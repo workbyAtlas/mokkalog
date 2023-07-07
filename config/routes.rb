@@ -31,10 +31,12 @@ Rails.application.routes.draw do
   root 'pages#index'
   
   get 'about'  => 'pages#about'
-  get 'search' => 'pages#search'
   get 'adroom' => 'pages#admin_room'
+  post '/search', to: "search#search"
 
   get '/u/:id', to: 'users#profile', as: 'user'
+  get 'setting' => 'users#setting'
+  #get '/s/:id', to: 'users#setting', as: 'myuser'
   #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
   get 'posts/:id/visit', to: 'posts#visit', as: 'post_visit'
   post 'like/:id', to: 'posts#like', as: 'like_post'

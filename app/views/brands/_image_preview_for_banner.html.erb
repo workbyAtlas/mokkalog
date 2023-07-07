@@ -1,11 +1,10 @@
 <div data-controller="previews">
 
-
-    <%= form.label :banner, style: "display: block" %>
+<br/>
+<%= form.label :banner, class:"label" %>
 <%#FORM%>
 <div class="file is-warning center">
   <label class="file-label">
-
     <%= form.file_field :banner,
     direct_upload: true,
     data: { previews_target: "input", action: "change->previews#preview"}, class:"file-input" %>

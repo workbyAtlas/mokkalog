@@ -49,3 +49,43 @@
     </ol>
   </p>
 </div>
+
+
+
+
+<%#=BRAND%>
+<% if @brand.banner.attached?%>
+<section  class="section is-medium" 
+style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= url_for@brand.banner %>');background-size: cover;">
+      <div class="flexed">
+    <% if @brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
+      <%=image_tag (@brand.image_as_thumbnail) %>
+    <% else %>
+      <div><%= image_tag ("download.jpg"), class: "immg"  %></div>
+    <% end %>
+      <div class="center">
+      <div class="title is-3 mx-5 mb-0 mt-2" style="color:<%=@brand.brand_text%>"><%=@brand.name%></div>
+      </div>
+
+    </div>
+    <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs">link:</span></strong><%=link_to @brand.link, @brand.link, class:"s-link", target:"_blank", style:"color:#{@brand.brand_text}"%></div>
+    <div class="w50 m-4" style="color:<%=@brand.brand_text%>"><%=@brand.body%></div>
+</section>
+<%else%>
+
+<section class="section is-medium prime">
+      <div class="flexed">
+    <% if @brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
+      <%=image_tag (@brand.image_as_thumbnail) %>
+    <% else %>
+      <div><%= image_tag ("download.jpg"), class: "immg"  %></div>
+    <% end %>
+      <div class="center">
+      <div class="title is-3 mx-5 mb-0 mt-2" style="color:<%=@brand.brand_text%>"><%=@brand.name%></div>
+      </div>
+
+    </div>
+    <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs">link:</span></strong><%=link_to @brand.link, @brand.link, class:"s-link", target:"_blank", style:"color:#{@brand.brand_text}"%></div>
+    <div class="w50 m-4" style="color:<%=@brand.brand_text%>"><%=@brand.body%></div>
+</section>
+<%end%>

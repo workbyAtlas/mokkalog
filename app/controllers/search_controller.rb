@@ -27,7 +27,7 @@ def posts_with_tag_search
         when "equals"
           posts.joins(:user).where("users.name = ?", tag[:value])
         when "contains"
-          posts.joins(:user).where("users.name LIKE ?", "%#{tag[:value]}%")
+          posts.joins(:user).where("users.name ILIKE ?", "%#{tag[:value]}%")
         when "except"
           posts.joins(:user).where.not("users.name LIKE ?", "%#{tag[:value]}%")
         else

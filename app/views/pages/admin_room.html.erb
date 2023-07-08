@@ -26,8 +26,8 @@
 <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-geWF76RCwLtnZ8qwWowPQNguL3RmwHVBC9FhGdlKrxdiJJigb/j/68SIy3Te4Bkz" crossorigin="anonymous"></script>
 
 <%= form_with url: search_path do %>
-  <div data-controller = "tokenized-search" class="postition-relative mb-4">
-    <div data-tokenized-search-target="tagsContainer" class="position-absolute"></div>
+  <div data-controller = "tokenized-search" class="relative mb-4">
+    <div data-tokenized-search-target="tagsContainer" class="abs"></div>
     <input type="text"
       placeholder="Search..."
       data-tokenized-search-target="input"

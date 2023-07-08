@@ -1,0 +1,50 @@
+
+<div class="title is-4 center"><u>Tokenized Search</u></div>
+
+<div class="mx-auto rw50">
+<%= form_with url: search_path do %>
+  <div data-controller = "tokenized-search" class="relative mb-4">
+    <div data-tokenized-search-target="tagsContainer" class="tags bp"></div>
+    <input type="text"
+      placeholder="Click Here to Start Advanced Search"
+      data-tokenized-search-target="input"
+      data-action="click->tokenized-search#showDropdown"
+      class="input"
+      readonly>
+
+    <div data-tokenized-search-target="fieldSelect" class="d-none">
+      <select class="select" data-action="change->tokenized-search#selectField" style="width:100%;">
+        <option value="">Select a field</option>
+        <option value="title">Title</option>
+        <option value="color">Color</option>
+        <option value="category">Category</option>
+        <option value="sub_category">Sub Category</option>
+        <option value="c_type">Gender</option>
+        <option value="material">Material</option>
+        <option value="material">Material</option>
+
+      </select>
+    </div>
+
+    <div data-tokenized-search-target="operatorSelect" class="d-none">
+      <select class="select" data-action="change->tokenized-search#selectOperator"  style="width:100%;">
+        <option value="">Select an operator</option>
+        <option value="equals">Equals</option>
+        <option value="contains">Contains</option>
+        <option value="except">except</option>
+      </select>
+    </div>
+
+    <input type="text"
+      placeholder="Type value..."
+      data-tokenized-search-target="valueInput"
+      class="input d-none">
+  </div>
+
+  <input type="submit" value="Search" class="button is-warning">
+<% end %>
+</div>
+
+
+<%= render 'posts/list', posts: @posts%>
+

@@ -30,12 +30,20 @@
 
 
 <section class="section lgrey">
+<div class="title is-4 my-2">Editor's Choice</div>
+<section class="bp flexed-wc">
+  <% @posts_hot.each do |post| %>
+      <div class=""><%= render post %></div>
+  <% end %>
+</section>
+<%if true == false%>
 <div class="title is-4 my-2">Trending</div>
 <section class="bp flexed-wc">
   <% @posts_hot.each do |post| %>
       <div class=""><%= render post %></div>
   <% end %>
 </section>
+<%end%>
 
 <div class="title is-4 my-2">Recently Added</div>
 <section class="bp flexed-wc">

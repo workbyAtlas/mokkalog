@@ -12,13 +12,20 @@
 
 
 
+
+
    
       <div id="advanced-search" class="d-none">
         <hr class="bst"/>
         <br/>
-        <div class="title is-6 center">Specific Search</div>
-        <%=f.label :name, class:"label"%>
-        <%= f.search_field :title_i_cont_any, class:"input", placeholder:"Search here..." %>
+        <div class="title is-5 center">Specific Search</div>
+
+        <div class="bs p-2">
+        <div class="title is-6 center"><u>Check out our Tokenized Search</u></div>
+        <div class="center"><strong>
+          <%=link_to "Go to Token Search!", advsearch_path , class:"button is-warning" %>    
+        </div></strong>
+        </div>
 
         <%=f.label :brand, class:"label my-2"%>
         <%= f.search_field :brands_name_cont, class:"input", placeholder:"Search here..." %>
@@ -27,10 +34,10 @@
         <%= f.search_field :tags_name_cont, class:"input my-2", placeholder:"Search here..." %>
 
       <%  if false %>
-      <div class="center mt-2">Brand</div>
-      <%= f.search_field :brands_name_cont, class:"input", placeholder:"Search here..." %>
+      <div class="center mt-2">Brand:</div>
+      <%= f.search_field :brands_name_cont, class:"input", placeholder:"Search by Brand..." %>
       <div class="center mt-2">Tags:</div>
-      <%= f.search_field :tags_name_cont, class:"input my-2", placeholder:"Search here..." %>
+      <%= f.search_field :tags_name_cont, class:"input my-2", placeholder:"Search by Tags..." %>
       <% end %>
     </div>
 

@@ -45,7 +45,7 @@ export default class extends Controller {
 
     const tagElement = this.buildTagElement(selectedField, selectedOperator, inputValue)
     const hiddenInput = this.buildHiddenInput(selectedField, selectedOperator, inputValue)
-    tagElement.querySelector(".btn-close").addEventListener("click", () => {
+    tagElement.querySelector(".delete").addEventListener("click", () => {
       tagElement.remove()
       hiddenInput.remove()
     })
@@ -57,7 +57,7 @@ export default class extends Controller {
     const tagText = `${selectedField}  ${selectedOperator}  ${inputValue}`
 
     const tagElement = document.createElement("span")
-    tagElement.classList.add("tag", "badge", "bg-secondary", "me-2", "d-inline-flex", "align-items-center")
+    tagElement.classList.add("tag" ,"m-2" , "bp")
 
     const tagContent = document.createElement("span")
     tagContent.textContent = tagText
@@ -65,7 +65,7 @@ export default class extends Controller {
 
     const closeButton = document.createElement("button")
     closeButton.type = "button"
-    closeButton.classList.add("btn-close", "ms-2")
+    closeButton.classList.add("delete")
 
     tagElement.appendChild(closeButton)
     return tagElement

@@ -1,0 +1,7 @@
+<%= content_tag :div, id:"posts_list" do %>
+<section class="section black-border flexed-wc">
+  <% posts.each do |post| %>
+      <div><%=render post%></div>
+  <% end %>
+</section>
+<%end%>

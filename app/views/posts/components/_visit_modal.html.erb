@@ -1,18 +1,42 @@
 <div class="modal is-active">
   <div class="modal-background"></div>
   <div class="modal-content">
-  <div class="notification center-down bp">
+  <div class="notification bp">
     <div id="idpicker" style="display:none;"><%=@post.id%></div>
-    <% if not @post.web_link.blank?%>
-      <div class="my-3">You are about to go to <%= @post.web_link%></div>
-    <div>
-      <%=link_to "Visit", @post.web_link, target: "_blank", class:"button s-btn"%>
-      <%=link_to "Close", "#", onclick:"hidediv('visitmodal')", class:"button is-warning"%>
-    </div>
-    <%else%>
-      <div class="my-3">No Link at the moment:(</div>
-        <%=link_to "Close", "#", onclick:"hidediv('visitmodal')"%>
-    <% end%>
+    <div class="title is-4 center"><u>Links</u></div>
+    <%=link_to "Close", "#", onclick:"hidediv('visitmodal')", class:"delete"%>
+
+      <div class="flexed m-2">
+        <div class="center mr-2"><i class="fa-solid fa-link"></i></div>
+        <%if @post.web_link.blank?%>
+        <input class="input" placeholder="Creator has not submitted a link yet">
+        <div class="button s-btn">Visit</div>
+        <%else%>
+        <input class="input" value="<%=@post.web_link%>">
+        <%=link_to "Visit", @post.web_link, target: "_blank", class:"button s-btn"%>
+        <%end%>
+      </div>
+
+      <div class="flexed m-2">
+        <%if @post.amazon_link.blank?%>
+        <div class="center mr-3"><strong><i class="fa-brands fa-amazon"></i></strong></div>
+        <input class="input" placeholder="Creator has not submitted a link yet">
+        <div class="button s-btn">Visit</div>
+        <%else%>
+        <input class="input" value="<%=@post.amazon_link%>">
+        <%=link_to "Visit", @post.amazon_link, target: "_blank", class:"button s-btn"%>
+        <%end%>
+      </div>
+
+
+   
+
+
+
+
+
+
+
 </div>
 </div>
 </div>

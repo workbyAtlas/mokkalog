@@ -15,9 +15,13 @@ class PostsController < ApplicationController
     @q = Post.ransack(params[:q])
     @query = Post.ransack(params[:q])
     #@query.build_condition_color("Red")
-    @posts = @query.result(distinct: true).includes(:tags, :brands)#.post(params[:post])
+    @posts = @query.result(distinct: true).includes(:tags)#.post(params[:post])
+    @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
     #@posts =@posts.(distinct: true)
     @user_gid = current_user.to_gid_param if current_user
+
+
+
   end
 
   # GET /posts/1 or /posts/1.json
@@ -27,7 +31,7 @@ class PostsController < ApplicationController
     end 
     @comments =@post.comments.order(created_at: :asc)
 
-    @new_web_link = @post.web_link.start_with?('http://', 'https://') ? @web_link : "https://#{@web_link}"
+    #@new_web_link = @post.web_link.start_with?('http://', 'https://') ? @web_link : "https://#{@web_link}"
 
   end
 
@@ -42,9 +46,9 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params.except(:tags, :brands))
+    @post = Post.new(post_params.except(:tags))
     create_or_delete_posts_tags(@post, params[:post][:tags],)
-    create_or_delete_posts_brands(@post, params[:post][:brands],)
+    #create_or_delete_posts_brands(@post, params[:post][:brands],)
     @post.user = current_user
 
     respond_to do |format|
@@ -61,11 +65,11 @@ class PostsController < ApplicationController
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
     create_or_delete_posts_tags(@post, params[:post][:tags],)
-    create_or_delete_posts_brands(@post, params[:post][:brands],)
+    #create_or_delete_posts_brands(@post, params[:post][:brands],)
     @post.edited_by = current_user.username
 
     respond_to do |format|
-      if @post.update(post_params.except(:tags, :brands))
+      if @post.update(post_params.except(:tags))
         format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -83,6 +87,10 @@ class PostsController < ApplicationController
       format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def subcat
+    @subcat
   end
 
   def like
@@ -139,6 +147,6 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :price, :color, :category, :sub_category, :web_link, :likes, :image, :tags, :brands, :user_id, :c_type, :amazon_link, :material)
+      params.require(:post).permit(:title, :body, :price, :color, :category, :sub_category, :web_link, :likes, :image, :tags, :brand_id, :name, :user_id, :c_type, :amazon_link, :material)
     end
 end

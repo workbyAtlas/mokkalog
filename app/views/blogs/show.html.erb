@@ -5,7 +5,7 @@
   <div class="center subtitle is-5 ">
 
 
-    <%=link_to "@"+@blog.user.username, user_path(@blog.user), class:"s-link mx-2"%>
+    <%#link_to "@"+@blog.user.username, user_path(@blog.user), class:"s-link mx-2"%>
       
   </div>
 </section>
@@ -20,7 +20,7 @@
 <div class="title is-4"><u>Dev Tool</u></div>
 <div>Pinned?:<%=@blog.pinned%></div>
 <div>Blog Type:<%=@blog.blog_type%></div>
-<div>Author:<%=@blog.user.username%></div>
+<div>Author:<%#=@blog.user.username%></div>
 <div>
   <%= link_to "Edit", edit_blog_path(@blog) %> |
   <%= link_to "Back", blogs_path %>

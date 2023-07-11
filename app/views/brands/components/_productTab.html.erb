@@ -2,10 +2,11 @@
   <div class="title is-3 mt-2 mx-4"><u>Products</u></div>
 
   <section class="section flexed-w">
-
-    <% @brand.brandables.each do |brandable| %>
-      <%= render 'posts/post_for_collection', post: brandable.post %>
-    <% end %>
+    <%@brand.posts.each do |post|%>
+    <%= render 'posts/post', post: post%>
+    <%end%>
+    
 
   </section>
+
 </section>

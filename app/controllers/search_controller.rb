@@ -4,32 +4,35 @@ class SearchController < ApplicationController
 		posts = if params[:search]
 			posts_with_tag_search
 		else
-			Post.all
+			Post.includes(:brand).all
 		end
-		@posts = posts
+
+    @posts = posts.page(params[:page]).per(16)
 		render turbo_stream: turbo_stream.replace("posts_list", 
 			partial: "posts/list", 
 			locals: {posts: @posts})
 	end
 
 	def advsearch
-		@posts =Post.all
+		
+    @posts = Post.all.page(params[:page]).per(16)
+
 	end
 
 	private
 
 def posts_with_tag_search
-    parsed_tags.reduce(Post.includes(:user).all) do |posts, tag|
+    parsed_tags.reduce(Post.includes(:brand).all) do |posts, tag|
       case tag[:field]
-      # this is for association(user)
-      when "user"
+      # this is for association(brand)
+      when "brand"
         case tag[:operator]
         when "equals"
-          posts.joins(:user).where("users.name = ?", tag[:value])
+          posts.joins(:brand).where("brands.name = ?", tag[:value])
         when "contains"
-          posts.joins(:user).where("users.name ILIKE ?", "%#{tag[:value]}%")
+          posts.joins(:brand).where("brands.name LIKE ?", "%#{tag[:value]}%")
         when "except"
-          posts.joins(:user).where.not("users.name LIKE ?", "%#{tag[:value]}%")
+          posts.joins(:brand).where.not("brands.name LIKE ?", "%#{tag[:value]}%")
         else
           posts
         end

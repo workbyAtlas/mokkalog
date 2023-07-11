@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_06_22_143635) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_10_210636) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -56,17 +56,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_143635) do
     t.string "pinned"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.integer "user_id"
     t.index ["user_id"], name: "index_blogs_on_user_id"
-  end
-
-  create_table "brandables", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "brand_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["brand_id"], name: "index_brandables_on_brand_id"
-    t.index ["post_id"], name: "index_brandables_on_post_id"
   end
 
   create_table "brands", force: :cascade do |t|
@@ -79,6 +70,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_143635) do
     t.string "link"
     t.string "brand_color", default: "0"
     t.string "brand_text", default: "0"
+    t.text "header"
+    t.string "ig_link"
+    t.string "last_edited"
     t.index ["user_id"], name: "index_brands_on_user_id"
   end
 
@@ -147,6 +141,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_143635) do
     t.string "material"
     t.text "amazon_link"
     t.string "edited_by"
+    t.integer "brand_id"
+    t.index ["brand_id"], name: "index_posts_on_brand_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
@@ -198,8 +194,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_143635) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blogs", "users"
-  add_foreign_key "brandables", "brands"
-  add_foreign_key "brandables", "posts"
   add_foreign_key "brands", "users"
   add_foreign_key "closets", "posts"
   add_foreign_key "closets", "users"
@@ -208,6 +202,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_06_22_143635) do
   add_foreign_key "comments", "users"
   add_foreign_key "likeables", "posts"
   add_foreign_key "likeables", "users"
+  add_foreign_key "posts", "brands"
   add_foreign_key "posts", "users"
   add_foreign_key "taggables", "posts"
   add_foreign_key "taggables", "tags"

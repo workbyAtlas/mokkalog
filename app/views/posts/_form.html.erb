@@ -15,6 +15,8 @@
   </div>
   <% end %>
 
+  <%#<div data-controller='dynamic-select'>%>
+
 
 
  <section class ="section">
@@ -41,11 +43,11 @@
 
           </div>
         </div>
-        <div class="field">
+        <div>
           <label class="label">Brand</label>
-          <div class="control">
-            <%= form.text_field :brands, value: post.brands.map(&:name), class:"input",placeholder:"brand name" %>
-          </div>
+          <span class="select">
+          <%= form.collection_select :brand_id, Brand.order(:name), :id, :name, prompt: "Select a brand" %>
+          </span>
         </div>
       </div>
       <div class="column">
@@ -157,4 +159,5 @@
     </div>
   </div>
 </section>
+
 <% end %>

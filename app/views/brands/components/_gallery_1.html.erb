@@ -1,0 +1,38 @@
+<div data-controller="previews">
+
+<br/>
+
+<%#FORM%>
+<div class="file is-warning center">
+  <label class="file-label">
+
+    <%= form.file_field :gallery1,
+    direct_upload: true,
+    data: { previews_target: "input", action: "change->previews#preview"}, class:"file-input" %>
+
+    <span class="file-cta">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Primary file…
+      </span>
+    </span>
+  </label>
+</div>
+<%#IMAGE PREVIEW%>
+<div class="image-preview">
+<% if brand.gallery1.attached?%>
+    <div class="subtitle is-6 center mt-2">Image Preview</div>
+    <div class="center mt-2">
+    <%= image_tag brand.gallery1, data: { previews_target: 'preview' }, style:"width:300px; height:300px;"%>
+    </div>
+<%else%>
+    <div class="center mt-2">
+    <%= image_tag "download.jpg", data: { previews_target: 'preview' }, style:"width:300px; height:300px;"%>
+    </div>
+<%end%>
+</div>
+
+
+</div>

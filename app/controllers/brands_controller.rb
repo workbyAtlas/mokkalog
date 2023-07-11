@@ -7,7 +7,7 @@ class BrandsController < ApplicationController
     @query = Brand.ransack(params[:q])
     #brands = @query.result(distinct: true)
     @brands = @query.result.includes(:posts)
-
+    @brands = @brands.order('created_at DESC').page(params[:page]).per(16)
 
   end
 
@@ -15,6 +15,7 @@ class BrandsController < ApplicationController
   def show
     if not current_user == @brand.user
       @brand.update(views: @brand.views + 1)
+      #@brand.posts = @brand.posts.order('created_at DESC').page(params[:page]).per(16)
     end
   end
 
@@ -60,12 +61,10 @@ class BrandsController < ApplicationController
 
   # DELETE /brands/1 or /brands/1.json
   def destroy
-    @brand.destroy
-
-    respond_to do |format|
-      format.html { redirect_to brands_url, notice: "Brand was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    brand = Brand.find(params[:id])
+    Post.where(brand_id: brand.id).update_all(brand_id: nil)
+    brand.destroy
+    redirect_to brands_path, notice: 'Brand was successfully destroyed.'
   end
 
   private
@@ -76,6 +75,7 @@ class BrandsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def brand_params
-      params.require(:brand).permit(:name, :image, :user_id, :body, :views, :link, :banner, :brand_color, :brand_text)
+      params.require(:brand).permit(:name, :image, :user_id, :body, :views, :link, :banner,
+       :brand_color, :brand_text, :header, :last_edited, :ig_link, :gallery1,:gallery2,:gallery3)
     end
 end

@@ -1,22 +1,2 @@
-<%#= turbo_frame_tag "modal" do %>
-<div class="modal is-active">
-  <div class="modal-background"></div>
-  <div class="modal-content">
-  <div class="notification">
-<div class="title is-5">Editing: <%=@brand.name%></div>
-
+<h1 class="title is-4 center">Editing: <%=@brand.name%></h1>
 <%= render "form", brand: @brand %>
-
-<br>
-
-
-<%#=link_to "x", "#", data:{
-  controller: "modals",
-  action: "modals#close"
-  }, class:"modal-close is-large"%>
-
-</div>
-</div>
-</div>
-
-<%#end%>

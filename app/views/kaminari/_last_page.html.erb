@@ -1,0 +1,4 @@
+<li>
+  <% data ||= {} %>
+  <%= link_to_unless current_page.last?, raw(t 'views.pagination.last'), url, data: data, class: 'pagination-link' %>
+</li>

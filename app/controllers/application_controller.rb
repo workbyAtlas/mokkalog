@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+
 	before_action :set_query
 	before_action :set_query_brand
 	before_action :set_modmin

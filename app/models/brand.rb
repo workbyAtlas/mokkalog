@@ -6,12 +6,16 @@ class Brand < ApplicationRecord
   
   validates :link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:40}
 
-	has_many :brandables, dependent: :destroy
-	has_many :posts, through: :brandables
+
+	has_many :posts
+
+
 
   has_one_attached :image
   has_one_attached :banner
-
+  has_one_attached :gallery1
+  has_one_attached :gallery2
+  has_one_attached :gallery3
   belongs_to :user
 
   def self.ransackable_attributes(auth_object = nil)
@@ -37,6 +41,7 @@ class Brand < ApplicationRecord
     banner.variant(resize_to_fill: [400,400]).processed
   end
 
+  private
 
 
   def check_for_image()
@@ -49,7 +54,5 @@ class Brand < ApplicationRecord
         errors.add(:banner, "The file must be, JPEG, PNG, or WEBP")
       end
   end
-
-  private
 
 end

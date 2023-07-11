@@ -81,3 +81,5 @@ gem 'aws-sdk-s3', require: false
 group :production do
   gem 'pg', '~> 1.5', '>= 1.5.3'
 end
+
+gem 'kaminari'

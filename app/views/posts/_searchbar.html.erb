@@ -1,10 +1,12 @@
   <div class="relative rw50">
 
-    <div id="adv1" class="hide-btn secondary-t" onclick="advanced('advanced-search','adv1')">[advanced]</div>
+
+    <%=link_to "[advanced]", advsearch_path, class:"hide-btn secondary-t"%>
+
     <%= search_form_for @query do |f| %>
       <div class="center my-2 title is-5">Search:</div>
     <div class="center">
-      <%= f.search_field :title_or_material_or_category_or_tags_name_or_brands_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
+      <%= f.search_field :title_or_material_or_category_or_tags_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
     </div>
 
 
@@ -12,9 +14,6 @@
 
 
 
-
-
-   
       <div id="advanced-search" class="d-none">
         <hr class="bst"/>
         <br/>
@@ -26,9 +25,6 @@
           <%=link_to "Go to Token Search!", advsearch_path , class:"button is-warning" %>    
         </div></strong>
         </div>
-
-        <%=f.label :brand, class:"label my-2"%>
-        <%= f.search_field :brands_name_cont, class:"input", placeholder:"Search here..." %>
 
         <div class="label my-2">Tags:</div>
         <%= f.search_field :tags_name_cont, class:"input my-2", placeholder:"Search here..." %>

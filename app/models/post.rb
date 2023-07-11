@@ -2,8 +2,8 @@ class Post < ApplicationRecord
 	validates :title, presence: {message: "Name can't be blank"}, length: {maximum: 20}
 	validates :body, length: { maximum: 3000 }, allow_blank: true
   validates :web_link, format: { with: /\Ahttps?:\/\//, message: 'should start with http:// or https://' }, allow_blank: true
-	validate :check_for_image
-	validates :image, presence: true
+	#validate :check_for_image
+	#validates :image, presence: true
 	validates :price, numericality: { greater_than: 0, less_than: 99999 }, allow_blank: true
 	validate :clean_word
 
@@ -13,8 +13,7 @@ class Post < ApplicationRecord
 	has_many :taggables, dependent: :destroy
 	has_many :tags, through: :taggables
 
-	has_many :brandables, dependent: :destroy
-	has_many :brands, through: :brandables
+	belongs_to :brand
 
 	has_many :likeables, dependent: :destroy
 	has_many :likes, through: :likeables, source: :user
@@ -32,11 +31,11 @@ class Post < ApplicationRecord
 
 	#validate :image, :image_validation
   	def self.ransackable_attributes(auth_object = nil)
-    	["body", "category", "color", "id",  "price", "sub_category", "title", "updated_at", "material", "category", "tags", "brands"]
+    	["body", "category", "color", "id",  "price", "sub_category", "title", "updated_at", "material", "category", "tags"]
  	end
 
 	 def self.ransackable_associations(auth_object = nil)
-	   ["brandables", "brands", "image_attachment", "image_blob", "taggables", "tags"]
+	   ["taggables", "tags"]
 	 end
 
 	def image_as_thumbnail
@@ -53,6 +52,15 @@ class Post < ApplicationRecord
 	    if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/webp])
 	      errors.add(:image, "The file must be, JPEG, PNG, or WEBP")
 	    end
+	end
+
+	def branded
+	 if brand.nil?
+	 	"#N/A"
+	 else
+	 	brand.name
+	 end
+
 	end
 
 	#i think this is deletable

@@ -4,4 +4,10 @@
       <div><%=render post%></div>
   <% end %>
 </section>
+
+
+  <%= paginate posts,
+    params: {controller: :search, action: :search},
+    data: {"turbo-method": :post }%>
+
 <%end%>

@@ -15,13 +15,14 @@
     <div data-tokenized-search-target="fieldSelect" class="d-none">
       <select class="select" data-action="change->tokenized-search#selectField" style="width:100%;">
         <option value="">Select a field</option>
-        <option value="title">Title</option>
+        <option value="title">Name</option>
+        <option value="brand">Brand</option>
         <option value="color">Color</option>
         <option value="category">Category</option>
         <option value="sub_category">Sub Category</option>
         <option value="c_type">Gender</option>
         <option value="material">Material</option>
-        <option value="material">Material</option>
+
 
       </select>
     </div>
@@ -46,5 +47,4 @@
 </div>
 
 
-<%= render 'posts/list', posts: @posts%>
-
+<%=render 'posts/list', posts: @posts %>

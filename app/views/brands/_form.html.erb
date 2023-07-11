@@ -11,30 +11,42 @@
       </ul>
     </div>
   <% end %>
+<section class="bs rw70 mx-auto p-2">
+<br/>
+<div>
+<div class="columns">
+  <div class="column">
+<%= render "image_preview", form: form, brand: brand %>
+  </div>
+  <div class="column" style="border-left: 2px solid #654321;">
 
-
-
-  <br/>
   <div>
     <%= form.label :Name, class:"label mt-2" %>
     <%= form.text_field :name, class:"input" %>
   </div>
-
   <div>
     <%= form.label :Link, class:"label mt-2" %>
     <%= form.text_field :link, class:"input", placeholder:"Please include https://" %>
   </div>
-
+  <div>
+    <div class="label mt-2"><i class="fa-brands fa-instagram"></i></div>
+    <%= form.text_field :link, class:"input", placeholder:"Please include https://" %>
+  </div>
   <div>
     <%= form.label "Description", class:"label mt-2" %>
     <%= form.text_area :body, class:"textarea", placeholder:"Write a short description!" %>
   </div>
 
-<%= render "image_preview", form: form, brand: brand %>
+  </div>
+</div>
 <hr class="bst"/>
 <div class="title is-4 has-text--grey center">Customize Brand Page</div>
 <div class="subtitle is-6 center">Customize the brand showcase page to make it more presentable</div>
 <%= render "image_preview_for_banner", form: form, brand: brand %>
+  <div>
+    <%= form.label "Banner Text", class:"label mt-2" %>
+    <%= form.text_field :header, class:"input", placeholder:"Text for the Banner"%>
+  </div>
 
   <div>
     <%= form.label "Text Color", class:"label" %>
@@ -43,6 +55,17 @@
   </div>
 
   <%= form.hidden_field :user_id, value: current_user.id %>
+
+<hr class="bst"/>
+<div class="title is-4 has-text--grey center">Gallery</div>
+<div class="subtitle is-6 center">Add photos to showcase your brand. This section is still under UI improvment development.</div>
+<%= render "brands/components/gallery_1", form: form, brand: brand %>
+<%= render "brands/components/gallery_2", form: form, brand: brand %>
+<%= render "brands/components/gallery_3", form: form, brand: brand %>
+
+
+
+
 <hr class="bst"/>
   <div class="flexed my-2">
     <%#= form.submit, class: "button" %>
@@ -57,6 +80,10 @@
   </div>
 
 
+
+</div>
+</div>
+</section>
 <% end %>
 
 

@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-	validates :title, presence: {message: "Name can't be blank"}, length: {maximum: 20}
+	validates :title, presence: {message: "Name can't be blank"}, length: {maximum: 25}
 	validates :body, length: { maximum: 3000 }, allow_blank: true
   validates :web_link, format: { with: /\Ahttps?:\/\//, message: 'should start with http:// or https://' }, allow_blank: true
 	#validate :check_for_image

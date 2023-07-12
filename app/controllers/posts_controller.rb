@@ -46,7 +46,8 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params.except(:tags))
+    @post = Post.new(post_params)
+    #@post = Post.new(post_params.except(:tags))
     create_or_delete_posts_tags(@post, params[:post][:tags],)
     #create_or_delete_posts_brands(@post, params[:post][:brands],)
     @post.user = current_user
@@ -64,12 +65,12 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    create_or_delete_posts_tags(@post, params[:post][:tags],)
+    #create_or_delete_posts_tags(@post, params[:post][:tags],)
     #create_or_delete_posts_brands(@post, params[:post][:brands],)
     @post.edited_by = current_user.username
 
     respond_to do |format|
-      if @post.update(post_params.except(:tags))
+      if @post.update(post_params)
         format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -120,7 +121,7 @@ class PostsController < ApplicationController
 
     def create_or_delete_posts_tags(post, tags)
       post.taggables.destroy_all
-      tags = tags.strip.split(',')
+      #tags = tags.strip.split(',')
       tags.each do |tag|
         tagged =tag.downcase
         post.tags << Tag.find_or_create_by(name: tagged)
@@ -148,6 +149,6 @@ class PostsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :body, :price, :color, :category, :sub_category, :web_link, :likes, :image, :tags, :brand_id, 
-        :name, :user_id, :c_type, :amazon_link, :material, :image1, :image2, :image3)
+        :name, :user_id, :c_type, :amazon_link, :material, :image1, :image2, :image3, :archive)
     end
 end

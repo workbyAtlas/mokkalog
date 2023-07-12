@@ -1,3 +1,4 @@
+
 <div class="post-card m-2">
   <% if post.image.attached?%>
     <div class="center"><%=link_to (image_tag (post.image_as_thumbnail)), post %></div>
@@ -14,7 +15,13 @@
 
 
   <div><i><%#= post.brand %></i></div>
+  <%if post.archive == "archived"%>
+  <div class="tag" style="border: 2px solid #c88595; color:#c88595; font-weight:bold;">archived</div>
+  <%elsif post.archive == "project"%>
+  <div class="tag" style="border: 2px solid #cbb595;font-weight:bold;">project</div>
+  <%else%>
   <div><%=if post.price.blank? then "#N/A" else number_to_currency(post.price) end%></div>
+  <%end%>
   <%if true == false %>
   <div class="flexed-end ml-2"><%=post.likes.count%></div>
   <%end%>

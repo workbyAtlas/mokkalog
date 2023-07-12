@@ -33,6 +33,7 @@ class BrandsController < ApplicationController
 
     @brand = Brand.new(brand_params)
     @brand.brand_text = "black"
+    @brand.user = current_user
 
 
     respond_to do |format|

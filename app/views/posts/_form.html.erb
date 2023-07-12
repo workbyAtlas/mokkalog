@@ -39,54 +39,40 @@
         </span>
       </div>
       <hr class="bst"/>
-      <div class="subtitle is-5 has-text-grey mb-1">Detail</div>
 
-      <div class="columns">
-        <div class="column">
+        <div class="rw50">
           <label class="label">Price</label>
           <%= form.number_field :price, class:"input",placeholder:"#N/A" %>
         </div>
-        <div class="column">
-          <label class="label">Type</label>
-            <span class="select">
-            <%= form.select :c_type, ['Neutral', 'Men', 'Women']%>
-          </span>
-        </div>
-      </div>
+<div class="is-size-7 mb-1">If your clothing isn't for sale, please indicate below. Select "Archived" if the clothing is archived or out of stock. Select "Project" if the clothing was made for a portfolio or a project.</div>
+<div class="control">
+<%= form.radio_button :archive, "archived", checked: (post.archive == "archived"), class:"radio"%>
+<%= label_tag :archive_archived, "Archived", class:"radio" %>
 
-      <div class="columns">
-        <div class="column">
-          <label class="label">Category</label>
-          <span class="select">
-          <%= form.select :category, ['', 'T-Shirt', "Shirt", 'Long Pants', 'Shorts', 'Sweater', 'Headwear', 'Skirt', 'Overall', 'Suit','Shoes','Shorts','Outerwear', 'Socks','Accessories']%>
-          </span>
-        </div>
-        <div class="column">
-          <label class="label">Sub Category</label>
-          <span class="select">
-          <%= form.select :sub_category, ["",'Denim', 'Jeans','T-Shirt','Overall','Scarf','Winter Coat','Sneakers']%>
-          </span>
-        </div>
-      </div>
-
-      <div class="columns">
-        <div class="column">
-          <label class="label">Color</label>
-          <span class="select">
-            <%= form.select :color, ['', 'White', 'Black', 'Blue', 'Red', 'Yellow', 'Green', 'Orange', 'Brown','Purple', 'Navy', 'Olive', 'Tan','Grey']%>
-          </span>
-        </div>
-        <div class="column">
-          <label class="label">Materials</label>
-          <span class="select">
-          <%= form.select :material, ["","Cotton", "Polyester", "Silk", "Denim","Wool", "Linen", "Corduroy","Rayon", "Nylon", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Fleece", "Chiffon", "Satin", "Velvet", "Organza"]%>
-          </span>
-        </div>
-      </div>
-
-
-    </div>
+<%= form.radio_button :archive, "project", checked: (post.archive == "project"), class:"radio" %>
+<%= label_tag :archive_project, "Project", class:"radio" %>
+</div>
   </div>
+  </div>
+
+
+<hr class="bst"/>
+
+<div>
+<label class="label">Tags</label>
+
+<label class="label has-text-grey">Seperate each tag by using ,(Example: nyc, concert,)</label>
+<%#= form.text_field :tags, value: post.tags.map(&:name).join(","), class:"input" %>
+<div class="flexed-w">
+<% Tag.pluck(:name).each do |tag_name| %>
+<div class=" m-4">
+  <%= check_box_tag "post[tags][]", tag_name, post.tags.map(&:name).include?(tag_name), class:"checkbox"%>
+  <%= tag_name %><br>
+</div>
+<% end %>
+</div>
+</div>
+
 <hr class="bst"/>
 <div class="subtitle is-5 has-text-grey">Additional Image Uploads</div>
 <div class="center">
@@ -106,18 +92,61 @@
 </div>
 <%end%>
 <hr class="bst" />
+<div class="subtitle is-5 has-text-grey mb-1">Details</div>
+
 
 <div>
-<label class="label">Tags</label>
-<label class="label has-text-grey">Seperate each tag by using ,(Example: nyc, concert,)</label>
-<%= form.text_field :tags, value: post.tags.map(&:name).join(","), class:"input" %>
+<label class="label">Type:</label>
+<%= form.radio_button :c_type, "neutral", checked: (post.c_type == "neutral"), class: "radio" %>
+<%= label_tag :c_type_neutral, "Neutral" %>
+
+<%= form.radio_button :c_type, "men", checked: (post.c_type == "men"), class: "radio" %>
+<%= label_tag :c_type_men, "Men" %>
+
+<%= form.radio_button :c_type, "women", checked: (post.c_type == "women"), class: "radio" %>
+<%= label_tag :c_type_women, "Women" %>
+
 </div>
+<br/>
+      <div class="columns">
+        <div class="column">
+          <label class="label">Category</label>
+          <span class="select">
+          <%= form.select :category, ['', 'T-Shirt', "Shirt", 'Long Pants', 'Shorts', 'Sweater', 'Headwear', 'Skirt', 'Overall', 'Suit','Shoes','Shorts','Outerwear', 'Socks','Accessories']%>
+          </span>
+        </div>
+
+        <div class="column">
+          <label class="label">Sub Category</label>
+          <span class="select">
+          <%= form.select :sub_category, ["Coming Soon"]%>
+          </span>
+        </div>
+  
+      </div>
+
+      <div class="columns">
+        <div class="column">
+          <label class="label">Color</label>
+          <span class="select">
+            <%= form.select :color, ['', 'White', 'Black', 'Blue', 'Red', 'Yellow', 'Green', 'Orange', 'Brown','Purple', 'Navy', 'Olive', 'Tan','Grey']%>
+          </span>
+        </div>
+        <div class="column">
+          <label class="label">Materials</label>
+          <span class="select">
+          <%= form.select :material, ["","Cotton", "Polyester", "Silk", "Denim","Wool", "Linen", "Corduroy","Rayon", "Nylon", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Fleece", "Chiffon", "Satin", "Velvet", "Organza"]%>
+          </span>
+        </div>
+      </div>
+
 <hr class="bst" />
+
 
 <div>
 <label class="label">Description</label>
-<div class="control">
-<%= form.rich_text_area :body, class:"textarea",placeholder:"Description" %>
+<div>
+<%= form.rich_text_area :body, style:"background-color:white;",placeholder:"Description" %>
 </div>
 </div>
 

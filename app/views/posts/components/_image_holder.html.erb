@@ -2,7 +2,7 @@
 <div class="image-flex">
 <div class="image-small-container">
 
-    <%if @post.image.attached?%>
+    <%if true == false#@post.image.attached?%>
     <div class="bs m-2 image-small image-select" data-action="click->post#showImage">
         <%=image_tag(@post.img_sq_small(@post.image))%>        
     </div>

@@ -30,7 +30,7 @@ def posts_with_tag_search
         when "equals"
           posts.joins(:brand).where("brands.name = ?", tag[:value])
         when "contains"
-          posts.joins(:brand).where("brands.name LIKE ?", "%#{tag[:value]}%")
+          posts.joins(:brand).where("brands.name ILIKE ?", "%#{tag[:value]}%")
         when "except"
           posts.joins(:brand).where.not("brands.name LIKE ?", "%#{tag[:value]}%")
         else

@@ -9,7 +9,10 @@ class Post < ApplicationRecord
 
 #Associations
 	has_one_attached :image
-
+	has_one_attached :image1
+	has_one_attached :image2
+	has_one_attached :image3
+	
 	has_many :taggables, dependent: :destroy
 	has_many :tags, through: :taggables
 

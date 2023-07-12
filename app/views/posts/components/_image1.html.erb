@@ -1,0 +1,33 @@
+
+<div data-controller="previews" class="center-down">
+<div>
+  <% if post.image1.attached?%>
+    <div class="subtitle is-6 center mt-2">Image Preview</div>
+    <div class="mt-2">
+    <%= image_tag post.image_sq_small(post.image1), data: { previews_target: 'preview' }, style:"width:100px; height:auto;"%>
+    </div>
+  <%else%>
+    <div class="mt-2">
+    <%= image_tag "download.jpg", data: { previews_target: 'preview' }, style:"width:100px; height:100px;"%>
+    </div>
+  <%end%>
+</div>
+
+<div class="center">
+  <div class="file is-warning center mx-2">
+  <label class="file-label">
+  <%= form.file_field :image1,
+  direct_upload: true,
+  data: { previews_target: "input", action: "change->previews#preview"}, class:"file-input" %>
+  <span class="file-cta">
+  <span class="file-icon">
+  <i class="fas fa-upload"></i>
+  </span>
+  <span class="file-label">
+  Primary file…
+  </span>
+  </span>
+  </label>
+  </div>
+</div>
+</div>

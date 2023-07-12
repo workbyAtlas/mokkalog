@@ -8,3 +8,12 @@
 .banner{width:100%;height:450px;}
 .bottom-border{border-bottom-color:#cbb595;}
 .is-active-prime{color:#654321; font-weight:bold;}
+
+/*POST_IMAGE_HOLDER*/
+.image-small{
+	width:80px;
+	height:80px;
+	cursor: pointer;
+}
+
+.image-select{opacity:0.4;}

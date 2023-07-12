@@ -1,0 +1,44 @@
+<div class="column bpx center">
+<div class="image-flex">
+<div class="image-small-container">
+
+    <%if @post.image.attached?%>
+    <div class="bs m-2 image-small image-select" data-action="click->post#showImage">
+        <%=image_tag(@post.img_sq_small(@post.image))%>        
+    </div>
+    <%end%>
+
+    <%if @post.image1.attached?%>
+    <div class="bs m-2 image-small" data-post-target="image2" data-action="click->post#showImage2">
+        <%=link_to (image_tag(@post.img_sq_small(@post.image1))), @post.image1%>        
+    </div>
+    <%end%>
+
+    <%if @post.image2.attached?%>
+    <div class="bs m-2 image-small">
+        <%=link_to (image_tag(@post.img_sq_small(@post.image2))), @post.image2%>        
+    </div>
+    <%end%>
+
+    <%if @post.image3.attached?%>
+    <div class="bs m-2 image-small">
+        <%=link_to (image_tag(@post.img_sq_small(@post.image3))), @post.image3%>        
+    </div>
+    <%end%>
+
+</div>
+<div class="image-big-container">
+<% if @post.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
+<div data-post-target="imageShow">
+<%=image_tag (@post.image_as_profile), class:"bp p-3"%>
+</div>
+<% else %>  
+<%= image_tag ("download.jpg"), class: "immmg"  %>
+<% end %>
+</div>
+</div>
+
+</div>
+
+
+

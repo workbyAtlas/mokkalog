@@ -1,5 +1,14 @@
 
 <div class="title is-4 center"><u>Tokenized Search</u></div>
+<div class="center m-2">
+<ol>
+  <li>Click the Advanced Search area</li>
+  <li>Select the options that fits your need</li>
+  <li>Click Enter to add the tag to the search(you can add multiple tags)</li>
+  <li>Click Search</li>
+
+</ol>
+</div>
 
 <div class="mx-auto rw50">
 <%= form_with url: search_path do %>
@@ -32,7 +41,7 @@
         <option value="">Select an operator</option>
         <option value="equals">Equals</option>
         <option value="contains">Contains</option>
-        <option value="except">except</option>
+        <option value="except">Exclude</option>
       </select>
     </div>
 

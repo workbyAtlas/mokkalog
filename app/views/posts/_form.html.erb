@@ -16,148 +16,119 @@
   <% end %>
 
   <%#<div data-controller='dynamic-select'>%>
-
-
-
- <section class ="section">
-  <div class="container rw70">
-    <div class="notification">
-
-    <div class="subtitle is-3 center">Item</div>
-    <div class="subtitle is-5 has-text-grey">Image Upload</div>
-    <div class="center">
-
+<section class ="section">
+<div class="container rw70">
+<div class="notification">
+  <div class="columns">
+    <div class="column">
+      <div class="subtitle is-5 has-text-grey">Clothing Upload</div>
+      <div class="center">
       <%= render "image_preview", form: form, post: post %>
+      </div>
     </div>
+    <div class="column">
 
-    <hr class="border-purp-top" />
+      <div>
+        <label class="label">Name</label>
+        <%= form.text_field :title, class:"input" %>
+      </div>
+      <div>
+        <label class="label">Brand</label>
+        <span class="select">
+        <%= form.collection_select :brand_id, Brand.order(:name), :id, :name, prompt: "Select a brand", style:"width:100%;" %>
+        </span>
+      </div>
+      <hr class="bst"/>
+      <div class="subtitle is-5 has-text-grey mb-1">Detail</div>
 
-    <div class="columns">
-      <div class="column">
-        <div class="field">
-
-          <label class="label">Name</label>
-          <div class="control">
-            <%= form.text_field :title, class:"input" %>
-
-
-          </div>
+      <div class="columns">
+        <div class="column">
+          <label class="label">Price</label>
+          <%= form.number_field :price, class:"input",placeholder:"#N/A" %>
         </div>
-        <div>
-          <label class="label">Brand</label>
-          <span class="select">
-          <%= form.collection_select :brand_id, Brand.order(:name), :id, :name, prompt: "Select a brand" %>
+        <div class="column">
+          <label class="label">Type</label>
+            <span class="select">
+            <%= form.select :c_type, ['Neutral', 'Men', 'Women']%>
           </span>
         </div>
       </div>
-      <div class="column">
-        <div class="field">
-          <label class="label">Price</label>
-          <div class="control">
-            <%= form.number_field :price, class:"input",placeholder:"#N/A" %>
-          </div>
-        </div>
-          <div class="field">
-            <label class="label">Type</label>
-                <span class="select">
-                  <%= form.select :c_type, ['Neutral', 'Men', 'Women']%>
-                </span>
-   
-          </div>
-        </div>
-      </div>
-    <hr class="border-purp-top" />
-    <div class="subtitle is-5 has-text-grey">Detail</div>
+
       <div class="columns">
         <div class="column">
-          <div class="field">
-            <label class="label">Category</label>
-                <span class="select">
-                  <%= form.select :category, ['', 'T-Shirt', "Shirt", 'Long Pants', 'Denim', 'Shorts', 'Sweater', 'Hat', 'Skirt', 'Dress', 'Suit','Shoes','Shorts','Outerwear', 'Socks','Accessories']%>
-                </span>
-          </div>
+          <label class="label">Category</label>
+          <span class="select">
+          <%= form.select :category, ['', 'T-Shirt', "Shirt", 'Long Pants', 'Denim', 'Shorts', 'Sweater', 'Hat', 'Skirt', 'Dress', 'Suit','Shoes','Shorts','Outerwear', 'Socks','Accessories']%>
+          </span>
         </div>
-        <%if true == false %>
         <div class="column">
-          <div class="field">
-            <label class="label">Sub Category</label>
-                <span class="select">
-                  <%= form.select :sub_category, ['', 'Jeans','T-Shirt','Overall','Scarf','Winter Coat','Sneakers']%>
-                </span>
-          </div>
+          <label class="label">Sub Category</label>
+          <span class="select">
+          <%= form.select :sub_category, ['', 'Jeans','T-Shirt','Overall','Scarf','Winter Coat','Sneakers']%>
+          </span>
         </div>
-        <%end%>
+      </div>
 
+      <div class="columns">
         <div class="column">
-          <div class="field">
-            <label class="label">Color</label>
-              <p class="control has-icons-left">
-                <span class="select">
-                  <%= form.select :color, ['', 'White', 'Black', 'Blue', 'Red', 'Yellow', 'Green', 'Orange', 'Brown','Purple', 'Navy', 'Olive', 'Tan','Grey']%>
-                </span>
-              </p>
-          </div>
+          <label class="label">Color</label>
+          <span class="select">
+            <%= form.select :color, ['', 'White', 'Black', 'Blue', 'Red', 'Yellow', 'Green', 'Orange', 'Brown','Purple', 'Navy', 'Olive', 'Tan','Grey']%>
+          </span>
         </div>
-
         <div class="column">
-          <div class="field">
-            <label class="label">Materials</label>
-              <p class="control has-icons-left">
-                <span class="select">
-                  <%= form.select :material, ["","Cotton", "Polyester", "Silk", "Denim","Wool", "Linen", "Corduroy","Rayon", "Nylon", "Spandex", "Acrylic", "Cashmere", "Leather", "Denim", "Viscose", "Tencel", "Fleece", "Chiffon", "Satin", "Velvet", "Organza"]%>
-                </span>
-              </p>
-          </div>
-        </div>
-
-      </div>
-
-
-    <hr class="border-purp-top" />
-    <div class="subtitle is-5 has-text-grey">Optional</div>
-      <div class="field">
-        <label class="label">Link</label>
-        <div class="control">
-          <%= form.text_field :web_link, class:"input",placeholder:"link to this clothing" %>
-        </div>
-      </div>
-      <%if @auth%>
-      <div class="field">
-        <label class="label">Amazon Link</label>
-        <div class="control">
-          <%= form.text_field :amazon_link, class:"input",placeholder:"text input" %>
-        </div>
-      </div>
-      <%end%>
-      <hr class="border-purp-top" />
-
-      <div class="field">
-        <label class="label">Tags</label>
-        <label class="label has-text-grey">Seperate each tag by using ,(Example: nyc, concert,)</label>
-        <div class="control">
-          <%= form.text_field :tags, value: post.tags.map(&:name).join(","), class:"input" %>
-        </div>
-      </div>
-      <hr class="border-purp-top" />
-
-      <div class="field">
-        <label class="label">Description</label>
-        <div class="control">
-          <%= form.text_area :body, class:"textarea",placeholder:"Description" %>
+          <label class="label">Materials</label>
+          <span class="select">
+          <%= form.select :material, ["","Cotton", "Polyester", "Silk", "Denim","Wool", "Linen", "Corduroy","Rayon", "Nylon", "Spandex", "Acrylic", "Cashmere", "Leather", "Denim", "Viscose", "Tencel", "Fleece", "Chiffon", "Satin", "Velvet", "Organza"]%>
+          </span>
         </div>
       </div>
 
-      <%# form.hidden_field :user_id, value: current_user.id %>
 
-      <hr class="border-purp-top" />
-      <div><%= form.submit "Create", class:"button is-warning"%></div>
-      </div>
-
-
-
-    </div>
     </div>
   </div>
+<hr class="bst"/>
+<div class="subtitle is-5 has-text-grey">Additional Image Uploads</div>
+<div class="center">
+<%= render "posts/components/image1", form: form, post: post%>
+<%= render "posts/components/image2", form: form, post: post%>
+<%= render "posts/components/image3", form: form, post: post%>
+</div>
+<div>
+<label class="label">Link</label>
+<%= form.text_field :web_link, class:"input",placeholder:"link to this clothing" %>
+</div>
+
+<%if @auth%>
+<div>
+<label class="label">Amazon Link</label>
+<%= form.text_field :amazon_link, class:"input",placeholder:"text input" %>
+</div>
+<%end%>
+<hr class="bst" />
+
+<div>
+<label class="label">Tags</label>
+<label class="label has-text-grey">Seperate each tag by using ,(Example: nyc, concert,)</label>
+<%= form.text_field :tags, value: post.tags.map(&:name).join(","), class:"input" %>
+</div>
+<hr class="bst" />
+
+<div>
+<label class="label">Description</label>
+<div class="control">
+<%= form.text_area :body, class:"textarea",placeholder:"Description" %>
+</div>
+</div>
+
+<%# form.hidden_field :user_id, value: current_user.id %>
+
+<hr class="border-purp-top" />
+<div><%= form.submit "Create", class:"button is-warning"%></div>
+</div>
+
+</div>
+</div>
 </section>
 
 <% end %>

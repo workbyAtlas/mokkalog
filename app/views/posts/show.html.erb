@@ -1,13 +1,7 @@
 <div class="d-none" id="share"><%=request.url%></div>
 <section class="section">
   <div class="columns">
-    <div class="column bpx center">
-      <% if @post.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
-      <%=image_tag (@post.image_as_profile), class:"bp p-3"%>
-      <% else %>  
-      <%= image_tag ("download.jpg"), class: "immmg"  %>
-      <% end %>
-    </div>
+      <%=render "posts/components/image_holder"%>
 
     <div class="column bpx">
 

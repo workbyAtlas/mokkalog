@@ -11,6 +11,12 @@ class ApplicationRecord < ActiveRecord::Base
     errors.add(attribute_name, "contains an inappropriate word") if self[attribute_name].present? && keywords.any? { |keyword| self[attribute_name].downcase.include?(keyword) }
   end
 
+  def img_sq_small(image)
+    return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
+    image.variant(resize_to_fill: [100,100]).processed
+    
+  end
+
   def img_sq_normal(image)
     return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
     image.variant(resize_to_fill: [200,200]).processed

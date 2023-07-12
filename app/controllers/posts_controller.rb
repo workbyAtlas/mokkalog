@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     #@post = Post.new(post_params.except(:tags))
-    #create_or_delete_posts_tags(@post, params[:post][:tags],)
+    create_or_delete_posts_tags(@post, params[:post][:tags],)
     #create_or_delete_posts_brands(@post, params[:post][:brands],)
     @post.user = current_user
 
@@ -65,7 +65,7 @@ class PostsController < ApplicationController
 
   # PATCH/PUT /posts/1 or /posts/1.json
   def update
-    #create_or_delete_posts_tags(@post, params[:post][:tags],)
+    create_or_delete_posts_tags(@post, params[:post][:tags],)
     #create_or_delete_posts_brands(@post, params[:post][:brands],)
     @post.edited_by = current_user.username
 
@@ -126,18 +126,6 @@ class PostsController < ApplicationController
         tagged =tag.downcase
         post.tags << Tag.find_or_create_by(name: tagged)
       end
-    end
-
-    def create_or_delete_posts_brands(post, brands)
-      post.brandables.destroy_all
-      brand = brands
-      if brand = Brand.find_by(name: brands)
-        post.brands << Brand.find_or_create_by(name: brands)
-      else
-        post.brands << Brand.find_or_create_by(name: brands, user_id: current_user.id)
-      end
-
-    
     end
   
 

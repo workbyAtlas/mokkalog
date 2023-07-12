@@ -34,6 +34,7 @@
       </div>
       <div>
         <label class="label">Brand</label>
+        <div class="is-size-7" style="color:red;">*You need to create a Brand before, selecting it. <%=link_to "Create a brand", new_brand_path, class:"s-link"%></div>
         <span class="select">
         <%= form.collection_select :brand_id, Brand.order(:name), :id, :name, prompt: "Select a brand", style:"width:100%;" %>
         </span>

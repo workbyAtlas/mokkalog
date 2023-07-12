@@ -23,8 +23,21 @@
         <input class="input" placeholder="Creator has not submitted a link yet">
         <div class="button s-btn">Visit</div>
         <%else%>
+        <div class="center mr-3"><strong><i class="fa-brands fa-amazon"></i></strong></div>
         <input class="input" value="<%=@post.amazon_link%>">
         <%=link_to "Visit", @post.amazon_link, target: "_blank", class:"button s-btn"%>
+        <%end%>
+      </div>
+
+      <div class="flexed m-2">
+        <%if @post.grailed.blank?%>
+        <div class="center mr-3"><strong>Grailed</strong></div>
+        <input class="input" placeholder="Creator has not submitted a link yet">
+        <div class="button s-btn">Visit</div>
+        <%else%>
+        <div class="center mr-3"><strong>Grailed</strong></div>
+        <input class="input" value="<%=@post.grailed%>">
+        <%=link_to "Visit", @post.grailed, target: "_blank", class:"button s-btn"%>
         <%end%>
       </div>
 

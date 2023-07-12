@@ -54,7 +54,10 @@
 </div>
   </div>
   </div>
-
+<div>
+<label class="label">Link</label>
+<%= form.text_field :web_link, class:"input",placeholder:"link to this clothing" %>
+</div>
 
 <hr class="bst"/>
 
@@ -81,8 +84,8 @@
 <%= render "posts/components/image3", form: form, post: post%>
 </div>
 <div>
-<label class="label">Link</label>
-<%= form.text_field :web_link, class:"input",placeholder:"link to this clothing" %>
+<label class="label">Grailed Link</label>
+<%= form.text_field :grailed, class:"input",placeholder:"link to this clothing" %>
 </div>
 
 <%if @auth%>

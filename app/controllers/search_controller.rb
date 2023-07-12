@@ -81,7 +81,7 @@ def posts_with_tag_search
                     "posts.title"
                   end
 
-          posts.where("#{field} LIKE ?", "%#{tag[:value]}%")
+          posts.where("#{field} ILIKE ?", "%#{tag[:value]}%")
         else
           posts
         end

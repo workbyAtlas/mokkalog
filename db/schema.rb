@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_12_204446) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_12_230220) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -137,12 +137,13 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_204446) do
     t.datetime "updated_at", null: false
     t.integer "user_id", null: false
     t.integer "views", default: 0
-    t.string "c_type"
+    t.string "c_type", default: "neutral"
     t.string "material"
     t.text "amazon_link"
     t.string "edited_by"
     t.integer "brand_id"
     t.string "archive"
+    t.text "grailed"
     t.index ["brand_id"], name: "index_posts_on_brand_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end

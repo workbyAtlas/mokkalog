@@ -5,9 +5,13 @@
     <div class="title is-3 mt-2 mx-4"><u>Setting</u></div>
     <div class="my-2">Created by: <%=@brand.user.username%></div>
     <div class="flexed">
-    <div class="button bs">Views: <%=@brand.views%></div>
-    <%= link_to "Edit", edit_brand_path(@brand),data: {turbo_frame: "modal"}, class:"button is-warning mx-3" %>
-    <%= button_to "Delete", @brand, method: :delete, data: { turbo_confirm: "Are you sure?" }, class:"button is-danger"%> 
+      <div class="button bs">Views: <%=@brand.views%></div>
+      <div class="button bs mx-2">Owner: <%=@brand.user.username%></div>
+      <div class="button bs">ID: <%=@brand.id%></div>
+    </div>
+    <div class="flexed mt-2">
+      <%= link_to "Edit", edit_brand_path(@brand),data: {turbo_frame: "modal"}, class:"button is-warning mr-3" %>
+      <%= button_to "Delete", @brand, method: :delete, data: { turbo_confirm: "Are you sure?" }, class:"button is-danger"%> 
   </div>
   </div>
 

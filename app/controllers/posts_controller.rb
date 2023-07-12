@@ -48,7 +48,7 @@ class PostsController < ApplicationController
   def create
     @post = Post.new(post_params)
     #@post = Post.new(post_params.except(:tags))
-    create_or_delete_posts_tags(@post, params[:post][:tags],)
+    #create_or_delete_posts_tags(@post, params[:post][:tags],)
     #create_or_delete_posts_brands(@post, params[:post][:brands],)
     @post.user = current_user
 

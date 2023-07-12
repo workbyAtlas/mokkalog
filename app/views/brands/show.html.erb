@@ -61,7 +61,7 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
         <span>Gallery</span>
       </a>
     </li>
-    <%if current_user == @brand.user or @auth_e == "editor"%>
+    <%if current_user == @brand.user or @auth%>
     <li data-brand-target="authorButton" data-action="click->brand#openAuthor">
       <a>
         <span class="icon is-small"><i class="fa-solid fa-pen-to-square" style="color:#654321;"></i></span>

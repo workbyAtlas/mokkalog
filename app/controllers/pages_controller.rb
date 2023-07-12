@@ -3,7 +3,7 @@ class PagesController < ApplicationController
 
 
   def index
-    @posts_hot = Post.order(ceated_at: :asc).limit(4)
+    @posts_hot = Post.order(created_at: :asc).limit(4)
     #@posts_hot = Post.order(views: :desc).limit(4)
     @posts_latest = Post.order(created_at: :desc).limit(4)
 

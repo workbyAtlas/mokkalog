@@ -58,13 +58,13 @@
         <div class="column">
           <label class="label">Category</label>
           <span class="select">
-          <%= form.select :category, ['', 'T-Shirt', "Shirt", 'Long Pants', 'Denim', 'Shorts', 'Sweater', 'Hat', 'Skirt', 'Dress', 'Suit','Shoes','Shorts','Outerwear', 'Socks','Accessories']%>
+          <%= form.select :category, ['', 'T-Shirt', "Shirt", 'Long Pants', 'Shorts', 'Sweater', 'Headwear', 'Skirt', 'Overall', 'Suit','Shoes','Shorts','Outerwear', 'Socks','Accessories']%>
           </span>
         </div>
         <div class="column">
           <label class="label">Sub Category</label>
           <span class="select">
-          <%= form.select :sub_category, ['', 'Jeans','T-Shirt','Overall','Scarf','Winter Coat','Sneakers']%>
+          <%= form.select :sub_category, ['Denim', 'Jeans','T-Shirt','Overall','Scarf','Winter Coat','Sneakers']%>
           </span>
         </div>
       </div>
@@ -79,7 +79,7 @@
         <div class="column">
           <label class="label">Materials</label>
           <span class="select">
-          <%= form.select :material, ["","Cotton", "Polyester", "Silk", "Denim","Wool", "Linen", "Corduroy","Rayon", "Nylon", "Spandex", "Acrylic", "Cashmere", "Leather", "Denim", "Viscose", "Tencel", "Fleece", "Chiffon", "Satin", "Velvet", "Organza"]%>
+          <%= form.select :material, ["","Cotton", "Polyester", "Silk", "Denim","Wool", "Linen", "Corduroy","Rayon", "Nylon", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Fleece", "Chiffon", "Satin", "Velvet", "Organza"]%>
           </span>
         </div>
       </div>
@@ -117,7 +117,7 @@
 <div>
 <label class="label">Description</label>
 <div class="control">
-<%= form.text_area :body, class:"textarea",placeholder:"Description" %>
+<%= form.rich_text_area :body, class:"textarea",placeholder:"Description" %>
 </div>
 </div>
 

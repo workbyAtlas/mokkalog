@@ -4,7 +4,7 @@
   <% if post.image3.attached?%>
     <div class="subtitle is-6 center mt-2">Image Preview</div>
     <div class="mt-2">
-    <%= image_tag post.image_sq_small(post.image3), data: { previews_target: 'preview' }, style:"width:100px; height:auto;"%>
+    <%= image_tag post.img_sq_small(post.image3), data: { previews_target: 'preview' }, style:"width:100px; height:auto;"%>
     </div>
   <%else%>
     <div class="mt-2">

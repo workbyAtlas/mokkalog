@@ -1,6 +1,7 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[ show edit update destroy]
   before_action :authenticate_user!, except: %i[index show]
+  before_action :editing_privilage_post, only: %i[edit update]
 
   # GET /posts or /posts.json
 
@@ -119,12 +120,23 @@ class PostsController < ApplicationController
       turbo_stream.replace(private_target, partial: "likes/private_button", locals:{post: @post, like_status: current_user.liked?(@post)})
     end
 
+    def editing_privilage_post
+      return if current_user.editor?
+      return if current_user.mod?
+      return if current_user.admin?
+      return if current_user == @post.user
+      return if current_user == @post.brand.user
+      redirect_to root_path
+    end
+
     def create_or_delete_posts_tags(post, tags)
       post.taggables.destroy_all
       #tags = tags.strip.split(',')
-      tags.each do |tag|
-        tagged =tag.downcase
-        post.tags << Tag.find_or_create_by(name: tagged)
+      if not tags.nil?
+        tags.each do |tag|
+          tagged =tag.downcase
+          post.tags << Tag.find_or_create_by(name: tagged)
+        end
       end
     end
   

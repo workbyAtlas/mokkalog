@@ -1,6 +1,7 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[index show]
+  before_action :editing_privilage_brand, only: %i[edit update]
 
   # GET /brands or /brands.json
   def index
@@ -26,6 +27,8 @@ class BrandsController < ApplicationController
 
   # GET /brands/1/edit
   def edit
+
+    
   end
 
   # POST /brands or /brands.json
@@ -34,6 +37,7 @@ class BrandsController < ApplicationController
     @brand = Brand.new(brand_params)
     @brand.brand_text = "black"
     @brand.user = current_user
+
 
 
     respond_to do |format|
@@ -51,6 +55,7 @@ class BrandsController < ApplicationController
   def update
     respond_to do |format|
       if @brand.update(brand_params)
+        @brand.last_edited = current_user.username
         format.html { redirect_to brand_url(@brand), notice: "Brand was successfully updated." }
         format.json { render :show, status: :ok, location: @brand }
       else
@@ -73,7 +78,13 @@ class BrandsController < ApplicationController
     def set_brand
       @brand = Brand.find(params[:id])
     end
-
+    def editing_privilage_brand
+      return if current_user.editor?
+      return if current_user.mod?
+      return if current_user.admin?
+      return if current_user == @brand.user
+      redirect_to root_path
+    end
     # Only allow a list of trusted parameters through.
     def brand_params
       params.require(:brand).permit(:name, :image, :user_id, :body, :views, :link, :banner,

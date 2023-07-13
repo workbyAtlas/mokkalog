@@ -1,5 +1,9 @@
 class Brand < ApplicationRecord
-  validates :name, uniqueness: true, presence: true, length:{ maximum: 20}
+  validates :name, uniqueness: true, presence: true, length:{ maximum: 25}
+  #validate :unique_name_case_insensitive
+  validates :body, length: {maximum: 6000}, allow_blank: true
+  validates :header, length: {maximum:2000}, allow_blank: true
+  validates :brand_text, length: {maximum:20}, allow_blank: true
 
   validate :check_for_image
   validate :check_for_banner
@@ -8,15 +12,13 @@ class Brand < ApplicationRecord
 
 
 	has_many :posts
- 
-
-
 
   has_one_attached :image
   has_one_attached :banner
   has_one_attached :gallery1
   has_one_attached :gallery2
   has_one_attached :gallery3
+  has_rich_text :body
   belongs_to :user
 
   def self.ransackable_attributes(auth_object = nil)
@@ -44,7 +46,6 @@ class Brand < ApplicationRecord
 
   private
 
-
   def check_for_image()
       if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/webp])
         errors.add(:image, "The file must be, JPEG, PNG, or WEBP")
@@ -54,6 +55,15 @@ class Brand < ApplicationRecord
       if banner.attached? && !banner.content_type.in?(%w[image/jpeg image/png image/webp])
         errors.add(:banner, "The file must be, JPEG, PNG, or WEBP")
       end
+  end
+
+  validate :unique_name_case_insensitive
+
+  def unique_name_case_insensitive
+    if Brand.exists?(name: name.downcase)
+      return
+      errors.add(:name, "has already been taken")
+    end
   end
 
 end

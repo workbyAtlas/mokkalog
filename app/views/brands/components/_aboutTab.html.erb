@@ -14,5 +14,5 @@
     <% if not @brand.ig_link.blank?%>
     <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs"><i class="fa-brands fa-instagram"></i></span></strong><%=link_to @brand.ig_link, @brand.ig_link, class:"s-link", target:"_blank"%></div>
     <%end%>
-    <div class="rw50 m-4"><%=@brand.body%></div>
+    <div class="rw50 m-4 content"><%=@brand.body%></div>
 </section>

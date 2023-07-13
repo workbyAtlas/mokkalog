@@ -32,7 +32,7 @@
         </div>
         <%# DEV BOX------------------------------------------%>
 
-<%if current_user == @post.user or @auth_e == "editor"%>
+<%if current_user == @post.user or @auth_e == "editor" or current_user == @post.brand.user%>
         <div class=" flexed-c mt-4 bpb">
           <div class="mx-1 mb-4 button bs">ID: <%=@post.id%></div>
           <div class="mx-1 mb-4 button p-btn bs"><%= pluralize(@post.views,"view")%></div>

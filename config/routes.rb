@@ -32,6 +32,8 @@ Rails.application.routes.draw do
   
   get 'about'  => 'pages#about'
   get 'adroom' => 'pages#admin_room'
+  get 'faq' => 'pages#faq'
+  
   get 'advsearch' => 'search#advsearch'
   post '/search', to: "search#search"
 

@@ -6,6 +6,7 @@ class PagesController < ApplicationController
     #@posts_hot = Post.order(created_at: :asc).limit(4)
     @posts_hot = Post.order(views: :desc).limit(4)
     @posts_latest = Post.order(created_at: :desc).limit(4)
+    @posts_choice = Post.where(id: [13, 19, 25, 7])
 
 
   end

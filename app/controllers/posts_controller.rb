@@ -20,9 +20,6 @@ class PostsController < ApplicationController
     @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
     #@posts =@posts.(distinct: true)
     @user_gid = current_user.to_gid_param if current_user
-
-
-
   end
 
   # GET /posts/1 or /posts/1.json

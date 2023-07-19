@@ -1,0 +1,16 @@
+<div>
+<div class="title is-2">Links</div>
+<div class="subtitle is-4">Is your product in multiple locations? If yes then please put them here.(At the moment only Grailed works)</div>
+<label class="label">Grailed Link</label>
+<%= form.text_field :grailed, class:"input",placeholder:"link to this clothing" %>
+</div>
+
+<%if @auth%>
+<div>
+<label class="label">Amazon Link</label>
+<%= form.text_field :amazon_link, class:"input",placeholder:"text input" %>
+</div>
+
+<label class="label">StockX </label>
+<input class="input is-success" type="text" placeholder="Coming Soon">
+<%end%>

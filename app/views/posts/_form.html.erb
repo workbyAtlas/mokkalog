@@ -17,153 +17,36 @@
   <% end %>
 
   <%#<div data-controller='dynamic-select'>%>
+<section data-controller="tab" class= "mx-auto rw70">
 
-<section class ="section">
-<div class="container rw70">
-<div class="notification">
-  <div class="columns">
-    <div class="column">
-      <div class="subtitle is-5 has-text-grey">Clothing Upload</div>
-      <div class="center">
-      <%= render "image_preview", form: form, post: post %>
-      </div>
-    </div>
-    <div class="column">
-
-      <div>
-        <label class="label">Name</label>
-        <%= form.text_field :title, class:"input" %>
-      </div>
-      <div>
-        <label class="label">Brand</label>
-        <div class="is-size-7" style="color:red;">*You need to create a Brand before, selecting it. <%=link_to "Create a brand", new_brand_path, class:"s-link"%></div>
-        <span class="select">
-        <%= form.collection_select :brand_id, Brand.order(:name), :id, :name, prompt: "Select a brand", style:"width:100%;" %>
-        </span>
-      </div>
-      <hr class="bst"/>
-
-        <div class="rw50">
-          <label class="label">Price</label>
-          <%= form.number_field :price, class:"input",placeholder:"#N/A" %>
-        </div>
-<div class="is-size-7 mb-1">If your clothing isn't for sale, please indicate below. Select "Archived" if the clothing is archived or out of stock. Select "Project" if the clothing was made for a portfolio or a project.</div>
-<div class="control">
-<%= form.radio_button :archive, "archived", checked: (post.archive == "archived"), class:"radio"%>
-<%= label_tag :archive_archived, "Archived", class:"radio" %>
-
-<%= form.radio_button :archive, "project", checked: (post.archive == "project"), class:"radio" %>
-<%= label_tag :archive_project, "Project", class:"radio" %>
+<div class="tabs is-boxed mb-0">
+  <ul>
+    <li class="is-active" data-tab-target="btn1" data-action="click->tab#openTab1">
+      <a>
+        <span class="icon is-small"><i class="fa-solid fa-shirt" style="#654321;"></i></span>
+        <span>Main</span>
+      </a>
+    </li>
+    <li data-tab-target="btn2" data-action="click->tab#openTab2">
+      <a>
+        <span class="icon is-small"><i class="fas fa-link" aria-hidden="true"></i></span>
+        <span>Links</span>
+      </a>
+    </li>
+    <li data-tab-target="btn3" data-action="click->tab#openTab3">
+      <a>
+        <span class="icon is-small"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
+        <span>Detail</span>
+      </a>
+    </li>
+  </ul>
 </div>
-  </div>
-  </div>
-<div>
-<label class="label">Link</label>
-<%= form.text_field :web_link, class:"input",placeholder:"link to this clothing" %>
-</div>
-
+<div class="post-form-box p-3 mt-0">
+  <span data-tab-target="tab1"><%= render "posts/components/form_main", form: form, post: post%></span>
+  <span data-tab-target="tab2" class="d-none"><%= render "posts/components/form_link", form: form, post: post%></span>
+  <span data-tab-target="tab3" class="d-none"><%= render "posts/components/form_detail", form: form, post: post%></span>
 <hr class="bst"/>
-
-<div>
-<label class="label">Tags</label>
-
-<label class="label has-text-grey">Seperate each tag by using ,(Example: nyc, concert,)</label>
-<%#= form.text_field :tags, value: post.tags.map(&:name).join(","), class:"input" %>
-<div class="flexed-w">
-<% Tag.pluck(:name).each do |tag_name| %>
-<div class=" m-4">
-  <%= check_box_tag "post[tags][]", tag_name, post.tags.map(&:name).include?(tag_name), class:"checkbox"%>
-  <%= tag_name %><br>
-</div>
-<% end %>
-</div>
-</div>
-
-<hr class="bst"/>
-<div class="subtitle is-5 has-text-grey">Additional Image Uploads</div>
-<div class="center">
-<%= render "posts/components/image1", form: form, post: post%>
-<%= render "posts/components/image2", form: form, post: post%>
-<%= render "posts/components/image3", form: form, post: post%>
-</div>
-<div>
-<label class="label">Grailed Link</label>
-<%= form.text_field :grailed, class:"input",placeholder:"link to this clothing" %>
-</div>
-
-<%if @auth%>
-<div>
-<label class="label">Amazon Link</label>
-<%= form.text_field :amazon_link, class:"input",placeholder:"text input" %>
-</div>
-<%end%>
-<hr class="bst" />
-<div class="subtitle is-5 has-text-grey mb-1">Details</div>
-
-
-<div>
-<label class="label">Type:</label>
-<%= form.radio_button :c_type, "neutral", checked: (post.c_type == "neutral"), class: "radio" %>
-<%= label_tag :c_type_neutral, "Neutral" %>
-
-<%= form.radio_button :c_type, "men", checked: (post.c_type == "men"), class: "radio" %>
-<%= label_tag :c_type_men, "Men" %>
-
-<%= form.radio_button :c_type, "women", checked: (post.c_type == "women"), class: "radio" %>
-<%= label_tag :c_type_women, "Women" %>
-
-</div>
-<br/>
-      <div class="columns">
-        <div class="column">
-          <label class="label">Category</label>
-          <span class="select">
-          <%= form.select :category, ['', 'T-Shirt', "Shirt", 'Long Pants', 'Shorts', 'Sweater', 'Headwear', 'Skirt', 'Overall', 'Suit','Shoes','Shorts','Outerwear', 'Socks','Accessories']%>
-          </span>
-        </div>
-
-        <div class="column">
-          <label class="label">Sub Category</label>
-          <span class="select">
-          <%= form.select :sub_category, ["Coming Soon"]%>
-          </span>
-        </div>
-  
-      </div>
-
-      <div class="columns">
-        <div class="column">
-          <label class="label">Color</label>
-          <span class="select">
-            <%= form.select :color, ['', 'White', 'Black', 'Blue', 'Red', 'Yellow', 'Green', 'Orange', 'Brown','Purple', 'Navy', 'Olive', 'Tan','Grey']%>
-          </span>
-        </div>
-        <div class="column">
-          <label class="label">Materials</label>
-          <span class="select">
-          <%= form.select :material, ["","Cotton", "Polyester", "Silk", "Denim","Wool", "Linen", "Corduroy","Rayon", "Nylon", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Fleece", "Chiffon", "Satin", "Velvet", "Organza"]%>
-          </span>
-        </div>
-      </div>
-
-<hr class="bst" />
-
-
-<div>
-<label class="label">Description</label>
-<div>
-<%= form.rich_text_area :body, style:"background-color:white;",placeholder:"Description" %>
-</div>
-</div>
-
-<%# form.hidden_field :user_id, value: current_user.id %>
-
-<hr class="border-purp-top" />
-<div><%= form.submit "Create", class:"button is-warning"%></div>
-</div>
-
-</div>
+<div class="mt-4"><%= form.submit "Create", class:"button is-warning"%></div>
 </div>
 </section>
-
 <% end %>

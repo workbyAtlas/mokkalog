@@ -48,6 +48,7 @@ Rails.application.routes.draw do
     collection do
       post :check  
     end
+
     resources :comments, only: :create
     #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
     #get "visit"

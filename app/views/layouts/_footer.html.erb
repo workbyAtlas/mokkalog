@@ -1,8 +1,16 @@
-<footer class="footer mt-0">
+<footer class="footer lgrey mt-0">
 	<hr class="bst"/>
-	<div class="flexed">
-		<i class="fa-brands fa-discord fa-lg"></i>
-		<i class="fa-brands fa-instagram fa-lg"></i>
-		<i class="fa-solid fa-question fa-lg"></i>
+	<div class="columns">
+		<div class="column flexed">
+		<div><%=link_to "Contact Us", contact_path, class:"s-link"%></div>
+		</div>
+
+		<div class="column" style="text-align:center;">Mokka Group @ 2023</div>
+
+		<div class="column">
+		<i class="fa-brands fa-discord fa-xl " style="float:right;color:#654321;"></i>
+		<a href="https://instagram.com/mokkalog" target="_blank">
+		<i class="fa-brands fa-instagram fa-xl mx-4" style="float:right;color:#654321;"></i></a>
+		</div>
 	</div>
 </footer>

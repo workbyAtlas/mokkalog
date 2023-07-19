@@ -1,5 +1,5 @@
 import { Application } from "@hotwired/stimulus"
-//import 'swiper/swiper-bundle.min.css'
+
 
 
 const application = Application.start()
@@ -8,4 +8,7 @@ const application = Application.start()
 application.debug = false
 window.Stimulus   = application
 
+
+
 export { application }
+

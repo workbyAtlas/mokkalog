@@ -24,7 +24,7 @@
 <div>
   <%= link_to "Edit", edit_blog_path(@blog) %> |
   <%= link_to "Back", blogs_path %>
-  <%= button_to "Delete", @blog, method: :delete %>
+  <%= button_to "Destroy", @blog, method: :delete,data: { turbo_confirm: "Are you sure?" }, class:"button is-danger" %></div>   
 </div>
 </div>
 

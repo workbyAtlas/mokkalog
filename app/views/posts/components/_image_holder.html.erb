@@ -1,37 +1,41 @@
-<div class="column bpx center">
+<div data-controller="post" class="column bpx center">
 <div class="image-flex">
 <div class="image-small-container">
 
-    <%if true == false#@post.image.attached?%>
-    <div class="bs m-2 image-small image-select" data-action="click->post#showImage">
+    <%if @post.image.attached?%>
+    <div class="bs m-2 image-small image-select" data-post-target="image" data-action="click->post#showImage">
         <%=image_tag(@post.img_sq_small(@post.image))%>        
     </div>
     <%end%>
 
     <%if @post.image1.attached?%>
-    <div class="bs m-2 image-small" data-post-target="image2" data-action="click->post#showImage2">
-        <%=link_to (image_tag(@post.img_sq_small(@post.image1))), @post.image1%>        
+    <div class="bs m-2 image-small" data-post-target="image1" data-action="click->post#showImage1">
+      <%= image_tag(@post.img_sq_small(@post.image1)) %>        
     </div>
     <%end%>
 
     <%if @post.image2.attached?%>
-    <div class="bs m-2 image-small">
-        <%=link_to (image_tag(@post.img_sq_small(@post.image2))), @post.image2%>        
+    <div class="bs m-2 image-small" data-post-target="image2" data-action="click->post#showImage2">
+        <%=image_tag(@post.img_sq_small(@post.image2))%>        
     </div>
+
+
     <%end%>
 
     <%if @post.image3.attached?%>
-    <div class="bs m-2 image-small">
-        <%=link_to (image_tag(@post.img_sq_small(@post.image3))), @post.image3%>        
+    <div class="bs m-2 image-small" data-post-target="image3" data-action="click->post#showImage3">
+        <%= image_tag(@post.img_sq_small(@post.image3))%>        
     </div>
     <%end%>
 
 </div>
 <div class="image-big-container">
-<% if @post.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
-<div data-post-target="imageShow">
-<%=image_tag (@post.image_as_profile), class:"bp p-3"%>
-</div>
+<% if @post.image.attached? %>
+<!-- This is the equivalent HTML <img> tag with data attributes for Stimulus -->
+<%=image_tag (@post.image_as_profile), class:"bp p-3", data:{post_target: "imageMain"}%>
+<%=image_tag (@post.img_sq_big(@post.image1)), class:"bp p-3 d-none", data:{post_target: "imageMain1"}%>
+<%=image_tag (@post.img_sq_big(@post.image2)), class:"bp p-3 d-none", data:{post_target: "imageMain2"}%>
+<%=image_tag (@post.img_sq_big(@post.image3)), class:"bp p-3 d-none", data:{post_target: "imageMain3"}%>
 <% else %>  
 <%= image_tag ("download.jpg"), class: "immmg"  %>
 <% end %>

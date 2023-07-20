@@ -51,7 +51,7 @@
     font: inherit;
     color: inherit;
     cursor: pointer;
-    text-decoration: underline;
+    text-decoration: none;
     /* Additional styles to match <p> element */
     display: inline;
   }
@@ -137,16 +137,10 @@
 /*INDEX ROOT*/
 .mobile-collapse{}
 .root_search{width:30%;}
-.carousel-lbtn{position:absolute;top:50%; left:3%;}
-.carousel-rbtn{position:absolute;top:50%; right:3%;}
+.carousel-lbtn{position:absolute;top:45%; left:3%;}
+.carousel-rbtn{position:absolute;top:45%; right:3%;}
 
-.slide {
-  display: none;
-}
 
-.slide[data-active] {
-  display: block;
-  }
 
 
 /*HOTWIRE*/
@@ -268,7 +262,7 @@
     .d-block-mobile{display:block;}
     .root_search{width:95%;}
     .mobile-collapse{width:95%; margin:auto;display: flex;justify-content: center;align-items: center;}
-    .post-card{width:200px;}
+    .post-card{width:180px;}
     .rw60,.rw70,.rw80,.rw90{width:90%;}
     .rw30, .rw50{width:98%;}
     .comment-date{font-size:8px;}

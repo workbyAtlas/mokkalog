@@ -15,7 +15,6 @@ class ApplicationRecord < ActiveRecord::Base
   def img_sq_small(image)
     return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
     image.variant(resize_to_fill: [100,100]).processed
-    
   end
 
   def img_sq_normal(image)
@@ -29,4 +28,16 @@ class ApplicationRecord < ActiveRecord::Base
     image.variant(resize_to_fill: [400,400]).processed
   end
 
+
+  def image_handler(image,size)
+    if size == "small"
+      image.variant(resize_to_fill: [100,100]).processed
+    elsif size == "normal"
+      image.variant(resize_to_fill: [200,200]).processed
+    elsif size == "big"
+      image.variant(resize_to_fill: [400,400]).processed
+    end
+      
+
+  end
 end

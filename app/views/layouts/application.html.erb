@@ -14,11 +14,13 @@
   </head>
 
   <body>
-    <div style="max-width:1400px; min-height:1200px;margin:auto;">
+    <div style="max-width:1400px;margin:auto;">
     <%= render "layouts/nav"   %>
     <%= render "layouts/alert" %>
+    <div style="min-height:700px;">
     <% turbo_frame_tag "modal" %>
     <%= yield %>
+    </div>
     <%= render "layouts/footer"%>
     </div>
     <script>

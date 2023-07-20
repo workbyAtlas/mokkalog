@@ -1,0 +1,47 @@
+<div class="title is-4 my-2">Editor's Choice</div>
+<section class="bp relative" data-controller="slider" data-slider-index-value="0">
+  <button data-action="slider#previous" class="button-like-text carousel-lbtn">
+  	<i class="fa-solid fa-arrow-left"></i>
+  </button>
+  <button data-action="slider#next" class="button-like-text carousel-rbtn">
+  	<i class="fa-solid fa-arrow-right"></i>
+  </button>
+
+<span class="center">
+  <div data-slider-target="slide">
+	  <div class="title is-6 my-2">Innovative 💡</div>
+		<span class="flexed-wc">
+		<% @posts_hot.take(4).each do |post| %>
+		<div class=""><%= render post %></div>
+		<% end %>
+		</span>
+  </div>
+
+  <div data-slider-target="slide">
+  	<div class="title is-6 my-2">Sustainable ♻️</div>
+  	<span class="flexed-wc">
+    <% @posts_hot[4..7].each do |post| %>
+     <div class=""><%= render post %></div>
+    <% end %>
+	</span>
+  </div>
+
+  <div data-slider-target="slide">
+	  <div class="title is-6 my-2">Artistic 🎨</div>
+		<span class="flexed-wc">
+		<% @posts_hot[8..11].each do |post| %>
+		<div class=""><%= render post %></div>
+		<% end %>
+		</span>
+  </div>
+
+  <div data-slider-target="slide">
+	  <div class="title is-6 my-2">Culture 🏛️</div>
+		<span class="flexed-wc">
+		<% @posts_hot[12..15].each do |post| %>
+		<div class=""><%= render post %></div>
+		<% end %>
+		</span>
+	  </div>
+	 </span>
+</section>

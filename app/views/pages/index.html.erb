@@ -19,36 +19,17 @@
 </section>
 
 
-    <%= render 'posts/components/searchbar_for_root'%>
-
-
-
+<%= render 'posts/components/searchbar_for_root'%>
 
 
 <section class="section lgrey">
 
-<div class="title is-4 my-2">Editor's Choice</div>
-<section class="bp flexed-wc">
-  <% @posts_choice.each do |post| %>
-      <div class=""><%= render post %></div>
-  <% end %>
-</section>
 
-
-<div class="title is-4 my-2">Trending</div>
-
-<section class="bp flexed-wc">
-  <% @posts_hot.each do |post| %>
-      <div class=""><%= render post %></div>
-  <% end %>
-</section>
-
-<div class="title is-4 my-2">Recently Added</div>
-<section class="bp flexed-wc">
-  <% @posts_latest.each do |post| %>
-      <div class=""><%= render post %></div>
-  <% end %>
-</section>
+<%= render "pages/components/editor"%>
+<br />
+<%= render "pages/components/trending"%>
+<br />
+<%= render "pages/components/recent"%>
 
 
 

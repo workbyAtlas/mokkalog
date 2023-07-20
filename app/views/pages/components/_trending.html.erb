@@ -10,7 +10,7 @@
 <span class="center">
   <div data-slider-target="slide">
 	<span class="flexed-wc">
-	<% @posts_choice.take(4).each do |post| %>
+	<% @posts_hot.take(4).each do |post| %>
 	<div class=""><%= render post %></div>
 	<% end %>
 	</span>
@@ -18,7 +18,7 @@
 
   <div data-slider-target="slide">
   	<span class="flexed-wc">
-    <% @posts_choice[4..7].each do |post| %>
+    <% @posts_hot[4..7].each do |post| %>
      <div class=""><%= render post %></div>
     <% end %>
 	</span>
@@ -26,7 +26,7 @@
 
   <div data-slider-target="slide">
 	<span class="flexed-wc">
-	<% @posts_choice[8..11].each do |post| %>
+	<% @posts_hot[8..11].each do |post| %>
 	<div class=""><%= render post %></div>
 	<% end %>
 	</span>
@@ -34,7 +34,7 @@
 
   <div data-slider-target="slide">
 	<span class="flexed-wc">
-	<% @posts_choice[12..15].each do |post| %>
+	<% @posts_hot[12..15].each do |post| %>
 	<div class=""><%= render post %></div>
 	<% end %>
 	</span>

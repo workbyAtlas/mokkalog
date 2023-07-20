@@ -11,7 +11,7 @@
   <div data-slider-target="slide">
 	  <div class="title is-6 my-2">Innovative 💡</div>
 		<span class="flexed-wc">
-		<% @posts_hot.take(4).each do |post| %>
+    <% @posts_innovative.each do |post| %>
 		<div class=""><%= render post %></div>
 		<% end %>
 		</span>
@@ -20,7 +20,7 @@
   <div data-slider-target="slide">
   	<div class="title is-6 my-2">Sustainable ♻️</div>
   	<span class="flexed-wc">
-    <% @posts_hot[4..7].each do |post| %>
+    <% @posts_sustain.each do |post| %>
      <div class=""><%= render post %></div>
     <% end %>
 	</span>
@@ -29,7 +29,7 @@
   <div data-slider-target="slide">
 	  <div class="title is-6 my-2">Artistic 🎨</div>
 		<span class="flexed-wc">
-		<% @posts_hot[8..11].each do |post| %>
+		<% @posts_art.each do |post| %>
 		<div class=""><%= render post %></div>
 		<% end %>
 		</span>
@@ -38,7 +38,7 @@
   <div data-slider-target="slide">
 	  <div class="title is-6 my-2">Culture 🏛️</div>
 		<span class="flexed-wc">
-		<% @posts_hot[12..15].each do |post| %>
+		<% @posts_culture.each do |post| %>
 		<div class=""><%= render post %></div>
 		<% end %>
 		</span>

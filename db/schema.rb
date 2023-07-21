@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_12_230220) do
+ActiveRecord::Schema[7.0].define(version: 2023_07_21_011312) do
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -73,6 +73,9 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_12_230220) do
     t.text "header"
     t.string "ig_link"
     t.string "last_edited"
+    t.string "style"
+    t.string "verification"
+    t.string "location"
     t.index ["user_id"], name: "index_brands_on_user_id"
   end
 

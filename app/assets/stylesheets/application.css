@@ -129,6 +129,7 @@
 .post-card{width:250px;}
 .brand-link{color:black;font-weight:400;}
 .immg {width:200px;height:200px;}
+.postimg {width:200px;height:300px;}
 .immmg{width:400px;height:400px;}
 .image-flex{display:flex;}
 .img-small-container{flex:1;}
@@ -262,7 +263,7 @@
     .d-block-mobile{display:block;}
     .root_search{width:95%;}
     .mobile-collapse{width:95%; margin:auto;display: flex;justify-content: center;align-items: center;}
-    .post-card{width:180px;}
+    .post-card{width:150px;}
     .rw60,.rw70,.rw80,.rw90{width:90%;}
     .rw30, .rw50{width:98%;}
     .comment-date{font-size:8px;}

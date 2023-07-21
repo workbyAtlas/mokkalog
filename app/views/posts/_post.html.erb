@@ -1,20 +1,24 @@
 
 <div class="post-card m-2">
-  <% if post.image.attached?%>
-    <div class="center"><%=link_to (image_tag (post.img_sq_normal(post.image))), post %></div>
-  <% else %>
-    <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
-  <% end %>
+
+  
+<div class="center">
+  <%=link_to (image_tag (post.image_post)), post if post.image.attached?%>
+  <%if not post.image.attached?%>
+  <%=image_tag "download.jpg", class:"postimg"%> 
+  <%end%>   
+</div>
+
+
+
 
   <div class="title is-5" style="margin: 0;"><strong><%=link_to post.title, post, class:"secondary-t"%></strong></div>
   
-    <div><i>
-        <span class="brand-link"><%= post.branded%></span>
-    </i></div>
+  <div><i><span class="brand-link"><%= post.branded%></span></i></div>
 
 
 
-  <div><i><%#= post.brand %></i></div>
+ 
   <%if post.archive == "archived"%>
   <div class="tag" style="border: 2px solid #c88595; color:#c88595; font-weight:bold;">archived</div>
   <%elsif post.archive == "project"%>

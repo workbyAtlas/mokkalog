@@ -54,6 +54,10 @@ class Post < ApplicationRecord
 		#image.variant(resize_to_fill: [200,200]).processed
 	#end
 
+	def image_post
+		image.variant(resize_to_fill: [350,400]).processed
+	end
+
 	def image_as_profile
 		return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
 		image.variant(resize_to_fill: [400,400]).processed

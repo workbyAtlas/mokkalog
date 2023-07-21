@@ -57,44 +57,46 @@
 <div class="columns">
   <div class="column">
     <label class="label">Color</label>
-    <div class="select">
-    <%= form.select :color  do %>
-      <option value=""></option>
-      <option value="White"><i class="fa-solid fa-droplet"></i>White</option>
-      <option value="Black">Black</option>
-      <option value="Blue">Blue</option>
-      <option value="Red">Red</option>
-      <option value="Yellow">Yellow</option>
-      <option value="Green">Green</option>
-      <option value="Orange">Orange</option>
-      <option value="Brown">Brown</option>
-      <option value="Purple">Purple</option>
-      <option value="Navy">Navy</option>
-      <option value="Olive">Olive</option>
-      <option value="Tan">Tan</option>
-      <option value="Grey">Grey</option>
-    <% end %>
+    <%= form.select :color, ['','White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Tan','Brown','Grey'],{},{multiple: true, data: {controller: "slim"}}%>
     </div>
-  </div>
+
+
   <div class="column">
-    <label class="label">Type</label>
-    <span class="select">
-    <%= form.select :c_type, ["neutral", "men","women"], class: "select" %>
-  </span>
+    <label class="label">Materials</label>
+    <%= form.select :material, ["Cotton", "Polyester", "Nylon", "Silk", "Rayon", "Denim", "Wool", "Linen", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Chiffon", "Satin", "Velvet", "Fleece", "Organza", "Heavy Cotton", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Spider Silk", "Abaca", "Alpaca", "Apilon", "Apple Leather", "Bamboo", "Banana Silk", "Bioplastic", "Hemp", "Flax", "Mylo", "Orange Fiber", "Evernu", "Heavy Cotton"],{},{data: {controller: "slim"}}%>
   </div>
+
 </div>
 
 
 <div class="columns">
   <div class="column">
     <label class="label">Category</label>
-    <%= form.select :category, ['', 'T-Shirt', "Shirt", 'Long Pants', 'Shorts', 'Sweater', 'Headwear', 'Skirt', 'Overall', 'Suit','Shoes','Shorts','Outerwear', 'Socks','Accessories'],{},{data: {controller: "slim"}}%>
+<%= form.select :category, ['','T-shirt','Shirt' ,'Top', 'Long Pants', 'Shorts', 'Sweater', 'Headwear', 'Overall','Dress', 'Suit', 'Shoes', 'Swimwear', 'Outerwear', 'Socks', 'Accessories'], {}, { id: 'selectElement', data: { controller: 'slim-d' } } %>
   </div>
+
   <div class="column">
-    <label class="label">Materials</label>
-    <%= form.select :material, ["","Cotton", "Polyester", "Silk", "Denim","Wool", "Linen", "Corduroy","Rayon", "Nylon", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Fleece", "Chiffon", "Satin", "Velvet", "Organza"],{},{data: {controller: "slim"}}%>
+    <label class="label">Subcategory</label>
+<%= form.select :sub_category,
+                [
+                  ["T-shirt", ["Blank","Graphic","Heavy",""]],
+                  ["Shirt", ["Formal","Casual","Beach"]],
+                  ["Top(Neutral)", ["T-Shirt","Long Sleeve","Shirt","Tank Top","Vest","Blazer","Cardigan","Polo","Henley","Turtleneck"]],
+                  ["Top(Feminine)", ["Crop Top","Strapless","Camisole","Blouse","Smock","Peplum","Sailor","Sports Bra"]],
+
+                  ["Pants", [""]],
+                  ["Shorts", [""]],
+                  ["Sweater", [""]],
+                  ["Overall", [""]],
+                  ["Dress", [""]],
+                  ["Pants", [""]],
+                  # Add more groups and sub-categories here...
+                ],
+                {},
+                { data: { controller: "slim-d" } }%>
   </div>
 </div>
+
 
 
 

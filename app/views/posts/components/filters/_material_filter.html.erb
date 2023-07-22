@@ -1,0 +1,9 @@
+  <div class="my-0 title is-5">Material</div>
+  <div class="flexed-wc bs">
+    <% ['White', 'Black', 'Blue', 'Red', 'Yellow', 'Green', 'Orange', 'Purple', 'Navy', 'Olive', 'Beige', 'Tan', 'Brown', 'Grey','Multi'].each do |color| %>
+      <div class="m-1" style="width:25%;">
+        <%= f.check_box :color_eq_any, { multiple: true }, color %>
+        <label><%=color%></label>
+      </div>
+    <% end %>
+  </div>

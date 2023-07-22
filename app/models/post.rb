@@ -9,7 +9,7 @@ class Post < ApplicationRecord
   validates :grailed, format: { with: /\Ahttps?:\/\//, message: 'should start with http:// or https://' }, allow_blank: true
 
 	validate :check_for_image
-	#validates :image, presence: true
+	validates :image, presence: true
 
 	validate :clean_word
 
@@ -37,7 +37,7 @@ class Post < ApplicationRecord
 	belongs_to :user
 	#before_save :downcase_fields
 
-
+  
 
 
 	#validate :image, :image_validation

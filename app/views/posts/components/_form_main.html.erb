@@ -15,7 +15,7 @@
         <label class="label">Brand</label>
         <div class="is-size-7" style="color:red;">*You need to create a Brand before, selecting it. <%=link_to "Create a brand", new_brand_path, class:"s-link"%></div>
         <div>
-        <%=form.select :brand_id, Brand.pluck(:name, :id), {}, {data: {controller: 'slim'}}%>
+<%= form.select :brand_id, Brand.order(:id).pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
       </div>
       </div>
       <hr class="bst"/>
@@ -57,13 +57,15 @@
 <div class="columns">
   <div class="column">
     <label class="label">Color</label>
-    <%= form.select :color, ['','White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Tan','Brown','Grey'],{},{multiple: true, data: {controller: "slim"}}%>
+    <%= form.select :color, ['','White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Tan','Brown','Grey', 'Multi'],{},{data: {controller: "slim"}}%>
+
+
     </div>
 
 
   <div class="column">
     <label class="label">Materials</label>
-    <%= form.select :material, ["Cotton", "Polyester", "Nylon", "Silk", "Rayon", "Denim", "Wool", "Linen", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Chiffon", "Satin", "Velvet", "Fleece", "Organza", "Heavy Cotton", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Spider Silk", "Abaca", "Alpaca", "Apilon", "Apple Leather", "Bamboo", "Banana Silk", "Bioplastic", "Hemp", "Flax", "Mylo", "Orange Fiber", "Evernu", "Heavy Cotton"],{},{data: {controller: "slim"}}%>
+    <%= form.select :material, ["","Cotton", "Polyester", "Nylon", "Silk", "Rayon", "Denim", "Wool", "Linen", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Chiffon", "Satin", "Velvet", "Fleece", "Organza", "Heavy Cotton", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Spider Silk", "Abaca", "Alpaca", "Apilon", "Apple Leather", "Bamboo", "Banana Silk", "Bioplastic", "Hemp", "Flax", "Mylo", "Orange Fiber", "Evernu", "Heavy Cotton"],{},{data: {controller: "slim"}}%>
   </div>
 
 </div>

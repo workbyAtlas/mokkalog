@@ -26,6 +26,10 @@
         </div>
 <div class="is-size-7 mb-1">If your clothing isn't for sale, please indicate below. Select "Archived" if the clothing is archived or out of stock. Select "Project" if the clothing was made for a portfolio or a project.</div>
 <div class="control">
+<%= form.radio_button :archive, "normal", checked: (post.archive == "normal"), class:"radio"%>
+<%= label_tag :archive_archived, "Normal", class:"radio" %>
+
+
 <%= form.radio_button :archive, "archived", checked: (post.archive == "archived"), class:"radio"%>
 <%= label_tag :archive_archived, "Archived", class:"radio" %>
 
@@ -43,21 +47,17 @@
 
 <hr class="bst"/>
 <label class="label">Tags</label>
-<div class="flexed-w form-line">
-<% Tag.pluck(:name).each do |tag_name| %>
-<div class=" m-4">
-  <%= check_box_tag "post[tags][]", tag_name, post.tags.map(&:name).include?(tag_name), class:"checkbox"%>
-  <%= tag_name %><br>
-</div>
-<% end %>
-</div>
+  <div>
+    <div class="has-texy-grey">Seperate each tag using comma(,) Ex.(puffer, winter)</div>
+    <%= form.text_field :tags, value: post.tags.map(&:name).join(","), class:"input" %>
+  </div>
 
 <br/>
 
 <div class="columns">
   <div class="column">
     <label class="label">Color</label>
-    <%= form.select :color, ['','White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Tan','Brown','Grey', 'Multi'],{},{data: {controller: "slim"}}%>
+    <%= form.select :color, ['undefined','White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Tan','Brown','Grey', 'Multi'],{},{data: {controller: "slim"}}%>
 
 
     </div>
@@ -65,7 +65,7 @@
 
   <div class="column">
     <label class="label">Materials</label>
-    <%= form.select :material, ["","Cotton", "Polyester", "Nylon", "Silk", "Rayon", "Denim", "Wool", "Linen", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Chiffon", "Satin", "Velvet", "Fleece", "Organza", "Heavy Cotton", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Spider Silk", "Abaca", "Alpaca", "Apilon", "Apple Leather", "Bamboo", "Banana Silk", "Bioplastic", "Hemp", "Flax", "Mylo", "Orange Fiber", "Evernu", "Heavy Cotton"],{},{data: {controller: "slim"}}%>
+    <%= form.select :material, ["undefined","Cotton", "Polyester", "Nylon", "Silk", "Rayon", "Denim", "Wool", "Linen", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Chiffon", "Satin", "Velvet", "Fleece", "Organza", "Heavy Cotton", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Spider Silk", "Abaca", "Alpaca", "Apilon", "Apple Leather", "Bamboo", "Banana Silk", "Bioplastic", "Hemp", "Flax", "Mylo", "Orange Fiber", "Evernu", "Heavy Cotton"],{},{data: {controller: "slim"}}%>
   </div>
 
 </div>
@@ -74,14 +74,14 @@
 <div class="columns">
   <div class="column">
     <label class="label">Category</label>
-<%= form.select :category, ['','T-shirt','Shirt' ,'Top', 'Long Pants', 'Shorts', 'Sweater', 'Headwear', 'Overall','Dress', 'Suit', 'Shoes', 'Swimwear', 'Outerwear', 'Socks', 'Accessories'], {}, { id: 'selectElement', data: { controller: 'slim-d' } } %>
+<%= form.select :category, ['undefined','T-shirt','Shirt' ,'Top', 'Long Pants', 'Shorts', 'Sweater', 'Headwear', 'Overall','Dress', 'Suit', 'Shoes', 'Swimwear', 'Outerwear', 'Socks', 'Accessories'], {}, { id: 'selectElement', data: { controller: 'slim-d' } } %>
   </div>
 
   <div class="column">
     <label class="label">Subcategory</label>
 <%= form.select :sub_category,
-                [
-                  ["T-shirt", ["Blank","Graphic","Heavy",""]],
+                [ ["Undefined",["","undefined"]],
+                  ["T-shirt", ["Graphic","Heavy"]],
                   ["Shirt", ["Formal","Casual","Beach"]],
                   ["Top(Neutral)", ["T-Shirt","Long Sleeve","Shirt","Tank Top","Vest","Blazer","Cardigan","Polo","Henley","Turtleneck"]],
                   ["Top(Feminine)", ["Crop Top","Strapless","Camisole","Blouse","Smock","Peplum","Sailor","Sports Bra"]],

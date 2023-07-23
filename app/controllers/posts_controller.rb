@@ -15,16 +15,12 @@ class PostsController < ApplicationController
     @query = Post.ransack(params[:q])
     @brands = Brand.all
 
-
-
-    # Filter out empty values from the params[:q] hash before performing the search
-
     #@query.build_condition_color("Red")
     @posts = @query.result(distinct: true).includes(:tags, :brand)#.post(params[:post])
-    # Initialize params[:q] as an empty hash if it's nil
 
-    @posts = @query.result(distinct: true).includes(:tags, :brand)#.post(params[:post])
+
     @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
+
 
     @user_gid = current_user.to_gid_param if current_user
     #response.headers['Refresh'] = '5' 
@@ -52,7 +48,7 @@ class PostsController < ApplicationController
 
   # POST /posts or /posts.json
   def create
-    @post = Post.new(post_params)
+    @post = Post.new(post_params.except(:tags))
     #@post = Post.new(post_params.except(:tags))
     create_or_delete_posts_tags(@post, params[:post][:tags],)
     #create_or_delete_posts_brands(@post, params[:post][:brands],)
@@ -76,7 +72,7 @@ class PostsController < ApplicationController
     @post.edited_by = current_user.username
 
     respond_to do |format|
-      if @post.update(post_params)
+      if @post.update(post_params.except(:tags))
         format.html { redirect_to post_url(@post), notice: "Post was successfully updated." }
         format.json { render :show, status: :ok, location: @post }
       else
@@ -136,12 +132,9 @@ class PostsController < ApplicationController
 
     def create_or_delete_posts_tags(post, tags)
       post.taggables.destroy_all
-      #tags = tags.strip.split(',')
-      if not tags.nil?
-        tags.each do |tag|
-          tagged =tag.downcase
-          post.tags << Tag.find_or_create_by(name: tagged)
-        end
+      tags = tags.downcase.strip.split(',')
+      tags.each do |tag|
+        post.tags << Tag.find_or_create_by(name: tag)
       end
     end
   

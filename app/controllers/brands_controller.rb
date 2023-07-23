@@ -88,6 +88,7 @@ class BrandsController < ApplicationController
     # Only allow a list of trusted parameters through.
     def brand_params
       params.require(:brand).permit(:name, :image, :user_id, :body, :views, :link, :banner,
-       :brand_color, :brand_text, :header, :last_edited, :ig_link, :gallery1,:gallery2,:gallery3)
+       :brand_color, :brand_text, :header, :last_edited, :ig_link, :gallery1,:gallery2,:gallery3,
+       :style, :verification, :location)
     end
 end

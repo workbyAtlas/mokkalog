@@ -1,3 +1,12 @@
+<div class="flexed-w form-line">
+<% Tag.pluck(:name).each do |tag_name| %>
+<div class=" m-4">
+  <%= check_box_tag "post[tags][]", tag_name, post.tags.map(&:name).include?(tag_name), class:"checkbox"%>
+  <%= tag_name %><br>
+</div>
+<% end %>
+</div>
+
 <section class="section center">
   <div class="card comment-form">
     <div class="card-content bp">

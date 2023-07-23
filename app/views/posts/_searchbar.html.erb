@@ -1,4 +1,5 @@
-<section class="section is-small prime">
+    <%= search_form_for @query, url: posts_path, html: { class: "form-inline" } do |f| %>
+<div class="section is-small prime">
   <div class="center title is-4">catalog</div>
   <br/ >
 
@@ -6,40 +7,50 @@
   <div class="center">
   <div class="relative rw50">
     <%=link_to "[advanced]", advsearch_path, class:"hide-btn secondary-t"%>
-    <%= search_form_for @query do |f| %>
+
       <div class="center my-2 title is-5">Search:</div>
-    <div class="center">
-      <%= f.search_field :title_or_material_or_category_or_tags_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
-    </div>
+      <div class="center">
+        <%= f.search_field :title_or_color_or_material_or_category_or_tags_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
+      </div>
 
-      <%= f.submit "search!", class:"button is-warning my-2 bs" %>
 
   </div>
-  </div>
-</section>
-
-<%# FILTER%>
-<section class="section lgrey">
-  <div class="columns">
-  <div class="column">
-<div class="flexed">
-  <div class="title is-4">Filters:</div>
-  <div style="margin-left:auto;">
-
-
   </div>
 </div>
 
+<%# FILTER%>
+
+<section class="lgrey">
+  <div class="columns">
+
+<div data-controller="filterbox" class="column ml-4">
+  <div class="flexed">
+    <div class="title is-4">Filters:</div>
+    <div style="margin-left:auto;">
+      <button class="button-like-text" data-action="click->filterbox#previous">
+        <i class="fa-solid fa-caret-up fa-2xl" style="color:#654321;"></i>
+      </button>
+      <button class="button-like-text" data-action="click->filterbox#next">
+        <i class="fa-solid fa-caret-down fa-2xl" style="color:#654321;"></i>
+      </button>
+
+    </div>
+  </div>
+
   <div data-filterbox-target="slide">
-  <%=render "posts/components/filters/color_filter", f: f%>
+    <%= render "posts/components/filters/color_filter",f: f %>
   </div>
-
-
-
-
-
-
+  <div data-filterbox-target="slide">
+    <%= render "posts/components/filters/material_filter",f: f %>
   </div>
+  <div data-filterbox-target="slide">
+    <%= render "posts/components/filters/category_filter",f: f %>
+  </div>
+  <div data-filterbox-target="slide">
+    <%= render "posts/components/filters/brand_filter",f: f %>
+  </div>
+  <%= f.submit "Filter", class:"button is-warning my-2 bs" %>
+</div>
 
   <div class="column">
   <div class="title is-4">Sort:</div>
@@ -52,5 +63,4 @@
   
 </div>
 </section>
-
 <% end %>

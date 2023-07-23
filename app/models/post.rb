@@ -14,6 +14,8 @@ class Post < ApplicationRecord
 	validate :clean_word
 
 
+
+
 #Associations
 	has_one_attached :image
 	has_one_attached :image1
@@ -46,7 +48,7 @@ class Post < ApplicationRecord
  	end
 
 	 def self.ransackable_associations(auth_object = nil)
-	   ["taggables", "tags"]
+	   ["taggables", "tags", "brand"]
 	 end
 
 	#def image_as_thumbnail

@@ -1,0 +1,12 @@
+  
+<div class="my-0 title is-5">Brand</div>
+<div>Work In Progress</div>
+<% if true == false%>
+<div class="flexed-wc bs">
+<% @brands.each do |brand| %>
+    <%= check_box_tag('q[brand_name_cont_any][]', brand.name) %>
+    <%= brand.name %>
+<% end %>
+</div>
+<%end%>
+    

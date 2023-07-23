@@ -12,14 +12,22 @@ class PostsController < ApplicationController
   end
 
   def index
-    #@posts = Post.all
-    @q = Post.ransack(params[:q])
     @query = Post.ransack(params[:q])
+    @brands = Brand.all
+
+
+
+    # Filter out empty values from the params[:q] hash before performing the search
+
     #@query.build_condition_color("Red")
-    @posts = @query.result(distinct: true).includes(:tags)#.post(params[:post])
+    @posts = @query.result(distinct: true).includes(:tags, :brand)#.post(params[:post])
+    # Initialize params[:q] as an empty hash if it's nil
+
+    @posts = @query.result(distinct: true).includes(:tags, :brand)#.post(params[:post])
     @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
-    #@posts =@posts.(distinct: true)
+
     @user_gid = current_user.to_gid_param if current_user
+    #response.headers['Refresh'] = '5' 
   end
 
   # GET /posts/1 or /posts/1.json

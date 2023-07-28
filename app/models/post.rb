@@ -27,6 +27,7 @@ class Post < ApplicationRecord
 	has_many :tags, through: :taggables
 
 	belongs_to :brand
+	belongs_to :category, optional: true
 
 	has_many :likeables, dependent: :destroy
 	has_many :likes, through: :likeables, source: :user
@@ -73,13 +74,21 @@ class Post < ApplicationRecord
 
 	end
 
+	#Redefining Attributes
 	def branded
 	 if brand.nil?
 	 	"#N/A"
 	 else
 	 	brand.name
 	 end
+	end
 
+	def categoryed
+		if category.nil?
+			"#N/A"
+		else
+			category.name
+		end
 	end
 
 	#i think this is deletable

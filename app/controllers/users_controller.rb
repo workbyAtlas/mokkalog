@@ -8,6 +8,7 @@ class UsersController < ApplicationController
       @user.update(views: @user.views + 1)
     end
     @posts = @user.posts.order(created_at: :desc)
+    @posts = @posts.order('created_at DESC').page(params[:page]).per(15)
   end
 
   def setting

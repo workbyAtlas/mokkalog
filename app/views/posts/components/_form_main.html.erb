@@ -74,7 +74,8 @@
 <div class="columns">
   <div class="column">
     <label class="label">Category</label>
-<%= form.select :category, ['undefined','T-shirt','Shirt' ,'Top', 'Long Pants', 'Shorts', 'Sweater', 'Headwear', 'Overall','Dress', 'Suit', 'Shoes', 'Swimwear', 'Outerwear', 'Socks', 'Accessories'], {}, { id: 'selectElement', data: { controller: 'slim-d' } } %>
+<%= form.select :category_id, Category.order(:id).pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
+
   </div>
 
   <div class="column">
@@ -95,7 +96,7 @@
                   # Add more groups and sub-categories here...
                 ],
                 {},
-                { data: { controller: "slim-d" } }%>
+                { data: { controller: "slim" } }%>
   </div>
 </div>
 

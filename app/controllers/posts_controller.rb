@@ -12,10 +12,11 @@ class PostsController < ApplicationController
   end
 
   def index
-    @query = Post.ransack(params[:q])
+ 
     @brands = Brand.all
 
     #@query.build_condition_color("Red")
+    @query = Post.ransack(params[:q])
     @posts = @query.result(distinct: true).includes(:tags, :brand)#.post(params[:post])
 
 
@@ -49,7 +50,6 @@ class PostsController < ApplicationController
   # POST /posts or /posts.json
   def create
     @post = Post.new(post_params.except(:tags))
-    #@post = Post.new(post_params.except(:tags))
     create_or_delete_posts_tags(@post, params[:post][:tags],)
     #create_or_delete_posts_brands(@post, params[:post][:brands],)
     @post.user = current_user
@@ -146,7 +146,7 @@ class PostsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :price, :color, :category, :sub_category, :web_link, :likes, :image, :tags, :brand_id, 
+      params.require(:post).permit(:title, :body, :price, :color, :category_id, :sub_category, :web_link, :likes, :image, :tags, :brand_id, 
         :name, :user_id, :c_type, :amazon_link, :material, :image1, :image2, :image3, :archive, :grailed, :brand_id)
     end
 end

@@ -1,0 +1,33 @@
+<section class="section is-small prime">
+  <div class="center title is-4">
+    <%=pluralize(2,@category.name).gsub("2","")%>    
+  </div>
+  <br/>
+  <hr class="bst" />
+  
+<div class="center">
+<div class="rw50">
+<%= search_form_for @query, url: category_path(@category.id) do |f| %>    
+    <div class="center title is-5 my-2">Search</div>
+    <%= f.search_field :title_or_color_or_brand_name_i_cont, class:"input bs", placeholder:"Search using name, brand, or color" %>
+    <%= f.submit "search!", class:"button is-warning my-2 " %>
+<% end %>
+</div>
+</div>
+
+</section>
+<div>
+  <%= link_to "Edit this category", edit_category_path(@category) %> |
+  <%= link_to "Back to categories", categories_path %>
+
+  <%= button_to "Destroy this category", @category, method: :delete %>
+</div>
+
+<div class="flexed-wc">
+<% @posts.each do |post|%>
+<%= render "posts/post", post: post%>
+<%end%>
+</div>
+
+<br/>
+<%= paginate @posts%>

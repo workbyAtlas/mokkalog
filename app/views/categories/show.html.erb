@@ -16,12 +16,14 @@
 </div>
 
 </section>
+<%if current_user == @auth%>
 <div>
   <%= link_to "Edit this category", edit_category_path(@category) %> |
   <%= link_to "Back to categories", categories_path %>
 
-  <%= button_to "Destroy this category", @category, method: :delete %>
+<div class="mx-1 mb-4"><%= button_to "Destroy", @category, method: :delete,data: { turbo_confirm: "Are you sure?" }, class:"button is-danger" %></div> 
 </div>
+<%end%>
 
 <div class="flexed-wc">
 <% @posts.each do |post|%>

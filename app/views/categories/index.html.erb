@@ -1,4 +1,4 @@
-<p style="color: green"><%= notice %></p>
+
 
 <h1>Categories</h1>
 <section class="center">
@@ -20,5 +20,6 @@
   <% end %>
 </table>
 </div>
-
+<%if current_user == @auth%>
 <%= link_to "New category", new_category_path %>
+<%end%>

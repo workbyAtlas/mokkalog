@@ -10,24 +10,28 @@
 		<div class="title is-4 secondary-t my-2">Catalog</div>
 		<div><%=link_to "View all Clothing", posts_path, class:"nav-link"%></div>
 		<br/>
+		<%=image_tag("mocha.png")%>
+		<%if true == false%>
 		<div><%=link_to "Innovative", posts_path, class:"nav-link"%></div>
 		<div><%=link_to "Sustainable", posts_path, class:"nav-link"%></div>
 		<div><%=link_to "Activewear", posts_path, class:"nav-link"%></div>
 		<div><%=link_to "Projects", posts_path, class:"nav-link"%></div>
 		<div><%=link_to "Archived", posts_path, class:"nav-link"%></div>
+		<% end%>
 	</div>
 	<div class="column">
 		<div class="title is-4 secondary-t my-2">Top</div>
-		<div><%=link_to "T-Shirts", category_path(2), class:"nav-link"%></div>
-		<div><%=link_to "Shirts", category_path(3), class:"nav-link"%></div>
-		<div><%=link_to "Long Sleeve", category_path(4), class:"nav-link"%></div>
-		<div><%=link_to "Tops", category_path(5), class:"nav-link"%></div>
-		<div><%=link_to "Tops(Female)", category_path(6), class:"nav-link"%></div>
-		<div><%=link_to "Sweater/Hoodie", category_path(7), class:"nav-link"%></div>
-		<div><%=link_to "Knitwear", category_path(8), class:"nav-link"%></div>
-		<div><%=link_to "Jackets(Light)", category_path(9), class:"nav-link"%></div>
-		<div><%=link_to "Outerwear(Winter)", category_path(10), class:"nav-link"%></div>
+		<div><%=link_to "T-Shirts", category_path(5), class:"nav-link"%></div>
+		<div><%=link_to "Shirts", category_path(6), class:"nav-link"%></div>
+		<div><%=link_to "Long Sleeve", category_path(7), class:"nav-link"%></div>
+		<div><%=link_to "Tops", category_path(8), class:"nav-link"%></div>
+		<div><%=link_to "Tops(Female)", category_path(9), class:"nav-link"%></div>
+		<div><%=link_to "Sweater/Hoodie", category_path(10), class:"nav-link"%></div>
+		<div><%=link_to "Knitwear", category_path(24), class:"nav-link"%></div>
+		<div><%=link_to "Jackets(Light)", category_path(25), class:"nav-link"%></div>
+		<div><%=link_to "Outerwear(Winter)", category_path(26), class:"nav-link"%></div>
 		<div><%=link_to "Blazers", category_path(11), class:"nav-link"%></div>
+		<div><%=link_to "Vests", category_path(27), class: "nav-link"%></div>
 	</div>
 	<div class="column">
 		<div class="title is-4 secondary-t my-2">Bottom</div>

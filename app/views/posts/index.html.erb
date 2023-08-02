@@ -14,7 +14,7 @@
 </section>
 
 <%= paginate @posts%>
-<% if current_user.role == "admin"%>
+<% if current_user == @auth%>
 <%= render 'ahoy/chart', events: @events%>
 <%end%>
 <br/>

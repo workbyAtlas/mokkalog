@@ -39,6 +39,10 @@
 .hide-btn-r{position:absolute;top:5px;left:5px;color:grey; cursor:pointer;}
 .d-none{display:none;}
 .d-inline-flex{display:inline-flex;}
+.outline{
+    color:white;
+    text-shadow: 1px 1px 2px black;
+}
 
 .relative{position:relative;}
 .abs{position: absolute;}
@@ -140,6 +144,9 @@
 .root_search{width:30%;}
 .carousel-lbtn{position:absolute;top:45%; left:3%;}
 .carousel-rbtn{position:absolute;top:45%; right:3%;}
+
+.caro-lbtn{position:absolute;top:50%; left:3%;}
+.caro-rbtn{position:absolute;top:50%; right:3%;}
 
 
 

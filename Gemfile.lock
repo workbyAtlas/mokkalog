@@ -68,6 +68,10 @@ GEM
       tzinfo (~> 2.0)
     addressable (2.8.4)
       public_suffix (>= 2.0.2, < 6.0)
+    ahoy_matey (4.2.1)
+      activesupport (>= 5.2)
+      device_detector
+      safely_block (>= 0.2.1)
     aws-eventstream (1.2.0)
     aws-partitions (1.783.0)
     aws-sdk-core (3.176.1)
@@ -98,12 +102,14 @@ GEM
       rack-test (>= 0.6.3)
       regexp_parser (>= 1.5, < 3.0)
       xpath (~> 3.2)
+    chartkick (5.0.3)
     concurrent-ruby (1.2.2)
     crass (1.0.6)
     date (3.3.3)
     debug (1.8.0)
       irb (>= 1.5.0)
       reline (>= 0.3.1)
+    device_detector (1.1.0)
     devise (4.9.2)
       bcrypt (~> 3.0)
       orm_adapter (~> 0.1)
@@ -114,6 +120,8 @@ GEM
     ffi (1.15.5)
     globalid (1.1.0)
       activesupport (>= 5.0)
+    groupdate (6.3.0)
+      activesupport (>= 6.1)
     i18n (1.13.0)
       concurrent-ruby (~> 1.0)
     image_processing (1.12.2)
@@ -224,6 +232,7 @@ GEM
     ruby-vips (2.1.4)
       ffi (~> 1.12)
     rubyzip (2.3.2)
+    safely_block (0.4.0)
     selenium-webdriver (4.9.1)
       rexml (~> 3.2, >= 3.2.5)
       rubyzip (>= 1.2.2, < 3.0)
@@ -235,7 +244,6 @@ GEM
       actionpack (>= 5.2)
       activesupport (>= 5.2)
       sprockets (>= 3.0.0)
-    sqlite3 (1.4.2)
     stimulus-rails (1.2.1)
       railties (>= 6.0.0)
     thor (1.2.2)
@@ -271,11 +279,14 @@ PLATFORMS
   x86_64-linux
 
 DEPENDENCIES
+  ahoy_matey (~> 4.2)
   aws-sdk-s3
   bootsnap
   capybara
+  chartkick (~> 5.0)
   debug
   devise
+  groupdate (~> 6.3)
   image_processing (~> 1.2)
   importmap-rails
   jbuilder
@@ -286,7 +297,6 @@ DEPENDENCIES
   ransack (~> 4.0)
   selenium-webdriver
   sprockets-rails
-  sqlite3
   stimulus-rails
   turbo-rails
   tzinfo-data

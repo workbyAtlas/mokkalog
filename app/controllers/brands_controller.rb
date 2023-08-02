@@ -3,6 +3,7 @@ class BrandsController < ApplicationController
   before_action :authenticate_user!, except: %i[index show]
   before_action :editing_privilage_brand, only: %i[edit update]
 
+
   # GET /brands or /brands.json
   def index
     @query = Brand.ransack(params[:q])

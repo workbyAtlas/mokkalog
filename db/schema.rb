@@ -10,7 +10,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_07_26_170733) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_02_012108) do
+  # These are extensions that must be enabled in order to support this database
+  enable_extension "plpgsql"
+
   create_table "action_text_rich_texts", force: :cascade do |t|
     t.string "name", null: false
     t.text "body"
@@ -49,6 +52,48 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_170733) do
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
   end
 
+  create_table "ahoy_events", force: :cascade do |t|
+    t.bigint "visit_id"
+    t.bigint "user_id"
+    t.string "name"
+    t.jsonb "properties"
+    t.datetime "time"
+    t.index ["name", "time"], name: "index_ahoy_events_on_name_and_time"
+    t.index ["properties"], name: "index_ahoy_events_on_properties", opclass: :jsonb_path_ops, using: :gin
+    t.index ["user_id"], name: "index_ahoy_events_on_user_id"
+    t.index ["visit_id"], name: "index_ahoy_events_on_visit_id"
+  end
+
+  create_table "ahoy_visits", force: :cascade do |t|
+    t.string "visit_token"
+    t.string "visitor_token"
+    t.bigint "user_id"
+    t.string "ip"
+    t.text "user_agent"
+    t.text "referrer"
+    t.string "referring_domain"
+    t.text "landing_page"
+    t.string "browser"
+    t.string "os"
+    t.string "device_type"
+    t.string "country"
+    t.string "region"
+    t.string "city"
+    t.float "latitude"
+    t.float "longitude"
+    t.string "utm_source"
+    t.string "utm_medium"
+    t.string "utm_term"
+    t.string "utm_content"
+    t.string "utm_campaign"
+    t.string "app_version"
+    t.string "os_version"
+    t.string "platform"
+    t.datetime "started_at"
+    t.index ["user_id"], name: "index_ahoy_visits_on_user_id"
+    t.index ["visit_token"], name: "index_ahoy_visits_on_visit_token", unique: true
+  end
+
   create_table "blogs", force: :cascade do |t|
     t.string "title"
     t.text "text"
@@ -56,7 +101,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_170733) do
     t.string "pinned"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id"
+    t.bigint "user_id"
     t.index ["user_id"], name: "index_blogs_on_user_id"
   end
 
@@ -66,7 +111,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_170733) do
     t.datetime "updated_at", null: false
     t.text "body"
     t.integer "views", default: 0
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.string "link"
     t.string "brand_color", default: "0"
     t.string "brand_text", default: "0"
@@ -86,8 +131,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_170733) do
   end
 
   create_table "closets", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "post_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_closets_on_post_id"
@@ -95,8 +140,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_170733) do
   end
 
   create_table "collectibles", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "collection_id", null: false
+    t.bigint "post_id", null: false
+    t.bigint "collection_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["collection_id"], name: "index_collectibles_on_collection_id"
@@ -117,8 +162,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_170733) do
     t.string "c_type"
     t.text "link"
     t.string "commentable_type", null: false
-    t.integer "commentable_id", null: false
-    t.integer "user_id", null: false
+    t.bigint "commentable_id", null: false
+    t.bigint "user_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["commentable_type", "commentable_id"], name: "index_comments_on_commentable"
@@ -126,8 +171,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_170733) do
   end
 
   create_table "likeables", force: :cascade do |t|
-    t.integer "user_id", null: false
-    t.integer "post_id", null: false
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_likeables_on_post_id"
@@ -143,24 +188,24 @@ ActiveRecord::Schema[7.0].define(version: 2023_07_26_170733) do
     t.string "web_link"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.integer "user_id", null: false
+    t.bigint "user_id", null: false
     t.integer "views", default: 0
     t.string "c_type", default: "neutral"
     t.string "material"
     t.text "amazon_link"
     t.string "edited_by"
-    t.integer "brand_id"
+    t.bigint "brand_id"
     t.string "archive"
     t.text "grailed"
-    t.integer "category_id"
+    t.bigint "category_id"
     t.index ["brand_id"], name: "index_posts_on_brand_id"
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
   create_table "taggables", force: :cascade do |t|
-    t.integer "post_id", null: false
-    t.integer "tag_id", null: false
+    t.bigint "post_id", null: false
+    t.bigint "tag_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["post_id"], name: "index_taggables_on_post_id"

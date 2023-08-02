@@ -1,22 +1,6 @@
 
-<%# render 'carousel' %>
-<section class="section is-medium relative" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('cafe.jpg') %>');background-size:cover;"> 
+<%= render 'carousel' %>
 
-
-  <div class="title is-3 center white">Discover Rising Brands</div>
-  <div class="center">
-    <div class="subtitle is-5 rw50 white" style="text-align:center;">
-      Mokka has been hunting for hidden gems and brands that don't get enough love. Please check them out and if we miss any please add them to our database!
-    </div>
-  </div>
-  <hr style="border-color:white;"/>
-  <div class="center mt-2">
-    <%=link_to "hidden gems", blog_path(Blog.first), class:"button p-btn mr-4"%>
-    <%=link_to "add your own", new_brand_path, class:"button s-btn"%>
-  </div>
-
-
-</section>
 
 
 <%= render 'posts/components/searchbar_for_root'%>

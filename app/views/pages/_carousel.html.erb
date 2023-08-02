@@ -1,15 +1,76 @@
-<section data-controller="hello" class="bb">x
-	<div class="carousel relative">
-		<button class="carousel-lbtn button-like-text">
-			<<i class="fa-solid fa-arrow-left" style="color: #ffffff;"></i>
-		</button>
-		<button class="carousel-rbtn button-like-text">
-			><i class="fa-solid fa-arrow-right" style="color: #ffffff;"></i>
-		</button>
-	<ul data-hello-target="items">
-		<li data-active class="slide has-background-link">slide 1</li>
-		<li class="slide has-background-danger">slide 2</li>
-		<li class="slide has-background-warning">slide 3</li>		
-	</ul>
+<section data-controller="carousel" class="relative">
+
+  <button data-action="carousel#previous" class="button-like-text caro-lbtn">
+  	<i class="fa-solid fa-arrow-left" style="color:white;"></i>
+  </button>
+  <button data-action="carousel#next" class="button-like-text caro-rbtn">
+  	<i class="fa-solid fa-arrow-right" style="color:white;"></i>
+  </button>
+
+    <div data-carousel-target="slide">
+<%# SLIDE#1--------------------------%>
+ 	<div class="section is-medium" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('archivall.webp') %>');background-size:cover;"> 
+
+
+	  <div class="title is-3 center outline">Mokkalog</div>
+	  <div class="center">
+	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
+
+	      Looking for inspiration? Looking for something new? Look no further. Check out our mokkalog Issue #1. You will definitely find something that catches your eyes. 
+	    </div>
+	  </div>
+	  <hr style="border-color:white;"/>
+	  <div class="center mt-2">
+	    <%=link_to "mokkalog #1", blog_path(Blog.first), class:"button p-btn mr-4"%>
+	  </div>
 	</div>
+  </div>
+
+<%# SLIDE#1--------------------------%>
+  <div data-carousel-target="slide">
+	<div class="section is-medium" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('cafe.jpg') %>');background-size:cover;"> 
+
+
+	  <div class="title is-3 center outline">Discover Rising Brands</div>
+	  <div class="center">
+	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
+	      Mokka has been hunting for hidden gems and brands that don't get enough love. Please check them out and if we miss any please add them to our database!
+	    </div>
+	  </div>
+	  <hr style="border-color:white;"/>
+	  <div class="center mt-2">
+	    <%=link_to "brands", brands_path, class:"button p-btn mr-4"%>
+	    <%=link_to "add your own", new_brand_path, class:"button s-btn"%>
+	  </div>
+	</div>
+  </div>
+
+
+  <%# SLIDE#2--------------------------%>
+  <div data-carousel-target="slide">
+
+ 	<div class="section is-medium" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('rack.jpeg') %>');background-size:cover;"> 
+
+
+	  <div class="title is-3 center outline">Archive your Clothing</div>
+	  <div class="center">
+	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
+	      Are you a small brand owner? A fashion student? A desginer as a hobby? Archive your clothing here. Check out what others are archiving.
+	    </div>
+	  </div>
+	  <hr style="border-color:white;"/>
+	  <div class="center mt-2">
+	  	<%=link_to "archive", new_post_path, class:"button s-btn mr-4"%>
+	    <%=link_to "catalog", posts_path, class:"button p-btn mr-4"%>
+	  </div>
+	</div>
+  </div>
+  <%# SLIDE#3--------------------------%>
+  	
+
+
+ 
+  <%# SLIDE#4--------------------------%>
+
 </section>
+

@@ -24,7 +24,8 @@ class PostsController < ApplicationController
 
 
     @user_gid = current_user.to_gid_param if current_user
-    #response.headers['Refresh'] = '5' 
+    #response.headers['Refresh'] = '5'
+    @events =EventAggregatorService.new.aggregate_events 
   end
 
   # GET /posts/1 or /posts/1.json

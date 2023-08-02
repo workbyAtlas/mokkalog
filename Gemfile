@@ -11,7 +11,7 @@ gem 'devise'
 gem "sprockets-rails"
 
 # Use pg as the database for Active Record
-#gem "pg", "~> 1.1"
+gem 'pg', '~> 1.5', '>= 1.5.3'
 
 # Use the Puma web server [https://github.com/puma/puma]
 gem "puma", "~> 5.0"
@@ -57,7 +57,7 @@ end
 group :development do
   # Use console on exceptions pages [https://github.com/rails/web-console]
   gem "web-console"
-  gem 'sqlite3'
+  #gem 'pg'
 
   # Add speed badges [https://github.com/MiniProfiler/rack-mini-profiler]
   # gem "rack-mini-profiler"
@@ -79,7 +79,11 @@ gem 'aws-sdk-s3', require: false
 
 
 group :production do
-  gem 'pg', '~> 1.5', '>= 1.5.3'
+  #gem 'pg', '~> 1.5', '>= 1.5.3'
 end
 
 gem 'kaminari'
+
+gem "ahoy_matey", "~> 4.2"
+gem "chartkick", "~> 5.0"
+gem "groupdate", "~> 6.3"

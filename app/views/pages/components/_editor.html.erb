@@ -9,9 +9,9 @@
 
 <span class="center">
   <div data-slider-target="slide">
-	  <div class="title is-6 my-2">Innovative 💡</div>
+  	<div class="title is-6 my-2">Artistic 🎨</div>
 		<span class="flexed-wc">
-    <% @posts_innovative.each do |post| %>
+    <% @posts_art.each do |post| %>
 		<div class=""><%= render post %></div>
 		<% end %>
 		</span>
@@ -27,9 +27,9 @@
   </div>
 
   <div data-slider-target="slide">
-	  <div class="title is-6 my-2">Artistic 🎨</div>
+	  <div class="title is-6 my-2">Innovative 💡</div>
 		<span class="flexed-wc">
-		<% @posts_art.each do |post| %>
+		<% @posts_innovative.each do |post| %>
 		<div class=""><%= render post %></div>
 		<% end %>
 		</span>

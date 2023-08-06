@@ -17,10 +17,11 @@ class PostsController < ApplicationController
 
     #@query.build_condition_color("Red")
     @query = Post.ransack(params[:q])
-    @posts = @query.result(distinct: true).includes(:tags, :brand)#.post(params[:post])
+    @posts_prior = @query.result(distinct: true).includes(:tags, :brand)
+    shuffled_posts = @posts_prior.to_a.shuffle
+    @posts = Kaminari.paginate_array(shuffled_posts).page(params[:page]).per(16)
 
 
-    @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
 
 
     @user_gid = current_user.to_gid_param if current_user

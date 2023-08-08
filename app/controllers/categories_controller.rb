@@ -12,7 +12,7 @@ class CategoriesController < ApplicationController
   def show
    @query = @category.posts.ransack(params[:q])
    @posts = @query.result(distinct: true).where(category_id: @category.id)
-   @posts = @posts.order('created_at DESC').page(params[:page]).per(2)
+   @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
 
   end
 

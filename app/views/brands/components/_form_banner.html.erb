@@ -11,3 +11,15 @@
     <div class="grey">You can put hex-color(ex.#00000;), text(white), or. If Banner Image is uploaded, we recommend white as the text color.</div>
     <%= form.text_field :brand_text, class:"input" %>
   </div>
+  <hr class="bst"/>
+  <div>
+    <div class="label">Badges</div>
+    <%= form.label "Is your brand hand made?", class:"label mt-2" %>
+    <div class="select">
+    <%=form.select :hand_made, ["False", "True"]%>
+    </div>
+    <%= form.label "Is your brand sustainable?", class:"label mt-2" %>
+    <div class="select">
+    <%=form.select :sustainable, ["False", "True"]%>
+    </div>
+  </div>

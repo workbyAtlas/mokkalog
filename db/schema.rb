@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_02_012108) do
+ActiveRecord::Schema[7.0].define(version: 2023_08_08_003829) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -121,6 +121,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_02_012108) do
     t.string "style"
     t.string "verification"
     t.string "location"
+    t.string "sustainable"
+    t.string "x_twitter"
+    t.string "hand_made"
+    t.string "concept"
+    t.string "start_up"
     t.index ["user_id"], name: "index_brands_on_user_id"
   end
 

@@ -1,0 +1,21 @@
+<section class="section bb">
+	<div class="title is-4 center">Closet</div>
+	<div class="closet">
+		<div class="rail"></div>
+		<div class="flexed-wc inside mx-auto p-4">
+
+		<% @liked_posts.each do |post| %>
+
+
+		<div class="mx-4 my-5 center-down">
+			<% if post.image.attached?%>
+				<%=link_to image_tag(post.img_sq_normal(post.image), class:"cornered")%>
+			<% else %>
+			    <div class="center"><%= image_tag ("download.jpg"), class: "immg cornered"  %></div>
+			<% end %>
+			<%=link_to post.title, post, style:"color:white;" %>
+		</div>
+		<%end%>
+		</div>
+	</div>
+</section>

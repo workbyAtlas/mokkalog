@@ -41,6 +41,8 @@
 .d-inline-flex{display:inline-flex;}
 .section-corner{border-radius:4px;}
 .section-corner-top{border-radius:4px 4px 0px 0px;}
+.cornered{border-radius:4px;}
+.t-cornered{border-radius:4px 4px 0px 0px;}
 .outline{
     color:white;
     text-shadow: 1px 1px 2px black;
@@ -65,6 +67,21 @@
   
   .button-like-text:hover {
     text-decoration: none;
+  }
+
+  .circle-btn{
+    display:flex;
+    justify-content: center;
+    align-items: center;
+    height:40px;
+    width:40px;
+    border-radius:50%;
+    color: #654321;
+    background-color:#cbb595;
+    border: 3px solid #654321;
+    transform: translateY(-30px);
+
+
   }
 /*COLOR*/
 .white{color:white;}
@@ -133,7 +150,7 @@
 /*ALERT*/
 .mokka-alert{min-height:80px;}
 /*Post*/
-.post-card{width:250px;}
+.post-card{width:250px;border:2px solid #f5f5f5;}
 .brand-link{color:black;font-weight:400;}
 .immg {width:200px;height:200px;}
 .postimg {width:200px;height:300px;}

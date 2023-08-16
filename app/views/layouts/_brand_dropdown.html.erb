@@ -1,0 +1,55 @@
+
+<div class="dropdown-catalog mx-5 mb-3">
+<span class="nav-link"><%= link_to "Brands", brands_path,     class:"nav-link" %></span>
+
+<section class="dropdown-content-catalog">
+	<hr class="bst m-1" />
+	<div class="columns">
+
+	<div class="column ml-5">
+		<div class="title is-4 secondary-t my-2">Brands</div>
+		<div><%=link_to "View all brands", brands_path, class:"nav-link"%></div>
+		<div><%=link_to "View Projects", brand_path(1), class:"nav-link"%></div>
+		<br/>
+		<%=image_tag("mocha.png")%>
+		<%if true == false%>
+		<div><%=link_to "Innovative", posts_path, class:"nav-link"%></div>
+		<div><%=link_to "Sustainable", posts_path, class:"nav-link"%></div>
+		<div><%=link_to "Activewear", posts_path, class:"nav-link"%></div>
+		<div><%=link_to "Projects", posts_path, class:"nav-link"%></div>
+		<div><%=link_to "Archived", posts_path, class:"nav-link"%></div>
+		<% end%>
+	</div>
+	<div class="column">
+		<div class="title is-4 secondary-t my-2">Featured</div>
+		<div><%=link_to "No Faith", brand_path(32), class:"nav-link"%></div>
+		<div><%=link_to "Awake NY", category_path(5), class:"nav-link"%></div>
+
+	</div>
+	<div class="column">
+		<div class="title is-4 secondary-t my-2">Sustainable</div>
+		<div><%=link_to "Samaaj", brand_path(11), class:"nav-link"%></div>
+		<div><%=link_to "Y-Y Official", category_path(13), class:"nav-link"%></div>
+		<div><%=link_to "Tombolo", category_path(14), class:"nav-link"%></div>
+		<div><%=link_to "Coming Soon", category_path(15), class:"nav-link"%></div>
+		<div><%=link_to "Coming Soon", category_path(16), class:"nav-link"%></div>
+		<div><%=link_to "Coming Soon", category_path(17), class:"nav-link"%></div>
+		<div><%=link_to "Coming Soon", category_path(18), class:"nav-link"%></div>
+	</div>
+	<div class="column">
+		<div class="title is-4 secondary-t my-2">Rising</div>
+		<div><%=link_to "Coming Soon", category_path(19), class:"nav-link"%></div>
+		<div><%=link_to "Coming Soon", category_path(20), class:"nav-link"%></div>
+		<div><%=link_to "Coming Soon", category_path(21), class:"nav-link"%></div>
+		<div><%=link_to "Coming Soon", category_path(22), class:"nav-link"%></div>
+		<div><%=link_to "Coming Soon", category_path(23), class:"nav-link"%></div>
+	</div>
+
+<hr class="bst m-1" />
+
+</div>
+</section>
+</div>
+
+
+

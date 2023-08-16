@@ -1,0 +1,15 @@
+.closet{
+	height:700px;
+	background-color:#5c3b11;
+	border: 10px solid #b0712d;
+}
+
+.inside{max-width:1000px;}
+
+.rail{
+	width:100%;
+	height:8px;
+	background-color: #d3cfc7;
+	top:65px;
+	box-shadow: inset 0 -3px rgba(0,0,0,3), 0 575px #8a5924, 0 300px #8a5924;
+}

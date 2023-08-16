@@ -33,32 +33,53 @@
 </div>
 </section>
 
-<%if @auth%>
-<div class="notification">
-<div class="title is-4">Dev Tool</div>
-<div><strong>Role:</strong><%=@user.role%></div>
-<div><strong>Link_to:</strong><%=link_to "Admin Room", adroom_path, class:"s-link"%></div>
-<div><strong>Role:</strong><%=@user.role%></div>
-</div>
-<%end%>
+
 
 
 <br/>
 <hr class="bst"/>
-<section class="section">
-	<div class="title is-4 center">Entries Added:</div>
-	<div class="flexed-wc">
-	<% @posts.each do |post| %>
-	<div class="bp m-2 center-down">
-		<% if post.image.attached?%>
-			<%= image_tag(post.img_sq_normal(post.image)) if post.image.attached? %>
-		<% else %>
-		    <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
-		<% end %>
-		<%=link_to post.title, post, class:"s-link" %>
-	</div>
-	<%end%>
-	</div>
+
+<section data-controller="tab" class= "mx-auto">
+
+<div class="tabs is-centered is-boxed mb-0">
+  <ul>
+    <li class="is-active" data-tab-target="btn1" data-action="click->tab#openTab1">
+      <a>
+        <span class="icon is-small"><i class="fa-solid fa-shirt" style="color:#654321;"></i></span>
+        <span>Closet</span>
+      </a>
+    </li>
+    <li data-tab-target="btn2" data-action="click->tab#openTab2">
+      <a>
+        <span class="icon is-small"><i class="fa-solid fa-database" style="color:#654321;"></i></span>
+        <span>Entries</span>
+      </a>
+    </li>
+    <li data-tab-target="btn3" data-action="click->tab#openTab3">
+      <a>
+        <span class="icon is-small"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
+        <span>Roles</span>
+      </a>
+    </li>
+  </ul>
+</div>
+<div class="post-form-box p-3 mt-0" style="min-height:400px;">
+  <span data-tab-target="tab1">
+  	<%= render "users/components/closet"%>		
+  </span>
+
+  <span data-tab-target="tab2" class="d-none">
+  	<%= render "users/components/entries"%>		
+  </span>
+
+  <span data-tab-target="tab3" class="d-none">
+  	<%= render "users/components/idk"%>
+  </span>
+
+<hr class="bst"/>
+
+</div>
 </section>
-<%= paginate @posts%>
+
+
 

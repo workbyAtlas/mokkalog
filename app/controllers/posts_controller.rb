@@ -40,6 +40,17 @@ class PostsController < ApplicationController
 
   end
 
+def quick
+  @post = Post.find(params[:id])
+  if not current_user == @post.user
+    @post.update(views: @post.views + 1)
+  end 
+  
+
+  #@new_web_link = @post.web_link.start_with?('http://', 'https://') ? @web_link : "https://#{@web_link}"
+
+  end
+
   # GET /posts/new
   def new
     @post = Post.new
@@ -99,11 +110,18 @@ class PostsController < ApplicationController
   end
 
   def like
-    @post = Post.find(params[:id])
-    current_user.like(@post)
-    respond_to do |format|
-      format.turbo_stream do
-        render turbo_stream: private_stream
+    if current_user.liked_posts.count < 8
+      @post = Post.find(params[:id])
+      current_user.like(@post)
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: private_stream
+        end
+      end
+    else
+      respond_to do |format|
+        format.html { redirect_back fallback_location: root_path, alert: "You already have more than 8 likes." }
+        format.turbo_stream
       end
     end
     #redirect_to posts_url

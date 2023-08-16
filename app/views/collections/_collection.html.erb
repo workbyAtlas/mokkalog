@@ -1,25 +1,17 @@
-<div id="<%= dom_id collection %>">
+<div class="section-corner bb">
   <p>
     <strong>Title:</strong>
     <%= collection.title %>
   </p>
 
-  <p>
-    <strong>Views:</strong>
-    <%= collection.views %>
-  </p>
 
-  <div class="flexed bb">
+  <div class="flexed">
     <% collection.collectibles.each do |collectible| %>
-      <div class="m-1"><%= render 'posts/post_for_collection', post: collectible.post %></div>
-
+      <div class="m-1">
+        <%= render 'posts/post_for_collection', post: collectible.post %>    
+      </div>
     <% end %>
   </div>
 
 </div>
 
-
-  <%# tag.taggables.each do |taggable| %>
-    <%#= render 'posts/post', post: taggable.post %>
-    <hr />
-  <%# end %>

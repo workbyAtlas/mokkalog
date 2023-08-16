@@ -1,0 +1,8 @@
+<div class="bp m-2 center-down">
+	<% if post.image.attached?%>
+		<%= image_tag(post.img_sq_normal(post.image)) if post.image.attached? %>
+	<% else %>
+	    <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
+	<% end %>
+	<%=link_to post.title, post, class:"s-link" %>
+</div>

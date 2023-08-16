@@ -36,6 +36,8 @@ class ApplicationRecord < ActiveRecord::Base
       image.variant(resize_to_fill: [200,200]).processed
     elsif size == "big"
       image.variant(resize_to_fit: [400,500]).processed
+    elsif size == "quick"
+      image.variant(resize_to_fit: [400,600]).processed
     end
       
 

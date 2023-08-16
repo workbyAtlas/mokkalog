@@ -1,0 +1,49 @@
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content quick_post">
+
+    <div class="columns">
+      <div class="column">
+        <%=image_tag (@post.image_handler(@post.image,"quick")), class:"cornered"%>
+      </div>
+      <div class="column">
+        <div class="title is-3"><strong><%=@post.title%></strong></div>
+        <table class="table">
+          <tr>
+            <th>Label</th>
+            <th>Attribute</th>
+          </tr>
+          <tr>
+            <td>Brand</td>
+            <td><%=link_to @post.brand.name, brand_path(@post.brand.id), class:"s-link"%></td>
+          </tr>
+          <tr>
+            <td>Price</td>
+            <td><%=@post.price%></td>
+          </tr>
+          <tr>
+            <td>Category</td>
+            <td><%=@post.sub_category%></td>
+          </tr>
+          <tr>
+            <td>Sub_category</td>
+            <td><%=@post.sub_category%></td>
+          </tr>
+          <tr>
+            <td>Color</td>
+            <td><%=@post.color%></td>
+          </tr>
+        </table>
+
+
+        <div class="center-down">
+          <div class="my-2"><%=link_to "Detail", post_path(@post.id), class:"button is-warning long-btn"%></div>
+          <div><%=link_to "Cancel", posts_path, class:"button is-warning is-light long-btn"%></div>
+        </div>
+
+      </div>
+    </div>
+
+
+  </div>
+</div>

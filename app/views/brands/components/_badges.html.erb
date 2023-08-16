@@ -1,15 +1,15 @@
-<%if @brand.hand_made == "True"%>
-<div class="hover">
-  <i class="fa-solid fa-scissors fa-2xl ml-3" style="color: #ff0000;"></i>
-  <div class="hover-content center">Handmade</div>
-</div>
-<%end%>
+<div class="notification bp p-3">
 <%if @brand.verification == "True"%>
 <div class="hover">
-  <i class="fa-solid fa-certificate fa-2xl" style="color:#654321;"></i>
+  <i class="fa-solid fa-circle-check fa-2xl" style="color:#654321;"></i>
   <div class="hover-content center">Verified</div>
 </div>
-
+<%end%>
+<%if @brand.hand_made == "True"%>
+<div class="hover">
+  <i class="fa-solid fa-scissors fa-2xl" style="color: #ff0000;"></i>
+  <div class="hover-content center">Handmade</div>
+</div>
 <%end%>
 <%if @brand.sustainable == "True"%>
 <div class="hover">
@@ -17,5 +17,5 @@
   <div class="hover-content center">Sustainable</div>
 </div>
 <%end%>
-
+</div>
 

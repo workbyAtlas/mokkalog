@@ -9,6 +9,8 @@ class UsersController < ApplicationController
     end
     @posts = @user.posts.order(created_at: :desc)
     @posts = @posts.order('created_at DESC').page(params[:page]).per(15)
+    
+    @liked_posts = current_user.liked_posts
   end
 
   def setting

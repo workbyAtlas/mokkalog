@@ -28,6 +28,7 @@ Rails.application.routes.draw do
   #resources :posts
   resources :brands
   resources :tags
+  resources :discover
   #root 'posts#index'
   root 'pages#index'
   
@@ -44,6 +45,7 @@ Rails.application.routes.draw do
   #get '/s/:id', to: 'users#setting', as: 'myuser'
   #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
   get 'posts/:id/visit', to: 'posts#visit', as: 'post_visit'
+  get 'posts/:id/quick', to: 'posts#quick', as: 'post_quick'
   post 'like/:id', to: 'posts#like', as: 'like_post'
 
   resources :posts do

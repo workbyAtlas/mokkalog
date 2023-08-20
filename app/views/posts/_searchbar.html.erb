@@ -11,6 +11,7 @@
       <div class="center my-2 title is-5">Search:</div>
       <div class="center">
         <%= f.search_field :title_or_color_or_material_or_tags_name_or_category_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
+            <%= f.submit "Search", class:"button is-warning my-2 bs" %>
       </div>
 
 
@@ -25,32 +26,8 @@
 
 <div data-controller="filterbox" class="column ml-4">
 
-  <div class="flexed">
-    <div class="title is-4">Filters:</div>
-    <div style="margin-left:auto;">
-      <button class="button-like-text" data-action="click->filterbox#previous">
-        <i class="fa-solid fa-caret-up fa-2xl" style="color:#654321;"></i>
-      </button>
-      <button class="button-like-text" data-action="click->filterbox#next">
-        <i class="fa-solid fa-caret-down fa-2xl" style="color:#654321;"></i>
-      </button>
 
-    </div>
-  </div>
 
-  <div data-filterbox-target="slide">
-    <%= render "posts/components/filters/color_filter",f: f %>
-  </div>
-  <div data-filterbox-target="slide">
-    <%= render "posts/components/filters/material_filter",f: f %>
-  </div>
-  <div data-filterbox-target="slide">
-    <%= render "posts/components/filters/category_filter",f: f %>
-  </div>
-  <div data-filterbox-target="slide">
-    <%= render "posts/components/filters/brand_filter",f: f %>
-  </div>
-  <%= f.submit "Filter", class:"button is-warning my-2 bs" %>
 
 </div>
 

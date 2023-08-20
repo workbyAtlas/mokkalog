@@ -1,1 +1,4 @@
-<div class="button bp"><%=render 'likes/like_counter', post: post%></div>
+<div class="button" style="border-style:none;">
+<%=post.likes.count%>
+<i class="fa-regular fa-heart fa-lg mx-1" style="color: #ff0000;"></i>
+</div>

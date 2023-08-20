@@ -21,13 +21,24 @@
             <%= render "posts/like_btn_private", post: @post, like_status: current_user.liked?(@post) %>
             <%else%>
             <%= render "posts/components/like_btn_public", post: @post%>
-
-
-
             <%end%>  
           </div>
           <div class="mx-1 mb-4 button is-link" onclick="showdiv('visitmodal')">Visit</div>
           <div class="mx-1 mb-4 button is-success" onclick="copy('share','share-button')" id="share-button">Share</div>
+          <%if current_user%>
+          <%=render 'posts/components/favorite_btn', post: @post, fav_status: current_user.favorited?(@post)%>
+          <%else%>
+
+            <div class="button bp mx-1">
+                <div class="hover">
+                <span class="material-symbols-outlined mt-1">
+                checkroom
+                </span>
+                <div class="hover-content center">Add to Closet</div>
+              </div>
+            </div>
+          <%end%>
+
           <div><%#= link_to "Closet", closets_update_path(post: @post), id: 'closet_link, class:"mb-4 button is-danger" %></div>
         </div>
         <%# DEV BOX------------------------------------------%>

@@ -10,7 +10,7 @@
 
       <div class="center my-2 title is-5">Search:</div>
       <div class="center">
-        <%= f.search_field :title_or_color_or_material_or_category_or_tags_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
+        <%= f.search_field :title_or_color_or_material_or_tags_name_or_category_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
       </div>
 
 
@@ -24,6 +24,7 @@
   <div class="columns">
 
 <div data-controller="filterbox" class="column ml-4">
+
   <div class="flexed">
     <div class="title is-4">Filters:</div>
     <div style="margin-left:auto;">
@@ -50,6 +51,7 @@
     <%= render "posts/components/filters/brand_filter",f: f %>
   </div>
   <%= f.submit "Filter", class:"button is-warning my-2 bs" %>
+
 </div>
 
   <div class="column">

@@ -16,8 +16,11 @@ class PostsController < ApplicationController
     @brands = Brand.all
 
     #@query.build_condition_color("Red")
+
+
+
     @query = Post.ransack(params[:q])
-    @posts_prior = @query.result(distinct: true).includes(:tags, :brand)
+    @posts_prior = @query.result(distinct: true).includes(:tags, :brand, :category)
     shuffled_posts = @posts_prior.to_a.shuffle
     @posts = Kaminari.paginate_array(shuffled_posts).page(params[:page]).per(16)
 
@@ -110,21 +113,45 @@ def quick
   end
 
   def like
-    if current_user.liked_posts.count < 8
-      @post = Post.find(params[:id])
-      current_user.like(@post)
-      respond_to do |format|
-        format.turbo_stream do
-          render turbo_stream: private_stream
-        end
-      end
-    else
-      respond_to do |format|
-        format.html { redirect_back fallback_location: root_path, alert: "You already have more than 8 likes." }
-        format.turbo_stream
+    @post = Post.find(params[:id])
+    current_user.like(@post)
+    respond_to do |format|
+      format.turbo_stream do
+        render turbo_stream: private_stream
       end
     end
     #redirect_to posts_url
+  end
+
+  def favorite
+
+    @post = Post.find(params[:id])
+    if current_user.favorited?(@post)
+      current_user.favorite(@post)
+      respond_to do |format|
+        format.turbo_stream do
+          render turbo_stream: private_fav_stream
+        end
+      end
+    else
+
+      if current_user.favorited_posts.count < 8
+        current_user.favorite(@post)
+        respond_to do |format|
+          format.turbo_stream do
+            render turbo_stream: private_fav_stream
+          end
+        end
+      else
+        respond_to do |format|
+          format.html { redirect_to post_url(@post), alert: "You already have 8 in your closet, please remove one to add it." }
+          format.json { render :show, status: :ok, location: @post }
+        end
+      end
+
+
+    end
+
   end
 
   def check
@@ -139,6 +166,11 @@ def quick
     def private_stream
       private_target = "post_#{@post.id} private_likes"
       turbo_stream.replace(private_target, partial: "likes/private_button", locals:{post: @post, like_status: current_user.liked?(@post)})
+    end
+
+    def private_fav_stream
+      private_target = "post_#{@post.id} private_favs"
+      turbo_stream.replace(private_target, partial: "posts/components/favorite_btn", locals:{post: @post, fav_status: current_user.favorited?(@post)})
     end
 
     def editing_privilage_post

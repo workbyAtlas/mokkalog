@@ -1,0 +1,25 @@
+<span class="flexed" id="<%="post_#{@post.id} private_favs"%>">
+<% fav_text = fav_status ? "unfav" : "fav" %>
+
+<%if fav_text == "fav"%>
+    <%= button_to favorite_post_path(id: post.id), class:"button bp mx-1" do %>
+    <span class="hover">
+        <span class="material-symbols-outlined mt-1" style="color:#654321;">
+        checkroom
+        </span>
+        <span class="hover-content">Add to Closet</span>
+    </span>
+    <%end%>
+<%else%>
+    <%= button_to favorite_post_path(id: post.id), class:"button p-btn bp mx-1" do %>
+    <span class="hover">
+        <span class="material-symbols-outlined mt-1" style="color:#654321;">
+        checkroom
+        </span>
+        <span class="hover-content">Remove from Closet</span>
+    </span>
+    <%end%>
+<%end%>
+
+
+</span>

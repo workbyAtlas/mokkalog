@@ -4,7 +4,7 @@ class SearchController < ApplicationController
 		posts = if params[:search]
 			posts_with_tag_search
 		else
-			Post.includes(:brand).all
+			Post.includes(:brand, :category).all
 		end
 
     @posts = posts.page(params[:page]).per(16)
@@ -22,9 +22,20 @@ class SearchController < ApplicationController
 	private
 
 def posts_with_tag_search
-    parsed_tags.reduce(Post.includes(:brand).all) do |posts, tag|
+    parsed_tags.reduce(Post.includes(:brand, :category).all) do |posts, tag|
       case tag[:field]
       # this is for association(brand)
+      when "category"
+        case tag[:operator]
+        when "equals"
+          posts.joins(:category).where("categories.name = ?", tag[:value])
+        when "contains"
+          posts.joins(:category).where("categories.name ILIKE ?", "%#{tag[:value]}%")
+        when "except"
+          posts.joins(:category).where.not("categories.name LIKE ?", "%#{tag[:value]}%")
+        else
+          posts
+        end
       when "brand"
         case tag[:operator]
         when "equals"
@@ -50,8 +61,6 @@ def posts_with_tag_search
                     "posts.color"
                   when "material"
                   	"posts.material"
-                  when "category"
-                  	"posts.category"
                   when "sub_category"
                   	"posts.sub_category"
                   when "c_type"

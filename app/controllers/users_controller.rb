@@ -10,7 +10,7 @@ class UsersController < ApplicationController
     @posts = @user.posts.order(created_at: :desc)
     @posts = @posts.order('created_at DESC').page(params[:page]).per(15)
     
-    @liked_posts = current_user.liked_posts
+    @closet_post = current_user.favorited_posts
   end
 
   def setting

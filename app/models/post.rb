@@ -1,5 +1,5 @@
 class Post < ApplicationRecord
-	validates :title, presence: {message: "Name can't be blank"}, length: {maximum: 25}
+	validates :title, presence: {message: "Name can't be blank"}, length: {maximum: 40}
 	validates :body, length: { maximum: 3000 }, allow_blank: true
 	validates :price, numericality: { greater_than: 0, less_than: 99999 }, allow_blank: true
 	validates :body, length: {maximum: 6000}, allow_blank: true
@@ -32,6 +32,11 @@ class Post < ApplicationRecord
 	has_many :likeables, dependent: :destroy
 	has_many :likes, through: :likeables, source: :user
 
+	has_many :favoritables, dependent: :destroy
+	has_many :favorites, through: :favoritables, source: :user
+
+
+
 	has_many :collectibles, dependent: :destroy
 	has_many :collections, through: :collectibles
 
@@ -45,11 +50,11 @@ class Post < ApplicationRecord
 
 	#validate :image, :image_validation
   	def self.ransackable_attributes(auth_object = nil)
-    	["body", "category", "color", "id",  "price", "sub_category", "title", "updated_at", "material", "category", "tags"]
+    	["body", "color", "id",  "price", "sub_category", "title", "updated_at", "material"]
  	end
 
 	 def self.ransackable_associations(auth_object = nil)
-	   ["taggables", "tags", "brand"]
+	   ["taggables", "tags", "brand", "category"]
 	 end
 
 	#def image_as_thumbnail

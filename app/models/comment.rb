@@ -3,6 +3,7 @@ class Comment < ApplicationRecord
   belongs_to :user
   belongs_to :commentable, polymorphic: true
 
+  has_one_attached :image
   validates :body, presence:true, length: { maximum: 300 }
   validates :link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true
   #has_ont_attached :avatar

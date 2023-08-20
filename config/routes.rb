@@ -47,6 +47,7 @@ Rails.application.routes.draw do
   get 'posts/:id/visit', to: 'posts#visit', as: 'post_visit'
   get 'posts/:id/quick', to: 'posts#quick', as: 'post_quick'
   post 'like/:id', to: 'posts#like', as: 'like_post'
+  post 'favorite/:id', to: 'posts#favorite', as: 'favorite_post'
 
   resources :posts do
     collection do

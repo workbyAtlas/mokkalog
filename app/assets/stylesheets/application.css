@@ -30,6 +30,8 @@
 
 
 
+
+
 /*DEV TOOL*/
 .bb{border: 2px solid black;}
 .nopad{padding:0;}
@@ -80,9 +82,13 @@
     background-color:#cbb595;
     border: 3px solid #654321;
     transform: translateY(-30px);
+}
+    .like-btn{
+
+    }
 
 
-  }
+  
 /*COLOR*/
 .white{color:white;}
 .grey{color:grey;}

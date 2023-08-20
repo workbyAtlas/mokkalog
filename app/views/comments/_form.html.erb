@@ -6,12 +6,13 @@
      <div class="flexed-c">
 
 		<div class="select">
-		<%= f.select :c_type, ['Reg', 'Buy', 'Sell']%>
+		<%= f.select :c_type, ['Reg', 'Info', 'Buy', 'Sell']%>
 		</div>
-        <% if true == false%>
+
+  
         <div class="file mx-2 is-warning">
           <label class="file-label">
-            <input class="file-input" type="file" name="resume">
+            <%= f.file_field :image, class:"file-input" %>
             <span class="file-cta">
               <span class="file-icon">
                 <i class="fas fa-upload"></i>
@@ -22,7 +23,7 @@
             </span>
           </label>
         </div>
-        <%end%>
+       
 
      </div>
      <%= f.text_area :body, class:"textarea my-2", placeholder: "Write you comment here!" %>

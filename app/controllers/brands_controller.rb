@@ -11,6 +11,8 @@ class BrandsController < ApplicationController
     @brands = @query.result.includes(:posts)
     @brands = @brands.order('created_at ASC').page(params[:page]).per(16)
 
+
+
   end
 
   # GET /brands/1 or /brands/1.json
@@ -19,6 +21,9 @@ class BrandsController < ApplicationController
       @brand.update(views: @brand.views + 1)
       #@brand.posts = @brand.posts.order('created_at DESC').page(params[:page]).per(16)
     end
+    @posts = @brand.posts.order(created_at: :desc)
+    @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
+    
   end
 
   # GET /brands/new

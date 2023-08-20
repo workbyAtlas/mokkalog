@@ -21,6 +21,9 @@ class User < ApplicationRecord
   has_many :likeables, dependent: :destroy
   has_many :liked_posts, through: :likeables, source: :post
 
+  has_many :favoritables, dependent: :destroy
+  has_many :favorited_posts, through: :favoritables, source: :post
+
 
   enum role: [:user, :editor, :mod,:developer, :admin]
   after_initialize :set_default_role, :if => :new_record?
@@ -36,6 +39,18 @@ class User < ApplicationRecord
       liked_posts.destroy(post)
     else
       liked_posts << post
+    end
+
+  end
+
+  def favorited?(post)
+    favorited_posts.include?(post)
+  end
+  def favorite(post)
+    if favorited_posts.include?(post)
+      favorited_posts.destroy(post)
+    else
+      favorited_posts << post
     end
 
   end

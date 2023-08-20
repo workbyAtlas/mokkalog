@@ -2,9 +2,17 @@
 
 <span class="flexed" id="<%="post_#{@post.id} private_likes"%>">
 	<% like_text = like_status ? "Unlike" : "Like" %>
-	<div class="button mr-2 bs"><%=pluralize(post.likes.count, "Like")%></div>
-	<%=button_to like_text, like_post_path(id: post.id), class:"button p-btn bs" %>
 
+
+<%= button_to like_post_path(id: post.id), class: "button button-like-text mr-1" do %>
+	<%if like_text == "Like"%>
+			<%=post.likes.count%>
+			<i class="fa-solid fa-heart fa-lg mx-1" style="color: #ff0000;"></i>
+	<%else%>
+			<%=post.likes.count%>
+			<i class="fa-regular fa-heart fa-lg mx-1" style="color: #ff0000;"></i>
+	<%end%>
+<% end %>
 </span>
 
 <%#= button_to like_post_path(id: post.id), method: :post, class: 'button is-link' do %>

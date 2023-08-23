@@ -1,23 +1,32 @@
 <section class="section is-medium lgrey pt-1">
 <div class="title is-3 mt-2 mx-4"><u>Gallery</u></div>
 <br/>
+<%x=0%>
 <div class="columns">
-	
 	<%if @brand.gallery1.attached?%>
+	<%x+=1%>
 	<div class="column">
 	<%= image_tag(@brand.img_sq_big(@brand.gallery1))%>
 	</div>
 	<%end%>
 	<%if @brand.gallery2.attached?%>
+	<%x+=1%>
 	<div class="column">
 	<%= image_tag(@brand.img_sq_big(@brand.gallery2))%>
 	</div>
 	<%end%>
 
 	<%if @brand.gallery3.attached?%>
+	<%x+=1%>
 	<div class="column">
 	<%= image_tag(@brand.img_sq_big(@brand.gallery3))%>
 	</div>
+	<%end%>
+
+	<%if x == 0%>
+		<div>
+			There is nothing in the Gallery, enjoy a picture of Mocha.
+		</div>
 	<%end%>
 </div>
 

@@ -22,19 +22,7 @@
 
 <section class="section flexed-wc">
   <% @brands.each do |brand| %>
-    <div class="notification center-down m-4">
-    <% if brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
-      <div><%=link_to (image_tag (brand.img_sq_normal(brand.image))), brand %></div>
-    <% else %>
-      <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
-    <% end %>
-      <div class="p-link"><strong><%=link_to brand.name, brand, class:"s-link" %></strong></div>
-      <%#=link_to brand.views, brand, class:"purp-link" %>     
-    
-
-
-
-    </div>
+    <%= render "brands/components/brand_mokka", brand: brand%>
   <% end %>
 </section>
 

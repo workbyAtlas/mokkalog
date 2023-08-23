@@ -6,7 +6,9 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
 <%end%>
 
       <div class="left-corner ">
+        <%if @badges == true%>
         <%=  render 'brands/components/badges'%>
+        <%end%>
       </div>
       <div class="flexed ">
     <% if @brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>

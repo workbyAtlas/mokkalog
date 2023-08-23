@@ -10,7 +10,7 @@
 
       <div class="center my-2 title is-5">Search:</div>
       <div class="center">
-        <%= f.search_field :title_or_color_or_material_or_tags_name_or_category_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
+        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
             <%= f.submit "Search", class:"button is-warning my-2 bs" %>
       </div>
 
@@ -24,13 +24,12 @@
 <section class="lgrey">
   <div class="columns">
 
-<div data-controller="filterbox" class="column ml-4">
-
-
-
-
-</div>
-
+  <div class="column">
+    <%if user_signed_in?%>
+    <div class="title is-4 mx-4">Users:</div>
+    <%= link_to "Add New Clothing", new_post_path, class:" mx-4 button-74" %>
+    <%end%>
+  </div>
   <div class="column">
   <div class="title is-4">Sort:</div>
     <%= sort_link(@query, :price, "Price", class:"button is-warning")%>

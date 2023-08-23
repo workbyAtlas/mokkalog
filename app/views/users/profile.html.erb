@@ -1,3 +1,4 @@
+
 <div class="d-none" id="share"><%=request.url%></div>
 
 <section class="section is-medium section-corner-top" style="background-color:<%=@user.primary_color%>">
@@ -20,7 +21,10 @@
 <div class="columns">
 	<div class="column is-two-fifths"></div>
 	<div class="column profile-text">
-		<div class="title is-4 my-2"><%=@user.name%><%=@user.last_name%></div>
+		<div class="title is-4 my-2">
+			<%=@user.name%>
+			<span class="mx-1"></span>
+			<%=@user.last_name%></div>
 		<div><u>@<%=@user.username%></u></div>
 		<div class="mt-2 title is-6">
 			Views: <%=@user.views%> | Entries Added:<%=@user.posts.size%> | <span id="share-btn" class="tag bs pointer" id="share" onclick="copy('share','share-btn')">Share +</span>
@@ -31,6 +35,7 @@
 		<div class="my-4 profile-desc"><%=@user.description%></div>
 	</div>
 </div>
+
 </section>
 
 
@@ -43,7 +48,7 @@
 
 <div class="tabs is-centered is-boxed mb-0">
   <ul>
-    <li class="is-active" data-tab-target="btn1" data-action="click->tab#openTab1">
+    <li class="is-active is-m" data-tab-target="btn1" data-action="click->tab#openTab1">
       <a>
         <span class="icon is-small"><i class="fa-solid fa-shirt" style="color:#654321;"></i></span>
         <span>Closet</span>
@@ -57,7 +62,7 @@
     </li>
     <li data-tab-target="btn3" data-action="click->tab#openTab3">
       <a>
-        <span class="icon is-small"><i class="fa-solid fa-circle-info" aria-hidden="true"></i></span>
+        <span class="icon is-small"><i class="fa-solid fa-circle-info" style="color:#654321"></i></span>
         <span>Roles</span>
       </a>
     </li>

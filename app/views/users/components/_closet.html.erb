@@ -1,5 +1,63 @@
 <section class="section bb">
-	<div class="title is-4 center">Closet</div>
+
+<div class="title is-4 center">Closet</div>
+
+<div class="mobile-closet">
+	<div class="closet-m">
+
+		<div class="flexed-wc inside mx-auto p-4">
+		<% @closet_post.each do |post| %>
+			<%=render 'users/components/closet_post', post:post%>
+		<%end%>
+
+		</div>
+	</div>
+</div>
+
+<div class="poof-closet">
+	<div class="wardrobe mx-auto">
+		<div class="front">
+	  		<div class="door"></div>
+			<div class="second-door"></div>
+	  	</div>
+  	  	<div class="inside">
+			<div class="flexed-wc mx-auto p-4">
+				<% @closet_post.each do |post| %>
+					<%=render 'users/components/closet_post', post:post%>
+				<%end%>
+			</div>
+    		<div class="rail"></div>
+				<%if @closet_post.count < 1%>
+				<div class="closet-text title is-3">
+					<div>It looks likes your closet, is empty:(</div> 
+					<div>Add some clothing from the catalog</div>
+					<div class="center mt-1"><%=link_to "go to catalog", posts_path, class:"button is-warning mt-2"%></div>
+				</div>
+				<%end%>
+  		</div>
+	</div>
+</div>
+
+
+</section>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<%if true == false%>
 	<div class="closet">
 		<div class="rail"></div>
 		<div class="flexed-wc inside mx-auto p-4">
@@ -20,4 +78,36 @@
 		<%end%>
 		</div>
 	</div>
-</section>
+
+
+	<div class="wardrobe mx-auto">
+  <div class="front">
+  <div class="door"></div>
+  <div class="second-door"></div>
+    </div>
+  <div class="inside">
+
+  	<div class="flexed-wc inside mx-auto p-4">
+
+		<% @closet_post.each do |post| %>
+
+
+		<div class="mx-4 my-5 center-down">
+			<% if post.image.attached?%>
+				<%=link_to image_tag(post.img_sq_normal(post.image), class:"cornered"), post%>
+			<% else %>
+			    <div class="center"><%= image_tag ("download.jpg"), class: "immg cornered"  %></div>
+			<% end %>
+			<%shortened_title = post.title.truncate(30, omission: '', separator: ' ')%>
+			<%display_title = shortened_title.length > 20 ? "#{shortened_title[0..16]}..." : shortened_title%>
+			<%=link_to display_title, post, style:"color:white;" %>
+		</div>
+		<%end%>
+		</div>
+
+    <div class="rail"></div>
+    <div class="hangers"></div>
+  </div>
+  <div class="shadow"></div>
+</div>
+<%end%>

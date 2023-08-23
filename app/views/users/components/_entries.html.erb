@@ -8,9 +8,8 @@
 		<% else %>
 		    <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
 		<% end %>
-		<%=link_to post.title, post, class:"s-link" %>
+		<%=link_to post.titled, post, class:"s-link" %>
 	</div>
 	<%end%>
 	</div>
 </section>
-<%= paginate @posts%>

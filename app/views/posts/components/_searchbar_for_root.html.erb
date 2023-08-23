@@ -6,7 +6,7 @@
 <div class="root_search">
 <%= search_form_for @query do |f| %>
     <div class="center">
-<%= f.search_field :title_or_material_i_cont_any, class:"input bs", placeholder:"Search here..." %>
+<%= f.search_field :title_or_material_or_brand_name_or_category_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
     </div>
 <%= f.submit "search!", class:"button is-warning my-2 bs d-none" %>
 <% end %>

@@ -29,8 +29,10 @@
   <div>
     <hr class="bst" />
     <div>Editor</div>
-    <%= form.label :verification, class:"label mt-2" %>
-    <%= form.text_field :verification, class:"input" %>
+    <%= form.label "Is your brand verified?", class:"label mt-2" %>
+    <div class="select">
+    <%=form.select :verification, ["False", "True"]%>
+    </div>
   </div>
   <%end%>
   </div>

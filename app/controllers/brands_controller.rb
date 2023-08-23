@@ -24,6 +24,18 @@ class BrandsController < ApplicationController
     @posts = @brand.posts.order(created_at: :desc)
     @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
     
+    @badges = true
+    if @brand.sustainable == "False"
+      if @brand.hand_made == "False"
+        if @brand.verification == "False"
+          @badges = false
+        end
+      end
+    end
+
+
+
+
   end
 
   # GET /brands/new

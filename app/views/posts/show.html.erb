@@ -12,7 +12,17 @@
             <div class="my-2 title is-5"><%=link_to @post.branded, @post.brand, class:"s-link"%></div>
 
 
-        <div><%=if @post.price.blank? then "#N/A" else number_to_currency(@post.price) end%></div>
+        <div>
+          <%if @post.archive == "archived"%>
+            <span class="tag bp">archived</span>
+            <%= number_to_currency(@post.price) if @post.price.present?%>
+          <%elsif @post.archive == "project" %>
+            <span class="tag bp">project</span>
+            <%= number_to_currency(@post.price) if @post.price.present?%>
+          <%else%>
+            <%=if @post.price.blank? then "#N/A" else number_to_currency(@post.price) end%>
+          <%end%>  
+        </div>
 
         <div class="mt-4 bpb flexed">
           <%#LIKE BUTTON%>

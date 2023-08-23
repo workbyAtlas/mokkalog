@@ -96,6 +96,13 @@ class Post < ApplicationRecord
 		end
 	end
 
+	def titled
+		shortened_title = title.truncate(30, omission: '', separator: ' ')
+		display_title = shortened_title.length > 20 ? "#{shortened_title[0..16]}..." : shortened_title
+	end
+
+
+
 	#i think this is deletable
 	def image_validation
 		return unless image.content_type.in?(%w[image/jpeg image/png image/webp])	

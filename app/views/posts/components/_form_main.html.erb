@@ -79,8 +79,11 @@
   </div>
 
   <div class="column">
-    <label class="label">Subcategory</label>
-<%= form.select :sub_category,
+    <label>Type</label>
+    <%= form.select :c_type, ['Neutral','Men','Women'],{},{data: {controller: "slim"}}%>
+    <%#<label class="label">Subcategory</label>
+
+<%#= form.select :sub_category,
                 [ ["Undefined",["","undefined"]],
                   ["T-shirt", ["Graphic","Heavy"]],
                   ["Shirt", ["Formal","Casual","Beach"]],
@@ -96,7 +99,7 @@
                   # Add more groups and sub-categories here...
                 ],
                 {},
-                { data: { controller: "slim" } }%>
+                { data: { controller: "slim" } }#%>
   </div>
 </div>
 

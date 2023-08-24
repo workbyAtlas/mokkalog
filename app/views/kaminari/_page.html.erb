@@ -1,11 +1,11 @@
 
 <% if page.current? %>
   <li>
-    <%= content_tag :a, page, rel: page.rel, class: 'pagination-link prime has-text-white' %>
+    <%= content_tag :a, page, rel: page.rel, class: 'pagination-link prime secondary-t bp' %>
   </li>
 <% else %>
   <li>
     <% data ||= {} %>
-    <%= link_to page, url, rel: page.rel, data: data, class: 'pagination-link' %>
+    <%= link_to page, url, rel: page.rel, data: data, class: 'pagination-link bp' %>
   </li>
 <% end %>

@@ -1,5 +1,5 @@
 class ApplicationController < ActionController::Base
-	after_action :track_action
+	#after_action :track_action
 
 	before_action :set_query
 	before_action :set_query_brand
@@ -37,8 +37,5 @@ class ApplicationController < ActionController::Base
 	end
 
 	protected
-	def track_action
-		ahoy.track 'Ran action',
-			request.path_parameters
-	end
+
 end

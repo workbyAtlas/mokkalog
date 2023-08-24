@@ -7,10 +7,10 @@
 <%= button_to like_post_path(id: post.id), class: "button button-like-text mr-1" do %>
 	<%if like_text == "Like"%>
 			<%=post.likes.count%>
-			<i class="fa-solid fa-heart fa-lg mx-1" style="color: #ff0000;"></i>
+			<i class="fa-regular fa-heart fa-lg mx-1" style="color: #ff0000;"></i>
 	<%else%>
 			<%=post.likes.count%>
-			<i class="fa-regular fa-heart fa-lg mx-1" style="color: #ff0000;"></i>
+			<i class="fa-solid fa-heart fa-lg mx-1" style="color: #ff0000;"></i>
 	<%end%>
 <% end %>
 </span>

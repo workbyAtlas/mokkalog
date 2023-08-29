@@ -20,7 +20,8 @@
 		<div class="dropdown mx-5 mb-3">
 			<span class="nav-link">Profile</span>
 			<div class="dropdown-content">
-				<div><%=link_to "My Page", user_path(current_user), class:"nav-link center"%></div>
+				<div>
+					<%=link_to "My Page", user_path(current_user), class:"nav-link center"%></div>
 				<div><%=link_to "Customize", edit_user_registration_path, class:"nav-link center"%></div>
 			<hr class="bst m-1" />
 			<div class="center">

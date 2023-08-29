@@ -39,6 +39,15 @@ class PostsController < ApplicationController
     end 
     @comments =@post.comments.order(created_at: :asc)
 
+    @badges = false
+    if @post.brand.sustainable == "True"
+      @badges = true
+    elsif @post.brand.hand_made == "True"
+      @badges = true
+    elsif @post.brand.verification == "True"
+      @badges = true
+    end
+
     #@new_web_link = @post.web_link.start_with?('http://', 'https://') ? @web_link : "https://#{@web_link}"
 
   end
@@ -193,7 +202,7 @@ def quick
 
     # Use callbacks to share common setup or constraints between actions.
     def set_post
-      @post = Post.find(params[:id])
+      @post = Post.friendly.find(params[:id])
     end
 
     # Only allow a list of trusted parameters through.

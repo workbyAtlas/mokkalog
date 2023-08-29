@@ -4,6 +4,7 @@ class UsersController < ApplicationController
 
 
   def profile
+
     if not current_user == @user
       @user.update(views: @user.views + 1)
     end
@@ -20,7 +21,8 @@ class UsersController < ApplicationController
   private
 
   def set_user
-    @user = User.find(params[:id])
+    #@user = User.find_by(username: params[:username])
+    @user = User.friendly.find(params[:id])
     #@user = current_user
   end
 

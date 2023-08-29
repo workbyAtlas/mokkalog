@@ -12,6 +12,7 @@
     <%= form.text_field :brand_text, class:"input" %>
   </div>
   <hr class="bst"/>
+  <%if @auth%>
   <div>
     <div class="label">Badges</div>
     <%= form.label "Is your brand hand made?", class:"label mt-2" %>
@@ -23,3 +24,5 @@
     <%=form.select :sustainable, ["False", "True"]%>
     </div>
   </div>
+
+<%end%>

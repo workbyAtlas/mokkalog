@@ -24,17 +24,14 @@ class BrandsController < ApplicationController
     @posts = @brand.posts.order(created_at: :desc)
     @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
     
-    @badges = true
-    if @brand.sustainable == "False"
-      if @brand.hand_made == "False"
-        if @brand.verification == "False"
-          @badges = false
-        end
-      end
+    @badges = false
+    if @brand.sustainable == "True"
+      @badges = true
+    elsif @brand.hand_made == "True"
+      @badges = true
+    elsif @brand.verification == "True"
+      @badges = true
     end
-
-
-
 
   end
 
@@ -94,7 +91,7 @@ class BrandsController < ApplicationController
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand
-      @brand = Brand.find(params[:id])
+      @brand = Brand.friendly.find(params[:id])
     end
     def editing_privilage_brand
       return if current_user.editor?

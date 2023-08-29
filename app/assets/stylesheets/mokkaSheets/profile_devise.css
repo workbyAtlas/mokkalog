@@ -279,6 +279,9 @@
 @media (max-width: 900px) {
   .poof-closet{display:none;}
   .mobile-closet{display:block;}
+  .closet_post{
+    width:140px;
+  }
 
 }
 
@@ -288,5 +291,21 @@
     padding: 0 25px;
   }
 
+}
+
+@media (max-width: 480px) {
+  .closet_post{
+    width:140px;
+  }
+
 
 }
+
+@media (max-width: 370px) {
+  .closet_post{
+    width:80px;
+  }
+
+
+}
+

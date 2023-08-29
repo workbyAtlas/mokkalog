@@ -87,3 +87,10 @@ gem 'kaminari'
 gem "ahoy_matey", "~> 4.2"
 gem "chartkick", "~> 5.0"
 gem "groupdate", "~> 6.3"
+
+
+#gem 'omniauth'
+#gem 'omniiauth-google-oauth2'
+#gem 'omniauth-rails_csrf_protection'
+
+gem "friendly_id", "~> 5.5"

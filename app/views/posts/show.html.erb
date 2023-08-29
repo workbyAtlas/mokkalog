@@ -5,7 +5,12 @@
 
     <div class="column bpx">
 
-      <div class="show-info ">
+      <div class="show-info">
+        <%if @badges == true%>
+        <div style="width:100%;">
+          <span class="float-r"><%=render "posts/components/badges"%></span>
+        </div>
+        <%end%>
         <div class="mt-3 mb-0 title is-3"><%=@post.title %></div>
 
 

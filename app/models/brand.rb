@@ -1,4 +1,5 @@
 class Brand < ApplicationRecord
+  extend FriendlyId
   validates :name, uniqueness: true, presence: true, length:{ maximum: 25}
   #validate :unique_name_case_insensitive
   validates :body, length: {maximum: 6000}, allow_blank: true
@@ -10,7 +11,7 @@ class Brand < ApplicationRecord
   
   validates :link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:40}
 
-
+  friendly_id :name, use: %i[slugged]
 	has_many :posts
 
   has_one_attached :image
@@ -21,6 +22,10 @@ class Brand < ApplicationRecord
   has_rich_text :body
   belongs_to :user
 
+  def should_generate_new_friendly_id?
+    name_changed? || slug.blank?
+  end
+
   def self.ransackable_attributes(auth_object = nil)
     ["created_at", "id", "name", "views", "updated_at"]
   end
@@ -29,9 +34,8 @@ class Brand < ApplicationRecord
     ["brandables", "image_attachment", "image_blob", "posts", "user"]
   end
 
-  def image_as_thumbnail
-    return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
-    image.variant(resize_to_fill: [200,200]).processed
+  def image_brand
+    image.variant(resize_to_fill: [300,300]).processed
   end
 
   def image_as_profile

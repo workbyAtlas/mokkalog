@@ -1,4 +1,5 @@
 class Post < ApplicationRecord
+	extend FriendlyId
 	validates :title, presence: {message: "Name can't be blank"}, length: {maximum: 40}
 	validates :body, length: { maximum: 3000 }, allow_blank: true
 	validates :price, numericality: { greater_than: 0, less_than: 99999 }, allow_blank: true
@@ -14,7 +15,8 @@ class Post < ApplicationRecord
 	validate :clean_word
 
 
-
+	friendly_id :custom_slug, use: [:slugged, :finders]
+	#friendly_id :custom_slug, use: %i[slugged]
 
 #Associations
 	has_one_attached :image
@@ -45,12 +47,17 @@ class Post < ApplicationRecord
 	belongs_to :user
 	#before_save :downcase_fields
 
-  
+  def custom_slug
+    "#{brand.name.parameterize}-#{title.parameterize}"
+  end
 
+	def should_generate_new_friendly_id?
+		title_changed? || slug.blank?
+	end
 
 	#validate :image, :image_validation
-  	def self.ransackable_attributes(auth_object = nil)
-    	["body", "color", "id",  "price", "sub_category", "title", "updated_at", "material"]
+  def self.ransackable_attributes(auth_object = nil)
+    ["body", "color", "id",  "price", "sub_category", "title", "updated_at", "material"]
  	end
 
 	 def self.ransackable_associations(auth_object = nil)

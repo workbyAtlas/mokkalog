@@ -41,6 +41,8 @@ Rails.application.routes.draw do
   post '/search', to: "search#search"
 
   get '/u/:id', to: 'users#profile', as: 'user'
+  #get '/u/:username', to: 'users#profile', as: 'user_profile'
+
   get 'setting' => 'users#setting'
   #get '/s/:id', to: 'users#setting', as: 'myuser'
   #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'

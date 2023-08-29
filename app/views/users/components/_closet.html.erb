@@ -1,6 +1,12 @@
 <section class="section bb">
 
-<div class="title is-4 center">Closet</div>
+
+<div class="title is-4 center">
+	<%if not @user.name.blank?%>
+	<%=@user.name%><span>'s&nbsp;</span>
+	<%end%>
+	Closet
+</div>
 
 <div class="mobile-closet">
 	<div class="closet-m">

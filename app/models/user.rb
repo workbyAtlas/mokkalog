@@ -1,8 +1,10 @@
 class User < ApplicationRecord
+  extend FriendlyId
+  friendly_id :username, use: %i[slugged]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
-         :recoverable, :rememberable, :validatable, :confirmable
+         :recoverable, :rememberable, :validatable, :confirmable, :lockable
 
   validates :username, uniqueness: true, presence: true
   #validates :link1, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true
@@ -29,6 +31,10 @@ class User < ApplicationRecord
   after_initialize :set_default_role, :if => :new_record?
   def set_default_role
     self.role ||= :user
+  end
+
+  def should_generate_new_friendly_id?
+    username_changed? || slug.blank?
   end
 
   def liked?(post)

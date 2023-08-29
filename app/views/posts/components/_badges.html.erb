@@ -1,0 +1,22 @@
+<%if @post.user == @post.brand.user%>
+<div class="notification bp p-3">
+<%if @post.brand.verification == "True"%>
+<div class="hover">
+  <i class="fa-solid fa-circle-check fa-2xl" style="color:#654321;"></i>
+  <div class="hover-content center">Verified</div>
+</div>
+<%end%>
+<%if @post.brand.hand_made == "True"%>
+<div class="hover">
+  <i class="fa-solid fa-scissors fa-2xl" style="color: #ff0000;"></i>
+  <div class="hover-content center">Handmade</div>
+</div>
+<%end%>
+<%if @post.brand.sustainable == "True"%>
+<div class="hover">
+  <i class="fa-solid fa-seedling fa-2xl" style="color: #18c95c;"></i>
+  <div class="hover-content center">Sustainable</div>
+</div>
+<%end%>
+</div>
+<%end%>

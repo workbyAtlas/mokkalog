@@ -1,6 +1,6 @@
 class User < ApplicationRecord
-  extend FriendlyId
-  friendly_id :username, use: %i[slugged]
+  #extend FriendlyId
+  #friendly_id :username, use: %i[slugged]
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable, :trackable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -33,9 +33,9 @@ class User < ApplicationRecord
     self.role ||= :user
   end
 
-  def should_generate_new_friendly_id?
-    username_changed? || slug.blank?
-  end
+  #def should_generate_new_friendly_id?
+    #username_changed? || slug.blank?
+  #end
 
   def liked?(post)
     liked_posts.include?(post)

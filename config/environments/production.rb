@@ -17,7 +17,7 @@ Rails.application.configure do
     authentication: 'plain',
     enable_starttls_auto: true
   }
-  config.action_mailer.default_url_options = { host: 'mokkalog.com' }
+  config.action_mailer.default_url_options = { host: 'www.mokkalog.com' }
 
   # Eager load code on boot. This eager loads most of Rails and
   # your application in memory, allowing both threaded web servers

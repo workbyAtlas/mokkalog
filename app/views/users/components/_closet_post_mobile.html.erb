@@ -1,0 +1,11 @@
+<div class="m-2 center-down closet_post post-shadow">
+	
+	<% if post.image.attached?%>
+		<%=link_to image_tag(post.img_sq_normal(post.image), class:"cornered"), post%>
+	<% else %>
+	    <div class="center"><%= image_tag ("download.jpg"), class: "immg cornered"  %></div>
+	<% end %>
+	<%shortened_title = post.title.truncate(30, omission: '', separator: ' ')%>
+	<%display_title = shortened_title.length > 20 ? "#{shortened_title[0..16]}..." : shortened_title%>
+	<%=link_to display_title, post, style:"color:white;" %>
+</div>

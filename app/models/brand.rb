@@ -38,9 +38,9 @@ class Brand < ApplicationRecord
     image.variant(resize_to_fill: [300,300]).processed
   end
 
-  def image_as_profile
+  def image_as_thumbnail
     return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
-    image.variant(resize_to_fill: [400,400]).processed
+    image.variant(resize_to_fill: [200,200]).processed
   end
 
   def banner_image

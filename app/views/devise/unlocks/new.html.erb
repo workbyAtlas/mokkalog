@@ -1,16 +1,39 @@
-<h2>Resend unlock instructions</h2>
+
 
 <%= form_for(resource, as: resource_name, url: unlock_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 
+
+
+
+
+
+<section class="section center">
+<div class="notification rw30 has-background-white">
+<div class="center-down">
+<h2 class="title is-3 mb-0"><span class="secondary-t">Resend unlock</span></h2>
+<h2 class="title is-3 mt-0"><span class="secondary-t">instructions</span></h2>
+</div>
+<br/>
+
   <div class="field">
-    <%= f.label :email %><br />
-    <%= f.email_field :email, autofocus: true, autocomplete: "email" %>
+    <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input mokka-ph", placeholder:"Email" %>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Resend unlock instructions" %>
+  <div class="actions center">
+    <%= f.submit "Resend unlock instructions", class:"button is-warning bold", style:"border-color:#654321;color:#654321;" %>
   </div>
+
+<br/>
+<div class="center-down">
+<%= link_to "Go back to Sign in", new_session_path(resource_name) %>
+</div>
+
+</div>
+</section>
+
+
+
+
 <% end %>
 
-<%= render "devise/shared/links" %>

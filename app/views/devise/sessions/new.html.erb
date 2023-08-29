@@ -5,20 +5,18 @@
 <section class="section">
   <div class="container rw30">
       <div class="notification is-white gbt">
-        <div class="title is-3">Sign in</div>
+        <div class="title is-3 center"><span class="secondary-t">Sign In</span></div>
         
         <div class="field">
-          <%= f.label :email, class:"label" %>
           <div class="control">
-            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input" %>
+            <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input mokka-ph", placeholder:"Email" %>
           </div>
         </div>
 
 
         <div class="field">
-          <%= f.label :password, class:"label" %>
           <div class="control">
-            <%= f.password_field :password, autocomplete: "current-password", class:"input"%>
+            <%= f.password_field :password, autocomplete: "current-password", class:"input mokka-ph", placeholder:"Password"%>
           </div>
         </div>
 
@@ -28,6 +26,7 @@
          <div>
           <%=link_to "Forgot Password?", new_user_password_path, class:"p-link"%>
         </div>
+
         
 
 
@@ -35,14 +34,14 @@
 
         <hr class="border-purp-top" />
   <% if devise_mapping.rememberable? %>
-    <div class="field">
-      <%= f.check_box :remember_me %>
+    <div class="field secondary-t">
+      <%= f.check_box :remember_me, style:"accent-color:#654321;" %>
       <%= f.label :remember_me %>
     </div>
   <% end %>
 
   <div class="actions">
-    <%= f.submit "Log in", class:"button is-warning" %>
+    <%= f.submit "Log in", class:"button is-warning bold",style:"border-color:#654321;color:#654321;" %>
   </div>
 
       </div>

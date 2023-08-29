@@ -98,9 +98,11 @@
 </section>
 
 <%# Comment Form--------------------------------------------------%>
+<%if user_signed_in?%>
 <section class="section bp">
 <%= render partial: 'comments/form' , locals: {commentable: @post} %>
 </section>
+<%end%>
 <%# Comment Section------------------------------------------------%>
 
 <section class="section center-down p-0">

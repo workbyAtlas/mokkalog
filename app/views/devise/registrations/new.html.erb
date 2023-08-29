@@ -1,71 +1,84 @@
-
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
+<section class="center-down">
+
+  <div class="mt-2 mb-4 rw30">
+    <div class="cornered bp prime center-down p-4">
+      <span class="title is-4 m-2 secondary-t">Sign Up for Mokka</span>
+      <span><strong class="secondary-t">Why should I make an account?</strong></span>
+      <div class="secondary-t" style="text-align:center;">
+        <ul>
+          <li>Have your own profile page</li>
+          <li>Upload clothing you have made or you like</li>
+          <li>Be part of the loop</li>
+          <br/>
+          <li class="has-text-white bold">We promise we won't spam you.</li>
+        </ul>
+      </div>
+    </div>
+  </div>
 
 
-<section class="section center">
 
-<div class="notification rw50">
+    
+<div class="rw30 p-3 cornered bp">
 
-  <div class="title is-4">Sign Up</div>
-  <div class="field">
-    <label class="label">Email</label>
+<div class="columns mb-1">
+  <div class="column">
     <div class="control">
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input"%>
+      <%= f.text_field :name, class:"input is-small mokka-ph", placeholder: "First Name"%>
+    </div>
+  </div>
+
+  <div class="column">
+    <div class="control">
+      <%= f.text_field :last_name, class:"input is-small mokka-ph", placeholder:"Last Name" %>
+    </div>
+  </div>
+  </div>
+
+  <div class="field">
+    <div class="control">
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", class:"input is-small mokka-ph", placeholder:"Email"%>
     </div>
   </div>
   
   <div class="field">
-    <label class="label">Username</label>
     <div class="control">
-      <%= f.text_field :username, class:"input" %>
+      <%= f.text_field :username, class:"input is-small mokka-ph", placeholder:"Username" %>
     </div>
 </div>
 
-  <div class="columns">
-    <div class="field column">
-      <label class="label">First Name</label>
-      <div class="control">
-        <%= f.text_field :name, class:"input" %>
-      </div>
-    </div>
 
-    <div class="field column">
-      <label class="label">Last Name</label>
-      <div class="control">
-        <%= f.text_field :last_name, class:"input" %>
-      </div>
-    </div>
-    </div>
 
   <hr class="bst"/>
 
-
-
-
   <div class="field">
-    <label class="label">Password</label>
+    <label class="label secondary-t">Password</label>
     <div class="control">
 
-    <% if @minimum_password_length %>
-    <em>(<%= @minimum_password_length %> characters minimum)</em>
-    <% end %><br />
-    <%= f.password_field :password, autocomplete: "new-password", class:"input" %>
+    <%= f.password_field :password, autocomplete: "new-password", class:"input is-small mokka-ph", placeholder:"Password" %>
     </div>
   </div>
 
   <div class="field">
-    <label class="label">Password Confirm</label>
     <div class="control">
-    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input" %>
+    <%= f.password_field :password_confirmation, autocomplete: "new-password", class:"input is-small mokka-ph", placeholder:"Password Confirm" %>
   </div>
   </div>
 
   <div class="actions">
-    <%= f.submit "Sign up", class:"button is-warning" %>
+    <%= f.submit "Sign up", class:"button is-warning float-r bold", style:"border-color:#654321;color:#654321;" %>
     <%#f.button "check", formaction: check_users_path%>
   </div>
-<% end %>
+</div>
 
+<div class="mt-4">
+  Didn't get a confirmation email?
+  <%=link_to "Resend Confirmation.", new_user_password_path, class:"p-link"%>
 </div>
 </section>
+
+
+<% end %>
+

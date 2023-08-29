@@ -16,6 +16,14 @@
 			<%=render 'users/components/closet_post_mobile', post:post%>
 		<%end%>
 
+		<%if @closet_post.count < 1%>
+		<div class="title is-3 has-text-white mt-5">
+			<div>It looks likes your closet, is empty:(</div> 
+			<div>Add some clothing from the catalog</div>
+			<div class="center mt-1"><%=link_to "go to catalog", posts_path, class:"button is-warning mt-2"%></div>
+		</div>
+		<%end%>
+
 		</div>
 	</div>
 

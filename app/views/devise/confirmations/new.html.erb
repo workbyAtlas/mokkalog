@@ -3,23 +3,28 @@
 <%= form_for(resource, as: resource_name, url: confirmation_path(resource_name), html: { method: :post }) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
 <section class="section center">
+
 <div class="notification rw30 has-background-white">
   <div class="center-down">
-    <h2 class="title is-3">Resend Confrimation Email</h2>
+  <h2 class="title is-3 mb-0"><span class="secondary-t">Resend confirmation</span></h2>
+  <h2 class="title is-3 mt-0"><span class="secondary-t">Email</span></h2>
+  </div>
+  <br/>
 
     <div class="field">
-      <div class="label">Email</div>
-      <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:"input" %>
+      <%= f.email_field :email, autofocus: true, autocomplete: "email", value: (resource.pending_reconfirmation? ? resource.unconfirmed_email : resource.email), class:"input mokka-ph", placeholder:"Email" %>
     </div>
 
-    <div class="actions">
-      <%= f.submit "Resend confirmation instructions", class:"button is-warning" %>
+    <div class="actions center">
+      <%= f.submit "Resend confirmation email", class:"button is-warning bold", style:"border-color:#654321;color:#654321;" %>
     </div>
 
     <br/>
-    <%= link_to "Go back to Sign in", new_session_path(resource_name) %>
+    <div class="center">
+    <%= link_to "Go back to Sign in", new_session_path(resource_name), class:"p-link" %>
+    </div>
   <% end %>
-  </div>
+
 </div>
 </section>
 

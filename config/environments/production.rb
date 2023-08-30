@@ -15,7 +15,7 @@ Rails.application.configure do
     user_name: 'admin@mokkalog.com',
     password: '@Coffeecake64',
     authentication: 'plain',
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
     tls: true
   }
   config.action_mailer.default_url_options = { host: 'mokkalog.com' }
@@ -104,6 +104,6 @@ Rails.application.configure do
 
   # Do not dump schema after migrations.
   config.active_record.dump_schema_after_migration = false
-  config.force_ssl = false
+  config.force_ssl = true
 
 end

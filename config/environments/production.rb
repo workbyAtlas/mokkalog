@@ -10,7 +10,7 @@ Rails.application.configure do
   config.action_mailer.delivery_method = :smtp
   config.action_mailer.smtp_settings = {
     address: 'smtp.porkbun.com',
-    port: 465,
+    port: 587,
     domain: 'mokkalog.com',
     user_name: 'admin@mokkalog.com',
     password: '@Coffeecake64',

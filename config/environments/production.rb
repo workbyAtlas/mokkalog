@@ -15,8 +15,7 @@ Rails.application.configure do
     user_name: 'admin@mokkalog.com',
     password: '@Coffeecake64',
     authentication: 'plain',
-    enable_starttls_auto: true,
-    tls: true
+    enable_starttls_auto: true
     
   }
   config.action_mailer.default_url_options = { host: 'mokkalog.com' }

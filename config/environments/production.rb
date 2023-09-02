@@ -16,7 +16,9 @@ Rails.application.configure do
     user_name: 'admin@mokkalog.com',
     password: '@Coffeecake64',
     authentication: 'plain',
-    enable_starttls_auto: true
+    enable_starttls_auto: true,
+    open_timeout:5,
+    read_timeout:10
     
   }
 

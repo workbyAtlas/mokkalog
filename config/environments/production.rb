@@ -17,8 +17,8 @@ Rails.application.configure do
     password: '@Coffeecake64',
     authentication: 'plain',
     enable_starttls_auto: true,
-    open_timeout:5,
-    read_timeout:10
+    open_timeout:50,
+    read_timeout:50
     
   }
 

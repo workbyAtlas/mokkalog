@@ -5,24 +5,37 @@
   </div>
   <div class="column">
 
-  <div>
-    <%= form.label :Name, class:"label mt-2" %>
-    <%= form.text_field :name, class:"input" %>
+  <div class="mb-2">
+    <%= form.text_field :name, class:"input mokka-ph", placeholder:"Name" %>
+  </div>
+  <div class="mb-2">
+    <%= form.text_field :link, class:"input mokka-ph", placeholder:"Link, Please include https://" %>
   </div>
   <div>
-    <%= form.label :Link, class:"label mt-2" %>
-    <%= form.text_field :link, class:"input", placeholder:"Please include https://" %>
+    <div class="label secondary-t">Origin:</div>
+    <%= form.select :location, brand.countries_name.invert, {}, { data: { controller: 'slim' } } %>
+  </div>
+
+  <hr class="bst"/>
+
+  <div class="columns">
+    <div class="column">
+      <div class="flexed">
+        <i class="fa-brands fa-instagram center mx-2" style="color:#654321"></i>
+        <%= form.text_field :ig_link, class:"input mokka-ph is-small", placeholder:"Please include https://" %>
+      </div>
+    </div>
+  <div class="column">
+    <div class="flexed">
+      <i class="fa-brands fa-x-twitter center mx-2" style="color:#654321"></i>
+      <%= form.text_field :x_twitter, class:"input mokka-ph is-small", placeholder:"Please include https://" %>
+    </div>
+  </div>
+
+
   </div>
   <div>
-    <div class="label mt-2"><i class="fa-brands fa-instagram" style="color:#654321"></i></div>
-    <%= form.text_field :ig_link, class:"input", placeholder:"Please include https://" %>
-  </div>
-  <div>
-    <div class="label mt-2"><i class="fa-brands fa-x-twitter" style="color:#654321"></i></div>
-    <%= form.text_field :x_twitter, class:"input", placeholder:"Please include https://" %>
-  </div>
-  <div>
-    <%= form.label "Description", class:"label mt-2" %>
+    <%= form.label "Description", class:"label mt-2 secondary-t" %>
     <%= form.rich_text_area :body, placeholder:"Write a short description!" %>
   </div>
   <%if @auth%>

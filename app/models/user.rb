@@ -26,6 +26,7 @@ class User < ApplicationRecord
   has_many :favoritables, dependent: :destroy
   has_many :favorited_posts, through: :favoritables, source: :post
 
+  before_destroy :reassign_posts
 
   enum role: [:user, :editor, :mod,:developer, :admin]
   after_initialize :set_default_role, :if => :new_record?
@@ -84,5 +85,10 @@ class User < ApplicationRecord
       gravity: "center"}).processed
   end
 
+  private
+    def reassign_posts
+    # Update the user_id of all posts to a specific value (e.g., 1) before the user is destroyed
+    posts.update_all(user_id: 1)
+  end
 
 end

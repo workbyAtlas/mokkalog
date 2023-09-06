@@ -94,3 +94,5 @@ gem "groupdate", "~> 6.3"
 #gem 'omniauth-rails_csrf_protection'
 
 gem "friendly_id", "~> 5.5"
+gem 'country_state_select', '~> 3.2'
+gem 'countries', '~> 5.5'

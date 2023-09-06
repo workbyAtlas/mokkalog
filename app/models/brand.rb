@@ -4,12 +4,17 @@ class Brand < ApplicationRecord
   #validate :unique_name_case_insensitive
   validates :body, length: {maximum: 6000}, allow_blank: true
   validates :header, length: {maximum:2000}, allow_blank: true
-  validates :brand_text, length: {maximum:20}, allow_blank: true
+  validates :brand_text, length: {maximum:40}, allow_blank: true
 
   validate :check_for_image
   validate :check_for_banner
   
   validates :link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:40}
+  validates :ig_link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:40}
+  validates :x_twitter, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:40}
+
+
+  validate :unique_name_case_insensitive
 
   friendly_id :name, use: %i[slugged]
 	has_many :posts
@@ -24,6 +29,14 @@ class Brand < ApplicationRecord
 
   def should_generate_new_friendly_id?
     name_changed? || slug.blank?
+  end
+  
+  def countries_name
+    CS.countries.with_indifferent_access
+  end
+
+  def country_label
+    countries_name[location]
   end
 
   def self.ransackable_attributes(auth_object = nil)
@@ -61,7 +74,10 @@ class Brand < ApplicationRecord
       end
   end
 
-  validate :unique_name_case_insensitive
+
+
+
+
 
   def unique_name_case_insensitive
     if Brand.exists?(name: name.downcase)

@@ -17,6 +17,7 @@ class BrandsController < ApplicationController
 
   # GET /brands/1 or /brands/1.json
   def show
+    @c = ISO3166::Country.new(@brand.location)
     if not current_user == @brand.user
       @brand.update(views: @brand.views + 1)
       #@brand.posts = @brand.posts.order('created_at DESC').page(params[:page]).per(16)

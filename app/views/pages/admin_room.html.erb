@@ -13,7 +13,7 @@
   <ul>
     <li>User count:<%=@users.count%></li>
 <% @users.each do |x| %>
-  <li><%=x.email %> | <%= x.name %> | <%= x.role %></li>
+  <li><%=x.email %> | <%= x.name %> | <%= x.role %>| <%= x.id %></li>
 <% end %>
   </ul>
 </section>

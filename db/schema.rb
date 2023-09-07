@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_08_30_001243) do
+ActiveRecord::Schema[7.0].define(version: 2023_09_06_233825) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -206,6 +206,18 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_001243) do
     t.index ["user_id"], name: "index_likeables_on_user_id"
   end
 
+  create_table "pagelinks", force: :cascade do |t|
+    t.string "web_link"
+    t.text "body"
+    t.bigint "user_id", null: false
+    t.bigint "post_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "price"
+    t.index ["post_id"], name: "index_pagelinks_on_post_id"
+    t.index ["user_id"], name: "index_pagelinks_on_user_id"
+  end
+
   create_table "posts", force: :cascade do |t|
     t.string "title"
     t.text "body"
@@ -275,9 +287,11 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_001243) do
     t.datetime "locked_at"
     t.integer "failed_attempts"
     t.string "unlock_token"
+    t.string "slug"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
+    t.index ["slug"], name: "index_users_on_slug", unique: true
   end
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
@@ -293,6 +307,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_08_30_001243) do
   add_foreign_key "favoritables", "users"
   add_foreign_key "likeables", "posts"
   add_foreign_key "likeables", "users"
+  add_foreign_key "pagelinks", "posts"
+  add_foreign_key "pagelinks", "users"
   add_foreign_key "posts", "brands"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"

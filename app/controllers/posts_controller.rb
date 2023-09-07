@@ -38,6 +38,7 @@ class PostsController < ApplicationController
       @post.update(views: @post.views + 1)
     end 
     @comments =@post.comments.order(created_at: :asc)
+    @pagelinks = @post.pagelinks.order(created_at: :asc)
 
     @badges = false
     if @post.brand.sustainable == "True"
@@ -46,6 +47,12 @@ class PostsController < ApplicationController
       @badges = true
     elsif @post.brand.verification == "True"
       @badges = true
+    end
+
+    @visit_modal = false
+
+    if @pagelinks.count > 0
+      @visit_modal = true
     end
 
     #@new_web_link = @post.web_link.start_with?('http://', 'https://') ? @web_link : "https://#{@web_link}"

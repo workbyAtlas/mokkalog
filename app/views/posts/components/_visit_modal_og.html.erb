@@ -1,0 +1,59 @@
+<div class="modal is-active">
+  <div class="modal-background"></div>
+  <div class="modal-content">
+  <div class="notification has-background-white bp">
+    <div id="idpicker" style="display:none;"><%=@post.id%></div>
+    <div class="title is-4 center"><u>Links</u></div>
+    <%=link_to "Close", "#", onclick:"hidediv('visitmodal')", class:"delete"%>
+
+
+    <div class=" m-6">
+    	<table class="center">
+    		<tr>
+    			<td class="table-m"><i class="fa-solid fa-link"></i></td>
+    			<td class="table-m"><input class="input is-small mokka-ph" placeholder="Creator has not submitted a link yet" style="width:300px;" value="<%=@post.web_link%>"></td>
+    			<td class="table-m"><%=link_to "Visit", @post.web_link, target: "_blank", class:"button s-btn is-small is-small"%></td>
+    		</tr>
+
+    		<tr>
+    			<td>Grailed</td>
+    			<td><input class="input is-small mokka-ph" placeholder="Creator has not submitted a link yet" value="<%=@post.grailed%>"></td>
+    			<td><%=link_to "Visit", @post.grailed, target: "_blank", class:"button s-btn is-small"%></td>
+    		</tr>
+    		<tr>
+    			<td class="table-m"><i class="fa-brands fa-amazon"></i></td>
+    			<td class="table-m"><input class="input is-small mokka-ph" placeholder="Creator has not submitted a link yet" value="<%=@post.amazon_link%>"></td>
+    			<td class="table-m"><%=link_to "Visit", @post.amazon_link, target: "_blank", class:"button s-btn is-small"%></td>
+    		</tr>
+
+    		<tr>
+    			<td>Stockx</td>
+    			<td><input class="input is-small mokka-ph" placeholder="Feature coming in the future" ></td>
+    			<td><button class="button s-btn is-small">Visit</button></td>
+    		</tr>
+    		<tr>
+    			<td>Etsy</td>
+    			<td><input class="input is-small mokka-ph" placeholder="Feature coming in the future"></td>
+    			<td><button class="button s-btn is-small">Visit</button></td>
+    		</tr>
+    	</table>
+
+
+  	</div>
+
+      
+
+
+
+  
+
+
+
+<%=render partial: 'pagelinks/form' , locals: {post: @post}%> 
+</div>
+
+
+
+</div>
+</div>
+</div>

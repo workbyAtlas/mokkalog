@@ -1,67 +1,59 @@
 <div class="modal is-active">
   <div class="modal-background"></div>
-  <div class="modal-content">
+  <div class="modal-content" style="width:80%;">
   <div class="notification has-background-white bp">
     <div id="idpicker" style="display:none;"><%=@post.id%></div>
     <div class="title is-4 center"><u>Links</u></div>
     <%=link_to "Close", "#", onclick:"hidediv('visitmodal')", class:"delete"%>
+    <div class="columns">
+    <div class="column" style="border-right:4px solid #654321;">
 
-      <div class="flexed m-2">
-        <div class="center mr-2"><i class="fa-solid fa-link"></i></div>
-        <%if @post.web_link.blank?%>
-        <input class="input" placeholder="Creator has not submitted a link yet">
-        <div class="button s-btn">Visit</div>
-        <%else%>
-        <input class="input" value="<%=@post.web_link%>">
-        <%=link_to "Visit", @post.web_link, target: "_blank", class:"button s-btn"%>
-        <%end%>
-      </div>
+      <table class="center">
+        <tr>
+          <td class="table-m"><i class="fa-solid fa-link"></i></td>
+          <td class="table-m"><input class="input is-small mokka-ph" placeholder="Creator has not submitted a link yet" style="width:300px;" value="<%=@post.web_link%>"></td>
+          <td class="table-m"><%=link_to "Visit", @post.web_link, target: "_blank", class:"button s-btn is-small is-small"%></td>
+        </tr>
 
-      <div class="flexed m-2">
-        <%if @post.amazon_link.blank?%>
-        <div class="center mr-3"><strong><i class="fa-brands fa-amazon"></i></strong></div>
-        <input class="input" placeholder="Creator has not submitted a link yet">
-        <div class="button s-btn">Visit</div>
-        <%else%>
-        <div class="center mr-3"><strong><i class="fa-brands fa-amazon"></i></strong></div>
-        <input class="input" value="<%=@post.amazon_link%>">
-        <%=link_to "Visit", @post.amazon_link, target: "_blank", class:"button s-btn"%>
-        <%end%>
-      </div>
+        <tr>
+          <td>Grailed</td>
+          <td><input class="input is-small mokka-ph" placeholder="Creator has not submitted a link yet" value="<%=@post.grailed%>"></td>
+          <td><%=link_to "Visit", @post.grailed, target: "_blank", class:"button s-btn is-small"%></td>
+        </tr>
+        <tr>
+          <td class="table-m"><i class="fa-brands fa-amazon"></i></td>
+          <td class="table-m"><input class="input is-small mokka-ph" placeholder="Creator has not submitted a link yet" value="<%=@post.amazon_link%>"></td>
+          <td class="table-m"><%=link_to "Visit", @post.amazon_link, target: "_blank", class:"button s-btn is-small"%></td>
+        </tr>
 
-      <div class="flexed m-2">
-        <%if @post.grailed.blank?%>
-        <div class="center mr-3"><strong>Grailed</strong></div>
-        <input class="input" placeholder="Creator has not submitted a link yet">
-        <div class="button s-btn">Visit</div>
-        <%else%>
-        <div class="center mr-3"><strong>Grailed</strong></div>
-        <input class="input" value="<%=@post.grailed%>">
-        <%=link_to "Visit", @post.grailed, target: "_blank", class:"button s-btn"%>
-        <%end%>
-      </div>
-
-      <div class="flexed m-2">
-      <div class="center mr-3"><strong>Stockx</strong></div>
-      <input class="input" placeholder="Creator has not submitted a link yet">
-      <div class="button s-btn">Visit</div>
-      </div>
-
-
-      <div class="flexed m-2">
-      <div class="center mr-3"><strong>Etsy</strong></div>
-      <input class="input" placeholder="Creator has not submitted a link yet">
-      <div class="button s-btn">Visit</div>
-      </div>
-
-
-   
+        <tr>
+          <td>Stockx</td>
+          <td><input class="input is-small mokka-ph" placeholder="Feature coming in the future" ></td>
+          <td><button class="button s-btn is-small">Visit</button></td>
+        </tr>
+        <tr>
+          <td>Etsy</td>
+          <td><input class="input is-small mokka-ph" placeholder="Feature coming in the future"></td>
+          <td><button class="button s-btn is-small">Visit</button></td>
+        </tr>
+      </table>
+      
 
 
 
+  
+</div>
 
+<div class="column" style="overflow:scroll; height:250px;">
+  <div class="center title is-6"><u class="secondary-t">Link Submitted by Users</u></div>
+  <% @pagelinks.each do |pagelink| %>
+    <%= render partial: 'pagelinks/pagelink', locals: {post: @post, pagelink: pagelink} %>
+  <% end %>
 
+</div>
 
+</div>
+ <%=render partial: 'pagelinks/form' , locals: {post: @post}%> 
 
 </div>
 </div>

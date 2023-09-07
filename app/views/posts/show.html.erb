@@ -111,13 +111,16 @@
 <% end %>
 </section>
 
+<%if @visit_modal == true%>
 <div class="d-none" id="visitmodal">
 <%=render 'posts/components/visit_modal'%>
 </div>
-
-<div class="d-none" id="sharemodal">
-<%=render 'posts/components/share_modal'%>
+<%else%>
+<div class="d-none" id="visitmodal">
+<%=render 'posts/components/visit_modal_og'%>
 </div>
+<%end%>
+
 
 
 

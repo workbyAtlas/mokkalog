@@ -22,7 +22,7 @@ class UsersController < ApplicationController
 
   def set_user
     #@user = User.find_by(username: params[:username])
-    @user = User.find(params[:id])
+    @user = User.friendly.find(params[:id])
     #@user = current_user
   end
 

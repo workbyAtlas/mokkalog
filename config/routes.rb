@@ -8,6 +8,7 @@ Rails.application.routes.draw do
       get :article
     end
   end
+  
   resources :comments, only: [:destroy, :edit, :update]
   #resources :comments, only: [:edit, :update]
     
@@ -57,10 +58,17 @@ Rails.application.routes.draw do
       post :check  
     end
 
+    resources :pagelinks
     resources :comments, only: :create
     #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
     #get "visit"
   end
+
+  #resources :pagelinks, only: [:destroy, :edit, :update]
+
+    #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
+    #get "visit"
+  
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 
   # Defines the root path route ("/")xxx

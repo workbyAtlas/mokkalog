@@ -21,8 +21,10 @@
     url("https://candyfonts.com/wp-data/2018/10/26/11538/HELR45W.ttf") format("truetype");
 }
 .helv{font-family:"helvetica";}
-
-
+tr{padding:15px;}
+.table-m {
+border-bottom: 10px solid transparent; /* Adjust the value as needed */
+}
 .tabs li.is-active a{
     color:#654321;
     font-weight:bold;

@@ -1,14 +1,14 @@
 <div class="lgrey p-4 cornered m-2 brand-card">
   <span class="mx-auto">
 
-<% if brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
-  <div><%=link_to (image_tag (brand.image_brand)), brand %></div>
+<% if brand.image.attached? %>
+  <div><%=link_to (image_tag(brand.image_handler(brand.image,"brand"))), brand %></div>
 <% else %>
-  <div class="center"><%= image_tag ("download.jpg"), class: "immg"  %></div>
+  <div class="center"><%=image_tag(@blank.image_brand)%></div>
 <% end %>
 
   <div class="p-link center">
-    <strong><%=link_to brand.name, brand, class:"s-link" %></strong>
+    <%=link_to brand.short_name(brand.name), brand, class:"s-link bold", style:"text-align:center;" %>
   </div>
   </span>
 </div>

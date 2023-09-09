@@ -20,10 +20,13 @@
 </div>
 
 
-<section class="section flexed-wc">
+
+<section class="section center">
+  <div class="flexed-wc">
   <% @brands.each do |brand| %>
     <%= render "brands/components/brand_mokka", brand: brand%>
   <% end %>
+  </div>
 </section>
 
 <%= paginate @brands%>

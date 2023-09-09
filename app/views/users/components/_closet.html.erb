@@ -9,8 +9,8 @@
 </div>
 
 <div class="mobile-closet">
+	<%if true == false%>
 	<div class="closet-m">
-
 		<div class="flexed-wc inside mx-auto p-4">
 		<% @closet_post.each do |post| %>
 			<%=render 'users/components/closet_post_mobile', post:post%>
@@ -26,6 +26,35 @@
 
 		</div>
 	</div>
+	<%end%>
+
+<div class="mt-2">
+<div class="wardrobe-m">
+  <div class="front-m">
+  <div class="door-m"></div>
+  <div class="second-door-m"></div>
+    </div>
+  <div class="inside-m" style="overflow: scroll;">
+
+  	<div class="flexed-wcc">
+  		<% @closet_post.each do |post| %>
+			<%=render 'users/components/closet_post_mobile', post:post%>
+		  <%end%>
+	 	</div>
+
+		<%if @closet_post.count < 1%>
+			<div class="title is-5 has-text-white center mx-4" style="display:block; margin-top:150px; text-align:center;">
+			<div>It looks likes your closet, is empty:( Add some clothing from the catalog</div>
+			<div class="center mt-1"><%=link_to "go to catalog", posts_path, class:"button is-warning mt-2"%></div>
+			</div>
+		<%end%>
+
+    <div class="rail-m z"></div>
+    <div class="boots-m z"></div>
+  </div>
+  <div class="shadow-m"></div>
+</div>
+</div>
 
 
 </div>
@@ -70,60 +99,3 @@
 
 
 
-
-
-
-<%if true == false%>
-	<div class="closet">
-		<div class="rail"></div>
-		<div class="flexed-wc inside mx-auto p-4">
-
-		<% @closet_post.each do |post| %>
-
-
-		<div class="mx-4 my-5 center-down">
-			<% if post.image.attached?%>
-				<%=link_to image_tag(post.img_sq_normal(post.image), class:"cornered"), post%>
-			<% else %>
-			    <div class="center"><%= image_tag ("download.jpg"), class: "immg cornered"  %></div>
-			<% end %>
-			<%shortened_title = post.title.truncate(30, omission: '', separator: ' ')%>
-			<%display_title = shortened_title.length > 20 ? "#{shortened_title[0..16]}..." : shortened_title%>
-			<%=link_to display_title, post, style:"color:white;" %>
-		</div>
-		<%end%>
-		</div>
-	</div>
-
-
-	<div class="wardrobe mx-auto">
-  <div class="front">
-  <div class="door"></div>
-  <div class="second-door"></div>
-    </div>
-  <div class="inside">
-
-  	<div class="flexed-wc inside mx-auto p-4">
-
-		<% @closet_post.each do |post| %>
-
-
-		<div class="mx-4 my-5 center-down">
-			<% if post.image.attached?%>
-				<%=link_to image_tag(post.img_sq_normal(post.image), class:"cornered"), post%>
-			<% else %>
-			    <div class="center"><%= image_tag ("download.jpg"), class: "immg cornered"  %></div>
-			<% end %>
-			<%shortened_title = post.title.truncate(30, omission: '', separator: ' ')%>
-			<%display_title = shortened_title.length > 20 ? "#{shortened_title[0..16]}..." : shortened_title%>
-			<%=link_to display_title, post, style:"color:white;" %>
-		</div>
-		<%end%>
-		</div>
-
-    <div class="rail"></div>
-    <div class="hangers"></div>
-  </div>
-  <div class="shadow"></div>
-</div>
-<%end%>

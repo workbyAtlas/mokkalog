@@ -10,7 +10,9 @@ class BrandsController < ApplicationController
     #brands = @query.result(distinct: true)
     @brands = @query.result.includes(:posts)
     @brands = @brands.order('created_at ASC').page(params[:page]).per(16)
+    @blank = Brand.find(1) 
 
+    
 
 
   end

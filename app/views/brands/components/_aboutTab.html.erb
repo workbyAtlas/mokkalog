@@ -17,11 +17,11 @@
     <%end%>    
 
     <% if not @brand.ig_link.blank?%>
-    <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs"><i class="fa-brands fa-instagram"></i></span></strong><%=link_to @brand.ig_link, @brand.ig_link, class:"s-link", target:"_blank"%></div>
+    <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs"><i class="fa-brands fa-instagram" style="color:#654321"></i></span></strong><%=link_to @brand.ig_link, @brand.ig_link, class:"s-link", target:"_blank"%></div>
     <%end%>
 
     <% if not @brand.x_twitter.blank?%>
-    <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs"><i class="fa-brands fa-instagram"></i></span></strong><%=link_to @brand.x_twitter, @brand.x_twitter, class:"s-link", target:"_blank"%></div>
+    <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs"><i class="fa-brands fa-x-twitter" style="color:#654321"></i></span></strong><%=link_to @brand.x_twitter, @brand.x_twitter, class:"s-link", target:"_blank"%></div>
     <%end%>
 
 

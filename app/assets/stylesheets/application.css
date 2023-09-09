@@ -168,7 +168,11 @@ border-bottom: 10px solid transparent; /* Adjust the value as needed */
 
 /*FlexBox*/
 .flexed-w{display:flex;flex-wrap:wrap;}
-.flexed-wc{display:flex;flex-wrap:wrap;justify-content: center;}
+.flexed-wc{display:flex;flex-wrap:wrap;}
+
+.flexed-wcc{display:flex;flex-wrap:wrap;justify-content: center;}
+
+
 .flexed{display:flex;}
 .flexed-baby{flex:1;}
 .flexed-c{display:flex;flex-direction:row;}

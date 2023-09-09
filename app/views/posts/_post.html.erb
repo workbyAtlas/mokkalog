@@ -4,26 +4,26 @@
   
 <div class="center">
   <%if post.image.attached?%>
-  <%=link_to (image_tag (post.image_post), class:"cornered"), post%>
+    <%=link_to (image_tag (post.image_post), class:"cornered"), post%>
   <%else%>
-  <%=image_tag "download.jpg", class:"postimg cornered"%> 
+    <%=link_to (image_tag (@blank.image_post), class:"cornered"), post%>
   <%end%>   
 </div>
 
 
 
   <div class="mx-2">
-    <div class="title is-5" style="margin: 0; min-height:45px"><strong><%=link_to post.title, post, class:"secondary-t"%></strong></div>
+    <div class="title is-5" style="margin: 0; min-height:45px"><strong><%=link_to post.short_name(post.title), post, class:"secondary-t"%></strong></div>
     <div><i><span class="brand-link"><%= post.branded%></span></i></div>
   </div>
  <div class="columns">
   <div class="column">
   <%if post.archive == "archived"%>
-    <div class="tag mx-2" style="border: 2px solid #c88595; color:#c88595; font-weight:bold;">archived</div>
+    <div class="tag mx-2 mb-2" style="border: 2px solid #c88595; color:#c88595; font-weight:bold;">archived</div>
   <%elsif post.archive == "project"%>
-    <div class="tag mx-2" style="border: 2px solid #cbb595;font-weight:bold;">project</div>
+    <div class="tag mx-2 mb-2" style="border: 2px solid #cbb595;font-weight:bold;">project</div>
   <%else%>
-    <div class="mx-2"><%=if post.price.blank? then "#N/A" else number_to_currency(post.price) end%></div>
+    <div class="mx-2 mb-2"><%=if post.price.blank? then "#N/A" else number_to_currency(post.price) end%></div>
   <%end%>
 </div>
   <%#<div class="flexed-end column"><%=link_to "Q", post_quick_path(post.id), class:"circle-btn mx-2"%>

@@ -2,10 +2,16 @@
 <div class="title is-2">Detail</div>
 <div class="subtitle is-4">Put additional images and Description here.</div>
 <div class="subtitle is-5 has-text-grey">Additional Image Uploads</div>
-<div class="center">
-<%= render "posts/components/image1", form: form, post: post%>
-<%= render "posts/components/image2", form: form, post: post%>
-<%= render "posts/components/image3", form: form, post: post%>
+<div class="columns">
+	<div class="column">
+		<%= render "posts/components/image1", form: form, post: post%>		
+	</div>
+	<div class="column">
+		<%= render "posts/components/image2", form: form, post: post%>		
+	</div>
+	<div class="column">
+		<%= render "posts/components/image3", form: form, post: post%>		
+	</div>
 </div>
 
 <div>

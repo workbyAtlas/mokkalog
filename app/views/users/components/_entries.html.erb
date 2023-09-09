@@ -1,8 +1,8 @@
 <section class="section">
 	<div class="title is-4 center">Entries Added:</div>
-	<div class="flexed-wc">
+	<div class="flexed-wcc">
 	<% @posts.each do |post| %>
-	<div class="bp m-2 center-down post-card cornered">
+	<div class="bp m-1 center-down post-card cornered">
 			<%= image_tag(post.img_sq_normal(post.image)) if post.image.attached? %>
 		<%=link_to post.titled, post, class:"s-link" %>
 	</div>

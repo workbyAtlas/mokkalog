@@ -32,11 +32,13 @@
 <div class="image-big-container">
 <% if @post.image.attached? %>
 <!-- This is the equivalent HTML <img> tag with data attributes for Stimulus -->
-<%=image_tag (@post.image_handler(@post.image,"big")), class:"bp p-3", data:{post_target: "imageMain"}%>
+<%=image_tag (@post.image_handler(@post.image,"big")), class:"bp p-3 cornered", data:{post_target: "imageMain"}%>
 
-<%=image_tag (@post.image_handler(@post.image1,"big")), class:"bp p-3 d-none", data:{post_target: "imageMain1"} if @post.image1.attached?%>
-<%=image_tag (@post.image_handler(@post.image2,"big")), class:"bp p-3 d-none", data:{post_target: "imageMain2"} if @post.image2.attached?%>
-<%=image_tag (@post.image_handler(@post.image3,"big")), class:"bp p-3 d-none", data:{post_target: "imageMain3"} if @post.image3.attached?%>
+<%=image_tag (@post.image_handler(@post.image1,"big")), class:"bp p-3 d-none cornered", data:{post_target: "imageMain1"} if @post.image1.attached?%>
+<%=image_tag (@post.image_handler(@post.image1,"big")), class:"bp p-3 d-none cornered", data:{post_target: "imageMain1"} if @post.image1.attached?%>
+<%=image_tag (@post.image_handler(@post.image2,"big")), class:"bp p-3 d-none ", data:{post_target: "imageMain2"} if @post.image2.attached?%>
+<%=image_tag (@post.image_handler(@post.image1,"big")), class:"bp p-3 d-none cornered", data:{post_target: "imageMain1"} if @post.image1.attached?%>
+<%=image_tag (@post.image_handler(@post.image3,"big")), class:"bp p-3 d-none ", data:{post_target: "imageMain3"} if @post.image3.attached?%>
 <% else %>  
 <%= image_tag ("download.jpg"), class: "immmg"  %>
 <% end %>

@@ -333,6 +333,7 @@ border-bottom: 10px solid transparent; /* Adjust the value as needed */
 @media screen and (max-width: 481px){.nav-link-holder{display:flex;}
 
 @media (max-width: 480px){
+    .visit-input-width{width:170px;}
     .d-none-mobile{display:none;}
     .d-block-mobile{display:block;}
     .root_search{width:95%;}
@@ -353,7 +354,7 @@ border-bottom: 10px solid transparent; /* Adjust the value as needed */
     .mobile-square-img{height:150px;width:150px;}
 
 
-@media (max-width: 370px){
+@media (max-width: 430px){
     .post-card{width:200px;}
     .rw60,.rw70,.rw80,.rw90{width:95%;}
     .comment-date{font-size:6px;}

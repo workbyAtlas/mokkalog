@@ -1,4 +1,4 @@
-<%if @post.user == @post.brand.user%>
+<%if @verified_post == true %>
 <div class="notification bp p-3">
 <%if @post.brand.verification == "True"%>
 <div class="hover">

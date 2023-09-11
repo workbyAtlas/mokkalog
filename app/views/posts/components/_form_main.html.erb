@@ -72,15 +72,23 @@
 
 
 <div class="columns">
+
   <div class="column">
+
+
     <label class="label">Category</label>
 <%= form.select :category_id, Category.order(:id).pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
+
+
 
   </div>
 
   <div class="column">
     <label>Type</label>
+
     <%= form.select :c_type, ['Neutral','Men','Women'],{},{data: {controller: "slim"}}%>
+    <%#=form.select :sub_category, post.sc, class: "input", data: { action: 'change->form-element#autosubmit' } %>
+
     <%#<label class="label">Subcategory</label>
 
 <%#= form.select :sub_category,

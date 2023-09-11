@@ -1,5 +1,5 @@
 <% if @brand.banner.attached?%>
-<section  class="section is-medium relative" 
+<section  class="section is-medium relative banner-img" 
 style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= url_for@brand.banner %>');background-size: cover;">
 <%else%>
 <section class="section is-medium prime relative">
@@ -12,7 +12,7 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
       </div>
       <div class="flexed ">
     <% if @brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
-      <%=image_tag (@brand.image_as_thumbnail) %>
+      <div class="mobile-square-img"><%=image_tag (@brand.image_as_thumbnail) %></div>
     <% else %>
       <div><%= image_tag ("download.jpg"), class: "immg"  %></div>
     <% end %>
@@ -22,7 +22,7 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
     </div>
 
 
-    <div class="w50 m-4" style="color:<%=@brand.brand_text%>"><%=@brand.header%></div>
+    <div class="rw50 m-4" style="color:<%=@brand.brand_text%>"><%=@brand.header%></div>
 </section>
 
 

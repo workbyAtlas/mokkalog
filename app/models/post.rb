@@ -45,7 +45,7 @@ class Post < ApplicationRecord
 
 	belongs_to :user
 	#before_save :downcase_fields
-
+	#SLUGS
   def custom_slug
     "#{brand.name.parameterize}-#{title.parameterize}"
   end
@@ -63,10 +63,17 @@ class Post < ApplicationRecord
 	   ["taggables", "tags", "brand", "category"]
 	 end
 
-	#def image_as_thumbnail
-		#return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
-		#image.variant(resize_to_fill: [200,200]).processed
-	#end
+	def cat
+		Category.pluck(:name)
+	end
+
+	def sc
+		if category.nil?
+			[""]
+		else
+			category.subcats.split(',')
+		end
+	end
 
 	def image_post
 		image.variant(resize_to_fill: [350,400]).processed

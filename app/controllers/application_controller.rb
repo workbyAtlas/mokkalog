@@ -23,6 +23,9 @@ class ApplicationController < ActionController::Base
 	end
 
 
+
+
+
 	def editor?
 		return if current_user.editor?
 		return if current_user.mod?

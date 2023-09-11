@@ -13,7 +13,8 @@
   </div>
   <div>
     <div class="label secondary-t">Origin:</div>
-    <%= form.select :location, brand.countries_name.invert, {}, { data: { controller: 'slim' } } %>
+    <%= form.select :location, brand.countries_name.invert, { include_blank: true }, { data: { controller: 'slim' } } %>
+
   </div>
 
   <hr class="bst"/>

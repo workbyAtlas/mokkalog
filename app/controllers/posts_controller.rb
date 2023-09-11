@@ -49,6 +49,19 @@ class PostsController < ApplicationController
       @badges = true
     end
 
+    @verified_post = false
+    if @post.user == @post.brand.user
+      @verified_post = true
+    end
+    if @post.brand.verification == "True"
+      if @post.user.role = "admin"
+        @verified_post = true
+      end
+      if @post.user.role = "mod"
+        @verified_post = true
+      end
+    end
+
     @visit_modal = false
 
     if @pagelinks.count > 0
@@ -72,7 +85,7 @@ def quick
 
   # GET /posts/new
   def new
-    @post = Post.new
+    @post = Post.new 
   end
 
   # GET /posts/1/edit
@@ -216,5 +229,7 @@ def quick
     def post_params
       params.require(:post).permit(:title, :body, :price, :color, :category_id, :sub_category, :web_link, :likes, :image, :tags, :brand_id, 
         :name, :user_id, :c_type, :amazon_link, :material, :image1, :image2, :image3, :archive, :grailed, :brand_id)
+
+
     end
 end

@@ -2,9 +2,7 @@
 
 
   <% tag.taggables.each do |taggable| %>
-  <div class="m-2 bs">
     <%= render 'posts/post', post: taggable.post %>
-  </div>
   <% end %>
 
 </div>

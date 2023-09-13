@@ -1,5 +1,5 @@
 <section class="section is-small prime">
-  <%=@category.subcats%>
+  <%@category.subcats%>
   <div class="center title is-4">
     <%=pluralize(2,@category.name).gsub("2","")%>    
   </div>
@@ -10,8 +10,8 @@
 <div class="rw50">
 <%= search_form_for @query, url: category_path(@category.id) do |f| %>    
     <div class="center title is-5 my-2">Search</div>
-    <%= f.search_field :title_or_color_or_brand_name_i_cont, class:"input bs", placeholder:"Search using name, brand, or color" %>
-    <%= f.submit "search!", class:"button is-warning my-2 " %>
+    <%= f.search_field :title_or_color_or_brand_name_i_cont, class:"input bs mokka-ph", placeholder:"Search using name, brand, or color" %>
+    <%= f.submit "search!", class:"button is-warning my-2 bold secondary-t", style:"border-color:#654321" %>
 <% end %>
 </div>
 </div>

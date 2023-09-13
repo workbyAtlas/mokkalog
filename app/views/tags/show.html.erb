@@ -1,11 +1,13 @@
 
 <section class="section prime">
-  <div class="title is-3">Tag:&nbsp;<%=@tag.name%></div>
+  <div class="title is-3 center">Tag:&nbsp;<%=@tag.name%></div>
 </section>
+<%if @auth%>
 <div class="notification">
   <%= link_to "Edit this tag", edit_tag_path(@tag) %> 
   <%= button_to "Destroy this tag", @tag, method: :delete %>
 </div>
+<%end%>
 <%= render @tag %>
 
 

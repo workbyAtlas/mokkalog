@@ -92,6 +92,12 @@ class BrandsController < ApplicationController
     redirect_to brands_path, notice: 'Brand was successfully destroyed.'
   end
 
+  def purge_banner
+    @brand = Brand.find(params[:id])
+    @brand.banner.purge
+    redirect_back fallback_location: brands_path, notice: "Success"
+  end
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_brand

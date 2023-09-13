@@ -10,11 +10,12 @@
       </div>
 
     </div>
-    <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs">link:</span></strong><%=link_to @brand.link, @brand.link, class:"s-link", target:"_blank"%></div>
 
     <% if not @brand.location.blank?%>
     <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs"><%=@c.emoji_flag%></span></strong><%=@brand.country_label%></div>
-    <%end%>    
+    <%end%>  
+
+    <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs">link:</span></strong><%=link_to @brand.link, @brand.link, class:"s-link", target:"_blank"%></div>  
 
     <% if not @brand.ig_link.blank?%>
     <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs"><i class="fa-brands fa-instagram" style="color:#654321"></i></span></strong><%=link_to @brand.ig_link, @brand.ig_link, class:"s-link", target:"_blank"%></div>

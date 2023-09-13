@@ -1,4 +1,11 @@
 <% if @brand.banner.attached?%>
+<%if @auth or current_user == @brand.user%>
+<%= button_to "Delete Banner", purge_banner_brand_path(id: @brand.id), method: :delete, data: { turbo_confirm: 'Are you sure, you want to remove the banner?' }, class:"delete" %>
+<%end%>
+
+
+
+
 <section  class="section is-medium relative banner-img" 
 style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= url_for@brand.banner %>');background-size: cover;">
 <%else%>

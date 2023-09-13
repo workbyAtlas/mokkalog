@@ -27,7 +27,13 @@ Rails.application.routes.draw do
   #get '/u/:id', to: 'users#profile', as: 'user'
 
   #resources :posts
-  resources :brands
+  resources :brands do
+    member do
+      delete :purge_banner
+    end
+  end
+    
+
   resources :tags
   resources :discover
   #root 'posts#index'

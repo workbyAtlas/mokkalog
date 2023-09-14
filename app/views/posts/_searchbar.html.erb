@@ -10,7 +10,7 @@
 
       <div class="center my-2 title is-5">Search:</div>
       <div class="center">
-        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_verification_i_cont_any, class:"input bs", placeholder:"Search here..." %>
+        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_verification_i_cont_any, class:"input mokka-ph bs", placeholder:"Search here..." %>
 
             <%= f.submit "Search", class:"button is-warning my-2 bs" %>
       </div>
@@ -28,13 +28,13 @@
   <div class="column">
     <%if not user_signed_in?%>
     <div class="title is-4 mx-4">Users:</div>
-    <%= link_to "Add New Clothing", new_post_path, class:" mx-4 button-74" %>
+    <%= link_to "Add New Clothing", new_post_path, class:" mx-4 button-74 mb-2" %>
     <%end%>
 
 <div data-controller="filterbox" class="mx-2 bs cornered p-1">
 <div class="float-r">
-<button data-action="filterbox#next" class="button-like-text"><i class="fa-solid fa-caret-up fa-2xl" style="color:#654321"></i></button>
-<button data-action="filterbox#previous" class="button-like-text"><i class="fa-solid fa-caret-down fa-2xl" style="color:#654321"></i></button>
+<button data-action="filterbox#previous" class="button-like-text"><i class="fa-solid fa-caret-up fa-2xl" style="color:#654321"></i></button>
+<button data-action="filterbox#next" class="button-like-text"><i class="fa-solid fa-caret-down fa-2xl" style="color:#654321"></i></button>
 </div>
   <div data-filterbox-target="slide">
     <%= render 'posts/components/filters/color_filter'%>
@@ -43,10 +43,11 @@
     <%= render 'posts/components/filters/category_filter'%>
   </div>
     <div data-filterbox-target="slide">
-    <%= render 'posts/components/filters/material_filter'%>
+    <%= render 'posts/components/filters/brand_filter'%>
   </div>
   <div data-filterbox-target="slide">
-    <%= render 'posts/components/filters/brand_filter'%>
+    <%= render 'posts/components/filters/material_filter'%>
+
   </div>
             <%= f.submit "Filter", class:"button is-warning my-2 bs" %>
             <%=link_to "Clear", posts_path,class:"button is-warning is-light m-2"%>

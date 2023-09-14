@@ -363,7 +363,7 @@ transform: translateY(-30px);
 
 
 @media (max-width: 430px){
-    .post-card{width:200px;}
+    .post-card{width:150px;}
     .rw60,.rw70,.rw80,.rw90{width:95%;}
     .comment-date{font-size:6px;}
     .nopad{padding:0;}

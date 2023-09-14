@@ -31,6 +31,11 @@ class PostsController < ApplicationController
     @user_gid = current_user.to_gid_param if current_user
     #response.headers['Refresh'] = '5'
     #@events =EventAggregatorService.new.aggregate_events 
+
+    respond_to do |format|
+      format.html
+      format.turbo_stream # This is the key part for Turbo Streams
+    end
   end
 
   # GET /posts/1 or /posts/1.json

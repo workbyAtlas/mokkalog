@@ -44,6 +44,7 @@ Rails.application.routes.draw do
   get 'faq' => 'pages#faq'
   get 'contact' => 'pages#contact'
   get 'mokkalog' => 'pages#mokkalog'
+  get 'badges' => 'pages#badges'
   
   get 'advsearch' => 'search#advsearch'
   post '/search', to: "search#search"

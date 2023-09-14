@@ -10,12 +10,25 @@
 <section class="section">
   <%= link_to "New blog", new_blog_path, class:"button s-btn" %>
   <br>
-  <ul>
-    <li>User count:<%=@users.count%></li>
+  <%=@users.count%>
+<table class="table">
+<tr>
+  <th>ID</th>
+  <th>Email</th>
+  <th>Name</th>
+  <th>Role</th>
+</tr>
 <% @users.each do |x| %>
-  <li><%=x.email %> | <%= x.name %> | <%= x.role %>| <%= x.id %></li>
+<tr>
+  <td><%=x.id%></td>
+  <td><%=x.email%></td>
+  <td><%=link_to x.username,x ,class:"s-link"%></td>
+  <td><%=x.role%></td>
+
+</tr>
+ 
 <% end %>
-  </ul>
+  </table>
 </section>
 
 <%end%>

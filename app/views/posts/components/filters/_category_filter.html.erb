@@ -1,2 +1,11 @@
-<div class="my-0 title is-5">Category</div>
-<div>Work In Progress</div>
+<div class="my-0 title is-5 secondary-t"><u>Category</u></div>
+  <div class="filter-grid">
+
+
+    <% @categories.each do |x| %>
+      <div class="m-1">
+      <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false, class:"checkbox-m cornered") %>
+      <label><%=x.name%></label>
+    </div>
+    <%end%>
+  </div>

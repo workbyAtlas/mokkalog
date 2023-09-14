@@ -1,15 +1,16 @@
-  <div class="my-0 title is-5">Color</div>
-  <div class="flexed-wc bs">
+  <div class="my-0 title is-5 secondary-t"><u>Color</u></div>
+  <div class="filter-grid">
 
 
-<% ['White', 'Black', 'Blue', 'Red', 'Yellow', 'Green', 'Orange', 'Purple', 'Navy', 'Olive', 'Beige', 'Tan', 'Brown', 'Grey', 'Multi'].each do |color| %>
-    <div class="m-1" style="width:25%;">
-      <%= f.check_box :color_eq_any, { multiple: true }, color %>
- 
-      <label><%= color %></label>
+    <% ['White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Tan','Brown','Grey','Pink','Cyan','Multi','Teal','Sky Blue','Blood Orange'].each do |color| %>
+      <div class="m-1">
+      <%= check_box_tag('q[color_i_cont_any][]', color, false, style:"accent-color:#{color};", class:"checkbox-m cornered") %>
+      <label class=""><%=color%></label>
     </div>
-  <% end %>
+    <%end%>
   </div>
+
+
 
 
 

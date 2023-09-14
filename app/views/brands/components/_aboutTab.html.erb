@@ -3,7 +3,7 @@
     <% if @brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
       <div class="mobile-square-img"><%=image_tag (@brand.image_as_thumbnail) %></div>
     <% else %>
-      <div class="mobile-square-img"><%=image_tag (@brand.image_as_thumbnail) %></div>
+      <div class="mobile-square-img"><%=image_tag (@blank.image_as_thumbnail) %></div>
     <% end %>
       <div class="center">
       <div class="title is-3 mx-5 mb-0 mt-2"><%=@brand.name%></div>

@@ -1,14 +1,12 @@
+<div class="my-0 title is-5 secondary-t"><u>Materials</u></div>
+  <div class="filter-grid">
 
-<div class="my-0 title is-5">Material</div>
-<div>Work In Progress</div>
-<% if true == false%>
-  <div class="flexed-wc bs">
-    <% ["Cotton", "Polyester", "Nylon", "Silk", "Rayon", "Denim", "Wool", "Linen", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Chiffon", "Satin", "Velvet", "Fleece", "Organza", "Heavy Cotton", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Spider Silk", "Abaca", "Alpaca", "Apilon", "Apple Leather", "Bamboo", "Banana Silk", "Bioplastic", "Hemp", "Flax", "Mylo", "Orange Fiber", "Evernu", "Heavy Cotton"].each do |color| %>
-      <div class="m-1" style="width:25%;">
-        <%= f.check_box :material_eq_any, { multiple: true }, color %>
 
-        <label><%=color%></label>
-      </div>
-    <% end %>
+    <% ["Cotton", "Polyester", "Nylon", "Silk", "Rayon", "Denim", "Wool", "Linen", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Chiffon", "Satin", "Velvet", "Fleece", "Organza", "Heavy Cotton", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Spider Silk", "Abaca", "Alpaca", "Apilon", "Apple Leather", "Bamboo", "Banana Silk", "Bioplastic", "Hemp", "Flax", "Mylo", "Orange Fiber", "Evernu", "Heavy Cotton", "MycoWork Leather"].each do |x| %>
+      <div class="m-1">
+      <%= check_box_tag('q[material_i_cont_any][]', x, false, class:"checkbox-m cornered") %>
+      <label><%=x%></label>
+    </div>
+    <%end%>
   </div>
-  <%end%>
+

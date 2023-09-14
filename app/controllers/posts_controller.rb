@@ -16,6 +16,7 @@ class PostsController < ApplicationController
     @brands = Brand.all
     @blank = Brand.find(1) 
     #@query.build_condition_color("Red")
+    @categories = Category.all
 
 
 

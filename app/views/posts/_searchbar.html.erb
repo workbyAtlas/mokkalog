@@ -59,9 +59,9 @@
   <div class="column">
   <div class="mx-4">
     <div class="title is-4">Sort:</div>
-    <div>
+    <div class="flexed center-h">
       <%= check_box_tag('q[brand_verification_i_cont_any][]', "True", false, class:"checkbox-m cornered") %>
-      <label>Verified</label><a href="/badges"><i class="fa-solid fa-circle-info fa-xs ml-1" style="color:#654321;"></i></a>
+      <label class="mx-1">Verified</label><a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a>
     </div>
     <div class="mt-3">
       <%= sort_link(@query, :price, "Price", class:"button is-warning")%>

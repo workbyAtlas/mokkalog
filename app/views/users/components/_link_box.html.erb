@@ -1,5 +1,5 @@
 <div>
-<%if not @user.link1.blank?%>
+<%if not @user.link1.blank? or not @user.link1_title.blank?%>
 
 <div class="my-2">
 	<strong>
@@ -8,14 +8,14 @@
 	<%if @user.link1.starts_with?("https://")%>
 		<%=link_to @user.link1 , @user.link1, target: "_blank", class:"tag bp"%>
 	<%else%>
-		<strong><%=@user.link1%></strong>
+		<%=@user.link1%>
 	<%end%>
 </div>
 
 
 <%end%>
 
-<%if not @user.link2.blank?%>	
+<%if not @user.link2.blank? or not @user.link2_title.blank?%>	
 
 <div class="my-2">
 	<strong>
@@ -24,7 +24,7 @@
 	<%if @user.link2.starts_with?("https://")%>
 		<%=link_to @user.link2 , @user.link2, target: "_blank", class:"tag bp"%>
 	<%else%>
-		<strong><%=@user.link2%></strong>
+		<%=@user.link2%>
 	<%end%>
 </div>	
 <%end%>

@@ -23,17 +23,17 @@
 <div class="columns">
 <div class="column">
   <div class="title is-5 secondary-t mb-1"><u>Filter</u></div>
-    <div>
+    <div class="flexed center-h">
       <%= check_box_tag('q[verification_i_cont_any][]', "True", false, class:"checkbox-m cornered", style:"accent-color:#654321;") %>
-      <label>Verified</label><a href="/badges"><i class="fa-solid fa-circle-info fa-xs ml-1" style="color:#654321;"></i></a>
+      <label class="ml-1">Verified</label><a href="/badges"><i class="fa-solid fa-circle-info fa-xs ml-1" style="color:#654321;"></i></a>
     </div>
-    <div>
+    <div class="flexed center-h">
       <%= check_box_tag('q[sustainable_i_cont_any][]', "True", false, class:"checkbox-m cornered", style:"accent-color:#654321;") %>
-      <label>Sustainable</label>
+      <label class="ml-1">Sustainable</label>
     </div>
-    <div>
+    <div class="flexed center-h">
       <%= check_box_tag('q[hand_made_i_cont_any][]', "True", false, class:"checkbox-m cornered", style:"accent-color:#654321;") %>
-      <label>Hand Made</label>
+      <label class="ml-1">Hand Made</label>
     </div>
 
     <%= f.submit "Filter", class:"button is-warning my-2 " %>

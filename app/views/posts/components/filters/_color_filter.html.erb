@@ -3,9 +3,10 @@
 
 
     <% ['White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Tan','Brown','Grey','Pink','Cyan','Multi','Teal','Sky Blue','Blood Orange'].each do |color| %>
-      <div class="m-1">
+      <div class="m-1 flexed" style="align-items:center;">
       <%= check_box_tag('q[color_i_cont_any][]', color, false, style:"accent-color:#{color};", class:"checkbox-m cornered") %>
-      <label class=""><%=color%></label>
+      <label class="mx-1"><%=color%></label>
+
     </div>
     <%end%>
   </div>

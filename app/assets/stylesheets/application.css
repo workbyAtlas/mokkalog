@@ -186,6 +186,8 @@ transform: translateY(-30px);
 .flexed-r{display:flex;flex-direction:row;}
 .flexed-end{display:flex;justify-content:flex-end;}
 .float-r{float:right;}
+
+.center-h{align-items:center;}
 /*ALERT*/
 .mokka-alert{min-height:80px;}
 

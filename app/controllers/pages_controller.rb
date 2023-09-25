@@ -11,6 +11,7 @@ class PagesController < ApplicationController
     @posts_sustain = Post.where(id: [35,19,29,375]) 
     @posts_art = Post.where(id: [385,25,7,194]) 
     @posts_culture = Post.where(id: [43,23,49,380])
+    @post_count = Post.count(:all)
 
     
 

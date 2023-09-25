@@ -9,6 +9,28 @@
 
     <div data-carousel-target="slide">
 <%# SLIDE#1--------------------------%>
+ 	<div class="section is-medium section-corner-top" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('still_red.jpg') %>');background-size:cover;"> 
+
+
+	  <div class="title is-3 center outline">Welcome to Mokka</div>
+	  <div class="center">
+	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
+
+	      Mokka is a fashion platform where anyone can archive their clothing. Sign up to start uploading your clothing.
+	      <br/><br/>
+	      Checkout our archive
+	    </div>
+	  </div>
+	  <hr style="border-color:white;"/>
+	  <div class="center mt-2">
+	    <%=link_to "sign up", new_user_registration_path, class:"trans-btn button-like-text outline mr-4"%>
+	    <%=link_to "archive", posts_path, class:"trans-btn button-like-text outline"%>
+	  </div>
+	</div>
+  </div>
+
+<%# SLIDE#2--------------------------%>
+  <div data-carousel-target="slide">
  	<div class="section is-medium section-corner-top" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('archivall.webp') %>');background-size:cover;"> 
 
 
@@ -16,37 +38,18 @@
 	  <div class="center">
 	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
 
-	      Looking for inspiration? Looking for something new? Look no further. Check out our mokkalog Issue #1. You will definitely find something that catches your eyes. 
+	      Mokkalog is our carefully curated catalog, so we can shine a bright light to the underappreciated brands out in the world. Checkout our first issue of our catalog.
 	    </div>
 	  </div>
 	  <hr style="border-color:white;"/>
 	  <div class="center mt-2">
-	    <%=link_to "mokkalog #1", blog_path(Blog.first), class:"button p-btn mr-4"%>
-	  </div>
-	</div>
-  </div>
-
-<%# SLIDE#1--------------------------%>
-  <div data-carousel-target="slide">
-	<div class="section is-medium section-corner-top" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('cafe.jpg') %>');background-size:cover;"> 
-
-
-	  <div class="title is-3 center outline">Discover Rising Brands</div>
-	  <div class="center">
-	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
-	      Mokka has been hunting for hidden gems and brands that don't get enough love. Please check them out and if we miss any please add them to our database!
-	    </div>
-	  </div>
-	  <hr style="border-color:white;"/>
-	  <div class="center mt-2">
-	    <%=link_to "brands", brands_path, class:"button p-btn mr-4"%>
-	    <%=link_to "add your own", new_brand_path, class:"button s-btn"%>
+	    <%=link_to "mokkalog #1", blog_path(Blog.first), class:"trans-btn button-like-text outline"%>
 	  </div>
 	</div>
   </div>
 
 
-  <%# SLIDE#2--------------------------%>
+  <%# SLIDE#3--------------------------%>
   <div data-carousel-target="slide">
 
  	<div class="section is-medium section-corner-top" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('rack.jpg') %>');background-size:cover;"> 
@@ -55,13 +58,12 @@
 	  <div class="title is-3 center outline">Archive your Clothing</div>
 	  <div class="center">
 	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
-	      Are you a small brand owner? A fashion student? A desginer as a hobby? Archive your clothing here. Check out what others are archiving.
+	      Want to archive your brand? A fashion student? A desginer as a hobby? Archive your clothing here.
 	    </div>
 	  </div>
 	  <hr style="border-color:white;"/>
 	  <div class="center mt-2">
-	  	<%=link_to "archive", new_post_path, class:"button s-btn mr-4"%>
-	    <%=link_to "catalog", posts_path, class:"button p-btn mr-4"%>
+	  	<%=link_to "Archive your Brand", new_brand_path, class:"trans-btn button-like-text outline"%>
 	  </div>
 	</div>
   </div>

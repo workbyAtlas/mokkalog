@@ -156,6 +156,20 @@ transform: translateY(-30px);
 
 .s-link{color:#654321;text-decoration: underline #654321; cursor: pointer;}
 
+.trans-btn{
+    color: white;
+    border: 1px solid white;
+    padding:8px;
+    border-radius: 4px;
+    box-shadow: 2px 2px;
+}
+
+.trans-btn:hover{
+    color:#E1D9D1;
+    border-color:#E1D9D1;
+    box-shadow: 4px 4px #E1D9D1;
+}
+
 .center     {display: flex;justify-content: center;align-items: center;}
 .center-down{display: flex;justify-content: center;align-items: center; flex-direction:column;}
 /*WIDTH-CONTROL*/

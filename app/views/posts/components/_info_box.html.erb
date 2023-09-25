@@ -4,7 +4,7 @@
       <li class="s-link"><strong>Information:</strong></li>
       <li><strong class="mx-2">Type:</strong><%=@post.c_type%></li>
       <li><strong class="mx-2">Category:</strong><%=@post.categoryed%></li>
-      <li><strong class="mx-2">Sub-Category:</strong><%=@post.sub_category%></li>
+      <%#<li><strong class="mx-2">Sub-Category:</strong><%=@post.sub_category%</li>%>
       <li><strong class="mx-2">Color:</strong><%=@post.color%></li>
       <li><strong class="mx-2">Material:</strong><%= if @post.material.blank? then "undefined" else @post.material end%></li>
       <li><strong class="mx-2">Uploaded_by:</strong><%=link_to "@"+ @post.user.username, user_path(@post.user), class:"purp-link"%>
@@ -13,12 +13,13 @@
           <%=link_to "link", @post.amazon_link, class:"tag is-link is-light"%>
       </li>
       <%end%>
-
+      <%if true == false%>
       <%if not @post.edited_by.blank?%>
       <li><strong class="mx-2">Last Edited By:</strong>
       	@<%=@post.edited_by%>
 
       </li>
+      <%end%>
       <%end%>
 
    </ul>

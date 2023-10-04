@@ -14,9 +14,18 @@ class PagesController < ApplicationController
     @posts_creator = Post.where(id: [43,23,49,380])
 
     @post_count = Post.count(:all)
-    @brand_showcase = Brand.where(id: [95,45,61,96])
-    @subtext = ["New Collection","Hand Made","Shop Today","Hailing from Korea"]
-    @brand_test = Brand.where(id:[1,2,3,4])
+
+    @stxt = ["New Collection","Hand Made","Shop Today","Hailing from Korea"]
+    @brand_s1 = Brand.find(95)
+    @brand_s2 = Brand.find(45)
+    @brand_s3 = Brand.find(61)
+    @brand_s4 = Brand.find(96)
+
+    #@brand_s1 = Brand.find(1)
+    #@brand_s2 = Brand.find(2)
+    #@brand_s3 = Brand.find(3)
+    #@brand_s4 = Brand.find(4)
+
 
     
 

@@ -40,9 +40,10 @@
 
 <section class="section">
 	<div class="flexed-wcc">
-		<%4.times do |i| %>
-    	<%= render 'brands/components/brand_showcase', brand:@brand_showcase[i], subtext: @subtext[i]%>
-    	<%end%>
+    	<%= render 'brands/components/brand_showcase', brand:@brand_s1, subtext: @stxt[0]%>
+      <%= render 'brands/components/brand_showcase', brand:@brand_s2, subtext: @stxt[1]%>
+      <%= render 'brands/components/brand_showcase', brand:@brand_s3, subtext: @stxt[2]%>
+      <%= render 'brands/components/brand_showcase', brand:@brand_s4, subtext: @stxt[3]%>
 	</div>
 </section>
 

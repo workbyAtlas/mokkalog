@@ -1,6 +1,6 @@
     <%= search_form_for @query, url: posts_path, html: { class: "form-inline" } do |f| %>
 <div class="section is-small prime section-corner">
-  <div class="center title is-4">catalog</div>
+  <div class="center title is-4 secondary-t">catalog</div>
   <br/ >
 
   <hr class="bst" />
@@ -8,11 +8,11 @@
   <div class="relative rw50">
     <%=link_to "[advanced]", advsearch_path, class:"hide-btn secondary-t"%>
 
-      <div class="center my-2 title is-5">Search:</div>
+      <div class="center my-2 title is-5 secondary-t">Search:</div>
       <div class="center">
         <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_verification_i_cont_any, class:"input mokka-ph bs", placeholder:"Search here..." %>
 
-            <%= f.submit "Search", class:"button is-warning my-2 bs" %>
+            <%= f.submit "Search", class:"button is-warning my-2 bold secondary-t", style:"border: 1px solid #654321;" %>
       </div>
 
 
@@ -22,16 +22,12 @@
 
 <%# FILTER%>
 
-<section class="lgrey">
+<section class=" section pt-2 lgrey">
   <div class="columns">
 
   <div class="column">
-    <%if not user_signed_in?%>
-    <div class="title is-4 mx-4">Users:</div>
-    <%= link_to "Add New Clothing", new_post_path, class:" mx-4 button-74 mb-2" %>
-    <%end%>
 
-<div data-controller="filterbox" class="mx-2 bs cornered p-1">
+<div data-controller="filterbox" class="mx-2 bs cornered p-1 mt-2">
 <div class="float-r">
 <button data-action="filterbox#previous" class="button-like-text"><i class="fa-solid fa-caret-up fa-2xl" style="color:#654321"></i></button>
 <button data-action="filterbox#next" class="button-like-text"><i class="fa-solid fa-caret-down fa-2xl" style="color:#654321"></i></button>
@@ -60,7 +56,7 @@
   <div class="mx-4">
     <div class="title is-4">Sort:</div>
     <div class="flexed center-h">
-      <%= check_box_tag('q[brand_verification_i_cont_any][]', "True", false, class:"checkbox-m cornered") %>
+      <%= check_box_tag('q[brand_verification_i_cont_any][]', "True", false, class:"checkbox-m cornered accent") %>
       <label class="mx-1">Verified</label><a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a>
     </div>
     <div class="mt-3">

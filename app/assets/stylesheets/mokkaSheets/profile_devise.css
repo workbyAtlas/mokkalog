@@ -1,4 +1,11 @@
 .mobile-closet{display:none;}
+.profile_index_img{    
+  height:100px;
+  width:100px;
+  border:3px solid #fff;
+  border-radius:50%;
+  background-color:grey;
+  overflow:hidden;}
 
 .closet{
 	height:700px;

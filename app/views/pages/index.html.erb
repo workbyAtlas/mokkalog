@@ -2,25 +2,47 @@
 <%= render 'carousel' %>
 
 
+<%if user_signed_in?%>
+<%= render 'pages/components/user_index'%>
 
+<%else%>
 <%= render 'posts/components/searchbar_for_root'%>
-
-
-<section class="section lgrey">
-
-
-<%= render "pages/components/editor"%>
-<br />
-<%= render "pages/components/trending"%>
-<br />
-<%= render "pages/components/recent"%>
+<%end%>
 
 
 
+<section data-controller="tab" class= "lgrey section">
 
+<div class="tabs is-boxed is-centered mb-0">
+  <ul>
+    <li data-tab-target="btn1" data-action="click->tab#openTab1">
+      <a>
+        <span>Trending</span>
+      </a>
+    </li>
+    <li class="is-active" data-tab-target="btn2" data-action="click->tab#openTab2">
+      <a>
+        <span>Editor's Choice</span>
+      </a>
+    </li>
+    <li data-tab-target="btn3" data-action="click->tab#openTab3">
+      <a>
+        <span>Recently Added</span>
+      </a>
+    </li>
+  </ul>
+</div>
 
-    
-
-
-
+<div data-tab-target="tab1" class="d-none"><%= render "pages/components/trending"%>></div>
+<div data-tab-target="tab2"><%= render "pages/components/editor"%></div>
+<div data-tab-target="tab3" class="d-none"><%= render "pages/components/recent"%></div>
 </section>
+
+<section class="section">
+	<div class="flexed-wcc">
+		<%4.times do |i| %>
+    	<%= render 'brands/components/brand_showcase', brand:@brands_test[i], subtext: @subtext[i]%>
+    	<%end%>
+	</div>
+</section>
+

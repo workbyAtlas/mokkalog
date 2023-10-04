@@ -1,4 +1,4 @@
-<div class="title is-4 my-2">Editor's Choice</div>
+
 <section class="bp relative cornered" data-controller="slider" data-slider-index-value="0">
   <button data-action="slider#previous" class="button-like-text carousel-lbtn">
   	<i class="fa-solid fa-arrow-left"></i>
@@ -8,10 +8,11 @@
   </button>
 
 <span class="center">
+	<br/>
   <div data-slider-target="slide">
-  	<div class="title is-6 my-2 ml-2">Artistic 🎨</div>
+  	<div class="title is-6 my-2 ml-2">Mokka's Pick ☕</div>
 		<span class="flexed-wcc">
-    <% @posts_art.each do |post| %>
+    <% @posts_picks.each do |post| %>
 		<div class=""><%= render post %></div>
 		<% end %>
 		</span>
@@ -29,16 +30,16 @@
   <div data-slider-target="slide">
 	  <div class="title is-6 my-2 ml-2">Innovative 💡</div>
 		<span class="flexed-wcc">
-		<% @posts_innovative.each do |post| %>
+		<% @posts_inno.each do |post| %>
 		<div class=""><%= render post %></div>
 		<% end %>
 		</span>
   </div>
 
   <div data-slider-target="slide">
-	  <div class="title is-6 my-2 ml-2">Culture 🏛️</div>
+	  <div class="title is-6 my-2 ml-2">Creators 👩🏻‍🎨</div>
 		<span class="flexed-wcc">
-		<% @posts_culture.each do |post| %>
+		<% @posts_creator.each do |post| %>
 		<div class=""><%= render post %></div>
 		<% end %>
 		</span>

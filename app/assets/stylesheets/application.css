@@ -52,6 +52,12 @@ border-bottom: 10px solid transparent; /* Adjust the value as needed */
 .pointer{cursor: pointer;}
 .hide-btn{position:absolute;top:5px;right:5px;color:grey; cursor:pointer;}
 .hide-btn-r{position:absolute;top:5px;left:5px;color:grey; cursor:pointer;}
+.is-m{
+    color:#654321;
+    font-weight:bold;
+    border: 2px solid #654321;
+
+}
 .d-none{display:none;}
 .d-inline-flex{display:inline-flex;}
 .section-corner{border-radius:4px;}
@@ -118,6 +124,7 @@ transform: translateY(-30px);
 
   
 /*COLOR*/
+.accent{accent-color:#654321;}
 .white{color:white;}
 .grey{color:grey;}
 .red{color:red;}

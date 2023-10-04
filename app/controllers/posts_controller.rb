@@ -14,6 +14,10 @@ class PostsController < ApplicationController
   def index
  
     @brands = Brand.all
+
+    @brands = @brands.order("LOWER(name)")
+
+
     @blank = Brand.find(1) 
     #@query.build_condition_color("Red")
     @categories = Category.all

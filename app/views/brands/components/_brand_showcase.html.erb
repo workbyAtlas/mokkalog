@@ -1,0 +1,16 @@
+<div class="lgrey p-4 cornered m-4 brand-card">
+  <span class="mx-auto">
+
+<% if brand.image.attached? %>
+  <div><%=link_to (image_tag(brand.image_handler(brand.image,"brand"), class:"cornered")), brand %></div>
+<% else %>
+  <div class="center"><%=image_tag(@blank.image_brand)%></div>
+<% end %>
+
+  <div>
+    <%=link_to brand.short_name(brand.name), brand, class:"s-link bold title is-4 my-1", style:"text-align:center;" %>
+    <div class="prime-t bold"><%=subtext%></div>
+  </div>
+  </span>
+</div>
+  

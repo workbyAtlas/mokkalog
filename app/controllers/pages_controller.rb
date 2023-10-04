@@ -16,7 +16,7 @@ class PagesController < ApplicationController
     @post_count = Post.count(:all)
     @brand_showcase = Brand.where(id: [95,45,61,96])
     @subtext = ["New Collection","Hand Made","Shop Today","Hailing from Korea"]
-    @brands_test = Brand.where(id:[1,2,3,4])
+    @brand_test = Brand.where(id:[1,2,3,4])
 
     
 

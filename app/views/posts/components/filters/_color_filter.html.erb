@@ -1,13 +1,16 @@
   <div class="my-0 title is-5 secondary-t mb-2"><u>Color</u></div>
-  <div class="filter-grid">
+  <div class="color-filter-grid">
 
 
-    <% ['White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Tan','Brown','Grey','Pink','Cyan','Multi','Teal','Sky Blue','Blood Orange'].each do |color| %>
-      <div class="m-1 flexed" style="align-items:center;">
-      <%= check_box_tag('q[color_i_cont_any][]', color, false, style:"accent-color:#{color};", class:"checkbox-m cornered") %>
-      <label class="mx-1"><%=color%></label>
+    <% ['White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Brown','Grey','Pink', 'Multi'].each do |color| %>
+   <div class="my-1">
+      <label class="color-cbox <%=color + "box"%>">
+      <%= check_box_tag('q[color_i_cont_any][]', color, false) %>
+      <span class="color-cmark <%=color + "mark"%>"><%=color%></span>
+      </label>
+   </div>
 
-    </div>
+
     <%end%>
   </div>
 

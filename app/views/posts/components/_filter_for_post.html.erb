@@ -1,0 +1,51 @@
+<section class=" section pt-2 lgrey">
+  <div class="columns">
+
+  <div class="column">
+<div class="center">
+<div data-controller="filterbox" class="mx-2 bs cornered p-1 mt-2 rw80">
+<div class="float-r">
+
+<button data-action="filterbox#previous" class="button-like-text"><i class="fa-solid fa-caret-up fa-2xl" style="color:#654321"></i></button>
+<button data-action="filterbox#next" class="button-like-text"><i class="fa-solid fa-caret-down fa-2xl" style="color:#654321"></i></button>
+
+</div>
+  <div data-filterbox-target="slide">
+    <%= render 'posts/components/filters/color_filter'%>
+  </div>
+  <div data-filterbox-target="slide">
+    <%= render 'posts/components/filters/category_filter'%>
+  </div>
+    <div data-filterbox-target="slide">
+    <%= render 'posts/components/filters/brand_filter'%>
+  </div>
+  <div data-filterbox-target="slide">
+    <%= render 'posts/components/filters/material_filter'%>
+
+  </div>
+            <%= f.submit "Filter", class:"button is-warning my-2 bold secondary-t", style:"border: 1px solid #654321;" %>
+            <%=link_to "Clear", posts_path,class:"button is-warning is-light m-2 bold prime-t", style:"border:1px solid #cbb595;"%>
+</div>
+</div>
+
+
+
+  </div>
+  <div class="column">
+  <div class="mx-4">
+    <div class="title is-4">Sort:</div>
+    <div class="flexed center-h">
+      <%= check_box_tag('q[brand_verification_i_cont_any][]', "True", false, class:"checkbox-m cornered accent") %>
+      <label class="mx-1">Verified</label><a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a>
+    </div>
+    <div class="mt-3">
+      <%= sort_link(@query, :price, "Price", class:"button is-warning")%>
+      <%= sort_link(@query, :title, "A-Z", class:"button is-warning")%>
+    </div>
+  </div>
+    
+
+  </div>
+  
+</div>
+</section>

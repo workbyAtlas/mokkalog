@@ -56,7 +56,8 @@ class Post < ApplicationRecord
 
 	#validate :image, :image_validation
   def self.ransackable_attributes(auth_object = nil)
-    ["body", "color", "id",  "price", "sub_category", "title", "updated_at", "material"]
+    ["body", "color", "id",  "price", "sub_category",
+     "title", "updated_at", "material", "archive", "c_type"]
  	end
 
 	 def self.ransackable_associations(auth_object = nil)

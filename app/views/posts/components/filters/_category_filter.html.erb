@@ -3,9 +3,13 @@
 
 
     <% @categories.each do |x| %>
-      <div class="m-1 flexed center-h">
-      <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false, class:"checkbox-m cornered accent") %>
-      <label class="mx-1"><%=x.name%></label>
-    </div>
+
+   <div class="my-1">
+      <label class="m-checkbox">
+      <%= check_box_tag('q[category_name_i_cont_any][]', x, false) %>
+      <span class="m-checkmark"><%=x.name%></span>
+      </label>
+   </div>
+
     <%end%>
   </div>

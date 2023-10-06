@@ -14,6 +14,9 @@ class CategoriesController < ApplicationController
    @posts = @query.result(distinct: true).where(category_id: @category.id)
    @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
 
+    @brands = Brand.all
+    @brands = @brands.order("LOWER(name)")
+
   end
 
   # GET /categories/new

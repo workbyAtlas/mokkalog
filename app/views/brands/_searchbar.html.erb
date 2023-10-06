@@ -21,30 +21,67 @@
 
 <div class="notification">
 <div class="columns">
-<div class="column">
-  <div class="title is-5 secondary-t mb-1"><u>Filter</u></div>
-    <div class="flexed center-h">
-      <%= check_box_tag('q[verification_i_cont_any][]', "True", false, class:"checkbox-m cornered", style:"accent-color:#654321;") %>
-      <label class="ml-1">Verified</label><a href="/badges"><i class="fa-solid fa-circle-info fa-xs ml-1" style="color:#654321;"></i></a>
-    </div>
-    <div class="flexed center-h">
-      <%= check_box_tag('q[sustainable_i_cont_any][]', "True", false, class:"checkbox-m cornered", style:"accent-color:#654321;") %>
-      <label class="ml-1">Sustainable</label>
-    </div>
-    <div class="flexed center-h">
-      <%= check_box_tag('q[hand_made_i_cont_any][]', "True", false, class:"checkbox-m cornered", style:"accent-color:#654321;") %>
-      <label class="ml-1">Hand Made</label>
+<div class="column bs cornered">
+
+<div class="mt-1 mb-0 title is-5 secondary-t"><u>Badges</u>
+    <a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a></div>
+
+    <div class="one-filter-grid">
+    <div class="my-1">
+      <label class="color-cbox Beigebox">
+      <%= check_box_tag('q[verification_i_cont_any][]', "True", false) %>
+      <span class="color-cmark Beigemark">
+        <div class="hover">
+          <i class="fa-solid fa-circle-check fa-small" style="color:#654321;"></i>
+          <div class="hover-content center">Verified</div>
+        </div>
+      </span>
+      </label>
+   </div>
+    <div class="my-1">
+      <label class="color-cbox Beigebox">
+      <%= check_box_tag('q[badge_i_cont_any][]', "certified", false) %>
+      <span class="color-cmark Beigemark">
+        <div class="hover">
+        <i class="fa-solid fa-mug-saucer fa-small" style="color:#ffd700;"></i>
+        <div class="hover-content center">Certified</div>
+        </div>
+      </span>
+      </label>
+   </div>
+    <div class="my-1">
+      <label class="color-cbox Beigebox">
+      <%= check_box_tag('q[sustainable_i_cont_any][]', "True", false) %>
+      <span class="color-cmark Beigemark">
+        <div class="hover">
+        <i class="fa-solid fa-seedling fa-small" style="color: #18c95c;"></i>
+        <div class="hover-content center">Sustainable</div>
+        </div>
+      </span>
+      </label>
+   </div>
+    <div class="my-1">
+      <label class="color-cbox Beigebox">
+      <%= check_box_tag('q[hand_made_i_cont_any][]', "True", false) %>
+      <span class="color-cmark Beigemark">
+        <div class="hover">
+        <i class="fa-solid fa-scissors fa-small" style="color: #ff0000;"></i>
+        <div class="hover-content center">Handmade</div>
+        </div>
+      </span>
+      </label>
+   </div>
     </div>
 
-    <%= f.submit "Filter", class:"button is-warning my-2 " %>
-    <%=link_to "Clear", brands_path, class:"button is-warning is-light m-2 " %>
+    <%= f.submit "Filter", class:"button is-warning my-2 secondary-t bold", style:"border:1px solid #654321;" %>
+    <%=link_to "Clear", brands_path, class:"button is-warning is-light m-2 prime-t bold", style:"1px solid cbb595;"%>
 
 
 
 </div>
   <div class="column">
-    <div class="title is-4">Sort:</div>
-    <%= sort_link(@query, :name, "A-Z", class: "button is-warning")%>
+  <div class="mt-1 mb-2 title is-5 secondary-t"><u>Sort</u></div>
+    <%= sort_link(@query, :name, "A-Z", class: "button is-warning bold secondary-t", style:"border:1px solid #654321;")%>
 
 
   </div>

@@ -12,11 +12,143 @@
     <div class="center title is-5 my-2">Search</div>
     <%= f.search_field :title_or_color_or_brand_name_i_cont, class:"input bs mokka-ph", placeholder:"Search using name, brand, or color" %>
     <%= f.submit "search!", class:"button is-warning my-2 bold secondary-t", style:"border-color:#654321" %>
-<% end %>
+
 </div>
 </div>
 
 </section>
+
+
+<%#FILTER%>
+<section class=" section pt-2 lgrey">
+  <div class="columns">
+
+  <div class="column">
+<div class="center">
+<div data-controller="filterbox" class="mx-2 bs cornered p-1 mt-2 rw80">
+<div class="float-r">
+
+<button data-action="filterbox#previous" class="button-like-text"><i class="fa-solid fa-caret-up fa-2xl" style="color:#654321"></i></button>
+<button data-action="filterbox#next" class="button-like-text"><i class="fa-solid fa-caret-down fa-2xl" style="color:#654321"></i></button>
+
+</div>
+  <div data-filterbox-target="slide">
+    <%= render 'posts/components/filters/color_filter'%>
+  </div>
+  <div data-filterbox-target="slide">
+    coming soon
+  </div>
+    <div data-filterbox-target="slide">
+    <%= render 'posts/components/filters/brand_filter'%>
+  </div>
+  <div data-filterbox-target="slide">
+    <%= render 'posts/components/filters/material_filter'%>
+
+  </div>
+            <%= f.submit "Filter", class:"button is-warning my-2 bold secondary-t", style:"border: 1px solid #654321;" %>
+            <%=link_to "Clear", posts_path,class:"button is-warning is-light m-2 bold prime-t", style:"border:1px solid #cbb595;"%>
+</div>
+</div>
+
+
+
+  </div>
+  <div class="column">
+  <div class="mx-2 bs cornered p-1 mt-2 rw80">
+
+    <div class="my-0 title is-5 secondary-t"><u>Type</u></div>
+
+    <div class="one-filter-grid">
+    <div class="my-1">
+      <label class="m-checkbox">
+      <%= check_box_tag('q[c_type_i_cont_any][]', "Neutral", false) %>
+      <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
+      <span class="m-checkmark">Neutral</span>
+      </label>
+   </div>
+    <div class="my-1">
+      <label class="m-checkbox">
+      <%= check_box_tag('q[c_type_i_cont_any][]', "Women", false) %>
+      <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
+      <span class="m-checkmark">Women</span>
+      </label>
+   </div>
+    <div class="my-1">
+      <label class="m-checkbox">
+      <%= check_box_tag('q[c_type_eq_any][]', "Men", false) %>
+      <span class="m-checkmark">Men</span>
+      </label>
+   </div>
+    </div>
+
+    <div class="mt-1 mb-0 title is-5 secondary-t"><u>Badges</u>
+    <a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a></div>
+
+    <div class="one-filter-grid">
+    <div class="my-1">
+      <label class="color-cbox Beigebox">
+      <%= check_box_tag('q[brand_verification_i_cont_any][]', "True", false) %>
+      <span class="color-cmark Beigemark">
+        <div class="hover">
+          <i class="fa-solid fa-circle-check fa-small" style="color:#654321;"></i>
+          <div class="hover-content center">Verified</div>
+        </div>
+      </span>
+      </label>
+   </div>
+    <div class="my-1">
+      <label class="color-cbox Beigebox">
+      <%= check_box_tag('q[brand_badge_i_cont_any][]', "certified", false) %>
+      <span class="color-cmark Beigemark">
+        <div class="hover">
+        <i class="fa-solid fa-mug-saucer fa-small" style="color:#ffd700;"></i>
+        <div class="hover-content center">Certified</div>
+        </div>
+      </span>
+      </label>
+   </div>
+    <div class="my-1">
+      <label class="color-cbox Beigebox">
+      <%= check_box_tag('q[brand_sustainable_i_cont_any][]', "True", false) %>
+      <span class="color-cmark Beigemark">
+        <div class="hover">
+        <i class="fa-solid fa-seedling fa-small" style="color: #18c95c;"></i>
+        <div class="hover-content center">Sustainable</div>
+        </div>
+      </span>
+      </label>
+   </div>
+    <div class="my-1">
+      <label class="color-cbox Beigebox">
+      <%= check_box_tag('q[brand_hand_made_i_cont_any][]', "True", false) %>
+      <span class="color-cmark Beigemark">
+        <div class="hover">
+        <i class="fa-solid fa-scissors fa-small" style="color: #ff0000;"></i>
+        <div class="hover-content center">Handmade</div>
+        </div>
+      </span>
+      </label>
+   </div>
+    </div>
+
+    <div class="mt-2 mb-2 title is-5 secondary-t"><u>Sort</u></div>
+    <%#= f.search_field :price_lteq_all, type: 'range' , min: 0, max: 1000, value: 0%>
+
+
+    <div class="my-2">
+      <%= sort_link(@query, :price, "Price", class:"button is-warning bold secondary-t mr-2", style:"border: 1px solid #654321;")%>
+      <%= sort_link(@query, :title, "A-Z", class:"button is-warning bold secondary-t", style:"border: 1px solid #654321;")%>
+    </div>
+  </div>
+    
+
+  </div>
+  
+</div>
+</section>
+
+
+<% end %>
 <%if current_user == @auth%>
 <div>
   <%= link_to "Edit this category", edit_category_path(@category) %> |

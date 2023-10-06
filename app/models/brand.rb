@@ -40,7 +40,8 @@ class Brand < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "id", "name", "views", "updated_at", "verification", "sustainable", "hand_made"]
+    ["created_at", "id", "name", "views", "updated_at", "verification", 
+      "sustainable", "hand_made", "badge"]
   end
 
   def self.ransackable_associations(auth_object = nil)

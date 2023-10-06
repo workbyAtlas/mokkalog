@@ -57,7 +57,7 @@
 <div class="columns">
   <div class="column">
     <label class="label">Color</label>
-    <%= form.select :color, ['undefined','White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Tan','Brown','Grey','Pink','Bone','Cyan','Multi','Teal','Baby Blue','Blood Orange'],{},{data: {controller: "slim"}}%>
+    <%= form.select :color, ['undefined','White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Brown','Grey','Pink','Multi'],{},{data: {controller: "slim"}}%>
 
 
     </div>
@@ -65,7 +65,10 @@
 
   <div class="column">
     <label class="label">Materials</label>
-    <%= form.select :material, ["undefined","Cotton", "Polyester", "Nylon", "Silk", "Rayon", "Denim", "Wool", "Linen", "Spandex", "Acrylic", "Cashmere", "Leather", "Viscose", "Tencel", "Chiffon", "Satin", "Velvet", "Fleece", "Organza", "Heavy Cotton", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Spider Silk", "Abaca", "Alpaca", "Apilon", "Apple Leather", "Bamboo", "Banana Silk", "Bioplastic", "Hemp", "Flax", "Mylo", "Orange Fiber", "Evernu", "Heavy Cotton", "MycoWork Leather"],{},{data: {controller: "slim"}}%>
+    <%= form.select :material, ["undefined","Cotton", "Polyester", "Nylon", "Silk", "Wool", "Linen", "Spandex", "Denim", "Velvet",
+  "Chiffon", "Satin", "Rayon", "Leather", "Acrylic", "Cashmere", "Tencel", "Fleece", "Organza", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Abaca",
+  "Alpaca", "Apilon", "Bamboo", "Bioplastic", "Hemp", "Flax",
+  "Mylo", "Evernu", "Heavy Cotton", "MycoWork Leather", "Spider Silk", "Orange Fiber"],{},{data: {controller: "slim"}}%>
   </div>
 
 </div>

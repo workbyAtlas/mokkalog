@@ -45,6 +45,8 @@
 </div>
 
 <div class="column" style="overflow:scroll; height:250px;">
+
+  
   <div class="center title is-6"><u class="secondary-t">Link Submitted by Users</u></div>
   <% @pagelinks.each do |pagelink| %>
     <%= render partial: 'pagelinks/pagelink', locals: {post: @post, pagelink: pagelink} %>

@@ -1,6 +1,7 @@
 class SearchController < ApplicationController
 	
 	def search
+    @blank = Brand.find(1) 
 		posts = if params[:search]
 			posts_with_tag_search
 		else
@@ -14,7 +15,7 @@ class SearchController < ApplicationController
 	end
 
 	def advsearch
-		
+		@blank = Brand.find(1) 
     @posts = Post.all.page(params[:page]).per(16)
 
 	end

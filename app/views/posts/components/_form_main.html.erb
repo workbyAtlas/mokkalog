@@ -1,95 +1,97 @@
  <section>
  <div class="columns">
     <div class="column">
-      <div class="center">
+      <div class="center-down">
       <%= render "image_preview", form: form, post: post %>
-      </div>
-    </div>
-    <div class="column">
 
-      <div>
-        <label class="label">Name</label>
-        <%= form.text_field :title, class:"input" %>
-      </div>
-      <div>
-        <label class="label">Brand</label>
-        <div class="is-size-7" style="color:red;">*You need to create a Brand before, selecting it. <%=link_to "Create a brand", new_brand_path, class:"s-link"%></div>
-        <div>
-<%= form.select :brand_id, Brand.order(:id).pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
-      </div>
-      </div>
-      <hr class="bst"/>
-
-        <div class="rw50">
-          <label class="label">Price</label>
-          <%= form.number_field :price, class:"input",placeholder:"#N/A" %>
-        </div>
-<div class="is-size-7 mb-1">If your clothing isn't for sale, please indicate below. Select "Archived" if the clothing is archived or out of stock. Select "Project" if the clothing was made for a portfolio or a project.</div>
-<div class="control">
-<%= form.radio_button :archive, "normal", checked: (post.archive == "normal"), class:"radio"%>
+<div class="mt-2">
+<div class="is-size-7 mb-1" style="text-align:center;">If your clothing isn't avaliable anymore, please indicate below. Select "Archived" if the clothing is archived or out of stock.</div>
+<div class="control" style="text-align:center;">
+<%= form.radio_button :archive, "normal", checked: (post.archive == "normal"), class:"radio", style:"accent-color:#654321;"%>
 <%= label_tag :archive_archived, "Normal", class:"radio" %>
 
 
-<%= form.radio_button :archive, "archived", checked: (post.archive == "archived"), class:"radio"%>
+<%= form.radio_button :archive, "archived", checked: (post.archive == "archived"), class:"radio", style:"accent-color:#654321;"%>
 <%= label_tag :archive_archived, "Archived", class:"radio" %>
 
-<%= form.radio_button :archive, "project", checked: (post.archive == "project"), class:"radio" %>
-<%= label_tag :archive_project, "Project", class:"radio" %>
+<%#= form.radio_button :archive, "project", checked: (post.archive == "project"), class:"radio", style:"accent-color:#654321;" %>
+<%#= label_tag :archive_project, "Project", class:"radio" %>
 </div>
-  </div>
-  </div>
-
-
-<div>
-<label class="label">Link to Clothing</label>
-<%= form.text_field :web_link, class:"input",placeholder:"link to this clothing" %>
 </div>
 
-<hr class="bst"/>
-<label class="label">Tags</label>
-  <div>
-    <div class="has-texy-grey">Seperate each tag using comma(,) Ex.(puffer, winter)</div>
-    <%= form.text_field :tags, value: post.tags.map(&:name).join(","), class:"input" %>
-  </div>
+      </div>
 
-<br/>
 
-<div class="columns">
-  <div class="column">
-    <label class="label">Color</label>
-    <%= form.select :color, ['undefined','White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Brown','Grey','Pink','Multi'],{},{data: {controller: "slim"}}%>
+
 
 
     </div>
 
+    <div class="column bs cornered m-2">
+      <div class="bold my-1"><u>Basic Information</u></div>
+      <%= form.text_field :title, class:"input is-small mokka-ph", placeholder:"Name" %>
+      <%= form.number_field :price, class:"input is-small mokka-ph",placeholder:"Price" %>
+      <%= form.text_field :web_link, class:"input is-small mokka-ph",placeholder:"Main Link" %>
+      <div class="mt-2">
+        <div class="flexed center-h">
+          <label class="bold mr-1">Brand:</label>
+          <%= form.select :brand_id, Brand.order(:id).pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
+        </div>
+        <div class="is-size-7" style="color:red;">*You need to create a Brand before, selecting it. <%=link_to "Create a brand", new_brand_path, class:"s-link"%></div>
+      </div>
 
-  <div class="column">
-    <label class="label">Materials</label>
-    <%= form.select :material, ["undefined","Cotton", "Polyester", "Nylon", "Silk", "Wool", "Linen", "Spandex", "Denim", "Velvet",
-  "Chiffon", "Satin", "Rayon", "Leather", "Acrylic", "Cashmere", "Tencel", "Fleece", "Organza", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Abaca",
-  "Alpaca", "Apilon", "Bamboo", "Bioplastic", "Hemp", "Flax",
-  "Mylo", "Evernu", "Heavy Cotton", "MycoWork Leather", "Spider Silk", "Orange Fiber"],{},{data: {controller: "slim"}}%>
+      <hr class="bst"/>
+      <div class="notification bs">
+        <div class="bold mb-1"><u>Description</u></div>
+
+        <div class="two-filter-grid">
+
+ 
+        <label class="bold mr-5">Type:</label>
+        <%= form.select :c_type, ['Neutral','Men','Women'],{},{data: {controller: "slim"}}%>
+   
+
+    
+        <label class="bold mr-1">Category:</label>
+        <%= form.select :category_id, Category.order(:id).pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
+      
+
+
+        <label class="bold mr-1">Color:</label>
+        <%= form.select :color, ['Undefined','White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Brown','Grey','Pink','Multi'],{},{data: {controller: "slim"}}%>
+ 
+
+
+        <label class="bold mr-1">Material:</label>
+        <%= form.select :material, ["Undefined","Cotton", "Polyester", "Nylon", "Silk", "Wool", "Linen", "Spandex", "Denim", "Velvet",
+        "Chiffon", "Satin", "Rayon", "Leather", "Acrylic", "Cashmere", "Tencel", "Fleece", "Organza", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Abaca",
+        "Alpaca", "Apilon", "Bamboo", "Bioplastic", "Hemp", "Flax",
+        "Mylo", "Evernu", "Heavy Cotton", "MycoWork Leather", "Spider Silk", "Orange Fiber"],{},{data: {controller: "slim"}}%>
+
+
+
+        <label class="bold mr-1">Season:</label>
+        <%= form.select :season, ["Undefined", "Pre-2023","SS2023", "FW2023"],{},{data: {controller: "slim"}}%>
+        </div>
+      </div>
+  </div>
   </div>
 
+<div class="lgrey p-2 cornered bs">
+<label class="bold mr-1 mb-1"><u>Tags:</u></label>
+<%= form.text_field :tags, value: post.tags.map(&:name).join(","), class:"input mokka-ph mb-2", placeholder:"Tags, seperate each tag with a comma(,). Example: 'puffer jacket, anime'" %>
+
+<label class="bold mr-1 mb-1"><u>Description:</u></label>
+<%= form.rich_text_area :body, style:"background-color:white;",placeholder:"Description" %>
 </div>
 
 
-<div class="columns">
-
-  <div class="column">
-
-
-    <label class="label">Category</label>
-<%= form.select :category_id, Category.order(:id).pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
 
 
 
-  </div>
 
-  <div class="column">
-    <label>Type</label>
 
-    <%= form.select :c_type, ['Neutral','Men','Women'],{},{data: {controller: "slim"}}%>
+
     <%#=form.select :sub_category, post.sc, class: "input", data: { action: 'change->form-element#autosubmit' } %>
 
     <%#<label class="label">Subcategory</label>
@@ -111,8 +113,6 @@
                 ],
                 {},
                 { data: { controller: "slim" } }#%>
-  </div>
-</div>
 
 
 

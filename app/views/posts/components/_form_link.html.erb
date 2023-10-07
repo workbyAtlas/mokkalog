@@ -1,16 +1,23 @@
-<div>
-<div class="title is-2">Links</div>
-<div class="subtitle is-4">Is your product in multiple locations? If yes then please put them here.(At the moment only Grailed works)</div>
-<label class="label">Grailed Link</label>
-<%= form.text_field :grailed, class:"input",placeholder:"link to this clothing" %>
-</div>
 
-<%if @auth%>
-<div>
-<label class="label">Amazon Link</label>
-<%= form.text_field :amazon_link, class:"input",placeholder:"text input" %>
-</div>
+<div class="title is-4 center secondary-t mb-1"><u>Links</u></div>
+<div class="center mb-2">Is your product in multiple locations? If yes then please put them here.(At the moment only Grailed & Amazon works)</div>
 
-<label class="label">StockX </label>
-<input class="input is-success" type="text" placeholder="Coming Soon">
-<%end%>
+<div class="center-down rw50 mx-auto">
+
+<label class="bold"><u>Grailed Link</u></label>
+<%= form.text_field :grailed, class:"input mokka-ph",placeholder:"Please include https://" %>
+
+<label class="bold"><u>Amazon Link</u></label>
+<%= form.text_field :amazon_link, class:"input mokka-ph",placeholder:"Please include https://" %>
+
+
+<label class="bold"><u>StockX Link</u></label>
+<input class="input is-success" type="text", placeholder="Not Avaliable ATM">
+
+<label class="bold"><u>Google Link</u></label>
+<input class="input is-link" type="text", placeholder="Not Avaliable ATM">
+
+<label class="bold"><u>Etsy Link</u></label>
+<input class="input is-danger" type="text", placeholder="Not Avaliable ATM">
+
+</div>

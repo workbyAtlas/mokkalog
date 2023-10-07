@@ -16,16 +16,18 @@ class PagesController < ApplicationController
     @post_count = Post.count(:all)
 
     @stxt = ["New Collection","Hand Made","Shop Today","Hailing from Korea"]
-    @brand_s1 = Brand.find(95)
-    @brand_s2 = Brand.find(45)
-    @brand_s3 = Brand.find(61)
-    @brand_s4 = Brand.find(96)
 
-    #@brand_s1 = Brand.find(1)
-    #@brand_s2 = Brand.find(2)
-    #@brand_s3 = Brand.find(3)
-    #@brand_s4 = Brand.find(4)
-
+    if Rails.env.development?
+      @brand_s1 = Brand.find(1)
+      @brand_s2 = Brand.find(2)
+      @brand_s3 = Brand.find(3)
+      @brand_s4 = Brand.find(4)
+    else
+      @brand_s1 = Brand.find(95)
+      @brand_s2 = Brand.find(45)
+      @brand_s3 = Brand.find(61)
+      @brand_s4 = Brand.find(96)
+    end  
 
     
 

@@ -11,6 +11,42 @@
       </ul>
     </div>
   <% end %>
+
+
+<%if @auth%>
+<section class="section">
+  <div class="notification bs">
+    <div class="bold"><u>Admin Panel</u></div>
+  <div>
+
+    <%= form.label "Is your brand verified?", class:"label mt-2" %>
+    <div class="select">
+    <%=form.select :verification, ["False", "True"]%>
+    </div>
+  </div>
+
+
+  <div>
+    <div class="label">Badges</div>
+    <%= form.label "Is your brand hand made?", class:"label mt-2" %>
+    <div class="select">
+    <%=form.select :hand_made, ["False", "True"]%>
+    </div>
+    <%= form.label "Is your brand sustainable?", class:"label mt-2" %>
+    <div class="select">
+    <%=form.select :sustainable, ["False", "True"]%>
+    </div>
+    <%= form.label "Badge", class:"label mt-2" %>
+    <%=form.text_field :badge, class:"input"%>
+  </div>
+
+
+
+
+  </div>
+</section>
+<%end%>
+
 <section data-controller="tab" class= "mx-auto rw70">
 
 <div class="tabs is-boxed mb-0">
@@ -35,18 +71,18 @@
     </li>
   </ul>
 </div>
-<div class="post-form-box p-3 mt-0">
+<div class="post-form-box p-3 mt-0 mb-2 cornered">
   <span data-tab-target="tab1"><%= render "brands/components/form_main", form: form, brand: brand%></span>
   <span data-tab-target="tab2" class="d-none"><%= render "brands/components/form_banner", form: form, brand: brand%></span>
   <span data-tab-target="tab3" class="d-none"><%= render "brands/components/form_gallery", form: form, brand: brand%></span>
 <hr class="bst"/>
 
   <div class="flexed my-2">
-    <%= form.submit "Submit", class:"button p-btn bs"%>
+    <%= form.submit "Submit", class:"button is-warning bold", style:"border:1px solid #654321;"%>
     <% if current_page?(new_brand_path)%>
     <%= link_to "Cancel", brands_path, class:"button is-danger mx-2" %>
     <%else%>
-    <%= link_to "Back", brands_path, class:"button is-danger mx-2" %>
+    <%= link_to "Back", brand_path(@brand), class:"button is-danger mx-2" %>
     <%end%>
 
 
@@ -54,15 +90,6 @@
 
 </div>
 </section>
-
-
-
-
-
-
-
-
-
 
 <% end %>
 

@@ -1,4 +1,9 @@
 /* Style the checkbox container */
+.mred{color:#cf9e9f;}
+.mgreen{color:#95cbb5;}
+.mbeige{color:#cbb595;}
+.myellow{color:#ffd700;}
+
 .m-checkbox {
   display: inline-block;
   position: relative;
@@ -33,6 +38,9 @@
   background-color: #654321;
   color: #f5f5f5;
 }
+
+.longer-cbox{min-width: 200px;}
+.mid-cbox{min-width:120px;}
 
 /* Style the checkbox container */
 .color-cbox {
@@ -77,7 +85,7 @@
 .brand-filter-grid {
   display: grid;
   grid-template-columns: repeat(2, 1fr); /* 5 columns with equal width */
-  min-height:150px;
+  height:150px;
   overflow:scroll;
   overflow-x: hidden;
 }
@@ -86,6 +94,18 @@
   display: grid;
   grid-template-columns: repeat(5, 1fr); /* 5 columns with equal width */
   min-height:50px;
+}
+
+.two-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 5 columns with equal width */
+  column-gap:10px;
+}
+
+.category-filter-grid {
+  height:150px;
+  overflow:scroll;
+  overflow-x: hidden;
 }
 
 .Whitemark{color:#e6ded2;border-color:#e6ded2;}
@@ -98,8 +118,8 @@
 .Redbox input:checked + .Redmark {background-color: #cf9e9f;color: #f5f5f5;}
 .Yellowmark{color:#ffd700;border-color:#ffd700;}
 .Yellowbox input:checked + .Yellowmark {background-color: #ffd700;color: #f5f5f5;}
-.Greenmark{color:#386649;border-color:#386649;}
-.Greenbox input:checked + .Greenmark {background-color: #386649;color: #f5f5f5;}
+.Greenmark{color:#95cbb5;border-color:#95cbb5;}
+.Greenbox input:checked + .Greenmark {background-color: #95cbb5;color: #f5f5f5;}
 .Orangemark{color:#ec8254;border-color:#ec8254;}
 .Orangebox input:checked + .Orangemark {background-color: #ec8254;color: #f5f5f5;}
 .Navymark{color:#344a6a;border-color:#344a6a;}
@@ -111,7 +131,6 @@
 .Brownmark{color:#654321;border-color:#654321;}
 .Brownbox input:checked + .Brownmark {background-color: #654321;color: #f5f5f5;}
 .Greymark{color:Grey;border-color:Grey;}
-
 .Greybox input:checked + .Greymark {background-color: Grey;color: #f5f5f5;}
 .Pinkmark{color:#fd6c9e;border-color:#fd6c9e;}
 .Pinkbox input:checked + .Pinkmark {background-color: #fd6c9e;color: #f5f5f5;}
@@ -124,10 +143,7 @@
 .SkyBluemark{color:#95ABCB;border-color:#95ABCB;}
 .SkyBluebox input:checked + .Bluemark {background-color: #95ABCB ;}
 
-
-'Green',
-'Orange','white','Navy','Olive','Beige','Tan','Brown','Grey','Pink','Cyan',
-'Teal','Sky Blue','Blood Orange', 'Multi'
-
+.Multimark{color:#654321;border-color:#654321;}
+.Multibox input:checked + .Multimark {background-color: #654321;color: #f5f5f5;}
 
 

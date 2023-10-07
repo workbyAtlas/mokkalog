@@ -1,53 +1,50 @@
 <div class="columns">
+
   <div class="column">
-<%= render "image_preview", form: form, brand: brand %>
-
+    <div class="bold"><u>Brand Image</u></div>
+    <%= render "image_preview", form: form, brand: brand %>
   </div>
+
   <div class="column">
 
-  <div class="mb-2">
-    <%= form.text_field :name, class:"input mokka-ph", placeholder:"Name" %>
-  </div>
-  <div class="mb-2">
-    <%= form.text_field :link, class:"input mokka-ph", placeholder:"Link, Please include https://" %>
-  </div>
-  <div>
-    <div class="label secondary-t">Origin:</div>
-    <%= form.select :location, brand.countries_name.invert, { include_blank: true }, { data: { controller: 'slim' } } %>
+    <div class="columns">
 
-  </div>
+      <div class="column">
+        <div class="secondary-t bold"><u>Basic Information</u></div>
+        <%= form.text_field :name, class:"input is-small mokka-ph mt-2", placeholder:"Name" %>
+        <%= form.text_field :link, class:"input is-small mokka-ph", placeholder:"Link, Please include https://" %>
+      </div>
+
+      <div class="column">
+        <div class="secondary-t bold"><u>Social</u></div>
+        <%= form.text_field :ig_link, class:"input mokka-ph is-small mt-2", placeholder:"Instagram" %>
+        <%= form.text_field :x_twitter, class:"input mokka-ph is-small", placeholder:"Twitter/X" %>
+      </div>
+
+    </div>
+
 
   <hr class="bst"/>
 
-  <div class="columns">
-    <div class="column">
-      <div class="flexed">
-        <i class="fa-brands fa-instagram center mx-2" style="color:#654321"></i>
-        <%= form.text_field :ig_link, class:"input mokka-ph is-small", placeholder:"Please include https://" %>
-      </div>
-    </div>
-  <div class="column">
-    <div class="flexed">
-      <i class="fa-brands fa-x-twitter center mx-2" style="color:#654321"></i>
-      <%= form.text_field :x_twitter, class:"input mokka-ph is-small", placeholder:"Please include https://" %>
-    </div>
+  <div class="bs cornered p-2 lgrey my-2">
+    <div class="bold"><u>Additional Information</u></div>
+        <div class="flexed center-h mt-1">
+          <div class="mr-1">Origin:</div>
+          <%= form.select :location, brand.countries_name.invert, { include_blank: true }, { data: { controller: 'slim' } } %>
+        </div>
+        <div class="flexed center-h mt1">
+          <div class="mr-3">Style:</div>
+       
+          <%= form.select :style, ["Undefined","Underconstruction","Streetwear","Luxury"],{},{data: {controller: "slim"}}%>
+
+        </div>
   </div>
 
-
-  </div>
-  <div>
-    <%= form.label "Description", class:"label mt-2 secondary-t" %>
+  <div class="bs cornered p-2 lgrey">
+    <u><%= form.label "Description", class:"label mt-2 secondary-t" %></u>
+    <div class="white-b">
     <%= form.rich_text_area :body, placeholder:"Write a short description!" %>
-  </div>
-  <%if @auth%>
-  <div>
-    <hr class="bst" />
-    <div>Editor</div>
-    <%= form.label "Is your brand verified?", class:"label mt-2" %>
-    <div class="select">
-    <%=form.select :verification, ["False", "True"]%>
     </div>
   </div>
-  <%end%>
   </div>
 </div>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_06_062523) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_07_022627) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -241,6 +241,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_06_062523) do
     t.text "grailed"
     t.bigint "category_id"
     t.string "slug"
+    t.string "season"
     t.index ["brand_id"], name: "index_posts_on_brand_id"
     t.index ["category_id"], name: "index_posts_on_category_id"
     t.index ["slug"], name: "index_posts_on_slug", unique: true

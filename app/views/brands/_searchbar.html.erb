@@ -1,13 +1,13 @@
 <%= search_form_for @query do |f| %>   
 <section class="section is-small prime section-corner">
-  <div class="center title is-4">brands</div>
+  <div class="center title is-4 secondary-t">brands</div>
   <br/>
   <hr class="bst" />
 
 <div class="center">
 <div class="rw50">
  
-    <div class="center title is-5 my-2">Search</div>
+    <div class="center title is-5 my-2 secondary-t">Search</div>
     <%= f.search_field :name_or_verification_or_hand_made_or_sustainable_i_cont, class:"input bs mokka-ph", placeholder:"Search here..." %>
 
 
@@ -21,8 +21,8 @@
 
 <div class="notification">
 <div class="columns">
-<div class="column bs cornered">
-
+<div class="column">
+<div class="bs cornered p-1 mx-2 rw80" style="height:150px;">
 <div class="mt-1 mb-0 title is-5 secondary-t"><u>Badges</u>
     <a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a></div>
 
@@ -74,19 +74,21 @@
     </div>
 
     <%= f.submit "Filter", class:"button is-warning my-2 secondary-t bold", style:"border:1px solid #654321;" %>
-    <%=link_to "Clear", brands_path, class:"button is-warning is-light m-2 prime-t bold", style:"1px solid cbb595;"%>
+    <%=link_to "Clear", brands_path, class:"button is-warning is-light m-2 prime-t bold", style:"border:1px solid #cbb595;"%>
 
 
 
 </div>
+</div>
   <div class="column">
+    <div class="bs cornered p-1 mx-2 rw80" style="height:150px;">
   <div class="mt-1 mb-2 title is-5 secondary-t"><u>Sort</u></div>
     <%= sort_link(@query, :name, "A-Z", class: "button is-warning bold secondary-t", style:"border:1px solid #654321;")%>
 
-
+  </div>
   </div>
 
-</div>
-</div>
 
+</div>
+</div>
 <%end%>

@@ -2,16 +2,16 @@
 
 <div data-controller="previews">
 
-    <div class="center label">Image Upload</div>
+    <div class="center label secondary-t">Image Upload</div>
 
-<div class="file is-warning center">
+<div class="file is-warning center bold">
   <label class="file-label">
 
     <%= form.file_field :image,
     direct_upload: true,
     data: { previews_target: "input", action: "change->previews#preview"}, class:"file-input" %>
 
-    <span class="file-cta">
+    <span class="file-cta" style="border:1px solid #654321;">
       <span class="file-icon">
         <i class="fas fa-upload"></i>
       </span>
@@ -29,7 +29,7 @@
         </div>
     <%else%>
         <div class="mt-2">
-        <%= image_tag "download.jpg", data: { previews_target: 'preview' }, style:"width:300px; height:300px;"%>
+        <%= image_tag "download.jpg", data: { previews_target: 'preview' }, style:"width:300px; height:300px;", class:"cornered"%>
         </div>
     <%end%>
 

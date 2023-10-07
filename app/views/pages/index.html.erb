@@ -11,7 +11,7 @@
 
 
 
-<section data-controller="tab" class= "lgrey section">
+<section data-controller="tab" class= "section">
 
 <div class="tabs is-boxed is-centered mb-0">
   <ul>
@@ -32,14 +32,14 @@
     </li>
   </ul>
 </div>
-
-<div data-tab-target="tab1" class="d-none"><%= render "pages/components/trending"%>></div>
+<br/>
+<div data-tab-target="tab1" class="d-none"><%= render "pages/components/trending"%></div>
 <div data-tab-target="tab2"><%= render "pages/components/editor"%></div>
 <div data-tab-target="tab3" class="d-none"><%= render "pages/components/recent"%></div>
 </section>
 
 <section class="section">
-	<div class="flexed-wcc">
+	<div class="flexed-wcr">
     	<%= render 'brands/components/brand_showcase', brand:@brand_s1, subtext: @stxt[0]%>
       <%= render 'brands/components/brand_showcase', brand:@brand_s2, subtext: @stxt[1]%>
       <%= render 'brands/components/brand_showcase', brand:@brand_s3, subtext: @stxt[2]%>

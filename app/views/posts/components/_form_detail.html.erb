@@ -1,7 +1,6 @@
-<hr class="bst"/>
-<div class="title is-2">Detail</div>
-<div class="subtitle is-4">Put additional images and Description here.</div>
-<div class="subtitle is-5 has-text-grey">Additional Image Uploads</div>
+<div class="title is-4 secondary-t center mb-1"><u>Additional Image Upload</u></div>
+<div class="center">Put additional images here.</div>
+
 <div class="columns">
 	<div class="column">
 		<%= render "posts/components/image1", form: form, post: post%>		
@@ -12,11 +11,4 @@
 	<div class="column">
 		<%= render "posts/components/image3", form: form, post: post%>		
 	</div>
-</div>
-
-<div>
-<label class="label">Description</label>
-<div>
-<%= form.rich_text_area :body, style:"background-color:white;",placeholder:"Description" %>
-</div>
 </div>

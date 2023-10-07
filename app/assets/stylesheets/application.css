@@ -22,6 +22,7 @@
 }
 .helv{font-family:"helvetica";}
 tr{padding:15px;}
+body{color:#654321;}
 .table-m {
 border-bottom: 10px solid transparent; /* Adjust the value as needed */
 }
@@ -126,6 +127,7 @@ transform: translateY(-30px);
 /*COLOR*/
 .accent{accent-color:#654321;}
 .white{color:white;}
+.white-b{background-color: white;}
 .grey{color:grey;}
 .red{color:red;}
 /*NEED TO GET RID OFF PURP#9xf5f9f*/

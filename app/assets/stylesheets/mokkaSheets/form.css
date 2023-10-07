@@ -1,8 +1,11 @@
 /* Style the checkbox container */
-.mred{color:#cf9e9f;}
+.mred{color:#e63e62;}
 .mgreen{color:#95cbb5;}
 .mbeige{color:#cbb595;}
 .myellow{color:#ffd700;}
+
+.mblue{color: #f5f5f5;}
+.green-btn{background-color:#95cbb5;color:#206644;}
 
 .m-checkbox {
   display: inline-block;
@@ -114,8 +117,8 @@
 .Blackbox input:checked + .Blackmark {background-color: black;}
 .Bluemark{color:#73a9c2;border-color:#73a9c2;}
 .Bluebox input:checked + .Bluemark {background-color: #73a9c2;}
-.Redmark{color:#cf9e9f;border-color:#cf9e9f;}
-.Redbox input:checked + .Redmark {background-color: #cf9e9f;color: #f5f5f5;}
+.Redmark{color:#e63e62;border-color:#e63e62;}
+.Redbox input:checked + .Redmark {background-color: #e63e62;color: #f5f5f5;}
 .Yellowmark{color:#ffd700;border-color:#ffd700;}
 .Yellowbox input:checked + .Yellowmark {background-color: #ffd700;color: #f5f5f5;}
 .Greenmark{color:#95cbb5;border-color:#95cbb5;}

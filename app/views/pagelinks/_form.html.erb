@@ -1,23 +1,20 @@
 <%=form_with(model: [post, post.pagelinks.build]) do |f|%>
 
-		<div class="bp p-2 cornered">
-		<div class="secondary-t my-1">
-			Do you have this item for sale? Submit a link so others can buy.
-			<div class="red" style="font-size:0.8em">Must fill out everything below.</div>
-		</div>
-		<div class="rw50">
-		<%=f.text_field :web_link, class:"input is-small mokka-ph", placeholder:"Links, please include https://"%>
+	<div class="bp p-2 cornered lgrey">
+		<div class="bold center"><u>Submit a Link</u></div>
+		<div class="center my-1">Do you have this clothing? Submit a link?</div>
+	<div class="mx-auto rw70">
+	<%=f.text_field :web_link, class:"input is-small mokka-ph", placeholder:"Links, please include https://"%>
 
-		<div class="flexed my-1">
-		<%=f.text_field :body, class:"input is-small mokka-ph mr-1", placeholder:"Title of the link" %>
-		<%=f.text_field :price, class:"input is-small mokka-ph", placeholder:"Price you are selling it for"%>
-
-		</div>
-
-
-		<%= f.submit "Submit", class: "button s-btn my-2"%>
-		</div>
+	<div class="flexed my-1">
+	<%=f.text_field :body, class:"input is-small mokka-ph mr-1", placeholder:"Title of the link" %>
+	<%=f.text_field :price, class:"input is-small mokka-ph", placeholder:"Price"%>
 	</div>
+
+
+	<%= f.submit "Submit", class: "button is-warning bold my-2", style:"border: 1px solid #654321;"%>
+	</div>
+</div>
 
 
 

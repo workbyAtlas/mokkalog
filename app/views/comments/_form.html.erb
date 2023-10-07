@@ -13,7 +13,7 @@
         <div class="file mx-2 is-warning">
           <label class="file-label">
             <%= f.file_field :image, class:"file-input" %>
-            <span class="file-cta">
+            <span class="file-cta bold" style="border:1px solid #654321;">
               <span class="file-icon">
                 <i class="fas fa-upload"></i>
               </span>
@@ -26,9 +26,9 @@
        
 
      </div>
-     <%= f.text_area :body, class:"textarea my-2", placeholder: "Write you comment here!" %>
-	 <%= f.text_field :link, class:"input", placeholder: "Put your link here (make sure you include http://)" %>
-     <%= f.submit "Reply", class: "button s-btn my-2"%>
+     <%= f.text_area :body, class:"textarea my-2 mokka-ph", placeholder: "Write you comment here!" %>
+	   <%= f.text_field :link, class:"input is-small mokka-ph", placeholder: "Put your link here (make sure you include http://)" %>
+     <%= f.submit "Reply", class: "button is-warning bold my-2", style:"border:1px solid #654321;"%>
   </div>
 
    <% end %>

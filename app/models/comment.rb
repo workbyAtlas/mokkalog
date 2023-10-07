@@ -14,4 +14,8 @@ class Comment < ApplicationRecord
     #avatar.variant(resize_to_fill: [100,100]).processed if avatar.attached?
     avatar.variant(resize: "100x100").processed if avatar.attached?
   end
+
+  def image_comment
+    image.variant(resize_to_fill: [200,200]).processed
+  end
 end

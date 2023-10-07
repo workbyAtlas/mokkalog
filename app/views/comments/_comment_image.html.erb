@@ -42,7 +42,9 @@
 				<%=link_to "link", comment.link ,target: '_blank', class:"my-1 mx-2 tag is-link is-light" %>
 			<% end %>	
 			<br/>
-			<%=image_tag(comment.image)%>
+      <div>
+			<%=image_tag(comment.image_comment, class:"cornered")%>
+      </div>
 			<%=comment.body%>
 
       <ul class="mx-0 mt-1">

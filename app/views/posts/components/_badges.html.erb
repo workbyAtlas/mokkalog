@@ -17,7 +17,7 @@
 
 <%if @post.brand.hand_made == "True"%>
 <div class="hover">
-  <i class="fa-solid fa-scissors fa-2xl mt-2 mred"></i>
+<%=render 'component/red_scissor', size: "2xl"%>
   <div class="hover-content center">Handmade</div>
 </div>
 <%end%>

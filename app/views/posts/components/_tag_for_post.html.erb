@@ -1,7 +1,7 @@
 <% if not @post.tags.blank?%>
-    <div class="mt-4 bp tag-box center-down">
+    <div class="mt-4 tag-box center-down">
     <div><strong>Tags:</strong></div>
-    <div class="center flexed-w">
+    <div class="center flexed-w cornerd bs">
   <% @post.tags.each do |tag| %>
   <%= link_to tag, style: "text-decoration:none" do %>
     <span class="tag m-1"><%= tag.name.capitalize%></span>

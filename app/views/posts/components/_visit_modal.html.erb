@@ -8,35 +8,14 @@
     <div class="columns">
     <div class="column" style="border-right:4px solid #654321;">
 
-      <table class="center">
-        <tr>
-          <td class="table-m"><i class="fa-solid fa-link"></i></td>
-          <td class="table-m"><input class="input is-small mokka-ph visit-input-width" placeholder="Creator has not submitted a link yet" value="<%=@post.web_link%>"></td>
-          <td class="table-m"><%=link_to "Visit", @post.web_link, target: "_blank", class:"button s-btn is-small is-small"%></td>
-        </tr>
-
-        <tr>
-          <td>Grailed</td>
-          <td><input class="input is-small mokka-ph" placeholder="Creator has not submitted a link yet" value="<%=@post.grailed%>"></td>
-          <td><%=link_to "Visit", @post.grailed, target: "_blank", class:"button s-btn is-small"%></td>
-        </tr>
-        <tr>
-          <td class="table-m"><i class="fa-brands fa-amazon"></i></td>
-          <td class="table-m"><input class="input is-small mokka-ph" placeholder="Creator has not submitted a link yet" value="<%=@post.amazon_link%>"></td>
-          <td class="table-m"><%=link_to "Visit", @post.amazon_link, target: "_blank", class:"button s-btn is-small"%></td>
-        </tr>
-
-        <tr>
-          <td>Stockx</td>
-          <td><input class="input is-small mokka-ph" placeholder="Feature coming in the future" ></td>
-          <td><button class="button s-btn is-small">Visit</button></td>
-        </tr>
-        <tr>
-          <td>Etsy</td>
-          <td><input class="input is-small mokka-ph" placeholder="Feature coming in the future"></td>
-          <td><button class="button s-btn is-small">Visit</button></td>
-        </tr>
-      </table>
+    <div class=" m-4 bs cornered p-2 lgrey">
+    <%=render 'posts/components/visit_link', link: @post.web_link, icon:"fa-solid fa-link mr-2"%>
+    <div class="mt-2"></div>
+    <%=render 'posts/components/visit_link', link: @post.amazon_link, icon:"fa-brands fa-amazon mr-3"%> 
+    <%=render 'posts/components/visit_link', link: @post.grailed, icon:"fa-solid fa-g mr-3"%>
+    <div class="mt-2 bold center"><u>Coming Soon</u></div>
+    <%=render 'posts/components/visit_link', link: "", icon:"fa-brands fa-etsy mr-3"%>
+    </div>
       
 
 

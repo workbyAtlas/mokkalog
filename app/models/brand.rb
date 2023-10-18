@@ -27,6 +27,9 @@ class Brand < ApplicationRecord
   has_rich_text :body
   belongs_to :user
 
+  has_many :styleables, dependent: :destroy
+  has_many :styles, through: :styleables
+
   def should_generate_new_friendly_id?
     name_changed? || slug.blank?
   end

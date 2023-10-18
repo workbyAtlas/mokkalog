@@ -34,8 +34,19 @@
         </div>
         <div class="flexed center-h mt1">
           <div class="mr-3">Style:</div>
-       
-          <%= form.select :style, ["Undefined","Underconstruction","Streetwear","Luxury"],{},{data: {controller: "slim"}}%>
+
+        <%#= form.text_field :styles, value: brand.styles.map(&:name).join(","), class:"input is-small mokka-ph mb-2", placeholder:"Style time" %>
+
+<% Style.pluck(:name).each do |style_name| %>
+<div class=" m-4">
+  <%= check_box_tag "brand[styles][]", style_name, brand.styles.map(&:name).include?(style_name), class:"checkbox"%>
+  <%= style_name %><br>
+</div>
+<% end %>
+
+
+
+
 
         </div>
   </div>

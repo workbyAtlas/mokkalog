@@ -1,9 +1,12 @@
-<% if not @post.tags.blank?%>
-    <div class="mt-4 tag-box center-down">
-    <div><strong>Tags:</strong></div>
-    <div class="center flexed-w cornerd bs">
-  <% @post.tags.each do |tag| %>
-  <%= link_to tag, style: "text-decoration:none" do %>
-    <span class="tag m-1"><%= tag.name.capitalize%></span>
-  <% end %>
-<% end %>
+        <% if not @post.tags.blank?%>
+        <div class="mt-4 bs tag-box center-down cornered">
+          <div><strong>Tags:</strong></div>
+          <div class="center flexed-w">
+          <% @post.tags.each do |tag| %>
+            <%= link_to tag, style: "text-decoration:none" do %>
+              <span class="tag m-1 bp"><%= tag.name.capitalize%></span>
+            <% end %>
+          <% end %>
+        </div>
+        </div>
+        <%end%>

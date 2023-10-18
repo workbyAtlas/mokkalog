@@ -1,15 +1,15 @@
 <div data-controller="previews">
 
 <br/>
-<%= form.label :banner, class:"label" %>
+<div class="center"><%= form.label :banner, class:"bold" %></div>
 <%#FORM%>
-<div class="file is-warning center">
+<div class="file is-warning center bold">
   <label class="file-label">
     <%= form.file_field :banner,
     direct_upload: true,
     data: { previews_target: "input", action: "change->previews#preview"}, class:"file-input" %>
 
-    <span class="file-cta">
+    <span class="file-cta", style="border: 1px solid #654321;">
       <span class="file-icon">
         <i class="fas fa-upload"></i>
       </span>
@@ -24,11 +24,11 @@
 <% if brand.banner.attached?%>
     <div class="subtitle is-6 center mt-2">Image Preview</div>
     <div class="center mt-2">
-    <%= image_tag brand.banner, data: { previews_target: 'preview' }, style:"width:500px; height:300px;overflow:auto;"%>
+    <%= image_tag brand.banner, data: { previews_target: 'preview' }, style:"width:500px; height:300px;overflow:auto;", class:"cornered"%>
     </div>
 <%else%>
     <div class="center mt-2">
-  		<%= image_tag "download.jpg", data: { previews_target: 'preview' }, style:"width:500px; height:300px;overflow:auto;"%>
+  		<%= image_tag "download.jpg", data: { previews_target: 'preview' }, style:"width:500px; height:300px;overflow:auto;", class:"cornered"%>
     </div>
 <%end%>
 </div>

@@ -9,6 +9,16 @@ class BlogsController < ApplicationController
     @blogs_dev = Blog.where(blog_type: "dev")
     @blogs_article = Blog.where(blog_type: "article")
     @blogs_pinned = Blog.where(pinned: "true")
+
+    if Rails.env.development?
+      @current_blog = Blog.find(1)
+      @small_blog1 = Blog.find(2)
+      @small_blog2 = Blog.find(3)
+    else
+      @current_blog = Blog.find(1)
+      @small_blog1 = Blog.find(9)
+      @small_blog2 = Blog.find(10)
+    end
   end
 
   def dev

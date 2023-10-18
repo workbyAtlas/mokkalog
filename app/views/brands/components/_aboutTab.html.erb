@@ -1,12 +1,12 @@
-<section class="section is-medium lgrey">
+<section class="section lgrey">
       <div class="flexed">
     <% if @brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
-      <div class="mobile-square-img"><%=image_tag (@brand.image_as_thumbnail) %></div>
+      <div class="mobile-square-img"><%=image_tag (@brand.image_as_thumbnail), class:"cornered" %></div>
     <% else %>
-      <div class="mobile-square-img"><%=image_tag (@blank.image_as_thumbnail) %></div>
+      <div class="mobile-square-img"><%=image_tag (@blank.image_as_thumbnail), class:"cornered" %></div>
     <% end %>
       <div class="center">
-      <div class="title is-3 mx-5 mb-0 mt-2"><%=@brand.name%></div>
+      <div class="title is-3 mx-5 mb-0 mt-2 secondary-t"><%=@brand.name%></div>
       </div>
 
     </div>
@@ -24,6 +24,22 @@
     <% if not @brand.x_twitter.blank?%>
     <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs"><i class="fa-brands fa-x-twitter" style="color:#654321"></i></span></strong><%=link_to @brand.x_twitter, @brand.x_twitter, class:"s-link", target:"_blank"%></div>
     <%end%>
+
+    <div class="mx-4 mt-2">
+    <strong class="mr-2"><span class="tag bs"><i class="fa-solid fa-hashtag" style="color:#654321"></i></span></strong>
+          
+    <% @brand.styles.each do |style| %>
+            <%if true == false%>
+            <%= link_to style, style: "text-decoration:none" do %>
+              <span class="tag m-1 bp"><%= style.name.capitalize%></span>
+            <% end %>
+            <%end%>
+              <span class="tag m-1 bp"><%= style.name.capitalize%></span>
+
+    <%end%>
+    </div>
+
+ 
 
 
 

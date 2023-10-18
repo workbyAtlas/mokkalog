@@ -1,5 +1,5 @@
 
-<section class="bp relative cornered lgrey" data-controller="slider" data-slider-index-value="0">
+<section class="bs relative cornered lgrey" data-controller="slider" data-slider-index-value="0">
   <button data-action="slider#previous" class="button-like-text carousel-lbtn">
   	<i class="fa-solid fa-arrow-left"></i>
   </button>
@@ -9,7 +9,7 @@
 
 <span class="center">
   <div data-slider-target="slide">
-	<span class="flexed-wcc">
+	<span class="flexed-wc">
 	<% @posts_latest.take(4).each do |post| %>
 	<div class=""><%= render post %></div>
 	<% end %>
@@ -17,7 +17,7 @@
   </div>
 
   <div data-slider-target="slide">
-  	<span class="flexed-wcc">
+  	<span class="flexed-wc">
     <% @posts_latest[4..7].each do |post| %>
      <div class=""><%= render post %></div>
     <% end %>
@@ -25,7 +25,7 @@
   </div>
 
   <div data-slider-target="slide">
-	<span class="flexed-wcc">
+	<span class="flexed-wc">
 	<% @posts_latest[8..11].each do |post| %>
 	<div class=""><%= render post %></div>
 	<% end %>
@@ -33,7 +33,7 @@
   </div>
 
   <div data-slider-target="slide">
-	<span class="flexed-wcc">
+	<span class="flexed-wc">
 	<% @posts_latest[12..15].each do |post| %>
 	<div class=""><%= render post %></div>
 	<% end %>

@@ -1,14 +1,9 @@
-<div class="title is-4 has-text--grey center">Customize Brand Page</div>
-<div class="subtitle is-6 center">Customize the brand showcase page to make it more presentable</div>
+<div class="center secondary-t bold"><u>Customize Brand Banner</u></div>
+<div class="center">Add image to banner to make it more unique! We recommend switching brand text to white when adding a brand image.</div>
 <%= render "image_preview_for_banner", form: form, brand: brand %>
-  <div>
-    <%= form.label "Banner Text", class:"label mt-2" %>
-    <%= form.text_field :header, class:"input", placeholder:"Text for the Banner"%>
+
+  <div class="mt-3">
+    <%= form.text_field :header, class:"input is-small mokka-ph", placeholder:"Banner Text"%>
+    <%= form.text_field :brand_text, class:"input is-small mokka-ph", placeholder:"Banner Text Color" %>
   </div>
 
-  <div>
-    <%= form.label "Text Color", class:"label" %>
-    <div class="grey">You can put hex-color(ex.#00000;), text(white), or. If Banner Image is uploaded, we recommend white as the text color.</div>
-    <%= form.text_field :brand_text, class:"input" %>
-  </div>
-  <hr class="bst"/>

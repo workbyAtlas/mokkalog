@@ -2,7 +2,7 @@
 <% fav_text = fav_status ? "unfav" : "fav" %>
 
 <%if fav_text == "fav"%>
-    <%= button_to favorite_post_path(id: post.id), class:"button bp mx-1" do %>
+    <%= button_to favorite_post_path(id: post.id), class:"button bs mx-1" do %>
     <span class="hover">
         <span class="material-symbols-outlined mt-1" style="color:#654321;">
         checkroom

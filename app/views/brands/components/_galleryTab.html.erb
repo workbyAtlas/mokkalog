@@ -1,31 +1,31 @@
 <section class="section is-medium lgrey pt-1">
-<div class="title is-3 mt-2 mx-4"><u>Gallery</u></div>
+<div class="title is-4 mt-2 mx-4 secondary-t"><u>Gallery</u></div> 
 <br/>
 <%x=0%>
 <div class="columns">
 	<%if @brand.gallery1.attached?%>
 	<%x+=1%>
 	<div class="column">
-	<%= image_tag(@brand.img_sq_big(@brand.gallery1))%>
+	<%= image_tag(@brand.image_handler(@brand.gallery1, "gallery"), class:"cornered")%>
 	</div>
 	<%end%>
 	<%if @brand.gallery2.attached?%>
 	<%x+=1%>
 	<div class="column">
-	<%= image_tag(@brand.img_sq_big(@brand.gallery2))%>
+	<%= image_tag(@brand.image_handler(@brand.gallery2, "gallery"), class:"cornered")%>
 	</div>
 	<%end%>
 
 	<%if @brand.gallery3.attached?%>
 	<%x+=1%>
 	<div class="column">
-	<%= image_tag(@brand.img_sq_big(@brand.gallery3))%>
+	<%= image_tag(@brand.image_handler(@brand.gallery3, "gallery"), class:"cornered")%>
 	</div>
 	<%end%>
 
 	<%if x == 0%>
 		<div>
-			There is nothing in the Gallery, enjoy a picture of Mocha.
+			There is nothing to see in the gallery...
 		</div>
 	<%end%>
 </div>

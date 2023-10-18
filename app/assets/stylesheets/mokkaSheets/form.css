@@ -6,6 +6,8 @@
 
 .mblue{color: #f5f5f5;}
 .green-btn{background-color:#95cbb5;color:#206644;}
+.red-btn{background-color:#e63e62;color:white;}
+.red-btn:hover{color:#e6ded2;}
 
 .m-checkbox {
   display: inline-block;

@@ -1,5 +1,7 @@
-<div class="title is-4 has-text--grey center">Gallery</div>
-<div class="subtitle is-6 center">Add photos to showcase your brand. This section is still under UI improvment development.</div>
-<%= render "brands/components/gallery_1", form: form, brand: brand %>
-<%= render "brands/components/gallery_2", form: form, brand: brand %>
-<%= render "brands/components/gallery_3", form: form, brand: brand %>
+<div class="center secondary-t bold"><u>Gallery</u></div>
+<div class="center">Add up to 3 images to showcase what your brand is all about.</div>
+<div class="columns">
+	<div class="column"><%= render "brands/components/gallery_1", form: form, brand: brand %></div>
+	<div class="column"><%= render "brands/components/gallery_2", form: form, brand: brand %></div>
+	<div class="column"><%= render "brands/components/gallery_3", form: form, brand: brand %></div>
+</div>

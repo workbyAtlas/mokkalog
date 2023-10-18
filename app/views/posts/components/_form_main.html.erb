@@ -35,7 +35,8 @@
       <div class="mt-2">
         <div class="flexed center-h">
           <label class="bold mr-1">Brand:</label>
-          <%= form.select :brand_id, Brand.order(:id).pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
+          <%= form.select :brand_id, @user_brands.pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
+          <%#= form.select :brand_id, Brand.order(:id).pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
         </div>
         <div class="is-size-7" style="color:red;">*You need to create a Brand before, selecting it. <%=link_to "Create a brand", new_brand_path, class:"s-link"%></div>
       </div>

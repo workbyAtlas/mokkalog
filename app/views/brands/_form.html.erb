@@ -12,41 +12,6 @@
     </div>
   <% end %>
 
-
-<%if @auth%>
-<section class="section">
-  <div class="notification bs">
-    <div class="bold"><u>Admin Panel</u></div>
-  <div>
-
-    <%= form.label "Is your brand verified?", class:"label mt-2" %>
-    <div class="select">
-    <%=form.select :verification, ["False", "True"]%>
-    </div>
-  </div>
-
-
-  <div>
-    <div class="label">Badges</div>
-    <%= form.label "Is your brand hand made?", class:"label mt-2" %>
-    <div class="select">
-    <%=form.select :hand_made, ["False", "True"]%>
-    </div>
-    <%= form.label "Is your brand sustainable?", class:"label mt-2" %>
-    <div class="select">
-    <%=form.select :sustainable, ["False", "True"]%>
-    </div>
-    <%= form.label "Badge", class:"label mt-2" %>
-    <%=form.text_field :badge, class:"input"%>
-  </div>
-
-
-
-
-  </div>
-</section>
-<%end%>
-
 <section data-controller="tab" class= "mx-auto rw70">
 
 <div class="tabs is-boxed mb-0">
@@ -90,6 +55,43 @@
 
 </div>
 </section>
+
+
+<%if @auth%>
+<section class="section">
+  <div class="notification bs">
+    <div class="bold"><u>Admin Panel</u></div>
+  <div>
+
+
+
+    <%= form.label "Is your brand verified?", class:"label mt-2" %>
+    <div class="select">
+    <%=form.select :verification, ["False", "True"]%>
+    </div>
+
+
+
+  <div>
+    <div class="label">Badges</div>
+    <%= form.label "Is your brand hand made?", class:"label mt-2" %>
+    <div class="select">
+    <%=form.select :hand_made, ["False", "True"]%>
+    </div>
+    <%= form.label "Is your brand sustainable?", class:"label mt-2" %>
+    <div class="select">
+    <%=form.select :sustainable, ["False", "True"]%>
+    </div>
+    <%= form.label "Badge", class:"label mt-2" %>
+    <%=form.text_field :badge, class:"input"%>
+  </div>
+
+
+
+
+  </div>
+</section>
+<%end%>
 
 <% end %>
 

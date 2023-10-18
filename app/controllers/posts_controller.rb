@@ -15,6 +15,8 @@ class PostsController < ApplicationController
  
     @brands = Brand.all
 
+    #@brands = current_user.brands
+
     @brands = @brands.order("LOWER(name)")
 
 
@@ -22,15 +24,10 @@ class PostsController < ApplicationController
     #@query.build_condition_color("Red")
     @categories = Category.all
 
-
-
     @query = Post.ransack(params[:q])
     @posts_prior = @query.result(distinct: true).includes(:tags, :brand, :category)
     shuffled_posts = @posts_prior.to_a.shuffle
     @posts = Kaminari.paginate_array(shuffled_posts).page(params[:page]).per(16)
-
-
-
 
     @user_gid = current_user.to_gid_param if current_user
     #response.headers['Refresh'] = '5'
@@ -95,11 +92,16 @@ def quick
 
   # GET /posts/new
   def new
-    @post = Post.new 
+    @post = Post.new
+    #@user_brands = current_user.brands
+    set_users_brand
+
+
   end
 
   # GET /posts/1/edit
   def edit
+    set_users_brand
   end
 
   # POST /posts or /posts.json
@@ -202,6 +204,16 @@ def quick
   end
 
   private
+
+    def set_users_brand
+      if @auth_e
+      @user_brands = Brand.all
+      else
+      @user_brands = current_user.brands + Brand.where(id: 1)
+      end
+
+    end
+
     def private_stream
       private_target = "post_#{@post.id} private_likes"
       turbo_stream.replace(private_target, partial: "likes/private_button", locals:{post: @post, like_status: current_user.liked?(@post)})

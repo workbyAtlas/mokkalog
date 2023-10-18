@@ -3,14 +3,16 @@ class ApplicationController < ActionController::Base
 
 	before_action :set_query
 	before_action :set_query_brand
-	before_action :set_modmin
+	before_action :set_user_roles
 
-	def set_modmin
+	def set_user_roles
+	 @auth = false
+	 @auth_e = false
 	 if user_signed_in?
 	 	if current_user.role.in?(["mod","admin"]) then @auth = true else @auth = false end
-	 	if current_user.role.in?(["mod","admin","editor"]) then @auth_e = "editor" else @auth = false end	 		
+	 	if current_user.role.in?(["mod","admin","editor"]) then @auth_e = "editor" else @auth_e = false end	 		
 	 else
-	 	@auth = false
+
 	 end
 	end
 

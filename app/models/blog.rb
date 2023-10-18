@@ -18,6 +18,10 @@ class Blog < ApplicationRecord
     #cover.variant(resize: "400x200").processed
   end
 
+  def main_image
+    cover.variant(resize_to_fill: [500,450]).processed
+  end
+
   def cover_imagev(image)
     image.variant(resize_to_fill: [400,300]).processed
   end

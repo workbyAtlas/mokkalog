@@ -3,10 +3,7 @@
 
 <section class="section center">
 <div class="notification rw30 has-background-white">
-<div class="center-down">
-<h2 class="title is-3 mb-0"><span class="secondary-t">Forgot your</span></h2>
-<h2 class="title is-3 mt-0"><span class="secondary-t">password?</span></h2>
-</div>
+  <div class="bold text-center title is-3 mb-3">Forgot Your Password?</div>
 <br/>
 
 
@@ -20,7 +17,7 @@
 <% end %>
 <br/>
 <div class="center-down">
-<%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name) %>
+<%= link_to "Didn't receive confirmation instructions?", new_confirmation_path(resource_name), class:"text-center" %>
 <%= link_to "Go back to Sign in", new_session_path(resource_name) %>
 </div>
 

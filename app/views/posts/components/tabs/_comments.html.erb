@@ -1,0 +1,14 @@
+<%# Comment Form--------------------------------------------------%>
+<%if user_signed_in?%>
+<section class="section">
+<%= render partial: 'comments/form' , locals: {commentable: @post} %>
+</section>
+<%end%>
+<%# Comment Section------------------------------------------------%>
+
+<section class="section center-down p-0">
+<% @comments.each do |comment| %>
+  <%= render partial: 'comments/comment', locals: {commentable: @post, comment: comment} %>
+<% end %>
+</section>
+

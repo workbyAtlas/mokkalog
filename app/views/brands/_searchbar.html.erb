@@ -8,10 +8,10 @@
 <div class="rw50">
  
     <div class="center title is-5 my-2 secondary-t">Search</div>
-    <%= f.search_field :name_or_verification_or_hand_made_or_sustainable_i_cont, class:"input bs mokka-ph", placeholder:"Search here..." %>
-
-
-    <%= f.submit "search!", class:"button is-warning my-2 " %>
+    <div class="center">
+      <%= f.search_field :name_or_verification_or_hand_made_or_sustainable_i_cont, class:"input bs mokka-ph", placeholder:"Search here..." %>
+      <%= f.submit "Search", class:"button is-warning my-2 bold secondary-t", style:"border: 1px solid #654321;" %>
+    </div>
 
 </div>
 
@@ -28,44 +28,44 @@
 
     <div class="one-filter-grid">
     <div class="my-1">
-      <label class="color-cbox Beigebox">
+      <label class="color-cbox Brownbox">
       <%= check_box_tag('q[verification_i_cont_any][]', "True", false) %>
-      <span class="color-cmark Beigemark">
+      <span class="color-cmark Brownmark">
         <div class="hover">
-          <i class="fa-solid fa-circle-check fa-small" style="color:#654321;"></i>
+          <i class="fa-solid fa-circle-check fa-small" style="color:#cbb595;"></i>
           <div class="hover-content center">Verified</div>
         </div>
       </span>
       </label>
    </div>
     <div class="my-1">
-      <label class="color-cbox Beigebox">
+      <label class="color-cbox Brownbox">
       <%= check_box_tag('q[badge_i_cont_any][]', "certified", false) %>
-      <span class="color-cmark Beigemark">
+      <span class="color-cmark Brownmark">
         <div class="hover">
-        <i class="fa-solid fa-mug-saucer fa-small" style="color:#ffd700;"></i>
+        <i class="fa-solid fa-mug-saucer fa-small myellow"></i>
         <div class="hover-content center">Certified</div>
         </div>
       </span>
       </label>
    </div>
     <div class="my-1">
-      <label class="color-cbox Beigebox">
+      <label class="color-cbox Brownbox">
       <%= check_box_tag('q[sustainable_i_cont_any][]', "True", false) %>
-      <span class="color-cmark Beigemark">
+      <span class="color-cmark Brownmark">
         <div class="hover">
-        <i class="fa-solid fa-seedling fa-small" style="color: #18c95c;"></i>
+        <i class="fa-solid fa-seedling fa-small mgreen"></i>
         <div class="hover-content center">Sustainable</div>
         </div>
       </span>
       </label>
    </div>
     <div class="my-1">
-      <label class="color-cbox Beigebox">
+      <label class="color-cbox Brownbox">
       <%= check_box_tag('q[hand_made_i_cont_any][]', "True", false) %>
-      <span class="color-cmark Beigemark">
+      <span class="color-cmark Brownmark">
         <div class="hover">
-        <i class="fa-solid fa-scissors fa-small" style="color: #ff0000;"></i>
+        <i class="fa-solid fa-scissors fa-small mred"></i>
         <div class="hover-content center">Handmade</div>
         </div>
       </span>

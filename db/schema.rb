@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_10_07_022627) do
+ActiveRecord::Schema[7.0].define(version: 2023_10_18_090542) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -114,11 +114,10 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_022627) do
     t.bigint "user_id", null: false
     t.string "link"
     t.string "brand_color", default: "0"
-    t.string "brand_text", default: "0"
+    t.string "brand_text", default: "#654321;"
     t.text "header"
     t.string "ig_link"
     t.string "last_edited"
-    t.string "style"
     t.string "verification"
     t.string "location"
     t.string "sustainable"
@@ -248,6 +247,21 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_022627) do
     t.index ["user_id"], name: "index_posts_on_user_id"
   end
 
+  create_table "styleables", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.bigint "style_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_styleables_on_brand_id"
+    t.index ["style_id"], name: "index_styleables_on_style_id"
+  end
+
+  create_table "styles", force: :cascade do |t|
+    t.string "name"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+  end
+
   create_table "taggables", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "tag_id", null: false
@@ -283,7 +297,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_022627) do
     t.text "link2"
     t.string "primary_color", default: "#cbb595;"
     t.string "secondary_color", default: "#654321;"
-    t.string "text_color", default: "black"
+    t.string "text_color", default: "#654321;"
     t.integer "role", default: 0
     t.string "link1_title"
     t.string "link2_title"
@@ -316,6 +330,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_10_07_022627) do
   add_foreign_key "posts", "brands"
   add_foreign_key "posts", "categories"
   add_foreign_key "posts", "users"
+  add_foreign_key "styleables", "brands"
+  add_foreign_key "styleables", "styles"
   add_foreign_key "taggables", "posts"
   add_foreign_key "taggables", "tags"
 end

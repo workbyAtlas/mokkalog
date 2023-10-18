@@ -37,11 +37,14 @@ class BrandsController < ApplicationController
       @badges = true
     end
 
+
+
   end
 
   # GET /brands/new
   def new
     @brand = Brand.new
+
   end
 
   # GET /brands/1/edit
@@ -54,8 +57,12 @@ class BrandsController < ApplicationController
   def create
 
     @brand = Brand.new(brand_params)
-    @brand.brand_text = "black"
+    @brand.brand_text = "#654321;"
     @brand.user = current_user
+    delete_styles(@brand, params[:brand][:styles],)
+
+
+
 
 
 
@@ -72,7 +79,12 @@ class BrandsController < ApplicationController
 
   # PATCH/PUT /brands/1 or /brands/1.json
   def update
+    delete_styles(@brand, params[:brand][:styles],)
+
+
+ 
     respond_to do |format|
+
       if @brand.update(brand_params)
         @brand.last_edited = current_user.username
         format.html { redirect_to brand_url(@brand), notice: "Brand was successfully updated." }
@@ -103,6 +115,21 @@ class BrandsController < ApplicationController
     def set_brand
       @brand = Brand.friendly.find(params[:id])
     end
+
+    def delete_styles(brand, styles)
+      brand.styleables.destroy_all
+      if not styles.nil?
+      #styles = styles.strip.split(',')
+        styles.each do |style|
+          brand.styles << Style.find_or_create_by(name: style)
+        end
+      end
+    end
+
+
+
+
+
     def editing_privilage_brand
       return if current_user.editor?
       return if current_user.mod?
@@ -114,6 +141,6 @@ class BrandsController < ApplicationController
     def brand_params
       params.require(:brand).permit(:name, :image, :user_id, :body, :views, :link, :banner,
        :brand_color, :brand_text, :header, :last_edited, :ig_link, :gallery1,:gallery2,:gallery3,
-       :style, :verification, :location, :x_twitter, :sustainable, :hand_made, :badge)
+       :styles, :verification, :location, :x_twitter, :sustainable, :hand_made, :badge)
     end
 end

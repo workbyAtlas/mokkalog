@@ -30,6 +30,8 @@ class User < ApplicationRecord
 
   before_destroy :reassign_posts
 
+  #regular user
+  #editor
   enum role: [:user, :editor, :mod,:developer, :admin]
   after_initialize :set_default_role, :if => :new_record?
   def set_default_role

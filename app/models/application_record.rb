@@ -1,16 +1,17 @@
 class ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
 
+  #Check for Inapporpirate Words
   def validate_bad_words(attribute_name)
     keywords = ['faggot', 'nigger', 'retarded', 'chink','heil hitler']
     errors.add(attribute_name, "cannot contain the words") if self[attribute_name].present? && keywords.any? { |keyword| self[attribute_name].downcase.match?(/\b#{Regexp.escape(keyword)}\b/i) }
   end
-
   def validate_bad_names(attribute_name)
     keywords = ['ass', 'cunt','cock','fag']
     errors.add(attribute_name, "contains an inappropriate word") if self[attribute_name].present? && keywords.any? { |keyword| self[attribute_name].downcase.include?(keyword) }
   end
 
+  #Shortern Words
   def short_name(word)
     if word.length > 20
       short = word[0, 15]
@@ -19,25 +20,16 @@ class ApplicationRecord < ActiveRecord::Base
       word
     end
   end
-
-
-  def img_sq_small(image)
-    return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
-    image.variant(resize_to_fill: [100,100]).processed
+  def one_liner(word)
+    if word.length > 10
+      short = word[0,7]
+      short + "..."
+    else
+      word
+    end
   end
 
-  def img_sq_normal(image)
-    return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
-    image.variant(resize_to_fill: [200,200]).processed
-    
-  end
-
-  def img_sq_big(image)
-    return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
-    image.variant(resize_to_fill: [400,400]).processed
-  end
-
-
+  #Image Handler
   def image_handler(image,size)
     if size == "small"
       image.variant(resize_to_fill: [100,100]).processed
@@ -49,6 +41,10 @@ class ApplicationRecord < ActiveRecord::Base
       image.variant(resize_to_fill: [300,300]).processed
     elsif size == "quick"
       image.variant(resize_to_fit: [400,600]).processed
+    elsif size == "gallery"
+      image.variant(resize_to_fit: [400,400]).processed
+    elsif size == "fourfour"
+      image.variant(resize_to_fit: [400,400]).processed
     end
       
 

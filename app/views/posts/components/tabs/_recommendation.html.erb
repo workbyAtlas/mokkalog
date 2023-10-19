@@ -1,4 +1,4 @@
-<section class="bs cornered lgrey">
+
 <section class="relative cornered " data-controller="slider" data-slider-index-value="0">
   <button data-action="slider#previous" class="button-like-text carousel-lbtn">
   	<i class="fa-solid fa-arrow-left"></i>
@@ -76,7 +76,7 @@
 
   <div data-slider-target="slide">
 	<span class="flexed-wc">
-	<% if @post_same_brand.length >= 8 %>	
+	<% if @post_same_brand.length >= 12 %>	
 		<% @post_same_brand[8..11].each do |post| %>
 		<div class=""><%= render 'post', post: post %></div>
 		<% end %>
@@ -88,7 +88,7 @@
 
   <div data-slider-target="slide">
 	<span class="flexed-wc">
-	<% if @post_same_brand.length >= 8 %>
+	<% if @post_same_brand.length >= 16 %>
 		<% @post_same_brand[12..15].each do |post| %>
 		<div class=""><%= render 'post', post: post %></div>
 		<% end %>
@@ -100,4 +100,4 @@
   </div>
  </span>
 </section>
-</section>
+

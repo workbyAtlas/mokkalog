@@ -266,10 +266,23 @@ def quick
 
         @similar_posts += remaining_posts
       end
-        @similar_posts.shuffle
 
       # Find 8 other posts with the same brand, excluding the current post
       @post_same_brand = Post.where(brand: post_brand).where.not(id: @post.id).order('RANDOM()').limit(16)
+
+      if @post_same_brand.length < 16
+        # Access the styles through @post.brand
+        styles = @post.brand.styles.pluck(:id)
+
+        # Fetch additional posts with matching styles, excluding the current post and those already fetched
+        additional_posts = Post.joins(brand: :styles)
+                             .where('styles.id IN (?) AND posts.id NOT IN (?)', styles, [@post.id] + @post_same_brand.pluck(:id))
+                             .order('RANDOM()')
+                             .limit(16 - @post_same_brand.length)
+
+        # Add these additional posts to the @post_same_brand array
+        @post_same_brand += additional_posts
+      end
 
     end 
 

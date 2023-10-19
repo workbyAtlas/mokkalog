@@ -71,6 +71,7 @@
 }
 
 @media (max-width: 480px){
+  .similar-section{max-height:1000px;}
   .filter-grid {
   grid-template-columns: repeat(2, 1fr); /* 5 columns with equal width */
   overflow: scroll;

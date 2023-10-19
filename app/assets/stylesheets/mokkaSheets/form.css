@@ -108,6 +108,8 @@
 }
 
 .category-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr); /* 5 columns with equal width */
   height:150px;
   overflow:scroll;
   overflow-x: hidden;

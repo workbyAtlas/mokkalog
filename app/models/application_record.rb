@@ -13,8 +13,8 @@ class ApplicationRecord < ActiveRecord::Base
 
   #Shortern Words
   def short_name(word)
-    if word.length > 20
-      short = word[0, 15]
+    if word.length > 12
+      short = word[0, 10]
       short + "..."
     else
       word

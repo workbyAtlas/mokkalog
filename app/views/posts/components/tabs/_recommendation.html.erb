@@ -11,7 +11,7 @@
   <div data-slider-target="slide">
 	<span class="flexed-wc">
 	<% @similar_posts.take(4).each do |post| %>
-	<div class=""><%= render 'post', post: post %></div>
+	<div class=""><%= render post %></div>
 	<% end %>
 	</span>
   </div>
@@ -19,7 +19,7 @@
   <div data-slider-target="slide">
   	<span class="flexed-wc">
     <% @similar_posts[4..7].each do |post| %>
-     <div class=""><%= render 'post', post: post %></div>
+     <div class=""><%= render post %></div>
     <% end %>
 	</span>
   </div>
@@ -27,7 +27,7 @@
   <div data-slider-target="slide">
 	<span class="flexed-wc">
 	<% @similar_posts[8..11].each do |post| %>
-	<div class=""><%= render 'post', post: post %></div>
+	<div class=""><%= render post %></div>
 	<% end %>
 	</span>
   </div>
@@ -35,7 +35,7 @@
   <div data-slider-target="slide">
 	<span class="flexed-wc">
 	<% @similar_posts[12..15].each do |post| %>
-	<div class=""><%= render 'post', post: post %></div>
+	<div class=""><%= render post %></div>
 	<% end %>
 	</span>
   </div>
@@ -45,7 +45,7 @@
 
 
 
-<section class=" relative cornered similar-section mt-4" data-controller="slider" data-slider-index-value="0">
+<section class=" relative cornered mt-4" data-controller="slider" data-slider-index-value="0">
   <button data-action="slider#previous" class="button-like-text carousel-lbtn">
   	<i class="fa-solid fa-arrow-left"></i>
   </button>
@@ -57,7 +57,7 @@
   <div data-slider-target="slide">
 	<span class="flexed-wc">
 	<% @post_same_brand.take(4).each do |post| %>
-	<div class=""><%= render 'post', post: post %></div>
+	<div class=""><%= render post %></div>
 	<% end %>
 	</span>
   </div>
@@ -66,7 +66,7 @@
   	<span class="flexed-wc">
   	<% if @post_same_brand.length >= 8 %>	
 	    <% @post_same_brand[4..7].each do |post| %>
-	     <div class=""><%= render 'post', post: post %></div>
+	     <div class=""><%= render post %></div>
 	    <% end %>
 	<%else%>
 	something
@@ -78,7 +78,7 @@
 	<span class="flexed-wc">
 	<% if @post_same_brand.length >= 12 %>	
 		<% @post_same_brand[8..11].each do |post| %>
-		<div class=""><%= render 'post', post: post %></div>
+		<div class=""><%= render post %></div>
 		<% end %>
 	<%else%>
 	something
@@ -90,7 +90,7 @@
 	<span class="flexed-wc">
 	<% if @post_same_brand.length >= 16 %>
 		<% @post_same_brand[12..15].each do |post| %>
-		<div class=""><%= render 'post', post: post %></div>
+		<div class=""><%= render post %></div>
 		<% end %>
 	<%else%>
 	something

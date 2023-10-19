@@ -1,5 +1,5 @@
 <%if brand.present?%>
-<div class="lgrey p-4 cornered m-2 brand-card">
+<div class="lgrey p-4 cornered m-2 brand-card-home">
   <span class="mx-auto">
 <% if brand.image.attached? %>
   <div><%=link_to (image_tag(brand.image_handler(brand.image,"brand"), class:"cornered")), brand %></div>

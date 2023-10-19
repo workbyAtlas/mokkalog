@@ -5,9 +5,10 @@
 .checkbox-m{width:20px;height:20px;}
 /*Post*/
 .visit-input-width{width:300px;}
+/*post border- f5f5f5*/
 .post-card{
   width:250px;
-  border:2px solid #f5f5f5;}
+  border:0.5px solid #654321;}
 .brand-link{color:black;font-weight:400;}
 .immg {width:200px;height:200px;}
 .postimg {width:200px;height:300px;}
@@ -15,6 +16,9 @@
 .image-flex{display:flex;}
 .img-small-container{flex:1;}
 .image-big-container{flex:1;}
+
+.detail-style{min-height:75px; min-width:200px;}
+.similar-section{height:450px;}
 
 .form-line{border: 1px solid hsl(0, 0%, 86%);}
 

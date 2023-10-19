@@ -27,7 +27,7 @@
     </li>
     <li data-tab-target="btn3" data-action="click->tab#openTab3">
       <a>
-        <span>Recently Added</span>
+        <span>New</span>
       </a>
     </li>
   </ul>
@@ -41,8 +41,8 @@
 <section class="section">
 	<div class="flexed-wc">
     	<%= render 'brands/components/brand_showcase', brand:@brand_s1, subtext: @stxt[0]%>
-      <%= render 'brands/components/brand_showcase', brand:@brand_s2, subtext: @stxt[1]%>
-      <%= render 'brands/components/brand_showcase', brand:@brand_s3, subtext: @stxt[2]%>
+      <div class="mx-3"><%= render 'brands/components/brand_showcase', brand:@brand_s2, subtext: @stxt[1]%></div>
+      <div class="mr-3"><%= render 'brands/components/brand_showcase', brand:@brand_s3, subtext: @stxt[2]%></div>
       <%= render 'brands/components/brand_showcase', brand:@brand_s4, subtext: @stxt[3]%>
 	</div>
 </section>

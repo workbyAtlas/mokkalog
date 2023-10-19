@@ -1,7 +1,7 @@
 <div class="m-2 center-down closet_post post-shadow secondary">
 	
 	<% if post.image.attached?%>
-		<%=link_to image_tag(post.img_sq_normal(post.image), class:"cornered"), post%>
+		<%=link_to image_tag(post.image_handler(post.image,"normal"), class:"cornered"), post%>
 	<% else %>
 	    <div class="center"><%= image_tag ("download.jpg"), class: "immg cornered"  %></div>
 	<% end %>

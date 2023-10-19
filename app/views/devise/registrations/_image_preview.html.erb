@@ -3,14 +3,14 @@
 
     <%= form.label :avatar, style: "display: block" %>
 
-<div class="file is-warning center">
+<div class="file is-warning center bold">
   <label class="file-label">
 
     <%= form.file_field :avatar,
     direct_upload: true,
     data: { previews_target: "input", action: "change->previews#preview"}, class:"file-input" %>
 
-    <span class="file-cta">
+    <span class="file-cta" style="border:1px solid #654321;">
       <span class="file-icon">
         <i class="fas fa-upload"></i>
       </span>

@@ -14,14 +14,14 @@
 </div>
 <%end%>
 
-<%if @brand.hand_made == "True"%>
+<%if @brand.badge.present? && @brand.badge.include?("handmade")%>
 <div class="hover">
   <i class="fa-solid fa-scissors fa-2xl mred"></i>
   <div class="hover-content center">Handmade</div>
 </div>
 <%end%>
 
-<%if @brand.sustainable == "True"%>
+<%if @brand.badge.present? && @brand.badge.include?("sustain")%>
 <div class="hover">
   <i class="fa-solid fa-seedling fa-2xl mgreen"></i>
   <div class="hover-content center">Sustainable</div>

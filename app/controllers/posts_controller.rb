@@ -14,14 +14,13 @@ class PostsController < ApplicationController
   def index
  
     @brands = Brand.all
-
     #@brands = current_user.brands
-
     @brands = @brands.order("LOWER(name)")
 
 
     @blank = Brand.find(1) 
     #@query.build_condition_color("Red")
+
     @categories = Category.all
 
     @query = Post.ransack(params[:q])
@@ -41,6 +40,7 @@ class PostsController < ApplicationController
 
   # GET /posts/1 or /posts/1.json
   def show
+    @blank = Brand.find(1) 
     if not current_user == @post.user
       @post.update(views: @post.views + 1)
     end 
@@ -48,11 +48,7 @@ class PostsController < ApplicationController
     @pagelinks = @post.pagelinks.order(created_at: :asc)
 
     @badges = false
-    if @post.brand.sustainable == "True"
-      @badges = true
-    elsif @post.brand.hand_made == "True"
-      @badges = true
-    elsif @post.brand.verification == "True"
+    if @post.brand.verification == "True"
       @badges = true
     end
 
@@ -75,7 +71,10 @@ class PostsController < ApplicationController
       @visit_modal = true
     end
 
-    #@new_web_link = @post.web_link.start_with?('http://', 'https://') ? @web_link : "https://#{@web_link}"
+    #Building Recommendation Algo
+    set_algo
+
+
 
   end
 
@@ -240,6 +239,40 @@ def quick
         post.tags << Tag.find_or_create_by(name: tag)
       end
     end
+
+    def set_algo
+    post_brand = @post.brand
+      @similar_posts = Post.where(category_id: @post.category_id, color: @post.color)
+                     .where.not(id: @post.id).order('RANDOM()').limit(16)
+      num_similar_posts = @similar_posts.count
+
+      # If there are less than 16 similar posts, fill the rest with posts from the same category
+      if num_similar_posts < 16
+        remaining_posts = Post.where(category_id: @post.category_id)
+                             .where.not(id: [@post.id] + @similar_posts.pluck(:id))
+                             .order('RANDOM()')
+                             .limit(16 - num_similar_posts)
+
+      @similar_posts += remaining_posts
+      end
+      # Check how many similar posts have been retrieved
+      num_similar_posts = @similar_posts.count
+
+      # If there are less than 16 similar posts, fill the rest with random posts
+      if num_similar_posts < 16
+        remaining_posts = Post.where.not(id: [@post.id] + @similar_posts.pluck(:id))
+                             .order('RANDOM()')
+                             .limit(16 - num_similar_posts)
+
+        @similar_posts += remaining_posts
+      end
+        @similar_posts.shuffle
+
+      # Find 8 other posts with the same brand, excluding the current post
+      @post_same_brand = Post.where(brand: post_brand).where.not(id: @post.id).order('RANDOM()').limit(16)
+
+    end 
+
   
 
     # Use callbacks to share common setup or constraints between actions.

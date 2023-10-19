@@ -30,19 +30,24 @@
     <div class="bold"><u>Additional Information</u></div>
         <div class="flexed center-h mt-1">
           <div class="mr-1">Origin:</div>
-          <%= form.select :location, brand.countries_name.invert, { include_blank: true }, { data: { controller: 'slim' } } %>
+          <%= form.select :location, brand.countries_name.invert, { include_blank: true }, { data: { controller: 'slim' }} %>
         </div>
-        <div class="flexed center-h mt1">
+
+        <div>
           <div class="mr-3">Style:</div>
 
         <%#= form.text_field :styles, value: brand.styles.map(&:name).join(","), class:"input is-small mokka-ph mb-2", placeholder:"Style time" %>
+          <div class="color-filter-grid bs cornered p-1">
 
-<% Style.pluck(:name).each do |style_name| %>
-<div class=" m-4">
-  <%= check_box_tag "brand[styles][]", style_name, brand.styles.map(&:name).include?(style_name), class:"checkbox"%>
-  <%= style_name %><br>
-</div>
-<% end %>
+            <% Style.pluck(:name).each do |style_name| %>
+              <div>
+                <label class="m-checkbox mid-cbox">
+                  <%= check_box_tag "brand[styles][]", style_name, brand.styles.map(&:name).include?(style_name), class:"checkbox"%>
+                  <span class="m-checkmark"><%=style_name%></span>
+                </label>
+              </div>
+            <% end %>
+          </div>
 
 
 

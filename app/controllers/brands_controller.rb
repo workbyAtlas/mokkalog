@@ -10,7 +10,8 @@ class BrandsController < ApplicationController
     #brands = @query.result(distinct: true)
     @brands = @query.result.includes(:posts)
     @brands = @brands.order('created_at ASC').page(params[:page]).per(16)
-    @blank = Brand.find(1) 
+    @blank = Brand.find(1)
+    
 
     
 
@@ -29,11 +30,8 @@ class BrandsController < ApplicationController
     @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
     
     @badges = false
-    if @brand.sustainable == "True"
-      @badges = true
-    elsif @brand.hand_made == "True"
-      @badges = true
-    elsif @brand.verification == "True"
+
+    if @brand.verification == "True"
       @badges = true
     end
 
@@ -141,6 +139,6 @@ class BrandsController < ApplicationController
     def brand_params
       params.require(:brand).permit(:name, :image, :user_id, :body, :views, :link, :banner,
        :brand_color, :brand_text, :header, :last_edited, :ig_link, :gallery1,:gallery2,:gallery3,
-       :styles, :verification, :location, :x_twitter, :sustainable, :hand_made, :badge)
+       :styles, :verification, :location, :x_twitter, :badge)
     end
 end

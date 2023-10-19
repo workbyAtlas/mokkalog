@@ -9,7 +9,7 @@
       <div class="flexed ">
         <div>
         <%=link_to (image_tag (@current_blog.cover), class:"blog_main_image cornered"), @current_blog %>
-        <div><%=link_to @current_blog.title, @current_blog, class:"blog-text title is-2 secondary-t blocked"%></div>
+        <div><%=link_to @current_blog.title, @current_blog, class:"blog-text title is-2 sn-link blocked"%></div>
         </div>
         <div class="vbs blog_vertical_border ml-5 mt-2"></div>
     </div>
@@ -18,11 +18,11 @@
         <div class="d-none-mobile mt-4"></div>
         <div class="mr-2">
         <%=link_to (image_tag (@small_blog1.cover), class:"blog_small_image cornered"), @small_blog1%>
-        <div><%=link_to @small_blog1.title, @small_blog1, class:"blog-text bold secondary-t"%></div>
+        <div><%=link_to @small_blog1.title, @small_blog1, class:"blog-text bold sn-link"%></div>
         </div>
         <div class="mr-2">
         <%=link_to (image_tag (@small_blog2.cover), class:"blog_small_image cornered"), @small_blog2%>
-        <div><%=link_to @small_blog2.title, @small_blog2, class:"blog-text bold secondary-t"%></div>
+        <div><%=link_to @small_blog2.title, @small_blog2, class:"blog-text bold sn-link"%></div>
         </div>
   </div> 
   </div>

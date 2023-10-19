@@ -3,27 +3,27 @@
 
 <%if @post.brand.verification == "True"%>
 <div class="hover">
-  <i class="fa-solid fa-circle-check fa-2xl" style="color:#654321;"></i>
+  <%=render 'component/badges/verified', size: "2xl"%>
   <div class="hover-content center">Verified</div>
 </div>
 <%end%>
 
 <%if @post.brand.badge.present? && @post.brand.badge.include?("certified")%>
 <div class="hover">
-  <i class="fa-solid fa-mug-saucer fa-2xl" style="color: #ffd700;"></i>
+  <%=render 'component/badges/certified', size: "2xl"%>
   <div class="hover-content center">Certified</div>
 </div>
 <%end%>
 
-<%if @post.brand.hand_made == "True"%>
+<%if @post.brand.badge.present? && @post.brand.badge.include?("handmade")%>
 <div class="hover">
 <%=render 'component/red_scissor', size: "2xl"%>
   <div class="hover-content center">Handmade</div>
 </div>
 <%end%>
-<%if @post.brand.sustainable == "True"%>
+<%if @post.brand.badge.present? && @post.brand.badge.include?("sustain")%>
 <div class="hover">
-  <i class="fa-solid fa-seedling fa-2xl mt-2 mgreen"></i>
+  <%=render 'component/badges/sustain', size: "2xl"%>
   <div class="hover-content center">Sustainable</div>
 </div>
 <%end%>

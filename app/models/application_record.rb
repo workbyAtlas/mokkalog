@@ -21,8 +21,8 @@ class ApplicationRecord < ActiveRecord::Base
     end
   end
   def one_liner(word)
-    if word.length > 10
-      short = word[0,7]
+    if word.length > 20
+      short = word[0,15]
       short + "..."
     else
       word

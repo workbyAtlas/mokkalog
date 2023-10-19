@@ -1,14 +1,55 @@
-<div class="lgrey p-4 cornered m-2 brand-card">
+<div class="lgrey px-3 pt-3 pb-0 cornered m-2 brand-card">
+
   <span class="mx-auto">
+    <% if brand.image.attached? %>
+    <div><%=link_to (image_tag(brand.image_handler(brand.image,"brand"), class:"cornered")), brand %></div>
+    <% else %>
+    <div class="center"><%=image_tag(@blank.image_brand, class:"cornered")%></div>
+    <% end %>
 
-<% if brand.image.attached? %>
-  <div><%=link_to (image_tag(brand.image_handler(brand.image,"brand"), class:"cornered")), brand %></div>
-<% else %>
-  <div class="center"><%=image_tag(@blank.image_brand, class:"cornered")%></div>
-<% end %>
+    <div class="p-link center">
+      <%=link_to brand.one_liner(brand.name), brand, class:"s-link bold", style:"text-align:center;" %>
+    </div>
 
-  <div class="p-link center">
-    <%=link_to brand.one_liner(brand.name), brand, class:"s-link bold", style:"text-align:center;" %>
-  </div>
+
+    <div class="center center-h flex-margin">
+
+
+<% if not brand.location.blank?%>
+<%@c= ISO3166::Country.new(brand.location)%>
+<div class="hover">
+<div><%=@c.emoji_flag%></div>
+<div class="hover-content center"><%=brand.country_label%></div>
+</div>
+<%end%>
+
+<%if brand.verification == "True"%>
+<div class="hover">
+  <%=render 'component/badges/verified', size: "small"%>
+  <div class="hover-content center">Verified</div>
+</div>
+<%end%>
+
+<%if brand.badge.present? && brand.badge.include?("certified")%>
+<div class="hover">
+  <%=render 'component/badges/certified', size: "small"%>
+  <div class="hover-content center">Certified</div>
+</div>
+<%end%>
+
+<%if brand.badge.present? && brand.badge.include?("handmade")%>
+<div class="hover">
+<%=render 'component/red_scissor', size: "small"%>
+  <div class="hover-content center">Handmade</div>
+</div>
+<%end%>
+<%if brand.badge.present? && brand.badge.include?("sustain")%>
+<div class="hover">
+  <%=render 'component/badges/sustain', size: "small"%>
+  <div class="hover-content center">Sustainable</div>
+</div>
+<%end%>
+    </div>
   </span>
+
 </div>

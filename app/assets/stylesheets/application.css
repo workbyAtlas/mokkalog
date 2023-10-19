@@ -172,6 +172,9 @@ transform: translateY(-30px);
 .s-btn{background-color:#654321;color:white; border: 2px solid;border-color:#cbb595;}
 .s-btn:hover{background-color:#52361b;color:white;}
 .s-link{color:#654321;text-decoration: underline #654321; cursor: pointer;}
+.s-link:hover{color:#cbb595;text-decoration: underline #cbb595;}
+.sn-link{color:#654321; cursor:pointer}
+.sn-link:hover{color:#cbb595;}
 
 
 /*WIDTH-CONTROL*/
@@ -210,6 +213,8 @@ transform: translateY(-30px);
 .flexed-r{display:flex;flex-direction:row;}
 .flexed-end{display:flex;justify-content:flex-end;}
 .float-r{float:right;}
+
+.flex-margin > div {margin:0.5em;}
 
 
 /*Component CSS*/

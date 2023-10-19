@@ -1,6 +1,45 @@
 <div class="center">
   <div class="notification rw70 desc-box content bs">
-     <h2 style="color:#654321;"><u>Description</u></h2>
-     <div class="notification has-background-white"><%= @post.body%></div>
+     <h2 style="color:#654321;"><u>Detail</u></h2>
+     <%if not @post.body.blank?%>
+       <div class="notification has-background-white">
+        <div class="bold"><u>Description</u></div>
+        <%= @post.body%>
+      </div>
+     <%end%>
+
+     <div class="white-b cornered notification">
+      <div class="bold"><u>Brand Info</u></div>
+
+      <div class="flexed">
+      <% if @post.brand.image.attached? %>
+        <div class="mobile-square-img">
+          <%=image_tag (@post.brand.image_handler(@post.brand.image,"small")), class:"cornered" %>    
+        </div>
+      <% else %>
+        <div class="mobile-square-img">
+          <%=image_tag (@blank.image_handler(@blank.image,"small")), class:"cornered" %>    
+        </div>
+      <% end %>
+        <div class="ml-2">
+          <div class="bold"><%=@post.brand.name%></div>
+          <%if not @post.brand.styles.empty?%>
+          <div class="bs cornered detail-style">
+            <% @post.brand.styles.each do |style| %>
+              <span class="tag m-1 bp"><%= style.name.capitalize%></span>
+            <%end%>
+          </div>
+          <%end%>
+
+        </div>
+      </div>
+      <div class="mt-1">
+        <%=@post.brand.body%>
+      </div>
+
+     </div>
+
   </div>
-  </div>
+</div>
+
+

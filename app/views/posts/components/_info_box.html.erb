@@ -8,9 +8,16 @@
       <li><strong class="mx-2">Color:</strong><%=@post.color%></li>
       <li><strong class="mx-2">Material:</strong><%= if @post.material.blank? then "undefined" else @post.material end%></li>
       <li><strong class="mx-2">Season:</strong><%= if @post.season.blank? then "undefined" else @post.season end%></li>
-      <li><strong class="mx-2">Uploaded_by:</strong><%=link_to "@"+ @post.user.username, user_path(@post.user), class:"purp-link"%>
+
+      <%if not @post.brand.location.blank?%>
+      <li><strong class="mx-2">Origin:</strong><%=@post.brand.country_label%></li>
+      <%end%>
+
+
       <%if true == false%>
+      <li><strong class="mx-2">Uploaded_by:</strong><%=link_to "@"+ @post.user.username, user_path(@post.user), class:"purp-link"%>
       <%if not @post.edited_by.blank?%>
+
       <li><strong class="mx-2">Last Edited By:</strong>
       	@<%=@post.edited_by%>
 
@@ -20,3 +27,5 @@
 
    </ul>
 </div>
+
+    

@@ -1,1 +1,103 @@
-_recommendation.html.erb
+<section class="bs cornered lgrey">
+<section class="relative cornered " data-controller="slider" data-slider-index-value="0">
+  <button data-action="slider#previous" class="button-like-text carousel-lbtn">
+  	<i class="fa-solid fa-arrow-left"></i>
+  </button>
+  <button data-action="slider#next" class="button-like-text carousel-rbtn">
+  	<i class="fa-solid fa-arrow-right"></i>
+  </button>
+<div class="title is-4 mt-2 mb-1 mx-4 secondary-t center"><u>Similar Clothing</u></div> 
+<span class="center">
+  <div data-slider-target="slide">
+	<span class="flexed-wc">
+	<% @similar_posts.take(4).each do |post| %>
+	<div class=""><%= render 'post', post: post %></div>
+	<% end %>
+	</span>
+  </div>
+
+  <div data-slider-target="slide">
+  	<span class="flexed-wc">
+    <% @similar_posts[4..7].each do |post| %>
+     <div class=""><%= render 'post', post: post %></div>
+    <% end %>
+	</span>
+  </div>
+
+  <div data-slider-target="slide">
+	<span class="flexed-wc">
+	<% @similar_posts[8..11].each do |post| %>
+	<div class=""><%= render 'post', post: post %></div>
+	<% end %>
+	</span>
+  </div>
+
+  <div data-slider-target="slide">
+	<span class="flexed-wc">
+	<% @similar_posts[12..15].each do |post| %>
+	<div class=""><%= render 'post', post: post %></div>
+	<% end %>
+	</span>
+  </div>
+ </span>
+</section>
+
+
+
+
+<section class=" relative cornered similar-section mt-4" data-controller="slider" data-slider-index-value="0">
+  <button data-action="slider#previous" class="button-like-text carousel-lbtn">
+  	<i class="fa-solid fa-arrow-left"></i>
+  </button>
+  <button data-action="slider#next" class="button-like-text carousel-rbtn">
+  	<i class="fa-solid fa-arrow-right"></i>
+  </button>
+<div class="title is-4 mt-2 mb-1 mx-4 secondary-t center"><u>Clothing under the same Brand</u></div> 
+<span class="center">
+  <div data-slider-target="slide">
+	<span class="flexed-wc">
+	<% @post_same_brand.take(4).each do |post| %>
+	<div class=""><%= render 'post', post: post %></div>
+	<% end %>
+	</span>
+  </div>
+
+  <div data-slider-target="slide">
+  	<span class="flexed-wc">
+  	<% if @post_same_brand.length >= 8 %>	
+	    <% @post_same_brand[4..7].each do |post| %>
+	     <div class=""><%= render 'post', post: post %></div>
+	    <% end %>
+	<%else%>
+	something
+	<%end%>
+	</span>
+  </div>
+
+  <div data-slider-target="slide">
+	<span class="flexed-wc">
+	<% if @post_same_brand.length >= 8 %>	
+		<% @post_same_brand[8..11].each do |post| %>
+		<div class=""><%= render 'post', post: post %></div>
+		<% end %>
+	<%else%>
+	something
+	<%end%>
+	</span>
+  </div>
+
+  <div data-slider-target="slide">
+	<span class="flexed-wc">
+	<% if @post_same_brand.length >= 8 %>
+		<% @post_same_brand[12..15].each do |post| %>
+		<div class=""><%= render 'post', post: post %></div>
+		<% end %>
+	<%else%>
+	something
+	<%end%>
+
+	</span>
+  </div>
+ </span>
+</section>
+</section>

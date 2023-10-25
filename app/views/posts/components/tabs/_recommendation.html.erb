@@ -52,7 +52,15 @@
   <button data-action="slider#next" class="button-like-text carousel-rbtn">
   	<i class="fa-solid fa-arrow-right"></i>
   </button>
-<div class="title is-4 mt-2 mb-1 mx-4 secondary-t center"><u>Clothing under the same Brand</u></div> 
+ <%if @all_brand == true%>
+<div class="title is-4 mt-2 mb-1 mx-4 secondary-t center text-center">
+	<u>Clothing from <%=@post.brand.name%></u>
+</div>
+<%else%>
+<div class="title is-4 mt-2 mb-1 mx-4 secondary-t center text-center">
+	<u>Clothing from similar brands</u>
+</div>
+<%end%>
 <span class="center">
   <div data-slider-target="slide">
 	<span class="flexed-wc">

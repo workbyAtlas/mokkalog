@@ -28,5 +28,12 @@
 </div>
 <%end%>
 
+<%if @post.brand.badge.present? && @post.brand.badge.include?("sustain")%>
+<div class="hover">
+  <%=render 'component/badges/global', size: "2xl"%>
+  <div class="hover-content center">Global Shipping</div>
+</div>
+<%end%>
+
 </div>
 <%end%>

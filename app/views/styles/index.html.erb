@@ -1,11 +1,20 @@
+<style>html{background-color:#f5f5f5;}</style>
+
+<section class="section is-medium prime section-corner-top">
+  <div class="center title is-4 secondary-t">style</div>
+  <hr class="bst" />
+</section>
+
+
 <p style="color: green"><%= notice %></p>
-<%= link_to "New style", new_style_path %>
-<h1>Styles</h1>
-<section class="section">
-<div id="styles">
+
+
+
+<section class="section lgrey center">
+<div class="bs cornered rw50 p-2">
   <% @styles.each do |style| %>
-    <p>
-      <%= link_to style.name, style %>
+    <p class="center">
+      <%= link_to style.name, style, class:"sn-link bold" %>
     </p>
   <% end %>
 </div>

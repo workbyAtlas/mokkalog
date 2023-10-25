@@ -4,6 +4,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_query
 	before_action :set_query_brand
 	before_action :set_user_roles
+	before_action :set_blank
 
 	def set_user_roles
 	 @auth = false
@@ -22,6 +23,10 @@ class ApplicationController < ActionController::Base
 
 	def set_query_brand
 		@query = Post.ransack(params[:q])	
+	end
+
+	def set_blank
+	    @blank = Brand.find(1)
 	end
 
 

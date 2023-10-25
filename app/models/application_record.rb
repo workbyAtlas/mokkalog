@@ -1,16 +1,6 @@
 class ApplicationRecord < ActiveRecord::Base
   primary_abstract_class
 
-  #Check for Inapporpirate Words
-  def validate_bad_words(attribute_name)
-    keywords = ['faggot', 'nigger', 'retarded', 'chink','heil hitler']
-    errors.add(attribute_name, "cannot contain the words") if self[attribute_name].present? && keywords.any? { |keyword| self[attribute_name].downcase.match?(/\b#{Regexp.escape(keyword)}\b/i) }
-  end
-  def validate_bad_names(attribute_name)
-    keywords = ['ass', 'cunt','cock','fag']
-    errors.add(attribute_name, "contains an inappropriate word") if self[attribute_name].present? && keywords.any? { |keyword| self[attribute_name].downcase.include?(keyword) }
-  end
-
   #Shortern Words
   def short_name(word)
     if word.length > 12
@@ -23,6 +13,15 @@ class ApplicationRecord < ActiveRecord::Base
   def one_liner(word)
     if word.length > 20
       short = word[0,15]
+      short + "..."
+    else
+      word
+    end
+  end
+
+  def shorter_name(word,a,b)
+    if word.length > a
+      short = word[0, b]
       short + "..."
     else
       word
@@ -47,6 +46,15 @@ class ApplicationRecord < ActiveRecord::Base
       image.variant(resize_to_fit: [400,400]).processed
     end
       
+  end
 
+  #Check for Inapporpirate Words
+  def validate_bad_words(attribute_name)
+    keywords = ['faggot', 'nigger', 'retarded', 'chink','heil hitler']
+    errors.add(attribute_name, "cannot contain the words") if self[attribute_name].present? && keywords.any? { |keyword| self[attribute_name].downcase.match?(/\b#{Regexp.escape(keyword)}\b/i) }
+  end
+  def validate_bad_names(attribute_name)
+    keywords = ['ass', 'cunt','cock','fag']
+    errors.add(attribute_name, "contains an inappropriate word") if self[attribute_name].present? && keywords.any? { |keyword| self[attribute_name].downcase.include?(keyword) }
   end
 end

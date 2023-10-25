@@ -1,27 +1,3 @@
-<%= search_form_for @query, url: posts_path, html: { class: "form-inline" } do |f| %>
-<div class="section is-small prime section-corner">
-  <div class="center title is-4 secondary-t">catalog</div>
-  <br/ >
-
-  <hr class="bst" />
-  <div class="center">
-  <div class="relative rw50">
-    <%=link_to "[advanced]", advsearch_path, class:"hide-btn secondary-t"%>
-
-      <div class="center my-2 title is-5 secondary-t">Search:</div>
-      <div class="center">
-        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_verification_i_cont_any, class:"input mokka-ph bs", placeholder:"Search here..." %>
-
-            <%= f.submit "Search", class:"button is-warning my-2 bold secondary-t", style:"border: 1px solid #654321;" %>
-      </div>
-
-
-  </div>
-  </div>
-</div>
-
-<%# FILTER%>
-
 <section class=" section pt-2 lgrey">
   <div class="columns">
 
@@ -59,54 +35,39 @@
   <div class="column">
   <div class="mx-2 bs cornered p-1 mt-2 rw80">
 
-    <div class="bold"><u>Type</u></div>
+    <div class="my-0 title is-5 secondary-t"><u>Type</u></div>
 
     <div class="one-filter-grid">
     <div class="my-1">
       <label class="m-checkbox">
       <%= check_box_tag('q[c_type_i_cont_any][]', "Neutral", false) %>
       <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-          <i class="fa-solid fa-user fa-small"></i>
-          <div class="hover-content center secondary-t">Neutral</div>
-        </div>
-      </span>
+      <span class="m-checkmark">Neutral</span>
       </label>
    </div>
     <div class="my-1">
       <label class="m-checkbox">
       <%= check_box_tag('q[c_type_i_cont_any][]', "Women", false) %>
       <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-          <i class="fa-solid fa-person-dress"></i>
-          <div class="hover-content center secondary-t">Women</div>
-        </div>
-      </span>
+      <span class="m-checkmark">Women</span>
       </label>
    </div>
     <div class="my-1">
       <label class="m-checkbox">
       <%= check_box_tag('q[c_type_eq_any][]', "Men", false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-          <i class="fa-solid fa-person"></i>
-          <div class="hover-content center secondary-t">Men</div>
-        </div>
-      </span>
+      <span class="m-checkmark">Men</span>
       </label>
    </div>
     </div>
 
-    <div class="bold"><u>Badges</u>
+    <div class="mt-1 mb-0 title is-5 secondary-t"><u>Badges</u>
     <a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a></div>
 
     <div class="one-filter-grid">
     <div class="my-1">
-      <label class="m-checkbox">
+      <label class="color-cbox Brownbox">
       <%= check_box_tag('q[brand_verification_i_cont_any][]', "True", false) %>
-      <span class="m-checkmark">
+      <span class="color-cmark Brownmark">
         <div class="hover">
           <i class="fa-solid fa-circle-check fa-small mbeige"></i>
           <div class="hover-content center secondary-t">Verified</div>
@@ -115,9 +76,9 @@
       </label>
    </div>
     <div class="my-1">
-      <label class="m-checkbox">
+      <label class="color-cbox Brownbox">
       <%= check_box_tag('q[brand_badge_i_cont_any][]', "certified", false) %>
-      <span class="m-checkmark">
+      <span class="color-cmark Brownmark">
         <div class="hover">
         <i class="fa-solid fa-mug-saucer fa-small" style="color:#ffd700;"></i>
         <div class="hover-content center secondary-t">Certified</div>
@@ -126,9 +87,9 @@
       </label>
    </div>
     <div class="my-1">
-      <label class="m-checkbox">
+      <label class="color-cbox Brownbox">
       <%= check_box_tag('q[brand_badge_i_cont_any][]', "sustain", false) %>
-      <span class="m-checkmark">
+      <span class="color-cmark Brownmark">
         <div class="hover">
         <i class="fa-solid fa-seedling fa-small mgreen"></i>
         <div class="hover-content center secondary-t">Sustainable</div>
@@ -136,11 +97,10 @@
       </span>
       </label>
    </div>
-
     <div class="my-1">
-      <label class="m-checkbox">
+      <label class="color-cbox Brownbox">
       <%= check_box_tag('q[brand_badge_i_cont_any][]', "handmade", false) %>
-      <span class="m-checkmark">
+      <span class="color-cmark Brownmark">
         <div class="hover">
         <i class="fa-solid fa-scissors fa-small mred"></i>
         <div class="hover-content center secondary-t">Handmade</div>
@@ -148,21 +108,9 @@
       </span>
       </label>
    </div>
-
-    <div class="my-1">
-      <label class="m-checkbox">
-      <%= check_box_tag('q[brand_badge_i_cont_any][]', "global", false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-        <%= render 'component/badges/global', size:"small" %>
-        <div class="hover-content center secondary-t">Global Shipping</div>
-        </div>
-      </span>
-      </label>
-   </div>
     </div>
 
-    <div class="my-2 bold"><u>Sort</u></div>
+    <div class="mt-2 mb-2 title is-5 secondary-t"><u>Sort</u></div>
     <%#= f.search_field :price_lteq_all, type: 'range' , min: 0, max: 1000, value: 0%>
 
 
@@ -174,6 +122,12 @@
     
 
   </div>
+
+  #####
+    <%= f.submit "Filter", class:"button is-warning bold secondary-t", style:"border: 1px solid #654321;" %>
+  <%=link_to "Clear", posts_path,class:"button is-warning is-light mx-2 bold prime-t", style:"border:1px solid #cbb595;"%>
+  <%= sort_link(@query, :price, "Price", class:"button is-warning bold secondary-t mr-2", style:"border: 1px solid #654321;")%>
+  <%= sort_link(@query, :title, "A-Z", class:"button is-warning bold secondary-t", style:"border: 1px solid #654321;")%>
+  
 </div>
 </section>
-<% end %>

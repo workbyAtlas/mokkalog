@@ -7,9 +7,15 @@
     <div class="center"><%=image_tag(@blank.image_brand, class:"cornered")%></div>
     <% end %>
 
-    <div class="p-link center">
-      <%=link_to brand.one_liner(brand.name), brand, class:"s-link bold", style:"text-align:center;" %>
+    <div class="p-link center d-none-mobile">
+      <%=link_to brand.shorter_name(brand.name,15,10), brand, class:"s-link bold", style:"text-align:center;" %>
     </div>
+
+    <div class="p-link center d-none-desktop">
+      <%=link_to brand.shorter_name(brand.name,15,10), brand, class:"s-link bold", style:"text-align:center;" %>
+    </div>
+
+
 
 
     <div class="center center-h flex-margin">
@@ -47,6 +53,12 @@
 <div class="hover">
   <%=render 'component/badges/sustain', size: "small"%>
   <div class="hover-content center">Sustainable</div>
+</div>
+<%end%>
+<%if brand.badge.present? && brand.badge.include?("global")%>
+<div class="hover">
+  <%=render 'component/badges/global', size: "small"%>
+  <div class="hover-content center">Global Shipping</div>
 </div>
 <%end%>
     </div>

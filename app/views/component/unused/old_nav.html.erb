@@ -10,7 +10,6 @@
 		<div class="title is-4 secondary-t my-2">Catalog</div>
 		<div><%=link_to "View all Clothing", posts_path, class:"nav-link"%></div>
 		<div><%=link_to "Browse by Style", styles_path, class:"nav-link"%></div>
-		<div><%=link_to "Browse by Category", categories_path, class:"nav-link"%></div>
 		<br/>
 		<%=image_tag("cup.png", class:"cornered", style:"width:250px;height:200px;")%>
 		<%if true == false%>
@@ -22,32 +21,33 @@
 		<% end%>
 	</div>
 	<div class="column ml-5">
-		<div class="title is-4 secondary-t my-2">Style</div>
-		<div><%=link_to "Streetwear", style_path(8), class:"nav-link"%></div>
-		<div><%=link_to "Casual", style_path(1), class:"nav-link"%></div>
-		<div><%=link_to "Luxury", style_path(3), class:"nav-link"%></div>
-		<div><%=link_to "Athletic", style_path(2), class:"nav-link"%></div>
-		<div><%=link_to "Minimal", style_path(9), class:"nav-link"%></div>
-		<br/>
-		<div><%=link_to "Y2K", style_path(10), class:"nav-link"%></div>
-		<div><%=link_to "Start Up", style_path(11), class:"nav-link"%></div>
-	</div>
-	<div class="column ml-5">
 		<div class="title is-4 secondary-t my-2">Top</div>
 		<div><%=link_to "T-Shirts", category_path(5), class:"nav-link"%></div>
 		<div><%=link_to "Shirts", category_path(6), class:"nav-link"%></div>
-		<div><%=link_to "Jackets", category_path(25), class:"nav-link"%></div>
-		<div><%=link_to "Hoodies", category_path(10), class:"nav-link"%></div>
-		<div><%=link_to "Sweaters", category_path(31), class:"nav-link"%></div>
+		<div><%=link_to "Long Sleeves", category_path(7), class:"nav-link"%></div>
+		<div><%=link_to "Tops", category_path(8), class:"nav-link"%></div>
+		<div><%=link_to "Tops(Female)", category_path(9), class:"nav-link"%></div>
 		<br/>
+		<div><%=link_to "Overall", category_path(16), class:"nav-link"%></div>
+		<div><%=link_to "Activewear", category_path(33), class:"nav-link"%></div>
+	</div>
+	<div class="column ml-5">
+		<div class="title is-4 secondary-t my-2">Overwear</div>
 		<div><%=link_to "Vests", category_path(27), class: "nav-link"%></div>
 		<div><%=link_to "Blazers", category_path(11), class:"nav-link"%></div>
+		<div><%=link_to "Hoodies", category_path(10), class:"nav-link"%></div>
+		<div><%=link_to "Sweaters", category_path(31), class:"nav-link"%></div>
+		<div><%=link_to "Knitwears", category_path(24), class:"nav-link"%></div>
+		<br/>
+		<div><%=link_to "Jackets", category_path(25), class:"nav-link"%></div>
+		<div><%=link_to "Coats", category_path(26), class:"nav-link"%></div>
 	</div>
 	<div class="column ml-5">
 		<div class="title is-4 secondary-t my-2">Bottom</div>
 		<div><%=link_to "Long Pants", category_path(12), class:"nav-link"%></div>
 		<div><%=link_to "Denim", category_path(15), class:"nav-link"%></div>
 		<div><%=link_to "Shorts", category_path(13), class:"nav-link"%></div>
+		<br/>
 		<div><%=link_to "Sweats", category_path(9), class:"nav-link"%></div>
 		<div><%=link_to "Athletic Shorts", category_path(14), class:"nav-link"%></div>
 		<br/>
@@ -65,6 +65,7 @@
 		<br/>
 		<div><%=link_to "Jewelry", category_path(21), class:"nav-link"%></div>
 		<div><%=link_to "Bag", category_path(23), class:"nav-link"%></div>
+		<div><%=link_to "Babywear", category_path(30), class:"nav-link"%></div>
 	</div>
 
 <hr class="bst m-1" />

@@ -15,7 +15,6 @@
     </div>
   </div>
   <div class=" column mobile-flexed">
-        <div class="d-none-mobile mt-4"></div>
         <div class="mr-2">
         <%=link_to (image_tag (@small_blog1.cover), class:"blog_small_image cornered"), @small_blog1%>
         <div><%=link_to @small_blog1.title, @small_blog1, class:"blog-text bold sn-link"%></div>
@@ -56,18 +55,18 @@
 </section>
 
 <section class="section lgrey">
-  <div class="title is-4 mb-0">Type</div>
+  <div class="title is-4 mb-0 secondary-t">Type</div>
   <hr class="bst mt-1" />
   <div class="blog-pinned-section bs p-2 cornered">
 
-<div class="blog-long bp p-4 my-3 prime cornered">
-  <%=link_to "Dev Notes", dev_blogs_path, class:"blog-title title is-5"%>
-  <%=link_to "Go", dev_blogs_path, class:"button is-warning float-r bold", style:"border:1px solid #654321;"%>
+<div class="blog-long bs p-4 my-3 prime cornered blog-height">
+  <%=link_to "Dev Notes", dev_blogs_path, class:"blog-title title is-4 secondary-t"%>
+  <%=link_to "View", dev_blogs_path, class:"button is-warning float-r bold", style:"border:1px solid #654321;"%>
 </div>
 
-<div class="blog-long bp p-4 my-3 prime cornered">
-  <%=link_to "Articles", article_blogs_path, class:"blog-title title is-5"%>
-  <%=link_to "Go", article_blogs_path, class:"button is-warning float-r  bold", style:"border:1px solid #654321;"%>
+<div class="blog-long bs p-4 my-3 prime cornered blog-height">
+  <%=link_to "Articles", article_blogs_path, class:"blog-title title is-4 secondary-t"%>
+  <%=link_to "View", article_blogs_path, class:"button is-warning float-r  bold", style:"border:1px solid #654321;"%>
 </div>
 
 

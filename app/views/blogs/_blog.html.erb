@@ -1,7 +1,7 @@
 <div class="blog-long p-4 my-3 columns" style="max-width:800px;">
-  <div class="column"><%=link_to (image_tag (blog.cover_image), class:"cornered"), blog %></div>
-  <div class="mt-4 column">
-    <div class="mb-0"><%=link_to blog.title, blog, class:"blog-text title is-2 sn-link"%></div>
+  <div class="column p-0 pl-3"><%=link_to (image_tag (blog.cover_image), class:"cornered"), blog %></div>
+  <div class="column p-0 pl-3">
+    <div class="my-0"><%=link_to blog.title, blog, class:"blog-text title is-2 sn-link"%></div>
     <div class="subtitle is-5 mb-0 secondary-t"><%=blog.blog_type.capitalize%></div>
     <div class>By:&nbsp;
       <%=blog.user.name%>&nbsp;<%=blog.user.last_name%>&nbsp;/

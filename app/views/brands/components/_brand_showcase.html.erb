@@ -8,7 +8,8 @@
 <% end %>
 
   <div>
-    <%=link_to brand.short_name(brand.name), brand, class:"s-link bold title is-4 my-1", style:"text-align:center;" %>
+    <%=link_to brand.shorter_name(brand.name,15,10), brand, class:"s-link bold title is-5 my-1 d-none-mobile", style:"text-align:center;" %>
+    <%=link_to brand.shorter_name(brand.name,15,10), brand, class:"s-link bold title is-5 my-1 d-none-desktop", style:"text-align:center;" %>
     <div class="prime-t bold"><%=subtext%></div>
   </div>
   </span>

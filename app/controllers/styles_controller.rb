@@ -9,6 +9,13 @@ class StylesController < ApplicationController
 
   # GET /styles/1 or /styles/1.json
   def show
+    @set_brand = @style.brands
+    @query = Post.joins(:brand).where(brands: { id: @set_brand }).ransack(params[:q])
+    @posts = @query.result
+    #@query = @prior_posts.ransack(params[:q])
+    #@posts = @query.result(distinct: true)
+    #@posts = @posts.order('created_at DESC').page(params[:page]).per(16)
+
   end
 
   # GET /styles/new

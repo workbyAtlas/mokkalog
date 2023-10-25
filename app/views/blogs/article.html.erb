@@ -1,14 +1,15 @@
-<section class="section prime is-medium relative section-corner-top">
-  <%=link_to "Back", blogs_path, class:"button is-warning hide-btn-r m-4"%>
-  <div class="title is-4 center"><u>blogs</u></div>
-  <hr class="bst"/>
-  <div class="title is-5 center">Articles</div>
-</section>
+ <section class="section is-medium prime section-corner-top relative">
+    <%=link_to "Back", blogs_path, class:"button is-warning hide-btn-r m-4 bold", style:"border: 1px solid #654321;"%>
+    <div class="center">(blogs)</div>
+    <div class="center title is-4 secondary-t">articles</div>
+    <hr class="bst" />
+ </section>
+
 
 <section class="section lgrey">
-  <div class="title is-4 mb-0">Dev Notes</div>
+  <div class="title is-4 mb-0 secondary-t">Dev Notes</div>
   <hr class="bst mt-1" />
-  <div class="blog-pinned-section bs p-2">
+  <div class="blog-pinned-section bs p-2 cornered">
 
     <% @blogs_article.each do |blog| %>
       <%= render blog %>

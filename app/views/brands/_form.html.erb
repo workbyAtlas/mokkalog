@@ -73,15 +73,6 @@
 
 
   <div>
-    <div class="label">Badges</div>
-    <%= form.label "Is your brand hand made?", class:"label mt-2" %>
-    <div class="select">
-    <%=form.select :hand_made, ["False", "True"]%>
-    </div>
-    <%= form.label "Is your brand sustainable?", class:"label mt-2" %>
-    <div class="select">
-    <%=form.select :sustainable, ["False", "True"]%>
-    </div>
     <%= form.label "Badge", class:"label mt-2" %>
     <%=form.text_field :badge, class:"input"%>
   </div>

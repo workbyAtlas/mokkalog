@@ -1,10 +1,27 @@
-<p style="color: green"><%= notice %></p>
+<%= search_form_for @query, url: style_path(@style.id), html: { class: "form-inline" } do |f| %>
+<section class="section is-small prime section-corner">
+  <div class="center title is-4 secondary-t"><%=@style.name%></div>
+  <br/ >
 
-<%= render @style %>
+  <hr class="bst" />
+  <div class="center">
+  <div class="relative rw50">
+      <div class="center my-2 title is-5 secondary-t">Search:</div>
+      <div class="center">
+        <%= f.search_field :title_i_cont_any, class:"input mokka-ph bs", placeholder:"Search here..." %>
 
-<div>
-  <%= link_to "Edit this style", edit_style_path(@style) %> |
-  <%= link_to "Back to styles", styles_path %>
+        <%= f.submit "Search", class:"button is-warning my-2 bold secondary-t", style:"border: 1px solid #654321;" %>
+      </div>
+  </div>
+  </div>
+</section>
+<%#FILTER%>
+<%= render 'component/filters/main'%>
 
-  <%= button_to "Destroy this style", @style, method: :delete %>
+
+<div class="flexed-wc">
+<% @posts.each do |post|%>
+<%= render "posts/post", post: post%>
+<%end%>
 </div>
+<%end%>

@@ -33,7 +33,7 @@
 
 <%# Comment Form--------------------------------------------------%>
 <%if user_signed_in?%>
-<section class="section bp">
+<section class="section">
 <%= render partial: 'comments/form' , locals: {commentable: @blog} %>
 </section>
 <%end%>

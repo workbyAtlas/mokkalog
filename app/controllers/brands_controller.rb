@@ -8,8 +8,10 @@ class BrandsController < ApplicationController
   def index
     @query = Brand.ransack(params[:q])
     #brands = @query.result(distinct: true)
-    @brands = @query.result.includes(:posts)
-    @brands = @brands.order('created_at ASC').page(params[:page]).per(16)
+    @brands_prior = @query.result.includes(:posts)
+    shuffled_brands = @brands_prior.to_a.shuffle
+    @brands = Kaminari.paginate_array(shuffled_brands).page(params[:page]).per(16)
+    #@brands = @brands.order('created_at ASC').page(params[:page]).per(16)
     @blank = Brand.find(1)
     
 

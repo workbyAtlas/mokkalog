@@ -1,0 +1,68 @@
+<section class="section lgrey p-2">
+
+<div class="bold center mb-2"><u>Filter</u></div>
+<div class="tabs is-toggle is-centered mb-2">
+  <ul>
+    <li>
+      <a>
+        <span>Style</span>
+      </a>
+    </li>
+    <li>
+      <a>
+        <span>Brands</span>
+      </a>
+    </li>
+    <li>
+      <a>
+        <span>Category</span>
+      </a>
+    </li>
+    <li class="is-active">
+      <a>
+        <span>Main</span>
+      </a>
+    </li>
+    <li>
+      <a>
+        <span>Material</span>
+      </a>
+    </li>
+    <li>
+      <a>
+        <span>Color</span>
+      </a>
+    </li>
+    <li>
+      <a>
+        <span>Price</span>
+      </a>
+    </li>
+  </ul>
+</div>
+
+  <div class="mx-auto bs-1 cornered p-1 rw50 mb-2">
+    <div class="center bold"><u>Type</u></div>
+    <%= render 'component/filters/type'%>
+
+    <div class="bold center">
+      <%=link_to "Badges", badges_path, class:"s-link"%>
+    </div>
+    <%= render 'component/filters/badge'%>
+
+    <%#= f.search_field :price_lteq_all, type: 'range' , min: 0, max: 1000, value: 0%>
+    <hr class="bst rw80 mx-auto mt-2 mb-1"/>
+    <div class="mt-2">
+      <div>
+        <div class="button is-warning bold" style="border:1px solid #654321;">Filter</div>
+        <div class="button is-warning is-light bold" style="border:1px solid #cbb595;">Clear</div>
+      </div>
+    </div>
+  </div>
+
+
+
+	</div>
+
+</div>
+</section>

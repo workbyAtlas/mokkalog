@@ -57,32 +57,48 @@
   <div class="column">
   <div class="mx-2 bs cornered p-1 mt-2 rw80">
 
-    <div class="my-0 title is-5 secondary-t"><u>Type</u></div>
+    <div class="bold"><u>Type</u></div>
 
     <div class="one-filter-grid">
     <div class="my-1">
       <label class="m-checkbox">
       <%= check_box_tag('q[c_type_i_cont_any][]', "Neutral", false) %>
       <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
-      <span class="m-checkmark">Neutral</span>
+      <span class="m-checkmark">
+        <div class="hover">
+          <i class="fa-solid fa-user fa-small"></i>
+          <div class="hover-content center secondary-t">Neutral</div>
+        </div>
+      </span>
       </label>
    </div>
     <div class="my-1">
       <label class="m-checkbox">
       <%= check_box_tag('q[c_type_i_cont_any][]', "Women", false) %>
       <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
-      <span class="m-checkmark">Women</span>
+      <span class="m-checkmark">
+        <div class="hover">
+          <i class="fa-solid fa-person-dress"></i>
+          <div class="hover-content center secondary-t">Women</div>
+        </div>
+      </span>
       </label>
    </div>
     <div class="my-1">
       <label class="m-checkbox">
       <%= check_box_tag('q[c_type_eq_any][]', "Men", false) %>
-      <span class="m-checkmark">Men</span>
+      <span class="m-checkmark">
+        <div class="hover">
+          <i class="fa-solid fa-person"></i>
+          <div class="hover-content center secondary-t">Men</div>
+        </div>
+      </span>
       </label>
    </div>
     </div>
 
-    <div class="mt-1 mb-0 title is-5 secondary-t"><u>Badges</u>
+
+    <div class="bold"><u>Badges</u>
     <a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a></div>
 
     <div class="one-filter-grid">
@@ -132,7 +148,7 @@
    </div>
     </div>
 
-    <div class="mt-2 mb-2 title is-5 secondary-t"><u>Sort</u></div>
+    <div class="my-2 bold"><u>Sort</u></div>
     <%#= f.search_field :price_lteq_all, type: 'range' , min: 0, max: 1000, value: 0%>
 
 

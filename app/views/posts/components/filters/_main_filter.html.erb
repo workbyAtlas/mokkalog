@@ -1,0 +1,81 @@
+<div>
+  <div class="one-filter-grid">
+    <div class="my-1">
+      <label class="m-checkbox">
+      <%= check_box_tag('q[c_type_i_cont_any][]', "Neutral", false) %>
+      <span class="m-checkmark">Neutral</span>
+      </label>
+    </div>
+
+    <div class="my-1">
+      <label class="m-checkbox">
+      <%= check_box_tag('q[c_type_i_cont_any][]', "Women", false) %>
+      <span class="m-checkmark">Women</span>
+      </label>
+    </div>
+
+    <div class="my-1">
+    <label class="m-checkbox">
+    <%= check_box_tag('q[c_type_eq_any][]', "Men", false) %>
+    <span class="m-checkmark">Men</span>
+    </label>
+    </div>
+
+  </div>
+
+  <div class="mt-1 mb-0 title is-5 secondary-t"><u>Badges</u>
+  <a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a></div>
+
+  <div class="one-filter-grid">
+
+    <div class="my-1">
+      <label class="color-cbox Brownbox">
+      <%= check_box_tag('q[brand_verification_i_cont_any][]', "True", false) %>
+      <span class="color-cmark Brownmark">
+      <div class="hover">
+      <i class="fa-solid fa-circle-check fa-small mbeige"></i>
+      <div class="hover-content center secondary-t">Verified</div>
+      </div>
+      </span>
+      </label>
+    </div>
+
+    <div class="my-1">
+      <label class="color-cbox Brownbox">
+      <%= check_box_tag('q[brand_badge_i_cont_any][]', "certified", false) %>
+      <span class="color-cmark Brownmark">
+      <div class="hover">
+      <i class="fa-solid fa-mug-saucer fa-small" style="color:#ffd700;"></i>
+      <div class="hover-content center secondary-t">Certified</div>
+      </div>
+      </span>
+      </label>
+    </div>
+
+    <div class="my-1">
+      <label class="color-cbox Brownbox">
+      <%= check_box_tag('q[brand_badge_i_cont_any][]', "sustain", false) %>
+      <span class="color-cmark Brownmark">
+      <div class="hover">
+      <i class="fa-solid fa-seedling fa-small mgreen"></i>
+      <div class="hover-content center secondary-t">Sustainable</div>
+      </div>
+      </span>
+      </label>
+    </div>
+
+    <div class="my-1">
+      <label class="color-cbox Brownbox">
+      <%= check_box_tag('q[brand_badge_i_cont_any][]', "handmade", false) %>
+      <span class="color-cmark Brownmark">
+      <div class="hover">
+      <i class="fa-solid fa-scissors fa-small mred"></i>
+      <div class="hover-content center secondary-t">Handmade</div>
+      </div>
+      </span>
+      </label>
+    </div>
+
+  </div>
+</div>
+

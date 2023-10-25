@@ -1,7 +1,3 @@
-<div id="<%= dom_id style %>">
-  <p>
-    <strong>Name:</strong>
-    <%= style.name %>
-  </p>
-
-</div>
+<% style.styleables.each do |styleable| %>
+  <%= render 'brands/components/brand_mokka', brand: styleable.brand %>
+  <% end %>

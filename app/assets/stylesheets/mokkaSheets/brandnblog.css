@@ -31,6 +31,7 @@
 .blog-long{min-height:150px;}
 .blog-title{text-decoration:none;color:black;}
 .blog-image{width:331px;height:248px;}
+.blog-height{height:300px;}
 
 /*BLOG INDEX*/
 .blog_main_image{width:620px;height:420px;}

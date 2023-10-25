@@ -72,7 +72,7 @@ class PostsController < ApplicationController
     end
 
     #Building Recommendation Algo
-    set_algo
+    set_recommendation
 
 
 
@@ -240,7 +240,7 @@ def quick
       end
     end
 
-    def set_algo
+    def set_recommendation
     post_brand = @post.brand
       @similar_posts = Post.where(category_id: @post.category_id, color: @post.color)
                      .where.not(id: @post.id).order('RANDOM()').limit(16)
@@ -268,9 +268,11 @@ def quick
       end
 
       # Find 8 other posts with the same brand, excluding the current post
+      @all_brand = true
       @post_same_brand = Post.where(brand: post_brand).where.not(id: @post.id).order('RANDOM()').limit(16)
 
       if @post_same_brand.length < 16
+        @all_brand = false
         # Access the styles through @post.brand
         styles = @post.brand.styles.pluck(:id)
 
@@ -283,6 +285,15 @@ def quick
         # Add these additional posts to the @post_same_brand array
         @post_same_brand += additional_posts
       end
+
+      if @post_same_brand.length < 16
+        remaining_posts = Post.where.not(id: [@post.id] + @post_same_brand.pluck(:id))
+                             .order('RANDOM()')
+                             .limit(16 - num_similar_posts)
+
+        @post_same_brand += remaining_posts
+      end
+
 
     end 
 

@@ -15,7 +15,8 @@ class Post < ApplicationRecord
 	validate :clean_word
 
 
-	friendly_id :custom_slug, use: [:slugged, :finders]
+	#friendly_id :custom_slug, use: [:slugged, :finders]
+	friendly_id :custom_slug, use: %i[slugged finders history]
 	#friendly_id :custom_slug, use: %i[slugged]
 
 #Associations

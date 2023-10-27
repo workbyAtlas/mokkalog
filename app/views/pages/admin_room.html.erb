@@ -31,6 +31,27 @@
   </table>
 </section>
 
+
+<section class="center">
+
+<table class="table">
+  <tr>
+    <th>ID</th>
+    <th>Name</th>
+    <th>Count</th>
+    <th>Link</th>
+  </tr>
+  <% @categories.each do |category| %>
+    <tr>
+      <td><%=category.id%></td>
+      <td><%=category.name%></td>
+      <td><%=category.posts.count%></td>
+      <td><%= link_to "Show", category %></td>
+    </tr>
+  <% end %>
+</table>
+</section>
+
 <%end%>
 
 

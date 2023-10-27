@@ -10,12 +10,16 @@ class CategoriesController < ApplicationController
 
   # GET /categories/1 or /categories/1.json
   def show
-   @query = @category.posts.ransack(params[:q])
-   @posts = @query.result(distinct: true).where(category_id: @category.id)
-   @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
+  @query = @category.posts.ransack(params[:q])
+  @posts = @query.result(distinct: true).where(category_id: @category.id).includes(:tags, :brand, :category)
+  @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
 
-    @brands = Brand.all
-    @brands = @brands.order("LOWER(name)")
+
+
+  @brands = Brand.all
+  @brands = @brands.order("LOWER(name)")
+  @styles = Style.all
+  @categories = Category.all
 
   end
 

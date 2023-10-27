@@ -1,39 +1,39 @@
-<section class="section lgrey p-2">
+<section data-controller="filter" class="section lgrey p-2">
 
-<div class="bold center mb-2"><u>Filter</u></div>
-<div class="tabs is-toggle is-centered mb-2">
+<div class="title is-5 secondary-t center mt-0 mb-2"><u>Filters</u></div>
+<div class="tabs is-toggle is-small is-centered mb-2">
   <ul>
-    <li>
+    <li data-filter-target="btn1" data-action="click->filter#openFilter1">
       <a>
         <span>Style</span>
       </a>
     </li>
-    <li>
+    <li data-filter-target="btn2" data-action="click->filter#openFilter2">
       <a>
         <span>Brands</span>
       </a>
     </li>
-    <li>
+    <li data-filter-target="btn3" data-action="click->filter#openFilter3">
       <a>
         <span>Category</span>
       </a>
     </li>
-    <li class="is-active">
+    <li class="is-active" data-filter-target="btn4" data-action="click->filter#openFilter4">
       <a>
         <span>Main</span>
       </a>
     </li>
-    <li>
+    <li data-filter-target="btn5" data-action="click->filter#openFilter5">
       <a>
         <span>Material</span>
       </a>
     </li>
-    <li>
+    <li data-filter-target="btn6" data-action="click->filter#openFilter6">
       <a>
         <span>Color</span>
       </a>
     </li>
-    <li>
+    <li data-filter-target="btn7" data-action="click->filter#openFilter7">
       <a>
         <span>Price</span>
       </a>
@@ -41,21 +41,37 @@
   </ul>
 </div>
 
-  <div class="mx-auto bs-1 cornered p-1 rw50 mb-2">
-    <div class="center bold"><u>Type</u></div>
-    <%= render 'component/filters/type'%>
 
-    <div class="bold center">
-      <%=link_to "Badges", badges_path, class:"s-link"%>
+  <div class="mx-auto bs-1 cornered p-1 rw50 mb-2">
+    <div data-filter-target="filter1" class="d-none">
+      <div class="center bold"><u>Type</u></div>
+      <%= render 'component/filters/type'%>
+
+      <div class="bold center">
+        <%=link_to "Badges", badges_path, class:"s-link"%>
+      </div>
+      <%= render 'component/filters/badge'%>
     </div>
-    <%= render 'component/filters/badge'%>
+    <div data-filter-target="filter2" class="d-none">
+      yo
+    </div>
+    <div data-filter-target="filter3" class="d-none">3
+    </div>
+    <div data-filter-target="filter4">4
+    </div>
+    <div data-filter-target="filter5" class="d-none">5
+    </div>
+    <div data-filter-target="filter6" class="d-none">6
+    </div>
+    <div data-filter-target="filter7" class="d-none">7
+    </div>
 
     <%#= f.search_field :price_lteq_all, type: 'range' , min: 0, max: 1000, value: 0%>
     <hr class="bst rw80 mx-auto mt-2 mb-1"/>
     <div class="mt-2">
       <div>
-        <div class="button is-warning bold" style="border:1px solid #654321;">Filter</div>
-        <div class="button is-warning is-light bold" style="border:1px solid #cbb595;">Clear</div>
+        <div class="button is-warning bold is-small" style="border:1px solid #654321;">Filter</div>
+        <div class="button is-warning is-light bold is-small" style="border:1px solid #cbb595;">Clear</div>
       </div>
     </div>
   </div>

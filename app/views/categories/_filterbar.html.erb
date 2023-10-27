@@ -1,17 +1,5 @@
 
-<%= search_form_for @query, url: category_path(@category.id),html: { class: "form-inline" } do |f| %>  
-<section class="section is-small prime">
-  <div class="center title is-4 secondary-t">
-    <%=pluralize(2,@category.name).gsub("2","")%>    
-  </div>
-  <br/>
-  <hr class="bst" />
-  
-
-</section>
-
-
-<%#FILTER%>
+<%# FILTER%>
 <section data-controller="filter" class="section lgrey p-2">
 
 <div class="title is-5 secondary-t center mt-0 mb-2"><u>Filters</u></div>
@@ -64,7 +52,7 @@
       <%= render 'component/filters/brand'%>
     </div>
     <div data-filter-target="filter3" class="d-none">
-      <% render 'component/filters/category'%>
+      <%= render 'component/filters/category'%>
     </div>
     <div data-filter-target="filter4">
       <div class="center bold"><u>Type</u></div>
@@ -88,7 +76,7 @@
     <hr class="bst rw80 mx-auto mt-2 mb-1"/>
     <div class="mt-2">
       <%= f.submit "Filter", class:"button is-warning my-2 bold secondary-t is-small", style:"border: 1px solid #654321;" %>
-      <%=link_to "Clear", category_path(@category.id),class:"button is-warning is-light m-2 bold prime-t is-small", style:"border:1px solid #cbb595;"%>
+      <%=link_to "Clear", posts_path,class:"button is-warning is-light m-2 bold prime-t is-small", style:"border:1px solid #cbb595;"%>
       </div>
     </div>
   </div>
@@ -101,21 +89,5 @@
 </section>
 
 
-
+ 
 <% end %>
-
-<%if current_user == @auth%>
-<div>
-  <%= link_to "Edit this category", edit_category_path(@category) %> |
-  <%= link_to "Back to categories", categories_path %>
-
-<div class="mx-1 mb-4"><%= button_to "Destroy", @category, method: :delete,data: { turbo_confirm: "Are you sure?" }, class:"button is-danger" %></div> 
-</div>
-<%end%>
-
-<div class="flexed-wc">
-<% @posts.each do |post|%>
-<%= render "posts/post", post: post%>
-<%end%>
-</div>
-<%= render 'component/pagy', item:@posts%>

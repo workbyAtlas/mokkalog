@@ -42,5 +42,6 @@ class PagesController < ApplicationController
   def admin_room
     @users =User.all
     @posts =Post.all
+    @categories = Category.all
   end
 end

@@ -1,179 +1,101 @@
 <%= search_form_for @query, url: posts_path, html: { class: "form-inline" } do |f| %>
 <div class="section is-small prime section-corner">
-  <div class="center title is-4 secondary-t">catalog</div>
+  <div class="center title is-4 secondary-t my-2">catalog</div>
   <br/ >
 
   <hr class="bst" />
-  <div class="center">
-  <div class="relative rw50">
-    <%=link_to "[advanced]", advsearch_path, class:"hide-btn secondary-t"%>
-
-      <div class="center my-2 title is-5 secondary-t">Search:</div>
-      <div class="center">
-        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_verification_i_cont_any, class:"input mokka-ph bs", placeholder:"Search here..." %>
-
-            <%= f.submit "Search", class:"button is-warning my-2 bold secondary-t", style:"border: 1px solid #654321;" %>
-      </div>
-
-
-  </div>
-  </div>
 </div>
 
 <%# FILTER%>
 
-<section class=" section pt-2 lgrey">
-  <div class="columns">
+<section data-controller="filter" class="section lgrey p-2">
 
-  <div class="column">
-<div class="center">
-<%#530width%>
-<div data-controller="filterbox" class="mx-2 bs cornered p-1 mt-2 rw80">
-
-
-<div class="float-r mr-3">
-  <button data-action="filterbox#previous" class="button-like-text"><i class="fa-solid fa-caret-up fa-2xl" style="color:#654321"></i></button>
-  <button data-action="filterbox#next" class="button-like-text"><i class="fa-solid fa-caret-down fa-2xl" style="color:#654321"></i></button>
+<div class="title is-5 secondary-t center mt-0 mb-2"><u>Filters</u></div>
+<div class="tabs is-toggle is-small is-centered mb-2">
+  <ul>
+    <li data-filter-target="btn1" data-action="click->filter#openFilter1">
+      <a>
+        <span>Style</span>
+      </a>
+    </li>
+    <li data-filter-target="btn2" data-action="click->filter#openFilter2">
+      <a>
+        <span>Brands</span>
+      </a>
+    </li>
+    <li data-filter-target="btn3" data-action="click->filter#openFilter3">
+      <a>
+        <span>Category</span>
+      </a>
+    </li>
+    <li class="is-active" data-filter-target="btn4" data-action="click->filter#openFilter4">
+      <a>
+        <span>Main</span>
+      </a>
+    </li>
+    <li data-filter-target="btn5" data-action="click->filter#openFilter5">
+      <a>
+        <span>Material</span>
+      </a>
+    </li>
+    <li data-filter-target="btn6" data-action="click->filter#openFilter6">
+      <a>
+        <span>Color</span>
+      </a>
+    </li>
+    <li data-filter-target="btn7" data-action="click->filter#openFilter7">
+      <a>
+        <span>Price</span>
+      </a>
+    </li>
+  </ul>
 </div>
-  <div data-filterbox-target="slide">
-    <%= render 'posts/components/filters/color_filter'%>
-  </div>
-  <div data-filterbox-target="slide">
-    <%= render 'posts/components/filters/category_filter'%>
-  </div>
-    <div data-filterbox-target="slide">
-    <%= render 'posts/components/filters/brand_filter'%>
-  </div>
-  <div data-filterbox-target="slide">
-    <%= render 'posts/components/filters/material_filter'%>
-
-  </div>
-            <%= f.submit "Filter", class:"button is-warning my-2 bold secondary-t", style:"border: 1px solid #654321;" %>
-            <%=link_to "Clear", posts_path,class:"button is-warning is-light m-2 bold prime-t", style:"border:1px solid #cbb595;"%>
-</div>
-</div>
 
 
+  <div class="mx-auto bs-1 cornered p-1 rw50 mb-2">
+    <div data-filter-target="filter1" class="d-none">
+      <%= render 'component/filters/style'%>
+    </div>
+    <div data-filter-target="filter2" class="d-none">
+      <%= render 'component/filters/brand'%>
+    </div>
+    <div data-filter-target="filter3" class="d-none">
+      <%= render 'component/filters/category'%>
+    </div>
+    <div data-filter-target="filter4">
+      <div class="center bold"><u>Type</u></div>
+      <%= render 'component/filters/type'%>
 
-  </div>
-  <div class="column">
-  <div class="mx-2 bs cornered p-1 mt-2 rw80">
-
-    <div class="bold"><u>Type</u></div>
-
-    <div class="one-filter-grid">
-    <div class="my-1">
-      <label class="m-checkbox">
-      <%= check_box_tag('q[c_type_i_cont_any][]', "Neutral", false) %>
-      <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-          <i class="fa-solid fa-user fa-small"></i>
-          <div class="hover-content center secondary-t">Neutral</div>
-        </div>
-      </span>
-      </label>
-   </div>
-    <div class="my-1">
-      <label class="m-checkbox">
-      <%= check_box_tag('q[c_type_i_cont_any][]', "Women", false) %>
-      <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-          <i class="fa-solid fa-person-dress"></i>
-          <div class="hover-content center secondary-t">Women</div>
-        </div>
-      </span>
-      </label>
-   </div>
-    <div class="my-1">
-      <label class="m-checkbox">
-      <%= check_box_tag('q[c_type_eq_any][]', "Men", false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-          <i class="fa-solid fa-person"></i>
-          <div class="hover-content center secondary-t">Men</div>
-        </div>
-      </span>
-      </label>
-   </div>
+      <div class="bold center">
+        <%=link_to "Badges", badges_path, class:"s-link"%>
+      </div>
+      <%= render 'component/filters/badge'%>
+    </div>
+    <div data-filter-target="filter5" class="d-none">
+      <%= render 'component/filters/material'%>
+    </div>
+    <div data-filter-target="filter6" class="d-none">
+      <%= render 'component/filters/color'%>
+    </div>
+    <div data-filter-target="filter7" class="d-none">
+      <%# f.search_field :price_lteq_all, type: 'range' , min: 0, max: 1000, value: 0%>
     </div>
 
-    <div class="bold"><u>Badges</u>
-    <a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a></div>
-
-    <div class="one-filter-grid">
-    <div class="my-1">
-      <label class="m-checkbox">
-      <%= check_box_tag('q[brand_verification_i_cont_any][]', "True", false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-          <i class="fa-solid fa-circle-check fa-small mbeige"></i>
-          <div class="hover-content center secondary-t">Verified</div>
-        </div>
-      </span>
-      </label>
-   </div>
-    <div class="my-1">
-      <label class="m-checkbox">
-      <%= check_box_tag('q[brand_badge_i_cont_any][]', "certified", false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-        <i class="fa-solid fa-mug-saucer fa-small" style="color:#ffd700;"></i>
-        <div class="hover-content center secondary-t">Certified</div>
-        </div>
-      </span>
-      </label>
-   </div>
-    <div class="my-1">
-      <label class="m-checkbox">
-      <%= check_box_tag('q[brand_badge_i_cont_any][]', "sustain", false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-        <i class="fa-solid fa-seedling fa-small mgreen"></i>
-        <div class="hover-content center secondary-t">Sustainable</div>
-        </div>
-      </span>
-      </label>
-   </div>
-
-    <div class="my-1">
-      <label class="m-checkbox">
-      <%= check_box_tag('q[brand_badge_i_cont_any][]', "handmade", false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-        <i class="fa-solid fa-scissors fa-small mred"></i>
-        <div class="hover-content center secondary-t">Handmade</div>
-        </div>
-      </span>
-      </label>
-   </div>
-
-    <div class="my-1">
-      <label class="m-checkbox">
-      <%= check_box_tag('q[brand_badge_i_cont_any][]', "global", false) %>
-      <span class="m-checkmark">
-        <div class="hover">
-        <%= render 'component/badges/global', size:"small" %>
-        <div class="hover-content center secondary-t">Global Shipping</div>
-        </div>
-      </span>
-      </label>
-   </div>
-    </div>
-
-    <div class="my-2 bold"><u>Sort</u></div>
-    <%#= f.search_field :price_lteq_all, type: 'range' , min: 0, max: 1000, value: 0%>
-
-
-    <div class="my-2">
-      <%= sort_link(@query, :price, "Price", class:"button is-warning bold secondary-t mr-2", style:"border: 1px solid #654321;")%>
-      <%= sort_link(@query, :title, "A-Z", class:"button is-warning bold secondary-t", style:"border: 1px solid #654321;")%>
+    <hr class="bst rw80 mx-auto mt-2 mb-1"/>
+    <div class="mt-2">
+      <%= f.submit "Filter", class:"button is-warning my-2 bold secondary-t is-small", style:"border: 1px solid #654321;" %>
+      <%=link_to "Clear", posts_path,class:"button is-warning is-light m-2 bold prime-t is-small", style:"border:1px solid #cbb595;"%>
+      </div>
     </div>
   </div>
-    
+
+
 
   </div>
+
 </div>
 </section>
+
+
+ 
 <% end %>

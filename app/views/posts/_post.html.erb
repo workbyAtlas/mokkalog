@@ -15,11 +15,11 @@
   <div class="mx-2">
 
     <div class="d-none-mobile">
-      <div class="title is-5 my-1"><strong><%=link_to post.one_liner(post.title), post, class:"secondary-t"%></strong></div>
+      <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.title,15,10), post, class:"secondary-t"%></strong></div>
     </div>
 
     <div class="d-none-desktop">
-      <div class="title is-5 my-1"><strong><%=link_to post.short_name(post.title), post, class:"secondary-t"%></strong></div>
+      <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.title,12,9), post, class:"secondary-t"%></strong></div>
     </div>
     <div><i><span class="brand-link"><%= post.branded%></span></i></div>
   </div>

@@ -11,10 +11,11 @@ class StylesController < ApplicationController
   def show
     @set_brand = @style.brands
     @query = Post.joins(:brand).where(brands: { id: @set_brand }).ransack(params[:q])
-    @posts = @query.result
-    #@query = @prior_posts.ransack(params[:q])
-    #@posts = @query.result(distinct: true)
-    #@posts = @posts.order('created_at DESC').page(params[:page]).per(16)
+    @posts = @query.result(distinct: true).includes(:tags, :brand, :category)
+    @posts = @posts.page(params[:page]).per(16)
+
+    @categories = Category.all
+    @brands = Brand.all
 
   end
 

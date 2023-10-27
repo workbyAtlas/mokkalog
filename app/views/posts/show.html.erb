@@ -66,7 +66,7 @@
           <div class="mx-1 mb-4 button bs">ID: <%=@post.id%></div>
           <div class="mx-1 mb-4 button p-btn bs"><%= pluralize(@post.views,"view")%></div>
           <div class="mx-1 mb-4"><%= link_to "Edit", edit_post_path(@post), class:"button is-warning", style:"border:2px solid #654321;" %></div>
-          <div class="mx-1 mb-4"><%= button_to "Destroy", @post, method: :delete,data: { turbo_confirm: "Are you sure?" }, class:"button red-btn", style:"border: 2px solid #bf193c;" %></div>   
+          <div class="mx-1 mb-4"><%= button_to "Destroy", post_path(@post), method: :delete, class:"button red-btn", style:"border: 2px solid #bf193c;" %></div>   
         </div>
 <%end%>
         <%# TAG BOX-------------------------------------------%>

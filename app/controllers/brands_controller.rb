@@ -99,7 +99,7 @@ class BrandsController < ApplicationController
   # DELETE /brands/1 or /brands/1.json
   def destroy
     brand = Brand.find(params[:id])
-    Post.where(brand_id: brand.id).update_all(brand_id: nil)
+    #Post.where(brand_id: brand.id).update_all(brand_id: nil)
     brand.destroy
     redirect_to brands_path, notice: 'Brand was successfully destroyed.'
   end
@@ -114,6 +114,9 @@ class BrandsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_brand
       @brand = Brand.friendly.find(params[:id])
+      if params[:id] != @brand.slug
+        return redirect_to @brand, :status => :moved_permanently
+      end
     end
 
     def delete_styles(brand, styles)

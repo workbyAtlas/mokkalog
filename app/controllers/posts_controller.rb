@@ -1,5 +1,5 @@
 class PostsController < ApplicationController
-  before_action :set_post, only: %i[ show edit update destroy]
+  before_action :set_post, only: %i[show edit update]
   before_action :authenticate_user!, except: %i[index show]
   before_action :editing_privilage_post, only: %i[edit update]
 
@@ -14,40 +14,39 @@ class PostsController < ApplicationController
   def index
  
     @brands = Brand.all
-    #@brands = current_user.brands
     @brands = @brands.order("LOWER(name)")
 
 
     @blank = Brand.find(1) 
-    #@query.build_condition_color("Red")
-
     @categories = Category.all
+    @styles = Style.all
 
+    #Ransack and Pagy
     @query = Post.ransack(params[:q])
     @posts_prior = @query.result(distinct: true).includes(:tags, :brand, :category)
     shuffled_posts = @posts_prior.to_a.shuffle
     @posts = Kaminari.paginate_array(shuffled_posts).page(params[:page]).per(16)
 
-    @user_gid = current_user.to_gid_param if current_user
-    #response.headers['Refresh'] = '5'
-    #@events =EventAggregatorService.new.aggregate_events 
-
+    #Turbo
     respond_to do |format|
       format.html
       format.turbo_stream # This is the key part for Turbo Streams
     end
+
   end
 
   # GET /posts/1 or /posts/1.json
   def show
-    @blank = Brand.find(1) 
+    @blank = Brand.find(1)
+
     if not current_user == @post.user
       @post.update(views: @post.views + 1)
-    end 
+    end
+
     @comments =@post.comments.order(created_at: :asc)
     @pagelinks = @post.pagelinks.order(created_at: :asc)
-
     @badges = false
+
     if @post.brand.verification == "True"
       @badges = true
     end
@@ -56,6 +55,7 @@ class PostsController < ApplicationController
     if @post.user == @post.brand.user
       @verified_post = true
     end
+    
     if @post.brand.verification == "True"
       if @post.user.role = "admin"
         @verified_post = true
@@ -140,12 +140,9 @@ def quick
 
   # DELETE /posts/1 or /posts/1.json
   def destroy
-    @post.destroy
-
-    respond_to do |format|
-      format.html { redirect_to posts_url, notice: "Post was successfully destroyed." }
-      format.json { head :no_content }
-    end
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to root_path, notice: 'Post was successfully destroyed.'
   end
 
   def subcat
@@ -302,7 +299,14 @@ def quick
     # Use callbacks to share common setup or constraints between actions.
     def set_post
       @post = Post.friendly.find(params[:id])
+
+      if params[:id] != @post.slug
+        return redirect_to @post, :status => :moved_permanently
+      end
+
     end
+
+
 
     # Only allow a list of trusted parameters through.
     def post_params

@@ -16,8 +16,8 @@ class Brand < ApplicationRecord
 
   validate :unique_name_case_insensitive
 
-  friendly_id :name, use: %i[slugged]
-	has_many :posts
+  friendly_id :name, use: %i[slugged finders history]
+	has_many :posts, dependent: :destroy
 
   has_one_attached :image
   has_one_attached :banner
@@ -43,7 +43,7 @@ class Brand < ApplicationRecord
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "id", "name", "views", "updated_at", "verification", "badge"]
+    ["created_at", "id", "name", "views", "updated_at", "verification", "badge", "style_id"]
   end
 
   def self.ransackable_associations(auth_object = nil)

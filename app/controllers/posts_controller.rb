@@ -101,6 +101,7 @@ def quick
   # GET /posts/1/edit
   def edit
     set_users_brand
+    
   end
 
   # POST /posts or /posts.json

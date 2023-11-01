@@ -1,0 +1,15 @@
+<%if post.brand.badge.present? && post.brand.badge.include?("handmade")%>
+	<div><%= render 'component/badges/handmade', size:"sm"%></div>
+<%end%>
+<%if post.brand.badge.present? && post.brand.badge.include?("sustain")%>
+	<div><%= render 'component/badges/sustain', size:"sm"%></div>
+<%end%>
+<%if post.brand.badge.present? && post.brand.badge.include?("global")%>
+	<div><%= render 'component/badges/global', size:"sm"%></div>
+<%end%>
+<%if post.brand.badge.present? && post.brand.badge.include?("certified")%>
+	<div><%= render 'component/badges/certified', size:"sm"%></div>
+<%end%>
+<%if post.brand.verification == "True" %>
+	<div><%= render 'component/badges/verified', size:"sm"%></div>
+<%end%>

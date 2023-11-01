@@ -1,43 +1,57 @@
-
 <div class="post-card m-2 cornered">
-
-  
-<div class="center">
-  <%if post.image.attached?%>
-    <%=link_to (image_tag (post.image_post), class:"cornered"), post%>
-  <%else%>
-    <%=link_to (image_tag (@blank.image_post), class:"cornered"), post%>
-  <%end%>   
-</div>
-
-
-
+  <%#Image%>
+  <div class="center">
+    <%if post.image.attached?%>
+      <%=link_to (image_tag (post.image_post), class:"cornered"), post%>
+    <%else%>
+      <%=link_to (image_tag (@blank.image_post), class:"cornered"), post%>
+    <%end%>   
+  </div>
+  <%#Brand Name & Title%>
   <div class="mx-2">
 
     <div class="d-none-mobile">
-      <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.title,15,10), post, class:"secondary-t"%></strong></div>
+      <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.brand.name,15,10), post, class:"secondary-t"%></strong></div>
     </div>
 
     <div class="d-none-desktop">
-      <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.title,12,9), post, class:"secondary-t"%></strong></div>
+      <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.brand.name,12,9), post, class:"secondary-t"%></strong></div>
     </div>
-    <div><i><span class="brand-link"><%= post.branded%></span></i></div>
+
+    <div><i><span class="brand-link"><%= post.shorter_name(post.title,15,10)%></span></i></div>
   </div>
- <div class="columns">
-  <div class="column">
-  <%if post.archive == "archived"%>
-    <div class="tag mx-2 mb-2" style="border: 2px solid #c88595; color:#c88595; font-weight:bold;">archived</div>
-  <%elsif post.archive == "project"%>
-    <div class="tag mx-2 mb-2" style="border: 2px solid #cbb595;font-weight:bold;">project</div>
-  <%else%>
-    <div class="mx-2 mb-2"><%=if post.price.blank? then "#N/A" else number_to_currency(post.price) end%></div>
-  <%end%>
-</div>
-  <%#<div class="flexed-end column"><%=link_to "Q", post_quick_path(post.id), class:"circle-btn mx-2"%>
-  <%#<div class="flexed-end column"><%=post.likes.count%>
-</div>
+  <%#Price & Badge%>
+  <div class="columns d-none-mobile">
+    <div class="column">
+      <%if post.archive == "archived"%>
+        <div class="tag mx-2 mb-2" style="border: 2px solid #c88595; color:#c88595; font-weight:bold;">archived</div>
+      <%elsif post.archive == "project"%>
+        <div class="tag mx-2 mb-2" style="border: 2px solid #cbb595;font-weight:bold;">project</div>
+      <%else%>
+        <div class="mx-2 mb-2"><%=if post.price.blank? then "#N/A" else number_to_currency(post.price) end%></div>
+      <%end%>
+    </div>
+    <%if post.brand.verification == "True" %>
+    <div class="column flexed-reverse flex-margin-25">
+      <%=render 'posts/components/badge_for_post', post:post%>
+    </div>
+    <%end%>
+    <%#<div class="flexed-end column"><%=post.likes.count%>
+  </div>
+
+  <div class="d-none-desktop">
+    <%if post.archive == "archived"%>
+      <div class="tag mx-2 mb-2" style="border: 2px solid #c88595; color:#c88595; font-weight:bold;">archived</div>
+    <%elsif post.archive == "project"%>
+      <div class="tag mx-2 mb-2" style="border: 2px solid #cbb595;font-weight:bold;">project</div>
+    <%else%>
+      <div class="mx-2 mb-2"><%=if post.price.blank? then "#N/A" else number_to_currency(post.price) end%></div>
+    <%end%> 
+    <div class="center">
+      <div class="flexed-reverse flex-margin-25"><%=render 'posts/components/badge_for_post', post:post%></div>
+    </div>  
+  </div>
   <%#=render 'likes/private_button', post: post, like_status: like_status %>
-
-
 </div>
+
 

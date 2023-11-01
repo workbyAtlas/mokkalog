@@ -55,8 +55,11 @@
     
         <label class="bold mr-1">Category:</label>
         <%= form.select :category_id, Category.order(:id).pluck(:name, :id), {}, { data: { controller: 'slim' } } %>
-      
-
+        <%if true == false%>
+        <% array = @post.category.subcats.split(',').map(&:strip)%>
+        <label class="bold mr-1">Sub-Category</label>
+        <%= form.select :sub_category, array, {}, { data: { controller: 'slim' } } %>
+        <%end%>
 
         <label class="bold mr-1">Color:</label>
         <%= form.select :color, ['Undefined','White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Brown','Grey','Pink','Multi'],{},{data: {controller: "slim"}}%>

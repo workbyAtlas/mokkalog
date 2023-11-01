@@ -8,7 +8,7 @@
   <div class="flexed">
     <% collection.collectibles.each do |collectible| %>
       <div class="m-1">
-        <%= render 'posts/post_for_collection', post: collectible.post %>    
+        <%= render 'posts/post', post: collectible.post %>    
       </div>
     <% end %>
   </div>

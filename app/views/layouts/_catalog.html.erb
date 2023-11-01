@@ -1,8 +1,8 @@
 
 <div class="dropdown-catalog mx-5 mb-3">
-<span class="nav-link"><%= link_to "Catalog", posts_path,     class:"nav-link" %></span>
+<span class="nav-link"><%= link_to "Catalog", posts_path, class:"nav-link" %></span>
 
-<section class="dropdown-content-catalog">
+<section class="dropdown-content-catalog mb-2">
 	<hr class="bst m-1" />
 	<div class="columns">
 
@@ -12,7 +12,6 @@
 		<div><%=link_to "Browse by Style", styles_path, class:"nav-link"%></div>
 		<div><%=link_to "Browse by Category", categories_path, class:"nav-link"%></div>
 		<br/>
-		<%=image_tag("cup.png", class:"cornered", style:"width:250px;height:200px;")%>
 		<%if true == false%>
 		<div><%=link_to "Innovative", posts_path, class:"nav-link"%></div>
 		<div><%=link_to "Sustainable", posts_path, class:"nav-link"%></div>
@@ -67,7 +66,6 @@
 		<div><%=link_to "Bag", category_path(23), class:"nav-link"%></div>
 	</div>
 
-<hr class="bst m-1" />
 
 </div>
 </section>

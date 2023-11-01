@@ -102,7 +102,7 @@ class Post < ApplicationRecord
 	 	brand.name
 	 end
 	end
-
+	
 	def categoryed
 		if category.nil?
 			"#N/A"

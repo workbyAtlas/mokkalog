@@ -15,7 +15,7 @@ class PagesController < ApplicationController
 
     @post_count = Post.count(:all)
     @blog_1 = Blog.find(1)
-    @blog_2 = Blog.find(2)
+    @blog_2 = Blog.find(9)
 
     
     @stxt = ["New Collection","Hand Made","Shop Today","Hailing from Korea"]

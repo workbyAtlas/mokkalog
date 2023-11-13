@@ -9,16 +9,33 @@
 
     <div data-carousel-target="slide">
 <%# SLIDE#1--------------------------%>
- 	<div class="section is-medium section-corner-top mokka-carousel" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('still_stair.jpg') %>');background-size:cover;"> 
+ 	<div class="section is-medium section-corner-top mokka-carousel" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('porterjacket.jpg') %>');background-size:cover;"> 
 
 
-	  <div class="title is-3 center outline">Welcome to Mokkalog</div>
+	  <div class="title is-3 center outline">FW2023 Coat Collection</div>
 	  <div class="center">
 	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
 
-	      Mokkalog boasts a catalog of brands from your favorite brand to brand started from your neighbor's backyard. 
-	      <br/><br/>
-	      Browse our catalog with unlimited amounts of style.
+	      winter is approaching. Browse our coat collection and treat yourself to keep you cozy through the cold. 
+	    </div>
+	  </div>
+	  <hr style="border-color:white;"/>
+	  <div class="center mt-2">
+	    <%=link_to "browse coats", category_path(26), class:"trans-btn button-like-text outline"%>
+	  </div>
+	</div>
+  </div>
+
+<%# SLIDE#2--------------------------%>
+  <div data-carousel-target="slide">
+ 	<div class="section is-medium section-corner-top mokka-carousel" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('sethrogan.jpg') %>');background-size:cover;"> 
+
+
+	  <div class="title is-3 center outline">Place for everyone</div>
+	  <div class="center">
+	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
+
+	      Platform to browse rising fashion brands all over the globe. Mokkalog has clothing data from independent designers to house hold names. Look through our catalog to browse millions of styles.  
 	    </div>
 	  </div>
 	  <hr style="border-color:white;"/>
@@ -29,41 +46,22 @@
 	</div>
   </div>
 
-<%# SLIDE#2--------------------------%>
-  <div data-carousel-target="slide">
- 	<div class="section is-medium section-corner-top mokka-carousel" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('still_red.jpg') %>');background-size:cover;"> 
-
-
-	  <div class="title is-3 center outline">Mokkalog</div>
-	  <div class="center">
-	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
-
-	      Checkout our first issue of Mokkalog. We look through thousands of brand and carefully curate a catalog of brands that deserves the spotlight and can do well in the upcoming season. 
-	    </div>
-	  </div>
-	  <hr style="border-color:white;"/>
-	  <div class="center mt-2">
-	    <%=link_to "mokkalog #1", blog_path(Blog.first), class:"trans-btn button-like-text outline"%>
-	  </div>
-	</div>
-  </div>
-
 
   <%# SLIDE#3--------------------------%>
   <div data-carousel-target="slide">
 
- 	<div class="section is-medium section-corner-top mokka-carousel" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('rack.jpg') %>');background-size:cover;"> 
+ 	<div class="section is-medium section-corner-top mokka-carousel" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('ader.webp') %>');background-size:cover;"> 
 
 
-	  <div class="title is-3 center outline">Add your Clothing</div>
+	  <div class="title is-3 center outline">"Oblique Hints" Campaign</div>
 	  <div class="center">
 	    <div class="subtitle is-5 rw50 outline" style="text-align:center;">
-	    Are you a brand owner? Designer? Start listing your brand Today.
+Check out Ader ERROR's latest collection of FW2023. The campaign is highlighted by its inventive fabrics and progeressive detailing. 
 	    </div>
 	  </div>
 	  <hr style="border-color:white;"/>
 	  <div class="center mt-2">
-	  	<%=link_to "Upload your Brand", new_brand_path, class:"trans-btn button-like-text outline"%>
+	  	<%=link_to "ADERERROR", brand_path(97), class:"trans-btn button-like-text outline"%>
 	  </div>
 	</div>
   </div>

@@ -14,9 +14,11 @@ class PagesController < ApplicationController
     @posts_creator = Post.where(id: [43,23,49,380])
 
     @post_count = Post.count(:all)
+    @blog_1 = Blog.find(1)
+    @blog_2 = Blog.find(2)
 
+    
     @stxt = ["New Collection","Hand Made","Shop Today","Hailing from Korea"]
-
     if Rails.env.development?
       @brand_s1 = Brand.find(1)
       @brand_s2 = Brand.find(2)

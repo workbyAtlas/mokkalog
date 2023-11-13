@@ -4,6 +4,10 @@
   <br/ >
 
   <hr class="bst" />
+      <div class="rw50 mx-auto center">
+        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_i_cont_any, class:"input bs", placeholder:"Search here..." %>
+            <%= f.submit "Search", class:"button is-warning my-2 bold mokka-ph", style:"border:1px solid #654321;" %>
+      </div>
 </div>
 
 <%# FILTER%>
@@ -63,13 +67,17 @@
       <%= render 'component/filters/category'%>
     </div>
     <div data-filter-target="filter4">
-      <div class="center bold"><u>Type</u></div>
-      <%= render 'component/filters/type'%>
-
-      <div class="bold center">
-        <%=link_to "Badges", badges_path, class:"s-link"%>
+      <div class="mainframe">
+        <div class="center bold"><u>Type</u></div>
+        <%= render 'component/filters/type'%>
+        <div class="bold center">
+          <%=link_to "Badges", badges_path, class:"s-link"%>
+        </div>
+        <%= render 'component/filters/badge'%>
+        <div class="center bold"><u>Season</u></div>
+        <%= render 'component/filters/season'%>
       </div>
-      <%= render 'component/filters/badge'%>
+
     </div>
     <div data-filter-target="filter5" class="d-none">
       <%= render 'component/filters/material'%>

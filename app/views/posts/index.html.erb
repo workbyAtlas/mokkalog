@@ -1,9 +1,11 @@
 
-<%= render 'posts/searchbar' %>
-
-
 <%# Filter & Sorters%>
+<%= render 'posts/searchbar' %>
+<section class="section flexed-wc post-container mx-auto">
+<% @posts.each do |post| %>
+      <div class=""><%=render post%><%#= render "posts/post", post: post, like_status: current_user.liked?(post) %></div>
+  <% end %>
+</section>
 
-<%= render 'posts/components/collection_of_posts', posts: @posts %>
+<%= render 'component/pagy', item:@posts%>
 
-<%#= render 'posts/components/collection_of_posts', posts: @posts %>

@@ -18,7 +18,10 @@
       <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.brand.name,12,9), post, class:"secondary-t"%></strong></div>
     </div>
 
-    <div><i><span class="brand-link"><%= post.shorter_name(post.title,15,10)%></span></i></div>
+    <div><i><span class="brand-link">
+      <span class="d-none-mobile"><%= post.shorter_name(post.title,20,15)%></span>
+      <span class="d-none-desktop"><%= post. shorter_name(post.title,15,10)%></span>
+      </span></i></div>
   </div>
   <%#Price & Badge%>
   <div class="columns d-none-mobile">

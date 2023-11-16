@@ -121,6 +121,13 @@
   overflow:scroll;
   overflow-x: hidden;
 }
+.style-filter-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns with equal width */
+  height:150px;
+  overflow:scroll;
+  overflow-x: hidden;
+}
 .typegrid{
   display: grid;
   grid-template-columns: repeat(3, 1fr); /* 5 columns with equal width */
@@ -128,6 +135,7 @@
   gap: 0;
   width:234px;
 }
+
 .mainframe{height:150px;overflow:scroll;overflow-x:hidden;}
 
 .badgegrid {
@@ -198,6 +206,7 @@
 
 @media (max-width: 480px){
   .category-filter-grid {grid-template-columns: repeat(2, 1fr);}
+  .style-filter-grid {grid-template-columns: repeat(3, 1fr);}
 
 
 

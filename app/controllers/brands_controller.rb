@@ -33,6 +33,9 @@ class BrandsController < ApplicationController
       #@brand.posts = @brand.posts.order('created_at DESC').page(params[:page]).per(16)
     end
     @posts = @brand.posts.order(created_at: :desc)
+
+
+
     @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
     
     @badges = false
@@ -40,6 +43,15 @@ class BrandsController < ApplicationController
     if @brand.verification == "True"
       @badges = true
     end
+
+    # For Analytics
+    @top_posts = @posts.order(views: :desc).limit(4)
+    @posts_chart = Post.where(brand: @brand).all
+    target_brand = @brand  # Assuming @brand is your target brand
+    all_brands = Brand.where.not(id: target_brand.id)
+
+    @top_similar_brands = all_brands.max_by(4){ |brand| target_brand.similarity_to(brand) }
+    @top_different_brands = all_brands.max_by(4) { |brand| target_brand.dissimilarity_to(brand) }
 
 
 

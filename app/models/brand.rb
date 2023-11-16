@@ -1,3 +1,4 @@
+#require 'tf-idf-similarity'
 class Brand < ApplicationRecord
   extend FriendlyId
   validates :name, uniqueness: true, presence: true, length:{ maximum: 25}
@@ -31,6 +32,24 @@ class Brand < ApplicationRecord
   has_many :styles, through: :styleables
 
   scope :grouped_by_day, -> { group_by_day(:created_at) }
+
+
+  def similarity_to(other_brand)
+    # Implement your similarity metric here
+    styles_similarity = styles & other_brand.styles
+    location_similarity = (location == other_brand.location) ? 1 : 0
+    views_similarity = (views - other_brand.views).abs
+
+    # Combine the similarities using weights or other criteria if needed
+    combined_similarity = styles_similarity.size + location_similarity + views_similarity
+    #combined_similarity = styles_similarity.size
+  end
+
+  def dissimilarity_to(other_brand)
+    # Assuming you want to use the opposite of your similarity metric
+    1 / (1 + similarity_to(other_brand))
+  end
+
   def should_generate_new_friendly_id?
     name_changed? || slug.blank?
   end

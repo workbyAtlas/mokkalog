@@ -9,6 +9,7 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
 <%else%>
 <section class="section is-medium prime relative t-cornered">
 <%end%>
+<%= link_to 'Back', :back, class:"button is-warning bold mb-3 l-corner", style:"border:solid 1px #654321;" %>
 
       <div class="left-corner ">
         <%if @badges == true%>
@@ -60,6 +61,13 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
         <span>Gallery</span>
       </a>
     </li>
+
+    <li data-brand-target="analyticButton" data-action="click->brand#openAnalytic">
+      <a>
+        <span class="icon is-small"><i class="fa-solid fa-chart-simple" style="color:#654321;"></i></span>
+        <span>Analytics</span>
+      </a>
+    </li>
     <%if current_user == @brand.user or @auth%>
     <li data-brand-target="authorButton" data-action="click->brand#openAuthor">
       <a>
@@ -94,7 +102,9 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
 <div data-brand-target="authorTab" class="d-none">
 <%= render 'brands/components/authorTab' %>
 </div>
-
+<div data-brand-target="analyticTab" class="d-none">
+<%= render 'brands/components/analyticTab' %>
+</div>
 
 </section>
 

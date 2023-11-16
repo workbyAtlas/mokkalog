@@ -37,7 +37,7 @@
           <div class="mr-3">Style:</div>
 
         <%#= form.text_field :styles, value: brand.styles.map(&:name).join(","), class:"input is-small mokka-ph mb-2", placeholder:"Style time" %>
-          <div class="color-filter-grid bs cornered p-1">
+          <div class="style-filter-grid bs cornered p-1">
 
             <% Style.pluck(:name).each do |style_name| %>
               <div>

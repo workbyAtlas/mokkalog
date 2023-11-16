@@ -1,0 +1,61 @@
+<section class="section lgrey pt-1">
+	<div class="title is-4 mt-2 mx-4 secondary-t"><u>Analytics</u></div> 
+
+	<%chart_color = ["#8fbc8f","#cbb595","#A5668B","#477998","#F78154","#AFCBFF","#477998","#ffad69","#9C3848"]%>
+	<div class="columns">
+		<div class="column">
+			<div class="center bold">Color</div>
+			<%= pie_chart @posts_chart.group(:color).count, colors:chart_color, class:"square-chart" %>
+
+		</div>
+		<div class="column">
+			<div class="center bold">Category</div>
+			<%= pie_chart @posts_chart.joins(:category).group('categories.name').count, colors: chart_color %>
+
+		</div>
+		<div class="column">
+			<div class="center bold">Material</div>
+			<%= pie_chart @posts_chart.group(:material).count, colors:chart_color, class:"square-chart" %>
+		</div>
+	</div>
+
+
+<br/>
+<br/>
+
+<div class=" p-2 cornered bs">
+	<div class="title is-4 secondary-t mt-2 center"><u>Brand Comparison</u></div>
+	<div class="columns">
+		<div class="cornered p-2 column">
+			<div class="title is-4 secondary-t mt-2 center">Most Similar Brands</div>
+			<% @top_similar_brands.each do |brand| %>
+			  <div class="bs cornered my-2"><%= render brand %></div>
+			<% end %>
+		</div>
+
+
+		<div class="cornered p-2 column">
+			<div class="title is-4 secondary-t mt-2 center">Most Different Brands</div>
+			<% @top_different_brands.each do |brand| %>
+			  <div class="bs cornered my-2"><%= render brand %></div>
+			<% end %>
+		</div>
+
+	</div>
+</div>
+
+<br/>
+<br/>
+<div class="center-down bs lgrey cornered">
+	<div class="title is-4 secondary-t mt-2">Top Clothing</div>
+	<div class="flexed-wc">
+		<%@top_posts.each do |x|%>
+		<div>
+		<%=render x%>
+		<div class="ml-2"><span class="bold">Views:</span> <%=x.views%></div>
+		<div class="ml-3"><span class="bold">Likes:</span> <%=x.likes.count%></div>
+		</div>
+		<%end%>
+	</div>
+</div>
+</section>

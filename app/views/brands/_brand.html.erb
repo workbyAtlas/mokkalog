@@ -1,13 +1,66 @@
-<div>
-  <p>
-    <strong>Tag:</strong>
-    <%= brand.name %>
-  </p>
-  <hr />
+<div class="lgrey px-3 pt-3 pb-0 cornered m-2 brand-info-card">
 
-  <% brand.brandables.each do |brandable| %>
-    <%= render 'posts/post', post: brandable.post %>
-    
-    <hr />
-  <% end %>
+  <div class="flexed">
+  <section class="w50">
+  <div class="p-link">
+    <%=link_to brand.shorter_name(brand.name,20,15), brand, class:"s-link bold", style:"text-align:center;" %>
+  </div>
+  <div class="center-h flex-margin">
+  <% if not brand.location.blank?%>
+  <%@c= ISO3166::Country.new(brand.location)%>
+  <div class="hover">
+  <div><%=@c.emoji_flag%></div>
+  <div class="hover-content center"><%=brand.country_label%></div>
+  </div>
+  <%end%>
+
+  <%if brand.verification == "True"%>
+  <div class="hover">
+    <%=render 'component/badges/verified', size: "small"%>
+    <div class="hover-content center">Verified</div>
+  </div>
+  <%end%>
+
+  <%if brand.badge.present? && brand.badge.include?("certified")%>
+  <div class="hover">
+    <%=render 'component/badges/certified', size: "small"%>
+    <div class="hover-content center">Certified</div>
+  </div>
+  <%end%>
+
+  <%if brand.badge.present? && brand.badge.include?("handmade")%>
+  <div class="hover">
+  <%=render 'component/red_scissor', size: "small"%>
+    <div class="hover-content center">Handmade</div>
+  </div>
+  <%end%>
+  <%if brand.badge.present? && brand.badge.include?("sustain")%>
+  <div class="hover">
+    <%=render 'component/badges/sustain', size: "small"%>
+    <div class="hover-content center">Sustainable</div>
+  </div>
+  <%end%>
+  <%if brand.badge.present? && brand.badge.include?("global")%>
+  <div class="hover">
+    <%=render 'component/badges/global', size: "small"%>
+    <div class="hover-content center">Global Shipping</div>
+  </div>
+  <%end%>
+    </div>
+  </section>
+  <section>
+    <div class="bold">Styles:</div>
+    <% brand.styles.each do |style| %>
+            <%if true == false%>
+            <%= link_to style, style: "text-decoration:none" do %>
+              <span class="tag m-1 bp"><%= style.name.capitalize%></span>
+            <% end %>
+            <%end%>
+              <span class="tag m-1 bp"><%= style.name.capitalize%></span>
+
+    <%end%>
+  </section>
+  </div>
+
+
 </div>

@@ -48,7 +48,17 @@ class PagesController < ApplicationController
 
   def manage
     @brands = current_user.brands
+    @brand = @brands.min_by(&:id) 
     @posts = Post.where(brand: @brands).all
+
+    @top_posts = @posts.order(views: :desc).limit(4)
+
+    #Find Similar Brand
+    target_brand = @brand  # Assuming @brand is your target brand
+    all_brands = Brand.where.not(id: target_brand.id)
+
+    @top_similar_brands = all_brands.max_by(4){ |brand| target_brand.similarity_to(brand) }
+    @top_different_brands = all_brands.max_by(4) { |brand| target_brand.dissimilarity_to(brand) }
   end
 
   def admin_room

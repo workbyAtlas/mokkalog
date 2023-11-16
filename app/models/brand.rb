@@ -41,7 +41,7 @@ class Brand < ApplicationRecord
     views_similarity = (views - other_brand.views).abs
 
     # Combine the similarities using weights or other criteria if needed
-    combined_similarity = styles_similarity.size + location_similarity + views_similarity
+    combined_similarity = 0.6 * styles_similarity.size + 0.1* location_similarity +  0.3 * views_similarity
     #combined_similarity = styles_similarity.size
   end
 

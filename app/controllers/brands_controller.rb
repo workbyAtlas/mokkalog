@@ -50,7 +50,7 @@ class BrandsController < ApplicationController
     target_brand = @brand  # Assuming @brand is your target brand
     all_brands = Brand.where.not(id: target_brand.id)
 
-    @top_similar_brands = all_brands.max_by(4){ |brand| target_brand.similarity_to(brand) }
+    @top_similar_brands = all_brands.sort_by { |brand| target_brand.similarity_to(brand) }.reverse.take(4)
     @top_different_brands = all_brands.max_by(4) { |brand| target_brand.dissimilarity_to(brand) }
 
 

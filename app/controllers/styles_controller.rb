@@ -15,7 +15,7 @@ class StylesController < ApplicationController
     @posts = @posts.page(params[:page]).per(16)
 
     @categories = Category.all
-    @brands = Brand.all
+    @brands = @style.brands
 
   end
 

@@ -1,0 +1,69 @@
+<section class="section is-medium prime section-corner-top">
+  <div class="center title is-4 secondary-t">Dashboard</div>
+  <hr class="bst" />
+</section>
+
+<section class="section">
+	<div class="columns is-mobile">
+		<div class="column p-1">
+			<div class="dashboard-top bs cornered yellow-bottom  p-2">
+				<div>
+					<div class="center bold">Managing your clothing</div>
+					<div>1. Welcome to your dashboard, most of your management will be done on this page.</div>
+					<div>2. Create your brand before adding clothing</div>
+					<div>3. Before creating clothing please follow the guideline.</div>
+
+				</div>
+			</div>
+		</div>
+		<div class="column p-1">
+			<div class="dashboard-top red-bottom  bs cornered p-2" style="overflow:hidden;">
+	
+				<div class="center bold">My Brand</div>
+					<%current_user.brands.each do |brand|%>
+						<div class="center"><%=link_to brand.name, brand, class:"s-link"%></div>
+					<%end%>
+			</div>
+		</div>
+		<div class="column p-1">
+
+			<div class="dashboard-top blue-bottom bs cornered  p-2">
+				<div class="center bold">Actions</div>
+				<div>
+
+					<div class="center">
+						<%= link_to "Add new Brand", new_brand_path,   class:"button is-warning is-m my-2", style:"border: 2px solid #654321;" %>
+					</div>
+					<div class="center">
+						<%= link_to "Add new Clothing", new_post_path, class:"button is-warning is-m", style:"border: 2px solid #654321;" %>
+					</div>
+				
+
+				</div>
+			</div>
+		</div>
+	</div>
+
+	<br/>
+	<div class="columns">
+		<div class="column p-1">
+			<div class="bs cornered">
+				<div class="center title is-4 secondary-t my-2">Total Views</div>
+				<div class="center huge-font"><%=@posts.sum(&:views)%></div>
+			</div>
+		</div>
+		<div class="column">
+			<%= pie_chart @posts.group(:color).count, class:"square-chart" %>
+		</div>
+		<div class="column">
+			<%= pie_chart @posts.joins(:category).group('categories.name').count %></div>
+	</div>
+
+
+	<div>
+		<%#= MOST SIMILAR BRANDS%>
+		<%@posts.each do |x|%>
+		<%x.title%>
+		<%end%>
+	</div>
+</section>

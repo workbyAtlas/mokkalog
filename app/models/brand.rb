@@ -30,6 +30,7 @@ class Brand < ApplicationRecord
   has_many :styleables, dependent: :destroy
   has_many :styles, through: :styleables
 
+  scope :grouped_by_day, -> { group_by_day(:created_at) }
   def should_generate_new_friendly_id?
     name_changed? || slug.blank?
   end

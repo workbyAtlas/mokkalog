@@ -48,6 +48,7 @@ Rails.application.routes.draw do
   get 'badges' => 'pages#badges'
   get 'guideline' => 'pages#guideline'
   get 'discover' => 'pages#discover'
+  get 'manage' => 'pages#manage'
   
   get 'advsearch' => 'search#advsearch'
   post '/search', to: "search#search"

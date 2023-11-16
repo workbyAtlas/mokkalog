@@ -294,8 +294,8 @@ transform: translateY(-30px);
 /*INDEX ROOT*/
 .mobile-collapse{}
 .root_search{width:30%;}
-.carousel-lbtn{position:absolute;top:48%; left:3%;}
-.carousel-rbtn{position:absolute;top:48%; right:3%;}
+.carousel-lbtn{position:absolute;top:48%; left:0%;}
+.carousel-rbtn{position:absolute;top:48%; right:0%;}
 .caro-lbtn{position:absolute;top:50%; left:3%;}
 .caro-rbtn{position:absolute;top:50%; right:3%;}
 /*HOTWIRE*/

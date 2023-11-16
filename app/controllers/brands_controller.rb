@@ -8,8 +8,11 @@ class BrandsController < ApplicationController
   def index
     @query = Brand.ransack(params[:q])
     #brands = @query.result(distinct: true)
+
     @brands_prior = @query.result.includes(:posts)
-    shuffled_brands = @brands_prior.to_a.shuffle
+    shuffled_brands = @brands_prior.order('created_at DESC')
+    #shuffled_brands = @brands_prior.to_a.shuffle
+    
     @brands = Kaminari.paginate_array(shuffled_brands).page(params[:page]).per(16)
     #@brands = @brands.order('created_at ASC').page(params[:page]).per(16)
     @blank = Brand.find(1)
@@ -22,6 +25,7 @@ class BrandsController < ApplicationController
 
   # GET /brands/1 or /brands/1.json
   def show
+
     @blank = Brand.find(1) 
     @c = ISO3166::Country.new(@brand.location)
     if not current_user == @brand.user

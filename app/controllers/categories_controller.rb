@@ -16,8 +16,10 @@ class CategoriesController < ApplicationController
 
 
 
-  @brands = Brand.all
-  @brands = @brands.order("LOWER(name)")
+  # Assuming @posts is a collection of Post objects
+  @brands = @posts.map(&:brand).uniq.compact
+
+  #@brands = @brands.order("LOWER(name)")
   @styles = Style.all
   @categories = Category.all
 

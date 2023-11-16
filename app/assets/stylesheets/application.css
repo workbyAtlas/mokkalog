@@ -335,6 +335,10 @@ transform: translateY(-30px);
 .no-style{list-style-type:none;}
 .mokka-carousel{height:550px;}
 
+@media (max-width: 1600px){
+    .d-none-laptop{display: none;}
+    .blog_home_image{width:370px;height:230px;}
+}
 @media (max-width: 800px){
     .image-flex{flex-direction:column-reverse;}
     .image-small-container{display: flex;justify-content: center;align-items: center;}

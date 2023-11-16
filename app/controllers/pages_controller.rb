@@ -26,6 +26,7 @@ class PagesController < ApplicationController
       @brand_s5 = Brand.find(5)
       @blog_1 = Blog.find(1)
       @blog_2 = Blog.find(2)
+      @blog_3 = Blog.find(3)
     else
       @brand_s1 = Brand.find(95)
       @brand_s2 = Brand.find(45)
@@ -34,6 +35,7 @@ class PagesController < ApplicationController
       @brand_s5 = Brand.find(102)
       @blog_1 = Blog.find(1)
       @blog_2 = Blog.find(9)
+      @blog_3 = Blog.find(11)
     end  
 
     

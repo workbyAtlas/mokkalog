@@ -57,8 +57,8 @@
         </div>
         <div class="column center">
           <div>
-            <%=link_to (image_tag (@blog_2.cover), class:"blog_home_image cornered"), @blog_2%>
-            <div><%=link_to @blog_2.title, @blog_2, class:"blog-text bold sn-link"%></div>
+            <%=link_to (image_tag (@blog_2.cover), class:"blog_home_image cornered"), @blog_3%>
+            <div><%=link_to @blog_3.title, @blog_3, class:"blog-text bold sn-link"%></div>
           </div>
         </div>
   </div> 
@@ -72,9 +72,9 @@
       <%= render 'brands/components/brand_showcase', brand:@brand_s2, subtext: @stxt[1]%>
       <%= render 'brands/components/brand_showcase', brand:@brand_s3, subtext: @stxt[2]%>
       <%= render 'brands/components/brand_showcase', brand:@brand_s4, subtext: @stxt[3]%>
-      <span class="d-none-mobile">
+      <div class="d-none-laptop">
         <%= render 'brands/components/brand_showcase', brand:@brand_s5, subtext: @stxt[4]%>
-      </span>
+      </div>
 	</div>
 
 

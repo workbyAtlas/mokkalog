@@ -25,6 +25,10 @@ Rails.application.routes.draw do
     confirmable:  'users/confirmations'
   }
 
+  #authenticated :user do
+  #  root 'dashboard#index', as: :authenticated_root
+  #end
+
   #get '/u/:id', to: 'users#profile', as: 'user'
 
   #resources :posts
@@ -49,6 +53,12 @@ Rails.application.routes.draw do
   get 'guideline' => 'pages#guideline'
   get 'discover' => 'pages#discover'
   get 'manage' => 'pages#manage'
+
+  get 'home' => 'posts#home'
+
+  get 'confirmation_pending'=> 'pages#after_sign'
+  get 'welcome' => 'pages#induction'
+  get 'brand_onboarding' => 'pages#brand_onboarding'
   
   get 'advsearch' => 'search#advsearch'
   post '/search', to: "search#search"

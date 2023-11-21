@@ -9,12 +9,12 @@ class ApplicationController < ActionController::Base
 	def set_user_roles
 	 @auth = false
 	 @auth_e = false
-	 if user_signed_in?
-	 	if current_user.role.in?(["mod","admin"]) then @auth = true else @auth = false end
-	 	if current_user.role.in?(["mod","admin","editor"]) then @auth_e = "editor" else @auth_e = false end	 		
-	 else
-
-	 end
+	 #if user_signed_in?
+	 #	if current_user.role.in?(["mod","admin"]) then @auth = true else @auth = false end
+	 #	if current_user.role.in?(["mod","admin","editor"]) then @auth_e = "editor" else @auth_e = false end	 		
+	 #else
+#
+	 #end
 	end
 
 	def set_query

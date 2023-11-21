@@ -3,14 +3,14 @@
   <hr class="bst" />
 			<div class="rw30 mx-auto p-2">
 				<div>
-					<div class="center bold">Managing your clothing</div>
-					<div>1. Welcome to your dashboard, most of your management will be done on this page.</div>
+					<div class="center bold">Managing your brand</div>
+					<div>1. Get insight on your brand & clothing data</div>
 					<div>2. Create your brand before adding clothing</div>
-					<div>3. Before creating clothing please follow the guideline.</div>
+					<div>3. If you have a lot of clothing to upload, please reach out to admin@mokkalog.com to mass upload your clothing.</div>
 				</div>
 			</div>
 </section>
-
+<%if current_user.brands.count > 0%>
 <section class="section">
 	<div class="columns is-mobile">
 		<div class="column p-1">
@@ -32,8 +32,8 @@
 					<%#current_user.brands.each do |brand|%>
 						<%#link_to brand.name, brand, class:"s-link"%>
 					<%#end%>
-					<div class="center"><%=link_to @brand.name, @brand, class:"mt-4 s-link title is-2 d-none-mobile"%></div>
-					<div class="center"><%=link_to @brand.name, @brand, class:"mt-4 s-link title is-6 text-center d-none-desktop"%></div>
+					<div class="center text-center"><%=link_to @brand.name, @brand, class:"mt-4 s-link title is-2 d-none-mobile"%></div>
+					<div class="center text-center"><%=link_to @brand.name, @brand, class:"mt-4 s-link title is-6 text-center d-none-desktop"%></div>
 			</div>
 		</div>
 		<div class="column p-1">
@@ -42,7 +42,12 @@
 				<div class="center bold">Actions</div>
 				<div  class="d-none-desktop">
 					<div class="center">
+						<%if current_user.brands.count < 1%>
 						<%= link_to "New Brand", new_brand_path,   class:"button is-warning is-small is-m my-2 p-1", style:"border: 2px solid #654321;" %>
+						<%else%>
+						<%= link_to "Edit Brand", edit_brand_path(@brand),   class:"button is-warning is-small is-m my-2 p-1", style:"border: 2px solid #654321;" %>
+
+						<%end%>
 					</div>
 					<div class="center">
 						<%= link_to "New Clothing", new_post_path, class:"button is-warning is-small is-m p-1", style:"border: 2px solid #654321;" %>
@@ -51,7 +56,11 @@
 
 				<div class="d-none-mobile">
 					<div class="center">
+						<%if current_user.brands.count < 1%>
 						<%= link_to "New Brand", new_brand_path,   class:"button is-warning is-m my-2", style:"border: 2px solid #654321;" %>
+						<%else%>
+						<%= link_to "Edit Brand", edit_brand_path(@brand),   class:"button is-warning is-m my-2", style:"border: 2px solid #654321;" %>
+						<%end%>
 					</div>
 					<div class="center">
 						<%= link_to "New Clothing", new_post_path, class:"button is-warning is-m", style:"border: 2px solid #654321;" %>
@@ -123,3 +132,9 @@
 		<%end%>
 	</div>
 </section>
+<%else%>
+	<div class="center">
+		<%= link_to "Add your clothing brand to get started", new_brand_path,   class:"button is-warning is-big is-m my-2 p-1", style:"border: 2px solid #654321;" %>
+	</div>
+	<%=current_user.onboard%>
+<%end%>

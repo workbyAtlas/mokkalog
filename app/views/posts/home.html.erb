@@ -1,0 +1,79 @@
+<section class="flexed home-nav">
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-house fa-xl"></i></div>
+		<div class="cnav-font">All</div>	
+	</div>
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-heart fa-xl"></i></div>
+		<div class="cnav-font">For You</div>	
+	</div>
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-mug-hot fa-xl"></i></div>
+		<div class="cnav-font">Mokka Edit</div>	
+	</div>
+
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-user-ninja fa-xl"></i></div>
+		<div class="cnav-font">Hoodie</div>	
+	</div>
+
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-mitten fa-xl"></i></div>
+		<div class="cnav-font">Coat</div>	
+	</div>
+
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-socks fa-xl"></i></div>
+		<div class="cnav-font">Socks</div>	
+	</div>
+
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-street-view fa-xl"></i></div>
+		<div class="cnav-font">Streetwear</div>	
+	</div>
+
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-user fa-xl"></i></div>
+		<div class="cnav-font">Casual</div>	
+	</div>
+
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-crown fa-xl"></i></div>
+		<div class="cnav-font">Luxury</div>	
+	</div>
+
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-seedling fa-xl"></i></div>
+		<div class="cnav-font">Sustainable</div>	
+	</div>
+
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-solid fa-star fa-xl"></i></div>
+		<div class="cnav-font">Start Up</div>	
+	</div>
+
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-brands fa-youtube fa-xl"></i></div>
+		<div class="cnav-font">Youtube</div>	
+	</div>
+
+	<div class="cnav-btn-box center-down">
+		<div><i class="fa-brands fa-youtube fa-xl"></i></div>
+		<div class="cnav-font">Youtube</div>	
+	</div>
+
+	<div class="cnav-filter-box center-down bs cornered">
+		<div>
+			<div><i class="fa-solid fa-filter fa-xl"></i></div>
+			<div class="cnav-font">Filter</div>	
+		</div>
+	</div>
+
+
+</section>
+
+<section class="section flexed-wc post-container mx-auto">
+<% @posts.each do |post| %>
+      <div class=""><%=render post%><%#= render "posts/post", post: post, like_status: current_user.liked?(post) %></div>
+  <% end %>
+</section>

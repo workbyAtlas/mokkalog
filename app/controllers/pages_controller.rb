@@ -8,10 +8,10 @@ class PagesController < ApplicationController
     @posts_hot = Post.order(views: :desc).limit(16)
     @posts_latest = Post.order(created_at: :desc).limit(16)
 
-    @posts_picks = Post.where(id: [394,25,285,224]) 
+    @posts_picks = Post.where(id: [394,25,918,224]) 
     @posts_inno = Post.where(id: [13, 30, 387, 382])
     @posts_sustain = Post.where(id: [35,19,29,375]) 
-    @posts_creator = Post.where(id: [43,23,49,380])
+    @posts_creator = Post.where(id: [43,23,612,380])
 
     @post_count = Post.count(:all)
 
@@ -47,18 +47,21 @@ class PagesController < ApplicationController
   end
 
   def manage
-    @brands = current_user.brands
-    @brand = @brands.min_by(&:id) 
-    @posts = Post.where(brand: @brands).all
+    if current_user.brands.count > 0
+      @brands = current_user.brands
+      @brand = @brands.min_by(&:id) 
+      @posts = Post.where(brand: @brands).all
+      @top_posts = @posts.order(views: :desc).limit(4)
+      target_brand = @brand  # Assuming @brand is your target brand
+      all_brands = Brand.where.not(id: target_brand.id)
 
-    @top_posts = @posts.order(views: :desc).limit(4)
+      @top_similar_brands = all_brands.max_by(4){ |brand| target_brand.similarity_to(brand) }
+      @top_different_brands = all_brands.max_by(4) { |brand| target_brand.dissimilarity_to(brand) }
+    end
+
 
     #Find Similar Brand
-    target_brand = @brand  # Assuming @brand is your target brand
-    all_brands = Brand.where.not(id: target_brand.id)
 
-    @top_similar_brands = all_brands.max_by(4){ |brand| target_brand.similarity_to(brand) }
-    @top_different_brands = all_brands.max_by(4) { |brand| target_brand.dissimilarity_to(brand) }
   end
 
   def admin_room

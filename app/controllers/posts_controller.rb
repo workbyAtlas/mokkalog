@@ -11,6 +11,11 @@ class PostsController < ApplicationController
     
   end
 
+  def home
+    @posts = Post.all
+
+  end
+
   def index
  
     @brands = Brand.all

@@ -17,8 +17,8 @@
 
       <div class="column">
         <div class="secondary-t bold"><u>Social</u></div>
-        <%= form.text_field :ig_link, class:"input mokka-ph is-small mt-2", placeholder:"Instagram" %>
-        <%= form.text_field :x_twitter, class:"input mokka-ph is-small", placeholder:"Twitter/X" %>
+        <%= form.text_field :ig_link, class:"input mokka-ph is-small mt-2", placeholder:"Instagram(include https://)" %>
+        <%= form.text_field :x_twitter, class:"input mokka-ph is-small", placeholder:"Twitter/X(include https://)" %>
       </div>
 
     </div>
@@ -34,7 +34,8 @@
         </div>
 
         <div>
-          <div class="mr-3">Style:</div>
+          <div class="mr-3">Style: can select multiple.</div>
+
 
         <%#= form.text_field :styles, value: brand.styles.map(&:name).join(","), class:"input is-small mokka-ph mb-2", placeholder:"Style time" %>
           <div class="style-filter-grid bs cornered p-1">

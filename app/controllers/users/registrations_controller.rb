@@ -47,7 +47,7 @@ class Users::RegistrationsController < Devise::RegistrationsController
   end
 
   def after_sign_up_path_for(resource)
-    posts_path
+    #posts_path
   end
 
   def after_update_path_for(resource)
@@ -67,12 +67,17 @@ class Users::RegistrationsController < Devise::RegistrationsController
 
 
   # The path used after sign up.
-  # def after_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  #def after_sign_in_path_for(resource)
+  #  #super(resource)
+  #    if current_user.sign_in_count < 
+  #    # Redirect to a custom path for the first sign-in
+  #    # For example, you can redirect to a welcome page or an onboarding process
+  #      welcome_path
+  #    end
+  #end
 
   # The path used after sign up for inactive accounts.
-  # def after_inactive_sign_up_path_for(resource)
-  #   super(resource)
-  # end
+  def after_inactive_sign_up_path_for(resource)
+    confirmation_pending_path
+  end
 end

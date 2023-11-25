@@ -1,6 +1,6 @@
 class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update]
-  before_action :authenticate_user!, except: %i[index show]
+  #before_action :authenticate_user!, except: %i[index show]
   before_action :editing_privilage_post, only: %i[edit update]
 
   # GET /posts or /posts.json

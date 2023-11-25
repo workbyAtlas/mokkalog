@@ -1,6 +1,6 @@
 class BrandsController < ApplicationController
   before_action :set_brand, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!, except: %i[index show]
+  #before_action :authenticate_user!, except: %i[index show]
   before_action :editing_privilage_brand, only: %i[edit update]
 
 

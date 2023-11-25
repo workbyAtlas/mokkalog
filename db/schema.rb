@@ -304,7 +304,6 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_20_234555) do
     t.integer "failed_attempts"
     t.string "unlock_token"
     t.string "slug"
-    t.integer "sign_in_count", default: 0, null: false
     t.integer "onboard", default: 0
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -12,7 +12,10 @@ class PostsController < ApplicationController
   end
 
   def home
-    @posts = Post.all
+
+    @query = Post.ransack(params[:q])
+    @posts = @query.result(distinct: true).includes(:tags, :brand, :category)
+    
 
   end
 

@@ -5,16 +5,17 @@ class ApplicationController < ActionController::Base
 	before_action :set_query_brand
 	before_action :set_user_roles
 	before_action :set_blank
+	before_action :authenticate_user!
 
 	def set_user_roles
 	 @auth = false
 	 @auth_e = false
-	 #if user_signed_in?
-	 #	if current_user.role.in?(["mod","admin"]) then @auth = true else @auth = false end
-	 #	if current_user.role.in?(["mod","admin","editor"]) then @auth_e = "editor" else @auth_e = false end	 		
-	 #else
+	 	if user_signed_in?
+			if current_user.role.in?(["mod","admin"]) then @auth = true else @auth = false end
+			if current_user.role.in?(["mod","admin","editor"]) then @auth_e = "editor" else @auth_e = false end	 		
+		else
 #
-	 #end
+		end
 	end
 
 	def set_query

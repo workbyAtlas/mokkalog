@@ -1,0 +1,10 @@
+<%= search_form_for @query, data: {turbo_frame: :results}, url: home_path, html: { class: "form-inline" } do |f| %>
+
+      <div class="rw50 mx-auto center">
+        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bs", placeholder:"Search here..." %>
+            <%= f.submit "Search", class:"button is-warning my-2 bold mokka-ph", style:"border:1px solid #654321;" %>
+            <div class="ml-2 lgrey flexed cornered p-2 cnav-filter-box">
+            <i class="fa-solid fa-filter mx-2"></i>Filters
+        	</div>
+      </div>
+<%end%>

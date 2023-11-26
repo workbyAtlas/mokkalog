@@ -3,8 +3,81 @@
       <div class="rw50 mx-auto center">
         <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bs", placeholder:"Search here..." %>
             <%= f.submit "Search", class:"button is-warning my-2 bold mokka-ph", style:"border:1px solid #654321;" %>
-            <div class="ml-2 lgrey flexed cornered p-2 cnav-filter-box">
+            <div class="ml-2 lgrey flexed cornered p-2 cnav-filter-box" data-action="click->catalog#filterToggle">
             <i class="fa-solid fa-filter mx-2"></i>Filters
         	</div>
       </div>
+
+
+
+
+
+
+
+
+
+
+<div class="modal" data-catalog-target="filter">
+  <div class="modal-background"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title secondary-t">Filters</p>
+      <div class="delete" data-action="click->catalog#filterToggle"></div>
+    </header>
+    <section class="modal-card-body">
+      <!-- Content ... -->
+    <div class="typegrid mx-auto">
+        <div>
+          <label class="m-checkbox">
+          <%= check_box_tag('q[c_type_i_cont_any][]', "Neutral", false,  oninput: 'this.form.requestSubmit();') %>
+          <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
+          <span class="m-checkmark l-cornered" style="width:80px;">Neutral</span>
+          </label>
+        </div>
+        <div>
+          <label class="m-checkbox">
+          <%= check_box_tag('q[c_type_i_cont_any][]', "Women", false,  oninput: 'this.form.requestSubmit();') %>
+          <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
+          <span class="m-checkmark n-cornered" style="width:80px;">Women</span>
+          </label>
+        </div>
+        <div>
+          <label class="m-checkbox">
+          <%= check_box_tag('q[c_type_eq_any][]', "Men", false,  oninput: 'this.form.requestSubmit();') %>
+          <span class="m-checkmark r-cornered" style="width:80px;">Men</span>
+          </label>
+        </div>
+    </div>
+
+    <div class="my-0 title is-5 secondary-t mb-2"><u>Colors</u></div>
+    <div class="color-filter-grid bs lgrey cornered p-2">
+      <% ['White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Brown','Grey','Pink', 'Multi'].each do |color| %>
+     <div class="my-1">
+        <label class="color-cbox <%=color + "box"%>">
+        <%= check_box_tag('q[color_i_cont_any][]', color, false,  oninput: 'this.form.requestSubmit();') %>
+        <span class="color-cmark <%=color + "mark"%>"><%=color%></span>
+        </label>
+     </div>
+      <%end%>
+    </div>
+
+    <div class="my-0 title is-5 secondary-t mb-2"><u>Category</u></div>
+      <div class="flexed-wcc category-filter-grid">
+        <% @categories.each do |x| %>
+       <div class="my-1">
+          <label class="m-checkbox mid-cbox">
+          <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
+          <span class="m-checkmark"><%=x.name%></span>
+          </label>
+       </div>
+    <%end%>
+  </div>
+
+
+    </section>
+    <footer class="modal-card-foot">
+
+    </footer>
+  </div>
+</div>
 <%end%>

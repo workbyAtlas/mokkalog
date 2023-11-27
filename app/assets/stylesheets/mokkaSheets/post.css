@@ -2,9 +2,37 @@
 .home-nav{overflow-y:scroll;}
 .cnav-btn-box{min-width:70px;height:70px;margin:0.5rem;}
 .cnav-filter-box{border:1px solid #654321;}
-.cnav-font{font-size:12px;margin-top:0.1rem;}
+.cnav-font{font-size:12px;margin-top:0.5rem;}
+.radio-font{font-size:12px;margin-top:1rem;}
 
 .home-active{background-color:#cbb595; border:1px solid #654321; border-radius:15px;}
+
+  .custom-radio {
+    display: inline-flex;
+    align-items: center;
+    margin-right: 10px;
+  }
+
+  .radio-style {
+    width: 70px; /* Adjust the width and height as needed */
+    height: 70px;
+    display: flex;
+    justify-content: center;
+    flex-direction:column;
+    align-items: center;
+    border-radius:4px;
+    margin-right: 5px;  
+  }
+
+  input[type="radio"] {
+    opacity: 0; /* Hide the default radio button */
+    position: absolute;
+  }
+
+  input[type="radio"]:checked + .radio-style {
+    background-color: #cbb595; /* Change the background color when checked */
+    border: 1px solid #654321;
+  }
 
 
 .post-container{max-width:1400px;}

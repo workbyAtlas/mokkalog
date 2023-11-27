@@ -2,16 +2,16 @@
   <%#Image%>
   <div class="center">
     <%if post.image.attached?%>
-      <%=link_to (image_tag (post.image_post), class:"cornered"), post,data: {turbo_frame: "_top"}%>
+      <%=link_to (image_tag (post.image_post), class:"cornered"), post,data: {turbo_frame: "_top"}, target:"_blank"%>
     <%else%>
-      <%=link_to (image_tag (@blank.image_post), class:"cornered"), post,data: {turbo_frame: "_top"}%>
+      <%=link_to (image_tag (@blank.image_post), class:"cornered"), post,data: {turbo_frame: "_top"}, target:"_blank"%>
     <%end%>   
   </div>
   <%#Brand Name & Title%>
   <div class="mx-2">
 
     <div class="d-none-mobile">
-      <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.brand.name,15,10),post,data: {turbo_frame: "_top"}, class:"secondary-t"%></strong></div>
+      <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.brand.name,15,10),post,data: {turbo_frame: "_top"}, target:"_blank", class:"secondary-t"%></strong></div>
     </div>
 
     <div class="d-none-desktop">

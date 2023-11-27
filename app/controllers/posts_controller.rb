@@ -14,22 +14,11 @@ class PostsController < ApplicationController
   def home
 
     @query = Post.ransack(params[:q])
-    brands_with_sustain_badge = Brand.where("badge LIKE ?", "%sustain%")
-    brands_with_handmade_badge = Brand.where("badge LIKE ?", "%handmade%")
     @categories = Category.all
     
-    @catalog_1  = @query.result(distinct: true).includes(:tags, :brand, :category)
-    @catalog_2  = @query.result(distinct: true).where(season: "FW2023").includes(:tags, :brand, :category)
-    @catalog_3  = @query.result(distinct: true).where(brands: { verification: "True"}).includes(:tags, :brand, :category)
-    @catalog_4  = @query.result(distinct: true).where(category_id: 10).includes(:tags, :brand, :category)
-    @catalog_5  = @query.result(distinct: true).where(brands: { verification: "True"}).includes(:tags, :brand, :category)
-    @catalog_6  = @query.result(distinct: true).where(brands: { location: "KR"}).includes(:tags, :brand, :category)
-    @catalog_7  = @query.result(distinct: true).joins(brand: :styles).where(brands: { styles: { id: 8 } }).includes(:tags, :brand, :category)
-    @catalog_8  = @query.result(distinct: true).joins(brand: :styles).where(brands: { styles: { id: 1 } }).includes(:tags, :brand, :category)
-    @catalog_9  = @query.result(distinct: true).joins(brand: :styles).where(brands: { styles: { id: 3 } }).includes(:tags, :brand, :category)
-    @catalog_10 = @query.result(distinct: true).where(brand_id: brands_with_sustain_badge).includes(:tags, :brand, :category)
-    @catalog_11 = @query.result(distinct: true).joins(brand: :styles).where(brands: { styles: { id: 11 } }).includes(:tags, :brand, :category)
-    @catalog_12 = @query.result(distinct: true).where(brand_id: brands_with_handmade_badge).includes(:tags, :brand, :category)
+    
+    @posts = @query.result(distinct: true).joins(brand: :styles).includes(:tags, :brand, :category)
+    #@catalog_12 = @query.result(distinct: true).where(brand_id: brands_with_handmade_badge).includes(:tags, :brand, :category)
     @catalog_13 = @query.result(distinct: true).joins(brand: :styles).where(brands: { styles: { id: 18 } }).includes(:tags, :brand, :category)
 
     

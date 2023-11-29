@@ -17,9 +17,8 @@ class PostsController < ApplicationController
     @categories = Category.all
     
     
-    @posts = @query.result(distinct: true).joins(brand: :styles).includes(:tags, :brand, :category)
-    #@catalog_12 = @query.result(distinct: true).where(brand_id: brands_with_handmade_badge).includes(:tags, :brand, :category)
-    @catalog_13 = @query.result(distinct: true).joins(brand: :styles).where(brands: { styles: { id: 18 } }).includes(:tags, :brand, :category)
+    @posts = @query.result(distinct: true).includes(:tags, :brand, :category)
+    @posts = @posts.shuffle
 
     
 

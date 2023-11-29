@@ -1,7 +1,7 @@
 <div class="badgegrid rw60 mx-auto">
 <div class="my-1">
   <label class="m-checkbox">
-  <%= check_box_tag('q[brand_verification_i_cont_any][]', "True", false) %>
+  <%= check_box_tag('q[brand_verification_i_cont_any][]', "True", false, oninput: 'this.form.requestSubmit();') %>
   <span class="m-checkmark center-checkmark">
     <div class="hover">
       <i class="fa-solid fa-circle-check fa-small mbeige"></i>
@@ -12,7 +12,7 @@
 </div>
 <div class="my-1">
   <label class="m-checkbox">
-  <%= check_box_tag('q[brand_badge_i_cont_any][]', "certified", false) %>
+  <%= check_box_tag('q[brand_badge_i_cont_any][]', "certified", false, oninput: 'this.form.requestSubmit();') %>
   <span class="m-checkmark center-checkmark">
     <div class="hover">
     <i class="fa-solid fa-mug-saucer fa-small" style="color:#ffd700;"></i>
@@ -23,7 +23,7 @@
 </div>
 <div class="my-1">
   <label class="m-checkbox">
-  <%= check_box_tag('q[brand_badge_i_cont_any][]', "sustain", false) %>
+  <%= check_box_tag('q[brand_badge_i_cont_any][]', "sustain", false, oninput: 'this.form.requestSubmit();') %>
   <span class="m-checkmark center-checkmark">
     <div class="hover">
     <i class="fa-solid fa-seedling fa-small mgreen"></i>
@@ -34,7 +34,7 @@
 </div>
 <div class="my-1">
   <label class="m-checkbox">
-  <%= check_box_tag('q[brand_badge_i_cont_any][]', "handmade", false) %>
+  <%= check_box_tag('q[brand_badge_i_cont_any][]', "handmade", false, oninput: 'this.form.requestSubmit();') %>
   <span class="m-checkmark center-checkmark">
     <div class="hover">
     <i class="fa-solid fa-scissors fa-small mred"></i>
@@ -45,7 +45,7 @@
 </div>
 <div class="my-1">
   <label class="m-checkbox">
-  <%= check_box_tag('q[brand_badge_i_cont_any][]', "global", false) %>
+  <%= check_box_tag('q[brand_badge_i_cont_any][]', "global", false, oninput: 'this.form.requestSubmit();') %>
   <span class="m-checkmark center-checkmark">
     <div class="hover">
     <%= render 'component/badges/global', size:"small" %>

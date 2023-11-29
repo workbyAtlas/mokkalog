@@ -1,11 +1,11 @@
-<div class="my-0 title is-5 secondary-t mb-2"><u>Color</u></div>
+
 <div class="color-filter-grid">
 
 
   <% ['White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Brown','Grey','Pink', 'Multi'].each do |color| %>
  <div class="my-1">
     <label class="color-cbox <%=color + "box"%>">
-    <%= check_box_tag('q[color_i_cont_any][]', color, false) %>
+    <%= check_box_tag('q[color_i_cont_any][]', color, false, oninput: 'this.form.requestSubmit();') %>
     <span class="color-cmark <%=color + "mark"%>"><%=color%></span>
     </label>
  </div>

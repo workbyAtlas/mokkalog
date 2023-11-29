@@ -1,107 +1,32 @@
 <%= search_form_for @query, data: {turbo_frame: :results}, url: home_path, html: { class: "form-inline" } do |f| %>
 
       <div class="rw50 mx-auto center">
-        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bs", placeholder:"Search here..." %>
+        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_location_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bs", placeholder:"Search here..." %>
             <%= f.submit "Search", class:"button is-warning my-2 bold mokka-ph", style:"border:1px solid #654321;" %>
             <div class="ml-2 lgrey flexed cornered p-2 cnav-filter-box" data-action="click->catalog#filterToggle">
             <i class="fa-solid fa-filter mx-2"></i>Filters
         	</div>
       </div>
 
-    <section class="home-nav center">
+    <section class="home-nav mt-4">
         <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, "FW2023", oninput: 'this.form.requestSubmit();' %> 
+            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, ' ', checked: true, oninput: 'this.form.requestSubmit();' %> 
             <div class="radio-style">
                 <i class="fa-solid fa-home fa-xl mt-3"></i><div class="radio-font">All</div>
             </div>
         </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any,"FW2023", oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-snowflake fa-xl mt-3"></i><div class="radio-font">FW 2023</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, "certified", oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-mug-hot fa-xl mt-3"></i><div class="radio-font">Mokka Edit</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, 11, oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-star fa-xl mt-3"></i><div class="radio-font">Start Up</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, 8, oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-road fa-xl mt-3"></i><div class="radio-font">Streetwear</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, "True", oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-circle-check fa-xl mt-3"></i><div class="radio-font">Verified</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, "KR", oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-earth-asia fa-xl mt-3"></i><div class="radio-font">Korean</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, "Hoodie", oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-user-ninja fa-xl mt-3"></i><div class="radio-font">Hoodie</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, 1, oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-user fa-xl mt-3"></i><div class="radio-font">Casual</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, 3, oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-crown fa-xl mt-3"></i><div class="radio-font">Luxury</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, "sustain", oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-seedling fa-xl mt-3"></i><div class="radio-font">Sustainable</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, "handmade", oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-solid fa-scissors fa-xl mt-3"></i><div class="radio-font">MTO</div>
-            </div>
-        </label>
-
-        <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, 18, oninput: 'this.form.requestSubmit();' %> 
-            <div class="radio-style">
-                <i class="fa-brands fa-youtube fa-xl mt-3"></i><div class="radio-font">Internet</div>
-            </div>
-        </label>
-
-
-
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-snowflake", word:"FW 2023", fill:"FW2023", f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-circle-check", word:"Verified", fill:"True", f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-mug-hot", word:"Mokka Edit", fill:"certified", f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-road", word:"Streetwear", fill:8, f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-star", word:"Start Up", fill:11, f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-earth-asia", word:"Korean", fill:"KR", f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-user-ninja", word:"Hoodie", fill:"Hoodie", f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-user", word:"Casual", fill:1, f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-crown", word:"Luxury", fill:3, f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-seedling", word:"Sustainable", fill:"sustain", f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-scissors", word:"MTO", fill:"handmade", f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-brands fa-youtube", word:"Internet", fill:18, f:f%>
     </section>
       
 
@@ -122,53 +47,15 @@
     </header>
     <section class="modal-card-body">
       <!-- Content ... -->
-    <div class="typegrid mx-auto">
-        <div>
-          <label class="m-checkbox">
-          <%= check_box_tag('q[c_type_i_cont_any][]', "Neutral", false,  oninput: 'this.form.requestSubmit();') %>
-          <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
-          <span class="m-checkmark l-cornered" style="width:80px;">Neutral</span>
-          </label>
-        </div>
-        <div>
-          <label class="m-checkbox">
-          <%= check_box_tag('q[c_type_i_cont_any][]', "Women", false,  oninput: 'this.form.requestSubmit();') %>
-          <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
-          <span class="m-checkmark n-cornered" style="width:80px;">Women</span>
-          </label>
-        </div>
-        <div>
-          <label class="m-checkbox">
-          <%= check_box_tag('q[c_type_eq_any][]', "Men", false,  oninput: 'this.form.requestSubmit();') %>
-          <span class="m-checkmark r-cornered" style="width:80px;">Men</span>
-          </label>
-        </div>
-    </div>
+    <br/>
+    <%= render 'component/filters/type' %>  
+    <%= render 'component/filters/badge' %>
 
     <div class="my-0 title is-5 secondary-t mb-2"><u>Colors</u></div>
-    <div class="color-filter-grid bs lgrey cornered p-2">
-      <% ['White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Brown','Grey','Pink', 'Multi'].each do |color| %>
-     <div class="my-1">
-        <label class="color-cbox <%=color + "box"%>">
-        <%= check_box_tag('q[color_i_cont_any][]', color, false,  oninput: 'this.form.requestSubmit();') %>
-        <span class="color-cmark <%=color + "mark"%>"><%=color%></span>
-        </label>
-     </div>
-      <%end%>
-    </div>
+    <div class="bs cornered p-2"><%= render 'component/filters/color'%></div>
 
-    <div class="my-0 title is-5 secondary-t mb-2"><u>Category_id</u></div>
-      <div class="flexed-wcc category_id-filter-grid">
-        <% @categories.each do |x| %>
-       <div class="my-1">
-          <label class="m-checkbox mid-cbox">
-          <%= check_box_tag('q[category_id_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
-          <span class="m-checkmark"><%=x.name%></span>
-          </label>
-       </div>
-    <%end%>
-  </div>
-
+    <div class="my-0 title is-5 secondary-t mb-2"><u>Categories</u></div>
+    <div class="bs cornered p-2"><%= render 'component/filters/category'%></div>
 
     </section>
     <footer class="modal-card-foot">

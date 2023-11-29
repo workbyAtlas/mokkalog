@@ -1,16 +1,16 @@
 
 
+<section data-controller="catalog">
+	<%= render 'posts/home_components/filter'%>
+	<%=turbo_frame_tag :results do%>
 
-<%= render 'posts/home_components/filter'%>
-<%=turbo_frame_tag :results do%>
+	<section class="section flexed-wc post-container mx-auto">
+	<% @posts.each do |post| %>
+		<div class=""><%=render post%><%#= render "posts/post", post: post, like_status: current_user.liked?(post) %></div>
+	<% end %>
+	</section>
+	
 
 
-
-<section class="section flexed-wc post-container mx-auto">
-<% @posts.each do |post| %>
-	<div class=""><%=render post%><%#= render "posts/post", post: post, like_status: current_user.liked?(post) %></div>
-<% end %>
+	<%end%>
 </section>
-
-
-<%end%>

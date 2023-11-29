@@ -82,13 +82,13 @@ class Post < ApplicationRecord
 	end
 
 	def image_as_profile
-		return unless image.content_type.in?(%w[image/jpeg image/png image/webp])
+		return unless image.content_type.in?(%w[image/jpeg image/png image/webp image/avif])
 		image.variant(resize_to_fill: [400,400]).processed
 	end
 
 	def check_for_image
 		#attributes = []
-	    if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/webp])
+	    if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/webp image/avif])
 	      errors.add(:image, "The file must be, JPEG, PNG, or WEBP")
 	    end
 

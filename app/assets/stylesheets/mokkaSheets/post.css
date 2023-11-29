@@ -1,7 +1,7 @@
 /*NEW*/
-.home-nav{overflow-y:scroll;}
+.home-nav{overflow-x:scroll; width:100%; display:flex; justify-content: center;}
 .cnav-btn-box{min-width:70px;height:70px;margin:0.5rem;}
-.cnav-filter-box{border:1px solid #654321;}
+.cnav-filter-box{border:1px solid #654321; cursor:pointer;}
 .cnav-font{font-size:12px;margin-top:0.5rem;}
 .radio-font{font-size:12px;margin-top:1rem;}
 
@@ -21,7 +21,8 @@
     flex-direction:column;
     align-items: center;
     border-radius:4px;
-    margin-right: 5px;  
+    margin-right: 5px;
+    cursor:pointer; 
   }
 
   input[type="radio"] {
@@ -116,4 +117,5 @@
   overflow: scroll;
   height:200px;
 }
+  .home-nav{justify-content: flex-start;}
 }

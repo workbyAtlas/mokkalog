@@ -40,9 +40,9 @@ Rails.application.routes.draw do
     
 
   resources :tags
-  resources :discover
-  #root 'posts#index'
-  root 'pages#index'
+  #resources :discover
+  root 'posts#home'
+  #root 'pages#index'
   
   get 'about'  => 'pages#about'
   get 'adroom' => 'pages#admin_room'
@@ -51,7 +51,7 @@ Rails.application.routes.draw do
   get 'mokkalog' => 'pages#mokkalog'
   get 'badges' => 'pages#badges'
   get 'guideline' => 'pages#guideline'
-  get 'discover' => 'pages#discover'
+  get 'discover' => 'pages#index'
   get 'manage' => 'pages#manage'
 
   get 'home' => 'posts#home'

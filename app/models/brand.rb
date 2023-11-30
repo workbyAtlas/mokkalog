@@ -31,6 +31,9 @@ class Brand < ApplicationRecord
   has_many :styleables, dependent: :destroy
   has_many :styles, through: :styleables
 
+  has_many :brand_tag_assocs, dependent: :destroy
+  has_many :tags, through: :brand_tag_assocs
+
   scope :grouped_by_day, -> { group_by_day(:created_at) }
 
 
@@ -67,7 +70,7 @@ class Brand < ApplicationRecord
   end
 
   def self.ransackable_associations(auth_object = nil)
-    ["brandables", "image_attachment", "image_blob", "posts", "user","styles"]
+    ["brandables", "image_attachment", "image_blob", "posts", "user","styles","tags"]
   end
 
   def image_brand

@@ -77,6 +77,12 @@
     <%=form.text_field :badge, class:"input"%>
   </div>
 
+  <div>
+    <%= form.label "Tags", class:"label mt-2" %>
+    <%=form.text_field :tags, value: brand.tags.map(&:name) .join(","), class:"input"%>
+
+  </div>
+
 
 
 

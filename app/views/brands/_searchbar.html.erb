@@ -9,12 +9,14 @@
     <div class="center">
       <%= f.search_field :name_or_verification_or_styles_name_or_badge_i_cont, class:"input bs mokka-ph", placeholder:"Search here..." %>
       <%= f.submit "Search", class:"button is-warning my-2 bold secondary-t", style:"border: 1px solid #654321;" %>
+
+
     </div>
 
 </div>
 </div>
   <div class="bold center">Filters</div>
-  <div class="tabs is-toggle is-small is-centered my-2">
+  <div class="tabs is-toggle is-small is-centered my-2" style="z-index: -1;">
     <ul>
       <li data-filter-target="btn1" data-action="click->filter#openFilter1">
         <a>
@@ -33,13 +35,20 @@
       </li>
     </ul>
   </div>
+
   <hr class="bst"/>
 </section>
 
   <div data-filter-target="filter1" class="home-nav d-none lgrey pb-3">
   <% @styles.each do |style| %>
-  <%=render 'component/filters/check_box', css:"fa-solid fa-seedling", fill:"styles_name", word:style.name, key:style.name%>
+  <%=render 'component/filters/check_box', css:"fa-solid fa-shirt", fill:"styles_name", word:style.name, key:style.name%>
   <%end%>
+  <a href="brands" class="custom-radio secondary-t">
+    <div class="radio-style">
+        <i class="fa-solid fa-x fa-xl mt-3"></i>
+        <div class="radio-font">Clear Filter</div>
+    </div>
+</a>
   </div>
   <div data-filter-target="filter2" class="home-nav lgrey pb-3">
   <%=render 'component/filters/check_box', css:"fa-solid fa-circle-check", fill:"verification", word:"Verified", key:"True"%>
@@ -47,11 +56,23 @@
   <%=render 'component/filters/check_box', css:"fa-solid fa-seedling",fill:"badge", word:"Sustainable", key:"sustain"%>
   <%=render 'component/filters/check_box', css:"fa-solid fa-scissors",fill:"badge", word:"Hand Made", key:"handmade"%>
   <%=render 'component/filters/check_box', css:"fa-solid fa-globe",fill:"badge", word:"Global", key:"global"%>
+<a href="brands" class="custom-radio secondary-t">
+    <div class="radio-style">
+        <i class="fa-solid fa-x fa-xl mt-3"></i>
+        <div class="radio-font">Clear Filter</div>
+    </div>
+</a>
   </div>
   <div data-filter-target="filter3" class="home-nav d-none lgrey pb-3">
   <%@locations.each do |location|%>
-  <%=render 'component/filters/check_box', css:"fa-solid fa-seedling", fill:"location", word:location, key:location%>
+  <%=render 'component/filters/check_box', css:"fa-solid fa-earth", fill:"location", word:location, key:location%>
   <%end%>
+  <a href="brands" class="custom-radio secondary-t">
+    <div class="radio-style">
+        <i class="fa-solid fa-x fa-xl mt-3"></i>
+        <div class="radio-font">Clear Filter</div>
+    </div>
+</a>
   </div>
 
 </section>

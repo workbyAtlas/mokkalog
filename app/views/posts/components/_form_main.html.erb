@@ -82,8 +82,10 @@
   </div>
 
 <div class="lgrey p-2 cornered bs">
+<%if @auth%>
 <label class="bold mr-1 mb-1"><u>Tags:</u></label>
 <%= form.text_field :tags, value: post.tags.map(&:name).join(","), class:"input mokka-ph mb-2", placeholder:"Tags, seperate each tag with a comma(,). Example: 'puffer jacket, anime'" %>
+<%end%>
 
 <label class="bold mr-1 mb-1"><u>Description:</u></label>
 <%= form.rich_text_area :body, style:"background-color:white;",placeholder:"Description" %>

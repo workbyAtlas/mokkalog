@@ -25,7 +25,7 @@
 
 /*HTML FORMAT*/
 tr{padding:15px;}
-body{color:#654321;}
+body{color:#654321; overflow-x:hidden}
 .table-m {
 border-bottom: 10px solid transparent; /* Adjust the value as needed */
 }

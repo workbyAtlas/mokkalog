@@ -2,17 +2,17 @@
 
   <span class="mx-auto">
     <% if brand.image.attached? %>
-    <div><%=link_to (image_tag(brand.image_handler(brand.image,"brand"), class:"cornered")), brand %></div>
+    <div><%=link_to (image_tag(brand.image_handler(brand.image,"brand"), class:"cornered")), brand, data: {turbo_frame: "_top"} %></div>
     <% else %>
     <div class="center"><%=image_tag(@blank.image_brand, class:"cornered")%></div>
     <% end %>
 
     <div class="p-link center d-none-mobile">
-      <%=link_to brand.shorter_name(brand.name,15,10), brand, class:"s-link bold", style:"text-align:center;" %>
+      <%=link_to brand.shorter_name(brand.name,15,10), brand,data: {turbo_frame: "_top"}, class:"s-link bold", style:"text-align:center;" %>
     </div>
 
     <div class="p-link center d-none-desktop">
-      <%=link_to brand.shorter_name(brand.name,12,9), brand, class:"s-link bold", style:"text-align:center;" %>
+      <%=link_to brand.shorter_name(brand.name,12,9), brand,data: {turbo_frame: "_top"}, class:"s-link bold", style:"text-align:center;" %>
     </div>
 
 

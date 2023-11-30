@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_11_20_234555) do
+ActiveRecord::Schema[7.0].define(version: 2023_11_30_093019) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -103,6 +103,15 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_20_234555) do
     t.datetime "updated_at", null: false
     t.bigint "user_id"
     t.index ["user_id"], name: "index_blogs_on_user_id"
+  end
+
+  create_table "brand_tag_assocs", force: :cascade do |t|
+    t.bigint "brand_id", null: false
+    t.bigint "tag_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["brand_id"], name: "index_brand_tag_assocs_on_brand_id"
+    t.index ["tag_id"], name: "index_brand_tag_assocs_on_tag_id"
   end
 
   create_table "brands", force: :cascade do |t|
@@ -314,6 +323,8 @@ ActiveRecord::Schema[7.0].define(version: 2023_11_20_234555) do
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
   add_foreign_key "blogs", "users"
+  add_foreign_key "brand_tag_assocs", "brands"
+  add_foreign_key "brand_tag_assocs", "tags"
   add_foreign_key "brands", "users"
   add_foreign_key "closets", "posts"
   add_foreign_key "closets", "users"

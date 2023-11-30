@@ -12,7 +12,7 @@
 
     <section class="home-nav mt-4">
         <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_or_tags_name_or_color_eq_any, ' ', checked: true, oninput: 'this.form.requestSubmit();' %> 
+            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_or_tags_name_or_color_or_brand_tags_name_eq_any, ' ', checked: true, oninput: 'this.form.requestSubmit();' %> 
             <div class="radio-style">
                 <i class="fa-solid fa-home fa-xl mt-3"></i><div class="radio-font">All</div>
             </div>
@@ -20,14 +20,14 @@
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-snowflake", word:"FW 2023", fill:"FW2023", f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-circle-check", word:"Verified", fill:"True", f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-mug-hot", word:"Mokka Edit", fill:"Brown", f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-pizza-slice", word:"NYC", fill:"new york", f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-road", word:"Streetwear", fill:8, f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-star", word:"Start Up", fill:11, f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-earth-asia", word:"Korean", fill:"KR", f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-user-ninja", word:"Hoodie", fill:"Hoodie", f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-user", word:"Casual", fill:1, f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-crown", word:"Luxury", fill:3, f:f%>
-        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-seedling", word:"Sustainable", fill:"sustain", f:f%>
-        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-scissors", word:"MTO", fill:"handmade", f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-microchip", word:"Techwear", fill:19, f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-brands fa-youtube", word:"Internet", fill:18, f:f%>
     </section>
       

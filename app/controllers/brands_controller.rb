@@ -74,8 +74,11 @@ class BrandsController < ApplicationController
 
   # POST /brands or /brands.json
   def create
+    
 
-    @brand = Brand.new(brand_params)
+    @brand = Brand.new(brand_params.except(:tags))
+    create_or_delete_brands_tags(@brand, params[:brand][:tags])
+    
     @brand.brand_text = "#654321;"
     @brand.user = current_user
     delete_styles(@brand, params[:brand][:styles],)
@@ -98,13 +101,14 @@ class BrandsController < ApplicationController
 
   # PATCH/PUT /brands/1 or /brands/1.json
   def update
+    create_or_delete_brands_tags(@brand, params[:brand][:tags])
     delete_styles(@brand, params[:brand][:styles],)
 
 
  
     respond_to do |format|
 
-      if @brand.update(brand_params)
+      if @brand.update(brand_params.except(:tags))
         @brand.last_edited = current_user.username
         format.html { redirect_to brand_url(@brand), notice: "Brand was successfully updated." }
         format.json { render :show, status: :ok, location: @brand }
@@ -145,6 +149,14 @@ class BrandsController < ApplicationController
         styles.each do |style|
           brand.styles << Style.find_or_create_by(name: style)
         end
+      end
+    end
+
+    def create_or_delete_brands_tags(brand, tags)
+      brand.brand_tag_assocs.destroy_all
+      tags = tags.strip.split(',')
+      tags.each do |tag|
+        brand.tags << Tag.find_or_create_by(name: tag)
       end
     end
 

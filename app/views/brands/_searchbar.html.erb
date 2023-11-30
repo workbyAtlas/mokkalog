@@ -1,94 +1,62 @@
-<%= search_form_for @query do |f| %>   
-<section class="section is-small prime section-corner">
-  <div class="center title is-4 secondary-t">brands</div>
-  <br/>
-  <hr class="bst" />
+<%= search_form_for @query, data: {turbo_frame: :results, turbo_action: 'advance'} do |f| %>   
 
+<section  data-controller="filter">
+<section class="section lgrey p-2 section-cornered">
 <div class="center">
 <div class="rw50">
  
-    <div class="center title is-5 my-2 secondary-t">Search</div>
+    <div class="center title is-5 my-2 secondary-t">Brands</div>
     <div class="center">
       <%= f.search_field :name_or_verification_or_styles_name_or_badge_i_cont, class:"input bs mokka-ph", placeholder:"Search here..." %>
       <%= f.submit "Search", class:"button is-warning my-2 bold secondary-t", style:"border: 1px solid #654321;" %>
     </div>
 
 </div>
-
 </div>
+  <div class="bold center">Filters</div>
+  <div class="tabs is-toggle is-small is-centered my-2">
+    <ul>
+      <li data-filter-target="btn1" data-action="click->filter#openFilter1">
+        <a>
+          <span>Style</span>
+        </a>
+      </li>
+      <li class="is-active" data-filter-target="btn2" data-action="click->filter#openFilter2">
+        <a>
+          <span>Main</span>
+        </a>
+      </li>
+      <li data-filter-target="btn3" data-action="click->filter#openFilter3">
+        <a>
+          <span>Origin</span>
+        </a>
+      </li>
+    </ul>
+  </div>
+  <hr class="bst"/>
+</section>
+
+  <div data-filter-target="filter1" class="home-nav d-none lgrey pb-3">
+  <% @styles.each do |style| %>
+  <%=render 'component/filters/check_box', css:"fa-solid fa-seedling", fill:"styles_name", word:style.name, key:style.name%>
+  <%end%>
+  </div>
+  <div data-filter-target="filter2" class="home-nav lgrey pb-3">
+  <%=render 'component/filters/check_box', css:"fa-solid fa-circle-check", fill:"verification", word:"Verified", key:"True"%>
+  <%=render 'component/filters/check_box', css:"fa-solid fa-mug-hot",fill:"badge", word:"Certified", key:"certified"%>
+  <%=render 'component/filters/check_box', css:"fa-solid fa-seedling",fill:"badge", word:"Sustainable", key:"sustain"%>
+  <%=render 'component/filters/check_box', css:"fa-solid fa-scissors",fill:"badge", word:"Hand Made", key:"handmade"%>
+  <%=render 'component/filters/check_box', css:"fa-solid fa-globe",fill:"badge", word:"Global", key:"global"%>
+  </div>
+  <div data-filter-target="filter3" class="home-nav d-none lgrey pb-3">
+  <%@locations.each do |location|%>
+  <%=render 'component/filters/check_box', css:"fa-solid fa-seedling", fill:"location", word:location, key:location%>
+  <%end%>
+  </div>
+
+</section>
 </section>
 
 
-<div class="notification">
-<div class="columns">
-<div class="column">
-<div class="bs cornered p-1 mx-2 rw80" style="height:150px;">
-<div class="mt-1 mb-0 title is-5 secondary-t"><u>Badges</u>
-    <a href="/badges"><i class="fa-solid fa-circle-info fa-xs" style="color:#654321;"></i></a></div>
 
-    <div class="one-filter-grid">
-    <div class="my-1">
-      <label class="color-cbox Brownbox">
-      <%= check_box_tag('q[verification_i_cont_any][]', "True", false) %>
-      <span class="color-cmark Brownmark">
-        <div class="hover">
-          <i class="fa-solid fa-circle-check fa-small" style="color:#cbb595;"></i>
-          <div class="hover-content center">Verified</div>
-        </div>
-      </span>
-      </label>
-   </div>
-    <div class="my-1">
-      <label class="color-cbox Brownbox">
-      <%= check_box_tag('q[badge_i_cont_any][]', "certified", false) %>
-      <span class="color-cmark Brownmark">
-        <div class="hover">
-        <i class="fa-solid fa-mug-saucer fa-small myellow"></i>
-        <div class="hover-content center">Certified</div>
-        </div>
-      </span>
-      </label>
-   </div>
-    <div class="my-1">
-      <label class="color-cbox Brownbox">
-      <%= check_box_tag('q[badge_i_cont_any][]', "sustain", false) %>
-      <span class="color-cmark Brownmark">
-        <div class="hover">
-        <i class="fa-solid fa-seedling fa-small mgreen"></i>
-        <div class="hover-content center">Sustainable</div>
-        </div>
-      </span>
-      </label>
-   </div>
-    <div class="my-1">
-      <label class="color-cbox Brownbox">
-      <%= check_box_tag('q[badge_i_cont_any][]', "handmade", false) %>
-      <span class="color-cmark Brownmark">
-        <div class="hover">
-        <i class="fa-solid fa-scissors fa-small mred"></i>
-        <div class="hover-content center">Handmade</div>
-        </div>
-      </span>
-      </label>
-   </div>
-    </div>
-
-    <%= f.submit "Filter", class:"button is-warning my-2 secondary-t bold", style:"border:1px solid #654321;" %>
-    <%=link_to "Clear", brands_path, class:"button is-warning is-light m-2 prime-t bold", style:"border:1px solid #cbb595;"%>
-
-
-
-</div>
-</div>
-  <div class="column">
-    <div class="bs cornered p-1 mx-2 rw80" style="height:150px;">
-  <div class="mt-1 mb-2 title is-5 secondary-t"><u>Sort</u></div>
-    <%= sort_link(@query, :name, "A-Z", class: "button is-warning bold secondary-t", style:"border:1px solid #654321;")%>
-
-  </div>
-  </div>
-
-
-</div>
-</div>
 <%end%>

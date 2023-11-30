@@ -1,23 +1,25 @@
-<%= search_form_for @query, data: {turbo_frame: :results}, url: home_path, html: { class: "form-inline" } do |f| %>
-
-      <div class="rw50 mx-auto center">
+<%= search_form_for @query, data: {turbo_frame: :results, turbo_action: 'advance'}, url: home_path, html: { class: "form-inline" } do |f| %>
+      
+      
+      <div class="mx-auto center rw70">
+      <%=link_to "what is mokkalog?", about_path, class:"s-link mr-2 d-none-mobile", style:"width:290px;"%>
         <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_location_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bs", placeholder:"Search here..." %>
-            <%= f.submit "Search", class:"button is-warning my-2 bold mokka-ph", style:"border:1px solid #654321;" %>
+            <%= f.submit "Search", class:" button is-warning my-2 bold mokka-ph", style:"border:1px solid #654321;" %>
             <div class="ml-2 lgrey flexed cornered p-2 cnav-filter-box" data-action="click->catalog#filterToggle">
-            <i class="fa-solid fa-filter mx-2"></i>Filters
+            <i class="fa-solid fa-filter mx-2"></i><span class="d-none-mobile">Filters</span>
         	</div>
       </div>
 
     <section class="home-nav mt-4">
         <label class="custom-radio">
-            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_eq_any, ' ', checked: true, oninput: 'this.form.requestSubmit();' %> 
+            <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_id_or_brand_location_or_category_name_or_tags_name_or_color_eq_any, ' ', checked: true, oninput: 'this.form.requestSubmit();' %> 
             <div class="radio-style">
                 <i class="fa-solid fa-home fa-xl mt-3"></i><div class="radio-font">All</div>
             </div>
         </label>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-snowflake", word:"FW 2023", fill:"FW2023", f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-circle-check", word:"Verified", fill:"True", f:f%>
-        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-mug-hot", word:"Mokka Edit", fill:"certified", f:f%>
+        <%=render 'posts/home_components/radio_box', css:"fa-solid fa-mug-hot", word:"Mokka Edit", fill:"Brown", f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-road", word:"Streetwear", fill:8, f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-star", word:"Start Up", fill:11, f:f%>
         <%=render 'posts/home_components/radio_box', css:"fa-solid fa-earth-asia", word:"Korean", fill:"KR", f:f%>
@@ -29,38 +31,7 @@
         <%=render 'posts/home_components/radio_box', css:"fa-brands fa-youtube", word:"Internet", fill:18, f:f%>
     </section>
       
-
-
-
-
-
-
-
-
-
 <div class="modal" data-catalog-target="filter">
-  <div class="modal-background"></div>
-  <div class="modal-card">
-    <header class="modal-card-head">
-      <p class="modal-card-title secondary-t">Filters</p>
-      <div class="delete" data-action="click->catalog#filterToggle"></div>
-    </header>
-    <section class="modal-card-body">
-      <!-- Content ... -->
-    <br/>
-    <%= render 'component/filters/type' %>  
-    <%= render 'component/filters/badge' %>
-
-    <div class="my-0 title is-5 secondary-t mb-2"><u>Colors</u></div>
-    <div class="bs cornered p-2"><%= render 'component/filters/color'%></div>
-
-    <div class="my-0 title is-5 secondary-t mb-2"><u>Categories</u></div>
-    <div class="bs cornered p-2"><%= render 'component/filters/category'%></div>
-
-    </section>
-    <footer class="modal-card-foot">
-
-    </footer>
-  </div>
+<%= render 'posts/home_components/filter_modal'%>
 </div>
 <%end%>

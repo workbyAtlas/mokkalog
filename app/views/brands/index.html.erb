@@ -2,6 +2,7 @@
   
 <%= render "searchbar" %>
 
+<%=turbo_frame_tag :results do%>
 <section class="section center">
   <div class="flexed-wc">
   <% @brands.each do |brand| %>
@@ -12,3 +13,4 @@
 
 
 <%= render 'component/pagy', item:@brands%>
+<%end%>

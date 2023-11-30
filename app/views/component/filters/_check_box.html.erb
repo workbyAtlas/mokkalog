@@ -1,0 +1,6 @@
+<label class="custom-radio">
+    <%= check_box_tag("q[#{fill}_i_cont_any][]", key, false, oninput: 'this.form.requestSubmit();') %>
+    <div class="radio-style">
+        <i class="<%=css%> fa-xl mt-3"></i><div class="radio-font"><%=word%></div>
+    </div>
+</label>

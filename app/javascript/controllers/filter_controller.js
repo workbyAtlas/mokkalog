@@ -7,82 +7,38 @@ export default class extends Controller {
   connect() {
   }
 
-  openFilter1(){
+openFilter(index) {
+  for (let i = 1; i <= 7; i++) {
+    const btn = this[`btn${i}Target`];
+    const filter = this[`filter${i}Target`];
 
-    for (let i = 1; i <= 7; i++) {
-      const btn = this[`btn${i}Target`];
-      const filter = this[`filter${i}Target`];
-
-      btn.classList.toggle("is-active", i === 1);
-      filter.classList.toggle("d-none", i !== 1);
+    if (btn && filter) {
+      btn.classList.toggle("is-active", i === index);
+      filter.classList.toggle("d-none", i !== index);
     }
-    
   }
-  openFilter2(){
+}
 
-    for (let i = 1; i <= 7; i++) {
-      const btn = this[`btn${i}Target`];
-      const filter = this[`filter${i}Target`];
-
-      btn.classList.toggle("is-active", i === 2);
-      filter.classList.toggle("d-none", i !== 2);
-    }
-    
-  }
-  openFilter3(){
-
-    for (let i = 1; i <= 7; i++) {
-      const btn = this[`btn${i}Target`];
-      const filter = this[`filter${i}Target`];
-
-      btn.classList.toggle("is-active", i === 3);
-      filter.classList.toggle("d-none", i !== 3);
-    }
-    
-  }
-  openFilter4(){
-
-    for (let i = 1; i <= 7; i++) {
-      const btn = this[`btn${i}Target`];
-      const filter = this[`filter${i}Target`];
-
-      btn.classList.toggle("is-active", i === 4);
-      filter.classList.toggle("d-none", i !== 4);
-    }
-    
-  }
-  openFilter5(){
-
-    for (let i = 1; i <= 7; i++) {
-      const btn = this[`btn${i}Target`];
-      const filter = this[`filter${i}Target`];
-
-      btn.classList.toggle("is-active", i === 5);
-      filter.classList.toggle("d-none", i !== 5);
-    }
-    
-  }
-  openFilter6(){
-
-    for (let i = 1; i <= 7; i++) {
-      const btn = this[`btn${i}Target`];
-      const filter = this[`filter${i}Target`];
-
-      btn.classList.toggle("is-active", i === 6);
-      filter.classList.toggle("d-none", i !== 6);
-    }
-    
-  }
-  openFilter7(){
-
-    for (let i = 1; i <= 7; i++) {
-      const btn = this[`btn${i}Target`];
-      const filter = this[`filter${i}Target`];
-
-      btn.classList.toggle("is-active", i === 7);
-      filter.classList.toggle("d-none", i !== 7);
-    }
-    
-  }
+openFilter1() {
+  this.openFilter(1);
+}
+openFilter2() {
+  this.openFilter(2);
+}
+openFilter3() {
+  this.openFilter(3);
+}
+openFilter4() {
+  this.openFilter(4);
+}
+openFilter5() {
+  this.openFilter(5);
+}
+openFilter6() {
+  this.openFilter(6);
+}
+openFilter7() {
+  this.openFilter(7);
+}
 
 }

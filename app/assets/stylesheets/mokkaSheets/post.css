@@ -1,5 +1,5 @@
 /*NEW*/
-.home-nav{overflow-x:scroll; width:100%; display:flex; justify-content: center;}
+.home-nav{overflow-y:hidden;display:flex; justify-content: center;}
 .cnav-btn-box{min-width:70px;height:70px;margin:0.5rem;}
 .cnav-filter-box{border:1px solid #654321; cursor:pointer;}
 .cnav-font{font-size:12px;margin-top:0.5rem;}
@@ -25,12 +25,25 @@
     cursor:pointer; 
   }
 
+  .radio-style:hover{background-color:#dcdcdc;}
+
   input[type="radio"] {
     opacity: 0; /* Hide the default radio button */
     position: absolute;
   }
 
   input[type="radio"]:checked + .radio-style {
+    background-color: #cbb595; /* Change the background color when checked */
+    border: 1px solid #654321;
+  }
+
+
+  input[type="checkbox"] {
+    opacity: 0; /* Hide the default radio button */
+    position: absolute;
+  }
+
+  input[type="checkbox"]:checked + .radio-style {
     background-color: #cbb595; /* Change the background color when checked */
     border: 1px solid #654321;
   }

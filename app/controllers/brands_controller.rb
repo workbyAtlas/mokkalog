@@ -16,7 +16,10 @@ class BrandsController < ApplicationController
     @brands = Kaminari.paginate_array(shuffled_brands).page(params[:page]).per(16)
     #@brands = @brands.order('created_at ASC').page(params[:page]).per(16)
     @blank = Brand.find(1)
-    
+
+    @styles = Style.all
+    @locations = Brand.pluck(:location).reject(&:blank?).uniq
+
 
     
 

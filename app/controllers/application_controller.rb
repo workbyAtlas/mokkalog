@@ -1,4 +1,5 @@
 class ApplicationController < ActionController::Base
+	include Pagy::Backend
 	#after_action :track_action
 
 	before_action :set_query

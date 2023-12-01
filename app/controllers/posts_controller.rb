@@ -17,8 +17,14 @@ class PostsController < ApplicationController
     @categories = Category.all
     
     
-    @posts = @query.result(distinct: true).includes(:tags, :brand, :category)
-    @posts = @posts.shuffle
+    @posts_prior = @query.result(distinct: true).includes(:tags, :brand, :category)
+    @posts_prior = @posts_prior.shuffle
+
+    @posts = Kaminari.paginate_array(@posts_prior).page(params[:page]).per(16)
+    respond_to do |format|
+      format.html
+      format.turbo_stream
+    end
 
     
 

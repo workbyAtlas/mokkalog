@@ -87,6 +87,7 @@ gem 'kaminari'
 gem "ahoy_matey", "~> 4.2"
 gem "chartkick", "~> 5.0"
 gem "groupdate", "~> 6.3"
+gem 'pagy', '~> 0.6.0'
 
 
 #gem 'omniauth'

@@ -53,6 +53,7 @@ Rails.application.routes.draw do
   get 'guideline' => 'pages#guideline'
   get 'discover' => 'pages#index'
   get 'manage' => 'pages#manage'
+  get 'lockdown'=> 'pages#lockdown'
 
   get 'home' => 'posts#home'
 

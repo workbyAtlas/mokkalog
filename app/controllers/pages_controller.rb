@@ -1,5 +1,6 @@
 class PagesController < ApplicationController
   before_action :mod?, only: %i[admin_room]
+  before_action :lockdown, except: %i[lockdown]
 
 
   def index
@@ -15,8 +16,6 @@ class PagesController < ApplicationController
 
     @post_count = Post.count(:all)
 
-
-    
     @stxt = ["Guess Collab","Hand Made","Preppy","From UK","E-Sports"]
     if Rails.env.development?
       @brand_s1 = Brand.find(1)
@@ -68,5 +67,8 @@ class PagesController < ApplicationController
     @users =User.all
     @posts =Post.all
     @categories = Category.all
+  end
+
+  def lockdown
   end
 end

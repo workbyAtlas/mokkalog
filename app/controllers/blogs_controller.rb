@@ -1,8 +1,7 @@
 class BlogsController < ApplicationController
   before_action :set_blog, only: %i[ show edit update destroy ]
-  before_action :mod?, except: %i[show index dev article]
   #before_action :authenticate_user!, except: %i[index show dev article]
-
+  before_action :mod?, except: %i[show index dev article]
   # GET /blogs or /blogs.json
   def index
     @blogs = Blog.all

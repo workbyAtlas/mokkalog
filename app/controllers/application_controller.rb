@@ -6,7 +6,13 @@ class ApplicationController < ActionController::Base
 	before_action :set_query_brand
 	before_action :set_user_roles
 	before_action :set_blank
+
+
 	before_action :authenticate_user!
+	before_action :lockdown
+	
+
+
 
 	def set_user_roles
 	 @auth = false
@@ -31,6 +37,18 @@ class ApplicationController < ActionController::Base
 	    @blank = Brand.find(1)
 	end
 
+	def lockdown
+		if user_signed_in?
+			return if current_user.editor?
+			return if current_user.mod?
+			return if current_user.admin?
+			redirect_to lockdown_path
+		else
+			
+		end
+
+	end
+
 
 
 
@@ -43,10 +61,23 @@ class ApplicationController < ActionController::Base
 	end
 
 	def mod?
-		return if current_user.mod?
-		return if current_user.admin?
+		if user_signed_in?
+			return if current_user.mod?
+			return if current_user.admin?
+			redirect_to root_path
+		else
+			redirect_to root_path
+		end
+
+	end
+
+	def blocker?
+		
 		redirect_to root_path
 	end
+
+
+
 
 	protected
 

@@ -1,26 +1,23 @@
 class PostsController < ApplicationController
+
   before_action :set_post, only: %i[show edit update]
   #before_action :authenticate_user!, except: %i[index show]
   before_action :editing_privilage_post, only: %i[edit update]
 
+
+  
+
   # GET /posts or /posts.json
-
-  def visit
-    @post = Post.find(params[:id])
-
-    
-  end
-
   def home
 
     @query = Post.ransack(params[:q])
     @categories = Category.all
-    
-    
+
     @posts_prior = @query.result(distinct: true).includes(:tags, :brand, :category)
     @posts_prior = @posts_prior.shuffle
 
-    @posts = Kaminari.paginate_array(@posts_prior).page(params[:page]).per(16)
+    @posts = Kaminari.paginate_array(@posts_prior).page(params[:page]).per(20)
+    
     respond_to do |format|
       format.html
       format.turbo_stream
@@ -332,7 +329,5 @@ def quick
     def post_params
       params.require(:post).permit(:title, :body, :price, :color, :category_id, :sub_category, :web_link, :likes, :image, :tags, :brand_id, 
         :name, :user_id, :c_type, :amazon_link, :material, :image1, :image2, :image3, :archive, :grailed, :season)
-
-
     end
 end

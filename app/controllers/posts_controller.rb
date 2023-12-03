@@ -3,6 +3,7 @@ class PostsController < ApplicationController
   before_action :set_post, only: %i[show edit update]
   #before_action :authenticate_user!, except: %i[index show]
   before_action :editing_privilage_post, only: %i[edit update]
+  before_action :set_filter_var
 
 
   
@@ -11,12 +12,11 @@ class PostsController < ApplicationController
   def home
 
     @query = Post.ransack(params[:q])
-    @categories = Category.all
-
-    @posts_prior = @query.result(distinct: true).includes(:tags, :brand, :category)
-    @posts_prior = @posts_prior.shuffle
-
-    @posts = Kaminari.paginate_array(@posts_prior).page(params[:page]).per(20)
+    post_setter(@query)
+    @brands = Brand.all
+    @styles = Style.all
+    @locations = @brands.pluck(:location).reject(&:blank?).uniq
+    
     
     respond_to do |format|
       format.html
@@ -32,9 +32,6 @@ class PostsController < ApplicationController
     @brands = Brand.all
     @brands = @brands.order("LOWER(name)")
 
-
-    @blank = Brand.find(1) 
-    @categories = Category.all
     @styles = Style.all
 
     #Ransack and Pagy
@@ -42,6 +39,8 @@ class PostsController < ApplicationController
     @posts_prior = @query.result(distinct: true).includes(:tags, :brand, :category)
     shuffled_posts = @posts_prior.to_a.shuffle
     @posts = Kaminari.paginate_array(shuffled_posts).page(params[:page]).per(16)
+
+    
 
     #Turbo
     respond_to do |format|

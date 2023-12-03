@@ -1,0 +1,39 @@
+<div class="bs cornered" data-controller="dropdown-box" style="border-bottom:none;">
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown5">
+  	Colors<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content p-2" data-dropdown-box-target="dropdown5">
+  <%= render 'component/filters/color'%>
+  </div>
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown1">
+  	Brands <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content p-2" data-dropdown-box-target="dropdown1">
+  	<%= render 'component/filters/brand'%>
+  </div>
+  <%if not type == "style"%>
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown2">
+  	Styles <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content p-2" data-dropdown-box-target="dropdown2">
+  	<%= render 'component/filters/style'%>
+  </div>
+  <%end%>
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown3">
+  	Material <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content p-2" data-dropdown-box-target="dropdown3">
+  	<%= render 'component/filters/material'%>
+  </div>
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown4">
+  	Origin <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown4">
+    <%= render 'component/filters/location'%>
+  </div>
+
+</div>

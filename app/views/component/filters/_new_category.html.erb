@@ -1,0 +1,77 @@
+<div class="bs cornered" data-controller="dropdown-box" style="border-bottom:none;">
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown1">
+  	Top<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown1">
+    <% @categories_top.each do |x| %>
+		<div class="my-1">
+		  <label class="m-checkbox mid-cbox">
+		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
+		  <span class="m-checkmark"><%=x.name%></span>
+		  </label>
+		</div>
+	<%end%>
+  </div>
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown2">
+  	Bottom <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown2">
+    <% @categories_bottom.each do |x| %>
+		<div class="my-1">
+		  <label class="m-checkbox mid-cbox">
+		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
+		  <span class="m-checkmark"><%=x.name%></span>
+		  </label>
+		</div>
+	<%end%>
+  </div>
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown3">
+  	Overwear <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown3">
+    <% @categories_overwear.each do |x| %>
+		<div class="my-1">
+		  <label class="m-checkbox mid-cbox">
+		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
+		  <span class="m-checkmark"><%=x.name%></span>
+		  </label>
+		</div>
+	<%end%>
+  </div>
+
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown4">
+  	Headwear<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown4">
+    <% @categories_headwear.each do |x| %>
+		<div class="my-1">
+		  <label class="m-checkbox mid-cbox">
+		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
+		  <span class="m-checkmark"><%=x.name%></span>
+		  </label>
+		</div>
+	<%end%>
+  </div>
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown5">
+  	Accessories<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+
+	<div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown5">
+	<% @categories_accessory.each do |x| %>
+		<div class="my-1">
+		  <label class="m-checkbox mid-cbox">
+		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
+		  <span class="m-checkmark"><%=x.name%></span>
+		  </label>
+		</div>
+	<%end%>
+	</div>
+</div>
+
+
+

@@ -2,6 +2,8 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
   before_action :mod?, except: %i[show index]
   before_action :authenticate_user!, except: %i[index show]
+  
+  
 
   # GET /categories or /categories.json
   def index
@@ -11,8 +13,9 @@ class CategoriesController < ApplicationController
   # GET /categories/1 or /categories/1.json
   def show
   @query = @category.posts.ransack(params[:q])
-  @posts = @query.result(distinct: true).where(category_id: @category.id).includes(:tags, :brand, :category)
-  @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
+  post_setter(@query)
+
+  
 
 
 
@@ -20,8 +23,8 @@ class CategoriesController < ApplicationController
   @brands = @posts.map(&:brand).uniq.compact
 
   #@brands = @brands.order("LOWER(name)")
-  @styles = Style.all
-  @categories = Category.all
+  @styles = Style.joins(:brands).where(brands: { id: @brands.map(&:id) }).distinct
+  @locations = @brands.pluck(:location).reject(&:blank?).uniq
 
   end
 

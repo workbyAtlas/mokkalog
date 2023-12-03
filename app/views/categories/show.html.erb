@@ -1,121 +1,47 @@
+<section data-controller="catalog">
 
-<%= search_form_for @query, url: category_path(@category.id),html: { class: "form-inline" } do |f| %>  
-<section class="section is-small prime">
-  <div class="center title is-4 secondary-t">
-    <%=pluralize(2,@category.name).gsub("2","")%>    
+<%= search_form_for @query, data: {turbo_frame: :results, turbo_action: 'advance'}, url: category_path(@category.id), html: { class: "form-inline" } do |f| %>
+
+<section class="section section-cornered">
+  <div class="center title is-5 my-2 secondary-t"><%=pluralize(2,@category.name).gsub("2","")%> </div>
+  <div class="mx-auto center rw50">
+    <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_location_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bs mokka-ph l-cornered", placeholder:"Search here..." %>
+
+      <%= f.button :submit, class: "button is-warning r-cornered ", style: "border: 2px solid #654321;border-left:none;" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+        <div class="ml-2 lgrey flexed cornered p-2 cnav-filter-box" data-action="click->catalog#filterToggle">
+        <i class="fa-solid fa-filter mx-2"></i><span class="d-none-mobile">Filters</span>
+      </div>
   </div>
-  <br/>
-  <hr class="bst" />
-  
-
 </section>
-
 
 <%#FILTER%>
-<section data-controller="filter" class="section lgrey p-2">
-
-<div class="title is-5 secondary-t center mt-0 mb-2"><u>Filters</u></div>
-<div class="tabs is-toggle is-small is-centered mb-2">
-  <ul>
-    <li data-filter-target="btn1" data-action="click->filter#openFilter1">
-      <a>
-        <span>Style</span>
-      </a>
-    </li>
-    <li data-filter-target="btn2" data-action="click->filter#openFilter2">
-      <a>
-        <span>Brands</span>
-      </a>
-    </li>
-    <li data-filter-target="btn3" data-action="click->filter#openFilter3">
-      <a>
-        <span>Category</span>
-      </a>
-    </li>
-    <li class="is-active" data-filter-target="btn4" data-action="click->filter#openFilter4">
-      <a>
-        <span>Main</span>
-      </a>
-    </li>
-    <li data-filter-target="btn5" data-action="click->filter#openFilter5">
-      <a>
-        <span>Material</span>
-      </a>
-    </li>
-    <li data-filter-target="btn6" data-action="click->filter#openFilter6">
-      <a>
-        <span>Color</span>
-      </a>
-    </li>
-    <li data-filter-target="btn7" data-action="click->filter#openFilter7">
-      <a>
-        <span>Price</span>
-      </a>
-    </li>
-  </ul>
+<div class="modal" data-catalog-target="filter">
+<%= render 'component/filters/filter_modal', type:"category", path: category_path(@category.id)%>
 </div>
-
-
-  <div class="mx-auto bs-1 cornered p-1 rw50 mb-2">
-    <div data-filter-target="filter1" class="d-none">
-      <%= render 'component/filters/style'%>
-    </div>
-    <div data-filter-target="filter2" class="d-none">
-      <%= render 'component/filters/brand'%>
-    </div>
-    <div data-filter-target="filter3" class="d-none">
-      <% render 'component/filters/category'%>
-    </div>
-    <div data-filter-target="filter4">
-      <div class="center bold"><u>Type</u></div>
-      <%= render 'component/filters/type'%>
-
-      <div class="bold center">
-        <%=link_to "Badges", badges_path, class:"s-link"%>
-      </div>
-      <%= render 'component/filters/badge'%>
-    </div>
-    <div data-filter-target="filter5" class="d-none">
-      <%= render 'component/filters/material'%>
-    </div>
-    <div data-filter-target="filter6" class="d-none">
-      <%= render 'component/filters/color'%>
-    </div>
-    <div data-filter-target="filter7" class="d-none">
-      <%# f.search_field :price_lteq_all, type: 'range' , min: 0, max: 1000, value: 0%>
-    </div>
-
-    <hr class="bst rw80 mx-auto mt-2 mb-1"/>
-    <div class="mt-2">
-      <%= f.submit "Filter", class:"button is-warning my-2 bold secondary-t is-small", style:"border: 1px solid #654321;" %>
-      <%=link_to "Clear", category_path(@category.id),class:"button is-warning is-light m-2 bold prime-t is-small", style:"border:1px solid #cbb595;"%>
-      </div>
-    </div>
-  </div>
-
-
-
-  </div>
-
-</div>
-</section>
-
 
 
 <% end %>
 
-<%if current_user == @auth%>
+<%=turbo_frame_tag :results do%>
+
+    <div class="center bold mb-4 p-2 bottom-bg">Showing <%=@posts_prior.count%> clothings</div>
+    <section class="flexed-wc post-container mx-auto">
+    <% @posts.each do |post| %>
+      <div class=""><%=render post%><%#= render "posts/post", post: post, like_status: current_user.liked?(post) %></div>
+    <% end %>
+    </section>
+
+
+  <%= render 'component/pagy', item:@posts%>
+<%end%>
+
+</section>
+<%if @auth%>
 <div>
   <%= link_to "Edit this category", edit_category_path(@category) %> |
   <%= link_to "Back to categories", categories_path %>
-
 <div class="mx-1 mb-4"><%= button_to "Destroy", @category, method: :delete,data: { turbo_confirm: "Are you sure?" }, class:"button is-danger" %></div> 
 </div>
 <%end%>
-
-<div class=" section flexed-wc mx-auto post-container">
-<% @posts.each do |post|%>
-<%= render "posts/post", post: post%>
-<%end%>
-</div>
-<%= render 'component/pagy', item:@posts%>

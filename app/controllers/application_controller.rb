@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_query
 	before_action :set_query_brand
 	before_action :set_user_roles
-	before_action :set_blank
+	before_action :set_necessary_variables
 
 
 	before_action :authenticate_user!
@@ -33,8 +33,20 @@ class ApplicationController < ActionController::Base
 		@query = Post.ransack(params[:q])	
 	end
 
-	def set_blank
+	def set_necessary_variables
 	    @blank = Brand.find(1)
+
+	end
+
+	def set_filter_var
+		@categories = Category.all
+		@categories_top = @categories.where(subcats: "top")
+		@categories_bottom = @categories.where(subcats: "bottom")
+		@categories_overwear = @categories.where(subcats: "overwear")
+		@categories_headwear = @categories.where(subcats: "headwear")
+		@categories_accessory = @categories.where(subcats: "accessory")
+
+
 	end
 
 	def lockdown
@@ -80,5 +92,11 @@ class ApplicationController < ActionController::Base
 
 
 	protected
+
+	def post_setter(q)
+    	@posts_prior = q.result(distinct: true).includes(:tags, :brand, :category)
+    	@posts_prior = @posts_prior.order(views: :desc)
+    	@posts = Kaminari.paginate_array(@posts_prior).page(params[:page]).per(20)
+	end
 
 end

@@ -1,8 +1,12 @@
 
 
+
+
 <section data-controller="catalog">
 	<%= render 'posts/home_components/filter'%>
 	<%=turbo_frame_tag :results do%>
+
+
 
 	<div class="center bold my-2">Showing <%=@posts_prior.count%> clothings</div>
 	<section class="flexed-wc post-container mx-auto">

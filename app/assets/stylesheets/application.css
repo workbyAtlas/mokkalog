@@ -148,6 +148,8 @@ transform: translateY(-30px);
 .purp{background-color:#9f5f9f;}
 .purp-link{color:#654321;text-decoration: underline #654321; cursor: pointer;}
 .purp-btn:hover{background-color:#8f558f;color:white;}
+.bottom-bg{border-bottom: 1px solid #DCDCDC;}
+.top-bg{border-top: 1px solid #DCDCDC;}
 
 
 /*PRIME COLOR#cxbb595;*/
@@ -168,6 +170,7 @@ transform: translateY(-30px);
 .secondary{background-color:#654321;}
 .secondary-t{color:#654321;}
 .bs{border:2px solid; border-color:#654321;}
+.y-bs{border-top:1px solid #654321;border-bottom:1px solid #654321;}
 .bs-1{border:1px solid; border-color:#654321;}
 .bst{border-top:2px solid; border-color:#654321;}
 .vbs{border-left: 2px solid #654321;}

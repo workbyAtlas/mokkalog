@@ -1,5 +1,6 @@
 class StylesController < ApplicationController
   before_action :set_style, only: %i[ show edit update destroy ]
+  before_action :set_filter_var, only: %i[show]
   
   #before_action :mod?, except: %i[show index]
 
@@ -12,11 +13,13 @@ class StylesController < ApplicationController
   def show
     @set_brand = @style.brands
     @query = Post.joins(:brand).where(brands: { id: @set_brand }).ransack(params[:q])
-    @posts = @query.result(distinct: true).includes(:tags, :brand, :category)
-    @posts = @posts.page(params[:page]).per(16)
+    post_setter(@query)
 
-    @categories = Category.all
     @brands = @style.brands
+    @categories = Category.all
+    @locations = @brands.pluck(:location).reject(&:blank?).uniq
+    
+    
 
   end
 

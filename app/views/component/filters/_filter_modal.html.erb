@@ -1,0 +1,46 @@
+<div class="modal-background"></div>
+<div class="modal-card">
+<header class="modal-card-head">
+  <p class="modal-card-title bold secondary-t center">Filters</p>
+  <div class="delete" data-action="click->catalog#filterToggle"></div>
+</header>
+<section class="modal-card-body">
+<!-- Content ... -->
+<br/>
+<!-- MAIN FILTER -->
+<%= render 'component/filters/type' %>
+<%= render 'component/filters/season'%> 
+
+<!-- BADGES -->
+<div class="my-0 title is-5 secondary-t mb-2"><u>Badges</u></div>
+<div>Badges are only given to verified brands & makes it easier to distinquish clothing. Read more about them <%=link_to "here", badges_path, data:{turbo_frame: "_top"}, target:"_blank", class:"s-link"%></div>
+<%= render 'component/filters/badge' %>
+
+<!--Category -->
+<%if not type == "category"%>
+<div class="my-0 title is-5 secondary-t mb-2"><u>Categories</u></div>
+<%= render 'component/filters/new_category'%>
+<%end%>
+<!-- Brand & Material-->
+<br/>
+<div class="my-0 title is-5 secondary-t mb-2"><u>Other Filters</u></div>
+<%= render 'component/filters/filter_dd', type:type%>
+
+
+
+
+
+
+
+
+
+</section>
+<footer class="modal-card-foot">
+    <div>
+
+            <div data-action="click->catalog#filterToggle" class="button is-warning bold" style="border: 1px solid #654321;">Apply Filter <%=@post_count%></div>
+        
+        <%=link_to "Clear", path , data: {turbo_frame: "_top"}, class:"button is-warning is-light bold", style:"border:1px solid #cbb595"%>
+    </div>
+</footer>
+</div>

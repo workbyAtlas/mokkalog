@@ -8,8 +8,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_necessary_variables
 
 
-	before_action :authenticate_user!
-	before_action :lockdown
+
 	
 
 

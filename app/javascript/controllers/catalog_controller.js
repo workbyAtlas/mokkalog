@@ -2,11 +2,9 @@ import { Controller } from "@hotwired/stimulus"
 
 // Connects to data-controller="catalog"
 export default class extends Controller {
-  static targets = ["btn1",, "btn2", "btn3", "btn4", "btn5", "btn6", "btn7", "btn8", "btn9", "btn10", 
-    "btn11", "btn12", "btn13", "catalog1", "catalog2", "catalog3", "catalog4", "catalog5", "catalog6", "catalog7", "catalog8", 
-    "catalog9", "catalog10", "catalog11", "catalog12", "catalog13", "filter"]
+  static targets = ["filter","filterCount","filterBox"]
 
-  connect() {
+  connect() {window.filterCounter = 0;
   }
 
   openCatalog(index) {
@@ -22,57 +20,31 @@ export default class extends Controller {
   filterToggle(){
     this.filterTarget.classList.toggle("is-active");
   }
+  checkboxToggle(event){
+    const checkbox = event.target;
+    var previousCount = filterCounter;
 
-  openCatalog1() {
-    this.openCatalog(1);
+    const isChecked = checkbox.checked;
+    filterCounter += isChecked ? 1 : -1;
+    this.filterCountTarget.textContent = filterCounter;
+
+    if (filterCounter == 1){
+      if(previousCount == 0){
+        this.filterCountTarget.classList.toggle("d-none")
+        this.filterBoxTarget.classList.toggle("filter-active")
+      }
+    }
+    if (filterCounter == 0){
+      if(previousCount == 1){
+        this.filterCountTarget.classList.toggle("d-none")
+        this.filterBoxTarget.classList.toggle("filter-active")
+      }
+    }
+ 
+
+
   }
 
-  openCatalog2() {
-    this.openCatalog(2);
-  }
 
-  openCatalog3() {
-    this.openCatalog(3);
-  }
-
-  openCatalog4() {
-    this.openCatalog(4);
-  }
-
-  openCatalog5() {
-    this.openCatalog(5);
-  }
-
-  openCatalog6() {
-    this.openCatalog(6);
-  }
-
-  openCatalog7() {
-    this.openCatalog(7);
-  }
-
-  openCatalog8() {
-    this.openCatalog(8);
-  }
-
-  openCatalog9() {
-    this.openCatalog(9);
-  }
-
-  openCatalog10() {
-    this.openCatalog(10);
-  }
-
-  openCatalog11() {
-    this.openCatalog(11);
-  }
-
-  openCatalog12() {
-    this.openCatalog(12);
-  }
-
-  openCatalog13() {
-    this.openCatalog(13);
-  }
 }
 

@@ -7,7 +7,7 @@
     <% @categories_top.each do |x| %>
 		<div class="my-1">
 		  <label class="m-checkbox mid-cbox">
-		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
+		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
 		  <span class="m-checkmark"><%=x.name%></span>
 		  </label>
 		</div>
@@ -21,7 +21,7 @@
     <% @categories_bottom.each do |x| %>
 		<div class="my-1">
 		  <label class="m-checkbox mid-cbox">
-		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
+		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
 		  <span class="m-checkmark"><%=x.name%></span>
 		  </label>
 		</div>
@@ -35,7 +35,7 @@
     <% @categories_overwear.each do |x| %>
 		<div class="my-1">
 		  <label class="m-checkbox mid-cbox">
-		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
+		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
 		  <span class="m-checkmark"><%=x.name%></span>
 		  </label>
 		</div>

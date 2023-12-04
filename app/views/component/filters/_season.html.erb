@@ -1,21 +1,21 @@
 <div class="typegrid mx-auto">
 	<div>
 	  <label class="m-checkbox">
-	  <%= check_box_tag('q[season_i_cont_any][]', "FW2023", false, oninput: 'this.form.requestSubmit();') %>
+	  <%= check_box_tag('q[season_i_cont_any][]', "FW2023", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
 	  <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
 	  <span class="m-checkmark l-cornered" style="width:80px;">FW2023</span>
 	  </label>
 	</div>
 	<div>
 	  <label class="m-checkbox">
-	  <%= check_box_tag('q[season_i_cont_any][]', "SS2023", false, oninput: 'this.form.requestSubmit();') %>
+	  <%= check_box_tag('q[season_i_cont_any][]', "SS2023", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
 	  <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
 	  <span class="m-checkmark n-cornered" style="width:80px;">SS2023</span>
 	  </label>
 	</div>
 	<div>
 	  <label class="m-checkbox">
-	  <%= check_box_tag('q[season_i_cont_any][]', "Pre-2023", false, oninput: 'this.form.requestSubmit();') %>
+	  <%= check_box_tag('q[season_i_cont_any][]', "Pre-2023", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
 	  <span class="m-checkmark r-cornered" style="width:80px;">Pre2023</span>
 	  </label>
 	</div>

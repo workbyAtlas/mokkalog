@@ -4,7 +4,7 @@
 
    <div class="my-1">
       <label class="m-checkbox longer-cbox">
-      <%= check_box_tag('q[brand_name_i_cont_any][]', x.name, false) %>
+      <%= check_box_tag('q[brand_name_i_cont_any][]', x.name, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
       <span class="m-checkmark"><%=(x.name.length > 15) ? x.name[0, 12] +"..." : x.name%></span>
       </label>
    </div>

@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
   before_action :mod?, only: %i[admin_room]
-  before_action :lockdown, except: %i[lockdown]
+  #before_action :lockdown, except: %i[lockdown]
 
 
   def index
@@ -67,6 +67,9 @@ class PagesController < ApplicationController
     @users =User.all
     @posts =Post.all
     @categories = Category.all
+    # Assuming you have a User model with a 'confirmed_at' attribute
+    @confirmed = User.where.not(confirmed_at: nil).count
+
   end
 
   def lockdown

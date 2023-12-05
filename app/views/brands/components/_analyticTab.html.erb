@@ -27,7 +27,7 @@
 	<div class="title is-4 secondary-t mt-2 center"><u>Brand Comparison</u></div>
 	<div class="columns">
 		<div class="cornered p-2 column">
-			<div class="title is-4 secondary-t mt-2 center">Most Similar Brands</div>
+			<div class="title is-4 secondary-t mt-2 center">Similar Brands</div>
 			<% @top_similar_brands.each do |brand| %>
 			  <div class="bs cornered my-2"><%= render brand %></div>
 			<% end %>
@@ -35,7 +35,7 @@
 
 
 		<div class="cornered p-2 column">
-			<div class="title is-4 secondary-t mt-2 center">Most Different Brands</div>
+			<div class="title is-4 secondary-t mt-2 center">Distinct Brands</div>
 			<% @top_different_brands.each do |brand| %>
 			  <div class="bs cornered my-2"><%= render brand %></div>
 			<% end %>
@@ -47,7 +47,7 @@
 <br/>
 <br/>
 <div class="center-down bs lgrey cornered">
-	<div class="title is-4 secondary-t mt-2">Top Clothing</div>
+	<div class="title is-4 secondary-t mt-2">Top Clothings</div>
 	<div class="flexed-wc">
 		<%@top_posts.each do |x|%>
 		<div>

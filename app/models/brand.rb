@@ -9,7 +9,7 @@ class Brand < ApplicationRecord
 
   validate :check_for_image
   validate :check_for_banner
-  
+  validates :styles, presence: true, length: { maximum: 5 }
   validates :link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:60}
   validates :ig_link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:60}
   validates :x_twitter, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:60}
@@ -44,7 +44,7 @@ class Brand < ApplicationRecord
     views_similarity = (views - other_brand.views).abs
 
     # Combine the similarities using weights or other criteria if needed
-    combined_similarity = 0.6 * styles_similarity.size + 0.1* location_similarity +  0.3 * views_similarity
+    combined_similarity = styles_similarity.size
     #combined_similarity = styles_similarity.size
   end
 

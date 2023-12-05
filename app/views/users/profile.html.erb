@@ -20,44 +20,36 @@
 <section>
 <div class="columns">
 	<div class="column is-two-fifths"></div>
-	<div class="column profile-text">
-		<div class="title is-4 my-2">
-			<%=@user.name%>
-			<span class="mx-1"></span>
-			<%=@user.last_name%></div>
-		<div><u>@<%=@user.username%></u></div>
-		<div class="mt-2 title is-6">
+	<div class="column">
+		<div class="title is-4 my-2 ml-2"><%=@user.name%><span class="mx-1"></span><%=@user.last_name%></div>
+		<div class="ml-2"><u>@<%=@user.username%></u></div>
+		<div class="ml-2 mt-2 title is-6">
 			Views: <%=@user.views%> | Entries Added:<%=@user.posts.size%> | <span id="share-btn" class="tag bs pointer" id="share" onclick="copy('share','share-btn')">Share +</span>
 		</div>
 		<%# LINKS---------------------------------------------------------- %>
-		<%= render "users/components/link_box" %>
+		<div class="ml-2"><%= render "users/components/link_box" %></div>
 
-		<div class="my-4 profile-desc"><%=@user.description%></div>
+		<div class="ml-2 my-4 profile-desc"><%=@user.description%></div>
 	</div>
 </div>
 
 </section>
 
 
-
-
-<br/>
-<hr class="bst"/>
-
 <section data-controller="tab" class= "mx-auto">
 
 <div class="tabs is-centered is-boxed mb-0">
   <ul>
-    <li class="is-active" data-tab-target="btn1" data-action="click->tab#openTab1">
+    <li data-tab-target="btn1" data-action="click->tab#openTab1">
+      <a>
+        <span class="icon is-small"><i class="fa-solid fa-heart" style="color:#654321;"></i></span>
+        <span>Liked</span>
+      </a>
+    </li>
+    <li class="is-active" data-tab-target="btn2" data-action="click->tab#openTab2">
       <a>
         <span class="icon is-small"><i class="fa-solid fa-shirt" style="color:#654321;"></i></span>
         <span>Closet</span>
-      </a>
-    </li>
-    <li data-tab-target="btn2" data-action="click->tab#openTab2">
-      <a>
-        <span class="icon is-small"><i class="fa-solid fa-database" style="color:#654321;"></i></span>
-        <span>Entries</span>
       </a>
     </li>
     <li data-tab-target="btn3" data-action="click->tab#openTab3">
@@ -69,12 +61,12 @@
   </ul>
 </div>
 <div class="post-form-box p-1 mt-0" style="min-height:400px;">
-  <span data-tab-target="tab1">
-  	<%= render "users/components/closet"%>		
+  <span data-tab-target="tab1" class="d-none">
+  	<%= render "users/components/liked"%>		
   </span>
 
-  <span data-tab-target="tab2" class="d-none">
-  	<%= render "users/components/liked"%>		
+  <span data-tab-target="tab2">	
+  	<%= render "users/components/closet"%>		
   </span>
 
   <span data-tab-target="tab3" class="d-none">

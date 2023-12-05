@@ -5,8 +5,8 @@
 
 
 <%=turbo_frame_tag :results do%>
-<div class="center bold my-2">Showing <%=@brands.count%> clothings</div>
-  <section class="section center">
+<div class="center bold my-2">Showing <%=@brands_prior.count%> clothings</div>
+  <section class="center">
     <div class="flexed-wc">
     <% @brands.each do |brand| %>
       <%= render "brands/components/brand_mokka", brand: brand%>

@@ -9,11 +9,11 @@ class BrandsController < ApplicationController
     @query = Brand.ransack(params[:q])
     #brands = @query.result(distinct: true)
 
-    @brands_prior = @query.result.includes(:posts)
+    @brands_prior = @query.result(distinct: true).includes(:tags, :posts, :styles)
     shuffled_brands = @brands_prior.order('created_at DESC')
     #shuffled_brands = @brands_prior.to_a.shuffle
     
-    @brands = Kaminari.paginate_array(shuffled_brands).page(params[:page]).per(16)
+    @brands = Kaminari.paginate_array(shuffled_brands).page(params[:page]).per(20)
     #@brands = @brands.order('created_at ASC').page(params[:page]).per(16)
     @blank = Brand.find(1)
 
@@ -62,7 +62,12 @@ class BrandsController < ApplicationController
 
   # GET /brands/new
   def new
-    @brand = Brand.new
+    if current_user.tokens > 0
+      @brand = Brand.new
+    else
+      redirect_to root_path, notice: "You don't have any Brand Token left, please reach out to our admins."
+
+    end
 
   end
 
@@ -83,6 +88,8 @@ class BrandsController < ApplicationController
     @brand.user = current_user
     delete_styles(@brand, params[:brand][:styles],)
 
+    current_user.tokens -= 1
+
 
 
 
@@ -90,6 +97,7 @@ class BrandsController < ApplicationController
 
     respond_to do |format|
       if @brand.save
+        current_user.save
         format.html { redirect_to brand_url(@brand), notice: "Brand was successfully created." }
         format.json { render :show, status: :created, location: @brand }
       else
@@ -154,9 +162,11 @@ class BrandsController < ApplicationController
 
     def create_or_delete_brands_tags(brand, tags)
       brand.brand_tag_assocs.destroy_all
-      tags = tags.strip.split(',')
-      tags.each do |tag|
-        brand.tags << Tag.find_or_create_by(name: tag)
+      if not tags.nil?
+        tags = tags.strip.split(',')
+        tags.each do |tag|
+          brand.tags << Tag.find_or_create_by(name: tag)
+        end
       end
     end
 

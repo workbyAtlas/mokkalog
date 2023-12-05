@@ -14,8 +14,10 @@
       <%= button_to "Delete", brand_path(@brand), method: :delete,data: { turbo_confirm: "Are you sure?" }, class:"button is-danger"%> 
   </div>
   </div>
+  <%if @auth%>
   <%@brand.tags.each do |tag|%>
   <div class="tag bs mx-2"><%=tag.name%></div>
+  <%end%>
   <%end%>
 </div>
 

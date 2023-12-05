@@ -1,18 +1,18 @@
-<div class="lgrey bp p-2" style="min-height:400px;">
-<div class="title is-4 mt-2"><u>Mokka</u></div>
-<div><strong>Current Role:</strong> <%=@user.role%></div>
-<div><strong>Joined on:</strong> <%=@user.created_at.strftime('%m-%d-%Y')%></div>
+<div class="lgrey bs p-2" style="min-height:400px;">
+<div class="title is-4 mt-2"><u>Roles</u></div>
+<div><span class="bold">Current Role:</span><%=@user.role%></div>
+<div><span class="bold">Coins:</span><%=@user.coins%></div>
+<div><span class="bold">Joined on:</span><%=@user.created_at.strftime('%m-%d-%Y')%></div>
 
-<div class="mt-2">
-	<%= link_to "New Clothing", new_post_path, class:"button-74" %>
-	<%= link_to "New Brand", new_brand_path, class:"button-74 mx-2" %>
-</div>
+<div><span class="bold">Need more coins? Please reach out to our admins in our discord.</span></div>
+
 
 <%if @auth%>
 <div class="title is-4">Dev Tool</div>
 <div><strong>Role:</strong><%=@user.role%></div>
 <div><strong>Link_to:</strong><%=link_to "Admin Room", adroom_path, class:"s-link"%></div>
 <div><strong>Role:</strong><%=@user.role%></div>
+
 <%end%>
 
 

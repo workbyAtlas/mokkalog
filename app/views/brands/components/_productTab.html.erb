@@ -3,7 +3,7 @@
   <div class="flexed">
     <div class="title is-4 mt-2 mx-4 secondary-t"><u>Products</u></div> 
   </div>
-  <section class="section flexed-wc mt-3"> 
+  <section class="flexed-wc mt-3"> 
     <%@posts.each do |post|%>
     <%= render 'posts/post', post: post%>
     <%end%>

@@ -1,7 +1,12 @@
 Rails.application.routes.draw do
+  root 'posts#home'
+  get 'home' => 'posts#home'
+  
   resources :styles
   resources :categories
-  
+  resources :tags
+  resources :collections
+  resources :comments, only: [:destroy, :edit, :update]
   resources :blogs do
     resources :comments, only: [:create, :show]
     collection do       
@@ -9,82 +14,58 @@ Rails.application.routes.draw do
       get :article
     end
   end
+
+  resources :brands do
+    member do
+      delete :purge_banner
+    end
+  end
   
-  resources :comments, only: [:destroy, :edit, :update]
-  #resources :comments, only: [:edit, :update]
-    
   
-  resources :collections
+
   get 'users/profile'
-  get 'closets/update'
-  #get 'users/check'
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
     confirmable:  'users/confirmations'
   }
-
-  #authenticated :user do
-  #  root 'dashboard#index', as: :authenticated_root
-  #end
-
-  #get '/u/:id', to: 'users#profile', as: 'user'
-
-  #resources :posts
-  resources :brands do
-    member do
-      delete :purge_banner
-    end
-  end
-    
-
-  resources :tags
-  #resources :discover
-  root 'posts#home'
-  #root 'pages#index'
-  
-  get 'about'  => 'pages#about'
-  get 'adroom' => 'pages#admin_room'
-  get 'faq' => 'pages#faq'
-  get 'contact' => 'pages#contact'
-  get 'mokkalog' => 'pages#mokkalog'
-  get 'badges' => 'pages#badges'
-  get 'guideline' => 'pages#guideline'
-  get 'discover' => 'pages#index'
-  get 'manage' => 'pages#manage'
-  get 'lockdown'=> 'pages#lockdown'
-
-  get 'home' => 'posts#home'
-
-  get 'confirmation_pending'=> 'pages#after_sign'
-  get 'welcome' => 'pages#induction'
-  get 'brand_onboarding' => 'pages#brand_onboarding'
-  
-  get 'advsearch' => 'search#advsearch'
-  post '/search', to: "search#search"
-
   get '/u/:id', to: 'users#profile', as: 'user'
-  #get '/u/:username', to: 'users#profile', as: 'user_profile'
-
   get 'setting' => 'users#setting'
-  #get '/s/:id', to: 'users#setting', as: 'myuser'
-  #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
-  get 'posts/:id/visit', to: 'posts#visit', as: 'post_visit'
-  get 'posts/:id/quick', to: 'posts#quick', as: 'post_quick'
-  post 'like/:id', to: 'posts#like', as: 'like_post'
-  post 'favorite/:id', to: 'posts#favorite', as: 'favorite_post'
+
+  #PAGES  
+  get 'about'     => 'pages#about'
+  get 'badges'    => 'pages#badges'
+  get 'guideline' => 'pages#guideline'
+  get 'discover'  => 'pages#index'
+  get 'faq'       => 'pages#faq'
+  get 'contact'   => 'pages#contact'
+  #ONBOARDING
+  get 'confirmation_pending' => 'pages#after_sign'
+  get 'welcome'              => 'pages#induction'
+  get 'brand_onboarding'     => 'pages#brand_onboarding'
+
+  get 'adroom'    => 'pages#admin_room'
+  get 'mokkalog'  => 'pages#mokkalog'
+  get 'manage'    => 'pages#manage'
+  get 'lockdown'  => 'pages#lockdown'
+
+  #get 'posts/:id/visit', to: 'posts#visit', as: 'post_visit'
+  #get 'posts/:id/quick', to: 'posts#quick', as: 'post_quick'
+
 
   resources :posts do
     collection do
       post :check  
     end
-
     resources :pagelinks
     resources :comments, only: :create
     #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
     #get "visit"
   end
+
+  post 'like/:id', to: 'posts#like', as: 'like_post'
+  post 'favorite/:id', to: 'posts#favorite', as: 'favorite_post'
 
   #resources :pagelinks, only: [:destroy, :edit, :update]
 

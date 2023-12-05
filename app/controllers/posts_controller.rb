@@ -107,9 +107,15 @@ def quick
 
   # GET /posts/new
   def new
-    @post = Post.new
-    #@user_brands = current_user.brands
-    set_users_brand
+
+    if current_user.coins > 0 
+      @post = Post.new
+      #@user_brands = current_user.brands
+      set_users_brand
+    else
+      redirect_to root_path, notice: "You don't have any coins left, please reach out to our admins."
+    end
+
 
 
   end
@@ -122,13 +128,15 @@ def quick
 
   # POST /posts or /posts.json
   def create
+
     @post = Post.new(post_params.except(:tags))
     create_or_delete_posts_tags(@post, params[:post][:tags],)
-    #create_or_delete_posts_brands(@post, params[:post][:brands],)
     @post.user = current_user
+    current_user.coins -=1
 
     respond_to do |format|
       if @post.save
+        current_user.save
         format.html { redirect_to post_url(@post), notice: "Post was successfully created." }
         format.json { render :show, status: :created, location: @post }
       else
@@ -248,9 +256,11 @@ def quick
 
     def create_or_delete_posts_tags(post, tags)
       post.taggables.destroy_all
-      tags = tags.downcase.strip.split(',')
-      tags.each do |tag|
-        post.tags << Tag.find_or_create_by(name: tag)
+      if not tags.nil?
+        tags = tags.downcase.strip.split(',')
+        tags.each do |tag|
+          post.tags << Tag.find_or_create_by(name: tag)
+        end
       end
     end
 

@@ -19,6 +19,8 @@ class UsersController < ApplicationController
   def setting
   end
 
+
+
   private
 
   def set_user
@@ -26,6 +28,7 @@ class UsersController < ApplicationController
     @user = User.friendly.find(params[:id])
     #@user = current_user
   end
+
 
 
   private

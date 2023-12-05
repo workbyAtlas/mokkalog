@@ -1,6 +1,6 @@
 class PagesController < ApplicationController
-  #before_action :mod?, only: %i[admin_room]
-  before_action :lockdown, except: %i[lockdown]
+  before_action :mod?, only: %i[admin_room]
+ 
 
 
   def index

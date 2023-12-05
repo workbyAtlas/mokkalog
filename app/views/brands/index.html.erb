@@ -1,16 +1,18 @@
 
-  
+<section data-controller="catalog">
 <%= render "searchbar" %>
 
+
+
 <%=turbo_frame_tag :results do%>
-<section class="section center">
-  <div class="flexed-wc">
-  <% @brands.each do |brand| %>
-    <%= render "brands/components/brand_mokka", brand: brand%>
-  <% end %>
-  </div>
-</section>
-
-
-<%= render 'component/pagy', item:@brands%>
+<div class="center bold my-2">Showing <%=@brands.count%> clothings</div>
+  <section class="section center">
+    <div class="flexed-wc">
+    <% @brands.each do |brand| %>
+      <%= render "brands/components/brand_mokka", brand: brand%>
+    <% end %>
+    </div>
+  </section>
+  <%= render 'component/pagy', item:@brands%>
 <%end%>
+</section>

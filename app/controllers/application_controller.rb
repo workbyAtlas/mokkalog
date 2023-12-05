@@ -58,7 +58,8 @@ class ApplicationController < ActionController::Base
 			return if current_user.admin?
 			redirect_to lockdown_path
 		else
-			redirect_to lockdown_path
+			redirect_to new_user_session_path
+
 			
 		end
 

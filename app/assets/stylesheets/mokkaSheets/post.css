@@ -1,5 +1,5 @@
 /*NEW*/
-.home-nav{overflow-x:scroll;display:flex; justify-content: center;position:relative;}
+.home-nav{overflow-x:hidden;display:flex; justify-content: center;position:relative;}
 
 
 
@@ -150,5 +150,5 @@
   overflow: scroll;
   height:200px;
 }
-  .home-nav{justify-content: flex-start;}
+  .home-nav{justify-content: flex-start;overflow-x:scroll;}
 }

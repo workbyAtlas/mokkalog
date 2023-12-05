@@ -11,28 +11,24 @@
   <div class="mx-2">
 
     <div class="d-none-mobile">
-      <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.brand.name,15,10),post,data: {turbo_frame: "_top"}, target:"_blank", class:"secondary-t"%></strong></div>
+      <div class="title is-5 my-1">
+        <%=link_to post.shorter_name(post.brand.name,15,10),post,data: {turbo_frame: "_top"}, target:"_blank", class:"secondary-t"%>    
+      </div>
+    </div>
+    <div class="bold my-0 d-none-desktop">
+      <%=link_to post.shorter_name(post.brand.name,12,9),post,data: {turbo_frame: "_top"}, class:"secondary-t"%>
     </div>
 
-    <div class="d-none-desktop">
-      <div class="title is-5 my-1"><strong><%=link_to post.shorter_name(post.brand.name,12,9),post,data: {turbo_frame: "_top"}, class:"secondary-t"%></strong></div>
-    </div>
-
-    <div><i><span class="brand-link">
+    <div>
       <span class="d-none-mobile"><%= post.shorter_name(post.title,20,15)%></span>
-      <span class="d-none-desktop"><%= post. shorter_name(post.title,15,10)%></span>
-      </span></i></div>
+      <span class="d-none-desktop mobile-text"><%= post. shorter_name(post.title,15,10)%></span>
+    </div>
   </div>
+
   <%#Price & Badge%>
   <div class="columns d-none-mobile">
     <div class="column">
-      <%if post.archive == "archived"%>
-        <div class="tag mx-2 mb-2" style="border: 2px solid #c88595; color:#c88595; font-weight:bold;">archived</div>
-      <%elsif post.archive == "project"%>
-        <div class="tag mx-2 mb-2" style="border: 2px solid #cbb595;font-weight:bold;">project</div>
-      <%else%>
-        <div class="mx-2 mb-2"><%=if post.price.blank? then "#N/A" else number_to_currency(post.price) end%></div>
-      <%end%>
+      <%=render 'posts/components/price', post:post%>
     </div>
     <%if post.brand.verification == "True" %>
     <div class="column flexed-reverse flex-margin-25">
@@ -43,13 +39,7 @@
   </div>
 
   <div class="d-none-desktop">
-    <%if post.archive == "archived"%>
-      <div class="tag mx-2 mb-2" style="border: 2px solid #c88595; color:#c88595; font-weight:bold;">archived</div>
-    <%elsif post.archive == "project"%>
-      <div class="tag mx-2 mb-2" style="border: 2px solid #cbb595;font-weight:bold;">project</div>
-    <%else%>
-      <div class="mx-2 mb-2"><%=if post.price.blank? then "#N/A" else number_to_currency(post.price) end%></div>
-    <%end%> 
+    <%=render 'posts/components/price', post:post%>
     <div class="center">
       <div class="flexed-reverse flex-margin-25"><%=render 'posts/components/badge_for_post', post:post%></div>
     </div>  

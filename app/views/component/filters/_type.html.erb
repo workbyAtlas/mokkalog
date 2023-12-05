@@ -1,21 +1,21 @@
 <div class="typegrid mx-auto">
 	<div>
 	  <label class="m-checkbox">
-	  <%= check_box_tag('q[c_type_i_cont_any][]', "Neutral", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
+	  <%= check_box_tag('q[c_type_eq_any][]', "Neutral", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
 	  <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
 	  <span class="m-checkmark l-cornered" style="width:80px;">Neutral</span>
 	  </label>
 	</div>
 	<div>
 	  <label class="m-checkbox">
-	  <%= check_box_tag('q[c_type_i_cont_any][]', "Women", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
+	  <%= check_box_tag('q[c_type_eq_any][]', "Women", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
 	  <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
 	  <span class="m-checkmark n-cornered" style="width:80px;">Women</span>
 	  </label>
 	</div>
 	<div>
 	  <label class="m-checkbox">
-	  <%= check_box_tag('q[c_type_i_cont_any][]', "Men", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
+	  <%= check_box_tag('q[c_type_eq_any][]', "Men", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
 	  <span class="m-checkmark r-cornered" style="width:80px;">Men</span>
 	  </label>
 	</div>

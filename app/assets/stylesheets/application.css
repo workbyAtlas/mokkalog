@@ -22,6 +22,9 @@
 }
 
 .helv{font-family:"helvetica";}
+.mobile-text{font-size:14px;}
+.mobile-small-text{font-size:12px;}
+.like-btn-location{top:-5px;right:-5px;}
 
 /*HTML FORMAT*/
 tr{padding:15px;}
@@ -367,7 +370,7 @@ transform: translateY(-30px);
     .d-block-mobile{display:block;}
     .root_search{width:95%;}
     .mobile-collapse{width:95%; margin:auto;display: flex;justify-content: center;align-items: center;}
-    .post-card{width:150px; height:300px;}
+    .post-card{width:180px; height:310px;}
     .flexed-wcr{display:flex;flex-wrap:wrap;justify-content: center;}
     .rw60,.rw70,.rw80,.rw90{width:90%;}
     .rw30, .rw50{width:98%;}

@@ -15,7 +15,9 @@
         <%=link_to post.shorter_name(post.brand.name,15,10),post,data: {turbo_frame: "_top"}, target:"_blank", class:"secondary-t"%>    
       </div>
     </div>
-    <div class="bold my-0 d-none-desktop">
+
+
+    <div class="bold my-1 d-none-desktop">
       <%=link_to post.shorter_name(post.brand.name,12,9),post,data: {turbo_frame: "_top"}, class:"secondary-t"%>
     </div>
 
@@ -39,7 +41,7 @@
   </div>
 
   <div class="d-none-desktop">
-    <%=render 'posts/components/price', post:post%>
+    <%=render 'posts/components/price',post:post%>
     <div class="center">
       <div class="flexed-reverse flex-margin-25"><%=render 'posts/components/badge_for_post', post:post%></div>
     </div>  

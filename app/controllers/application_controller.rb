@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_user_roles
 	before_action :set_necessary_variables
 
+
 	before_action :lockdown
 
 
@@ -57,6 +58,7 @@ class ApplicationController < ActionController::Base
 			return if current_user.admin?
 			redirect_to lockdown_path
 		else
+			redirect_to lockdown_path
 			
 		end
 

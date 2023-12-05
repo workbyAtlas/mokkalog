@@ -1,5 +1,5 @@
 /*NEW*/
-.home-nav{overflow-x:hidden;display:flex; justify-content: center;position:relative;}
+.home-nav{overflow-x:scroll;display:flex; justify-content: center;position:relative;}
 
 
 

@@ -11,15 +11,15 @@
 
   <section class="home-nav mt-4 p-2 home-nav-border">
       <label class="custom-radio">
-          <%= f.radio_button :name_or_verification_or_styles_name_or_tags_name_or_location_eq_any, ' ', checked: true, oninput: 'this.form.requestSubmit();' %> 
+          <%= f.radio_button :name_or_verification_or_styles_name_or_tags_id_or_location_eq_any, ' ', checked: true, oninput: 'this.form.requestSubmit();' %> 
           <div class="radio-style">
               <i class="fa-solid fa-home fa-xl mt-3"></i><div class="radio-font">All</div>
           </div>
       </label>
       <%=render 'brands/components/radio_box', css:"fa-solid fa-circle-check", word:"Verified", fill:"True", f:f%>
-      <%=render 'brands/components/radio_box', css:"fa-solid fa-seedling", word:"Sustainable", fill:59, f:f%>
-      <%=render 'brands/components/radio_box', css:"fa-solid fa-person", word:"Men", fill:58, f:f%>
-      <%=render 'brands/components/radio_box', css:"fa-solid fa-person-dress", word:"Women", fill:57, f:f%>
+      <%=render 'brands/components/radio_box', css:"fa-solid fa-seedling", word:"Sustainable", fill:62, f:f%>
+      <%=render 'brands/components/radio_box', css:"fa-solid fa-person", word:"Men", fill:61, f:f%>
+      <%=render 'brands/components/radio_box', css:"fa-solid fa-person-dress", word:"Women", fill:60, f:f%>
       <%=render 'brands/components/radio_box', css:"fa-solid fa-road", word:"Streetwear", fill:"Streetwear", f:f%>
       <%=render 'brands/components/radio_box', css:"fa-solid fa-star", word:"Start Up", fill:"Start Up", f:f%>
       <%=render 'brands/components/radio_box', css:"fa-solid fa-earth-asia", word:"Korean", fill:"KR", f:f%>

@@ -75,7 +75,7 @@
 	<% @styles.each do |x| %>
 		<div class="my-1">
 		  <label class="m-checkbox mid-cbox">
-		  <%= check_box_tag('q[style_ids_i_cont_any][]', x.id, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();')%>
+		  <%= check_box_tag('q[styles_id_eq_any][]', x.id, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();')%>
 		  <span class="m-checkmark"><%=x.name%></span>
 		  </label>
 		</div>

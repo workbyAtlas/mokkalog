@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_user_roles
 	before_action :set_necessary_variables
 
-	before_action :lockdown
+	#before_action :lockdown
 	def set_user_roles
 	 @auth = false
 	 @auth_e = false

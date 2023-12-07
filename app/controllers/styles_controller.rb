@@ -1,7 +1,7 @@
 class StylesController < ApplicationController
   before_action :set_style, only: %i[ show edit update destroy ]
   before_action :set_filter_var, only: %i[show]
-  #before_action :mod?, except: %i[show index]
+  before_action :mod?, except: %i[show index]
 
 
   # GET /styles or /styles.json

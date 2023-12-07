@@ -265,7 +265,7 @@ def quick
     end
 
     def set_recommendation
-    post_brand = @post.brand
+      post_brand = @post.brand
       @similar_posts = Post.where(category_id: @post.category_id, color: @post.color)
                      .where.not(id: @post.id).order('RANDOM()').limit(16)
       num_similar_posts = @similar_posts.count
@@ -300,23 +300,17 @@ def quick
         # Access the styles through @post.brand
         styles = @post.brand.styles.pluck(:id)
 
-        # Fetch additional posts with matching styles, excluding the current post and those already fetched
-        additional_posts = Post.joins(brand: :styles)
-                             .where('styles.id IN (?) AND posts.id NOT IN (?)', styles, [@post.id] + @post_same_brand.pluck(:id))
-                             .order('RANDOM()')
-                             .limit(16 - @post_same_brand.length)
+        target_brand = @post.brand  # Assuming @brand is your target brand
+        all_brands = Brand.where.not(id: target_brand.id)
+        @top_similar_brands = all_brands.sort_by { |brand| target_brand.similarity_to(brand) }.reverse.take(4)
+        additional_posts = Post.where(brand: top_similar_brands).limit(16 - @post_same_brand.count)
+
+
 
         # Add these additional posts to the @post_same_brand array
         @post_same_brand += additional_posts
       end
 
-      if @post_same_brand.length < 16
-        remaining_posts = Post.where.not(id: [@post.id] + @post_same_brand.pluck(:id))
-                             .order('RANDOM()')
-                             .limit(16 - num_similar_posts)
-
-        @post_same_brand += remaining_posts
-      end
 
 
     end 

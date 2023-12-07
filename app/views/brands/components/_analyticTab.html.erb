@@ -1,25 +1,6 @@
 <section class="section lgrey pt-1">
 	<div class="title is-4 mt-2 mx-4 secondary-t"><u>Analytics</u></div> 
-
-	<%chart_color = ["#8fbc8f","#cbb595","#A5668B","#477998","#F78154","#AFCBFF","#477998","#ffad69","#9C3848"]%>
-	<div class="columns">
-		<div class="column">
-			<div class="center bold">Color</div>
-			<%= pie_chart @posts_chart.group(:color).count, colors:chart_color, class:"square-chart" %>
-
-		</div>
-		<div class="column">
-			<div class="center bold">Category</div>
-			<%= pie_chart @posts_chart.joins(:category).group('categories.name').count, colors: chart_color %>
-
-		</div>
-		<div class="column">
-			<div class="center bold">Material</div>
-			<%= pie_chart @posts_chart.group(:material).count, colors:chart_color, class:"square-chart" %>
-		</div>
-	</div>
-
-
+	
 <br/>
 <br/>
 

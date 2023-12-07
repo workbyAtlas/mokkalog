@@ -2,8 +2,8 @@
 
 class Users::SessionsController < Devise::SessionsController
 
-  # before_action :configure_sign_in_params, only: [:create]
-  #before_action :lockdown, only: %i[create]
+  #before_action :configure_sign_in_params, only: [:create]
+  # before_action :lockdown, only: %i[create]
   # GET /resource/sign_in
   # def new
   #   super
@@ -39,6 +39,7 @@ class Users::SessionsController < Devise::SessionsController
     else
       root_path
     end
+    root_path
 
 
   end

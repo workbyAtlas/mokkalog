@@ -303,7 +303,7 @@ def quick
         target_brand = @post.brand  # Assuming @brand is your target brand
         all_brands = Brand.where.not(id: target_brand.id)
         @top_similar_brands = all_brands.sort_by { |brand| target_brand.similarity_to(brand) }.reverse.take(4)
-        additional_posts = Post.where(brand: top_similar_brands).limit(16 - @post_same_brand.count)
+        additional_posts = Post.where(brand: @top_similar_brands).limit(16 - @post_same_brand.count)
 
 
 

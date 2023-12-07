@@ -39,7 +39,7 @@ class Users::SessionsController < Devise::SessionsController
     else
       root_path
     end
-    root_path
+    
 
 
   end

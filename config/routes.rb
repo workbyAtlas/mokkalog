@@ -1,5 +1,5 @@
 Rails.application.routes.draw do
-  root 'posts#home'
+  root 'pages#about'
   get 'home' => 'posts#home'
   
   resources :styles

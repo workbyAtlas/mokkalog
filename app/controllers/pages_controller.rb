@@ -45,6 +45,10 @@ class PagesController < ApplicationController
   def about
   end
 
+  def after_sign
+    redirect_to root_path
+  end
+
   def manage
     if current_user.brands.count > 0
       @brands = current_user.brands

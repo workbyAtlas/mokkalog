@@ -28,11 +28,25 @@
 	<%end%>
   </div>
 
-  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown3">
-  	Overwear <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+   <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown3">
+  	Female <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
   <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown3">
-    <% @categories_overwear.each do |x| %>
+    <% @categories_female.each do |x| %>
+		<div class="my-1">
+		  <label class="m-checkbox mid-cbox">
+		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
+		  <span class="m-checkmark"><%=x.name%></span>
+		  </label>
+		</div>
+	<%end%>
+  </div>
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown4">
+  	Outerwear <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown4">
+    <% @categories_outerwear.each do |x| %>
 		<div class="my-1">
 		  <label class="m-checkbox mid-cbox">
 		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
@@ -43,10 +57,10 @@
   </div>
 
 
-  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown4">
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown5">
   	Headwear<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
-  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown4">
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown5">
     <% @categories_headwear.each do |x| %>
 		<div class="my-1">
 		  <label class="m-checkbox mid-cbox">
@@ -57,12 +71,26 @@
 	<%end%>
   </div>
 
-  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown5">
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown6">
   	Accessories<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
 
-	<div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown5">
+	<div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown6">
 	<% @categories_accessory.each do |x| %>
+		<div class="my-1">
+		  <label class="m-checkbox mid-cbox">
+		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>
+		  <span class="m-checkmark"><%=x.name%></span>
+		  </label>
+		</div>
+	<%end%>
+	</div>
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown7">
+  	Misc<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+
+	<div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown7">
+	<% @categories_misc.each do |x| %>
 		<div class="my-1">
 		  <label class="m-checkbox mid-cbox">
 		  <%= check_box_tag('q[category_name_i_cont_any][]', x.name, false,  oninput: 'this.form.requestSubmit();') %>

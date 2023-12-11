@@ -35,10 +35,12 @@ class ApplicationController < ActionController::Base
 	def set_filter_var
 		@categories = Category.all
 		@categories_top = @categories.where(subcats: "top")
+		@categories_female = @categories.where(subcats: "female")
 		@categories_bottom = @categories.where(subcats: "bottom")
-		@categories_overwear = @categories.where(subcats: "overwear")
+		@categories_outerwear = @categories.where(subcats: "outerwear")
 		@categories_headwear = @categories.where(subcats: "headwear")
 		@categories_accessory = @categories.where(subcats: "accessory")
+		@categories_misc = @categories.where(subcats: "misc")
 
 
 	end

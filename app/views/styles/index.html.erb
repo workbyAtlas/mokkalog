@@ -1,7 +1,7 @@
-<style>html{background-color:#f5f5f5;}</style>
+
 
 <section class="section is-medium prime section-corner-top">
-  <div class="center title is-4 secondary-t">style</div>
+  <div class="center title is-4 secondary-t">Styles</div>
   <hr class="bst" />
 </section>
 
@@ -10,13 +10,11 @@
 
 
 
-<section class="section lgrey center">
-<div class="bs cornered rw50 p-2">
+<section class="section flexed-wc">
+
   <% @styles.each do |style| %>
-    <p class="center">
-      <%= link_to style.name, style, class:"sn-link bold" %>
-    </p>
+    <%= render style%>
   <% end %>
-</div>
+
 </section>
 

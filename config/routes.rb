@@ -41,7 +41,7 @@ Rails.application.routes.draw do
   get 'faq'       => 'pages#faq'
   get 'contact'   => 'pages#contact'
   #ONBOARDING
-  get 'confirmation_pending' => 'pages#after_sign'
+  get 'redirect' => 'pages#after_sign'
   get 'welcome'              => 'pages#induction'
   get 'brand_onboarding'     => 'pages#brand_onboarding'
 

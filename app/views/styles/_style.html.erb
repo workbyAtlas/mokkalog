@@ -1,3 +1,22 @@
-<% style.styleables.each do |styleable| %>
-  <%= render 'brands/components/brand_mokka', brand: styleable.brand %>
-  <% end %>
+<%# style.styleables.each do |styleable| %>
+  <%#= render 'brands/components/brand_mokka', brand: styleable.style %>
+  <%# end %>
+<div class="lgrey px-3 pt-3 pb-0 cornered m-2 brand-card">
+
+  <span class="mx-auto">
+    <% if style.image.attached? %>
+    <div><%=link_to (image_tag(style.image_handler(style.image,"brand"), class:"cornered")), style, data: {turbo_frame: "_top"} %></div>
+    <% else %>
+    <div class="center"><%=image_tag(@blank.image_brand, class:"cornered")%></div>
+    <% end %>
+
+    <div class="p-link center d-none-mobile">
+      <%=link_to style.shorter_name(style.name,15,10), style,data: {turbo_frame: "_top"}, class:"s-link bold", style:"text-align:center;" %>
+    </div>
+
+    <div class="p-link d-none-desktop">
+      <%=link_to style.shorter_name(style.name,20,15), style,data: {turbo_frame: "_top"}, class:"s-link bold center", style:"text-align:center;" %>
+    </div>
+  </span>
+
+</div>

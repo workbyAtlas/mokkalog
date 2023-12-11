@@ -18,11 +18,6 @@ class PostsController < ApplicationController
     @styles = Style.all
     @locations = @brands.pluck(:location).reject(&:blank?).uniq
     
-    
-    respond_to do |format|
-      format.html
-      format.turbo_stream
-    end
 
     
 

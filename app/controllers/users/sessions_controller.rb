@@ -35,7 +35,7 @@ class Users::SessionsController < Devise::SessionsController
       welcome_path
 
     else
-      about_path
+      redirect_path
     end
   
   end

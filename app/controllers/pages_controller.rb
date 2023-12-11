@@ -46,6 +46,7 @@ class PagesController < ApplicationController
   end
 
   def after_sign
+    sleep(1)
     redirect_to root_path
   end
 

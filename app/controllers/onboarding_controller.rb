@@ -1,0 +1,2 @@
+class OnboardingController < ApplicationController
+end

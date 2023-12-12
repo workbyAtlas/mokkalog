@@ -39,7 +39,7 @@ class BrandsController < ApplicationController
 
 
 
-    @posts = @posts.order('created_at DESC').page(params[:page]).per(16)
+    @posts = @posts.order('created_at DESC').page(params[:page]).per(20)
     
     @badges = false
 

@@ -41,9 +41,10 @@ Rails.application.routes.draw do
   get 'faq'       => 'pages#faq'
   get 'contact'   => 'pages#contact'
   #ONBOARDING
-  get 'redirect' => 'pages#after_sign'
-  get 'welcome'              => 'pages#induction'
-  get 'brand_onboarding'     => 'pages#brand_onboarding'
+
+
+  get 'welcome'              => 'onboarding#step1'
+  get 'brand_onboarding'     => 'onboarding#brand'
 
   get 'adroom'    => 'pages#admin_room'
   get 'mokkalog'  => 'pages#mokkalog'

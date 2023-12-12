@@ -18,6 +18,7 @@ class PostsController < ApplicationController
     @styles = Style.all
     @locations = @brands.pluck(:location).reject(&:blank?).uniq
     
+    
 
     
 

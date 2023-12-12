@@ -1,3 +1,4 @@
+<%@title = @style.name%>
 <section data-controller="catalog">
 
 <%= search_form_for @query, data: {turbo_frame: :results, turbo_action: 'advance'}, url: style_path(@style.id), html: { class: "form-inline" } do |f| %>

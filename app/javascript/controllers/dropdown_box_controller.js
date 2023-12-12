@@ -24,9 +24,9 @@ export default class extends Controller {
     this.dropdown5Target.classList.toggle("d-none")
   }
   openDropdown6(){
-    this.dropdown5Target.classList.toggle("d-none")
+    this.dropdown6Target.classList.toggle("d-none")
   }
   openDropdown7(){
-    this.dropdown5Target.classList.toggle("d-none")
+    this.dropdown7Target.classList.toggle("d-none")
   }
 }

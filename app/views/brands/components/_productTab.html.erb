@@ -1,21 +1,47 @@
 <section class="lgrey brand-partial-container">
 
   <div class="flexed">
-    <div class="title is-4 mt-2 mx-4 secondary-t"><u>Products</u></div> 
+    <div class="title is-4 mt-2 mx-4 secondary-t"><u> Products</u></div> 
   </div>
+
+
+<div data-controller="catalog">
+<%= search_form_for @query, data: {turbo_frame: :results, turbo_action: 'advance'}, url: brand_path(@brand), html: { class: "form-inline" } do |f| %>
+      
+      
+      <div class="mx-auto center rw50">
+        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_location_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bs mokka-ph l-cornered", placeholder:"Search here..." %>
+
+          <%= f.button :submit, class: "button is-warning r-cornered ", style: "border: 2px solid #654321;border-left:none;" do %>
+            <i class="fa-solid fa-magnifying-glass"></i>
+          <% end %>
+ 
+          <%= render 'component/filters/filterbox'%>
+      </div>
+
+<div class="modal" data-catalog-target="filter">
+<%= render 'component/filters/filter_modal', type:"brand", path: brand_path(@brand.id)%>
+</div>
+
+<%end%>
+
+
+  <%=turbo_frame_tag :results do%>
+  <div class="center bold my-2">Showing <%=@posts.count%> clothings</div>
   <section class="flexed-wc mt-3"> 
     <%@posts.each do |post|%>
     <%= render 'posts/post', post: post%>
     <%end%>
     <br/>
-
-
   </section>
       <br/>
       <%= paginate @posts%>
       <br/>
-</section>
 
+
+<%end%>
+
+</div>
 
 
 

@@ -1,0 +1,21 @@
+<%=form_for @brand, url: wizard_path, method: :put do |form|%>
+  <% if @brand.errors.any? %>
+    <%=render 'component/error', errors: @brand.errors%>
+  <% end %>
+<div class="title is-4 center secondary-t mt-6">Last one, I swear!</div>
+
+<div class="center secondary-t bold"><u>Gallery</u></div>
+<div class="center">Add up to 3 images to showcase what your brand is all about!</div>
+<div class="columns">
+	<div class="column"><%= render "brands/components/gallery_1", form: form, brand: @brand %></div>
+	<div class="column"><%= render "brands/components/gallery_2", form: form, brand: @brand %></div>
+	<div class="column"><%= render "brands/components/gallery_3", form: form, brand: @brand %></div>
+</div>
+
+
+<div class="center">
+	<%=form.submit "Continue", class:" my-2 button is-warning bold", style:"border: 1px solid #654321"%>
+	<%=link_to "Skip", next_wizard_path, class:"ml-2 button is-warning bold is-light"%>	
+</div>
+</div>
+<%end%>

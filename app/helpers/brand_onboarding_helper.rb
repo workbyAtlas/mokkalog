@@ -1,0 +1,2 @@
+module BrandOnboardingHelper
+end

@@ -1,0 +1,32 @@
+<%=form_for @brand, url: wizard_path, method: :put, data: { turbo: false } do |form|%>
+  <% if @brand.errors.any? %>
+    <%=render 'component/error', errors: @brand.errors%>
+  <% end %>
+
+<div class="rw50 mx-auto taller">
+    <div class="title is-4 center secondary-t text-center mt-6">Are you open to collaboration?</span></div>
+    <div class="mt-3 center text-center">At Mokkalog we believe one way to help brands grow is through collaborations. We want to help connect creatives to other creatives.</div>
+
+    <div class="columns bs cornered mt-3">
+    	<div class="column">Are you open to collaboration with influencers?</div>
+    	<div class="column">
+    		<div class="select float-r"><%=form.select :influencer, ["Choose One","Yes", "No"]%></div>
+    	</div>
+    </div>
+
+    <div class="columns bs cornered mt-3">
+    	<div class="column">Are you open to collaboration with other apparel brands?</div>
+    	<div class="column">
+    		<div class="select float-r"><%=form.select :influencer, ["Choose One","Yes", "No"]%></div>
+    	</div>
+    </div>
+ 
+
+
+	<div class="center my-2">
+		<%=form.submit "Continue", class:" mokka-btn btn-warning button"%>
+
+		<%=link_to "Skip", next_wizard_path, class:"ml-2 button mokka-btn btn-l-warning"%>
+	</div>
+</div>
+<%end%>

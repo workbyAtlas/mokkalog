@@ -4,6 +4,7 @@ class Post < ApplicationRecord
 	validates :body, length: { maximum: 3000 }, allow_blank: true
 	validates :price, numericality: { greater_than: 0, less_than: 99999 }, allow_blank: true
 	validates :body, length: {maximum: 6000}, allow_blank: true
+
 	#Links
   validates :web_link, format: { with: /\Ahttps?:\/\//, message: 'should start with http:// or https://' }, allow_blank: true
   validates :amazon_link, format: { with: /\Ahttps?:\/\//, message: 'should start with http:// or https://' }, allow_blank: true
@@ -115,8 +116,6 @@ class Post < ApplicationRecord
 		shortened_title = title.truncate(30, omission: '', separator: ' ')
 		display_title = shortened_title.length > 20 ? "#{shortened_title[0..16]}..." : shortened_title
 	end
-
-
 
 	#i think this is deletable
 	def image_validation

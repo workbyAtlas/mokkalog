@@ -1,6 +1,6 @@
 <section class="section pb-2">
     <div class="center">
-    	<%=link_to "mokkalog", root_path, class:"title is-3 mt-2 sn-link" %>(alpha)
+    	<%=link_to "mokkalog", root_path, class:"title is-3 mt-2 sn-link molive" %>(alpha)
     </div>
     <hr />
     <div class="nav-button-holder center">
@@ -21,7 +21,7 @@
 			<span class="nav-link">Profile</span>
 			<div class="dropdown-content">
 				<div><%=link_to "My Page", user_path(current_user), class:"nav-link center"%></div>
-				<div><%=link_to "My Brand", manage_path, class:"nav-link center"%></div>
+				<div><%=link_to "My Brand", dashboard_path(current_user), class:"nav-link center"%></div>
 				<div><%=link_to "Customize", edit_user_registration_path, class:"nav-link center"%></div>
 			<hr class="bst m-1" />
 			<div class="center">

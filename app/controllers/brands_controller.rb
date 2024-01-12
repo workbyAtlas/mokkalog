@@ -2,6 +2,7 @@ class BrandsController < ApplicationController
   before_action :set_brand, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[index show]
   before_action :editing_privilage_brand, only: %i[edit update]
+  before_action :set_filter_var, only: %i[show]
 
 
   # GET /brands or /brands.json
@@ -35,11 +36,18 @@ class BrandsController < ApplicationController
       @brand.update(views: @brand.views + 1)
       #@brand.posts = @brand.posts.order('created_at DESC').page(params[:page]).per(16)
     end
-    @posts = @brand.posts.order(created_at: :desc)
+
+    @query = @brand.posts.ransack(params[:q])
+    #@query = @brand.posts.order(created_at: :desc)
+    @posts_prior = @query.result(distinct: true).includes(:tags, :brand, :category)
+    @posts_prior = @posts_prior.order(views: :desc)
+    @posts = Kaminari.paginate_array(@posts_prior).page(params[:page]).per(20)
+
+    @styles = Style.all
 
 
 
-    @posts = @posts.order('created_at DESC').page(params[:page]).per(20)
+    #@posts = @posts.order('created_at DESC').page(params[:page]).per(20)
     
     @badges = false
 
@@ -48,7 +56,8 @@ class BrandsController < ApplicationController
     end
 
     # For Analytics
-    @top_posts = @posts.order(views: :desc).limit(4)
+    @top_posts = @posts_prior.order(views: :desc).limit(4)
+
     @posts_chart = Post.where(brand: @brand).all
     target_brand = @brand  # Assuming @brand is your target brand
     all_brands = Brand.where.not(id: target_brand.id)
@@ -82,25 +91,19 @@ class BrandsController < ApplicationController
     
 
     @brand = Brand.new(brand_params.except(:tags))
-    if @auth
-      create_or_delete_brands_tags(@brand, params[:brand][:tags])
-    end
+
     @brand.brand_text = "#654321;"
     @brand.user = current_user
-    delete_styles(@brand, params[:brand][:styles],)
-
+    #delete_styles(@brand, params[:brand][:styles],)
     current_user.tokens -= 1
-
-
-
-
-
 
     respond_to do |format|
       if @brand.save
         current_user.save
-        format.html { redirect_to brand_url(@brand), notice: "Brand was successfully created." }
-        format.json { render :show, status: :created, location: @brand }
+        session[:brand_id] = @brand.id
+        format.html { redirect_to brand_onboarding_path(:image), notice: "Brand was successfully created." }
+        #format.json { render :show, status: :created, location: @brand }
+
       else
         format.html { render :new, status: :unprocessable_entity }
         format.json { render json: @brand.errors, status: :unprocessable_entity }
@@ -111,9 +114,10 @@ class BrandsController < ApplicationController
   # PATCH/PUT /brands/1 or /brands/1.json
   def update
     create_or_delete_brands_tags(@brand, params[:brand][:tags])
-    if @auth
-      delete_styles(@brand, params[:brand][:styles],)
-    end
+
+
+    delete_styles(@brand, params[:brand][:styles],)
+
 
  
     respond_to do |format|

@@ -3,6 +3,7 @@ class UsersController < ApplicationController
 
 
 
+
   def profile
 
     if not current_user == @user
@@ -19,6 +20,21 @@ class UsersController < ApplicationController
   def setting
   end
 
+  def dashboard
+    if current_user.brands.count > 0
+      @brands = @user.brands
+      @brand = @brands.min_by(&:id) 
+      @posts = Post.where(brand: @brands).all
+      @top_posts = @posts.order(views: :desc).limit(4)
+      target_brand = @brand  # Assuming @brand is your target brand
+      all_brands = Brand.where.not(id: target_brand.id)
+
+      @top_similar_brands = all_brands.max_by(4){ |brand| target_brand.similarity_to(brand) }
+      @top_different_brands = all_brands.max_by(4) { |brand| target_brand.dissimilarity_to(brand) }
+    end
+  end
+
+
 
 
   private
@@ -28,6 +44,7 @@ class UsersController < ApplicationController
     @user = User.friendly.find(params[:id])
     #@user = current_user
   end
+
 
 
 

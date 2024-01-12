@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   root 'posts#home'
   get 'home' => 'posts#home'
   
+  resources :brand_onboarding
   resources :styles
   resources :categories
   resources :tags
@@ -31,7 +32,9 @@ Rails.application.routes.draw do
     confirmable:  'users/confirmations'
   }
   get '/u/:id', to: 'users#profile', as: 'user'
-  get 'setting' => 'users#setting'
+  get 'setting'   => 'users#setting'
+  #get 'dashboard' => 'users#dashboard'
+  get '/dashboard/:id', to: 'users#dashboard', as: 'dashboard'
 
   #PAGES  
   get 'about'     => 'pages#about'
@@ -40,11 +43,13 @@ Rails.application.routes.draw do
   get 'discover'  => 'pages#index'
   get 'faq'       => 'pages#faq'
   get 'contact'   => 'pages#contact'
+
+
   #ONBOARDING
-
-
   get 'welcome'              => 'onboarding#step1'
-  get 'brand_onboarding'     => 'onboarding#brand'
+  get 'brand_owner'          => 'onboarding#brand'
+  get 'payment_plan'         => 'onboarding#brand_plan'
+  get 'browse'               => 'onboarding#browse'
 
   get 'adroom'    => 'pages#admin_room'
   get 'mokkalog'  => 'pages#mokkalog'

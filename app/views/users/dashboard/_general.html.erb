@@ -1,0 +1,52 @@
+<div class="columns m-1">
+	<div class="column p-1">
+		<div class="dashboard-top bs cornered yellow-bottom  p-2">
+			<div class="center title is-6 secondary-t my-2">Total Views</div>
+			<div class="center mt-4 title is-2 secondary-t my-2"><%=@posts.sum(&:views)%></div>
+		</div>
+	</div>
+
+	<div class="column p-1">
+		<div class="dashboard-top bs cornered blue-bottom  p-2">
+			<div class="center title is-6 secondary-t my-2">My Brand</div>
+			<div class="center text-center"><%=link_to @brand.name, @brand, class:"mt-4 s-link title is-2 d-none-mobile"%></div>
+		</div>
+	</div>
+
+	<div class="column p-1">
+		<div class="dashboard-top bs cornered red-bottom  p-2">
+			<div class="center title is-6 secondary-t my-2">Total Coins</div>
+			<div class="center mt-4 title is-2 secondary-t my-2"><%=@user.coins%></div>
+		</div>
+	</div>
+</div>
+
+<div class="center">
+	<div class="button is-warning bss m-1">
+	<i class="fa-solid fa-eye mr-1 secondary-t"></i>
+	<%=link_to "See Brand Page", brand_path(@brand),target:"_blank", class:"dash-link"%>
+	</div>
+
+	<div class="button is-warning bss m-1">
+	<i class="fa-solid fa-pen-to-square mr-1 secondary-t"></i>
+	<%=link_to "Edit Brand", edit_brand_path(@brand), target:"_blank", class:"dash-link"%>
+	</div>
+
+	<div class="button is-warning bss m-1">
+	<i class="fa-solid fa-shirt mr-1 secondary-t"></i>
+	<%=link_to "Add New Listing", new_post_path, class:"dash-link"%>
+	</div>
+
+	<div class="button is-warning bss m-1">
+	<i class="fa-solid fa-coins mr-1 secondary-t"></i>
+	<%=link_to "Add More Coins", root_path, class:"dash-link"%>
+	</div>
+
+	<div class="button is-warning bss m-1">
+	<i class="fa-solid fa-circle-question mr-1 secondary-t"></i>
+	<%=link_to "FAQ", root_path, class:"dash-link"%>
+	</div>
+</div>
+<div class="bs cornered mx-auto mt-3 dashboard-notif">
+	<div class="center bold">Notification</div>
+</div>

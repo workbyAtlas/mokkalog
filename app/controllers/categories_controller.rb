@@ -2,6 +2,7 @@ class CategoriesController < ApplicationController
   before_action :set_category, only: %i[ show edit update destroy ]
   before_action :mod?, except: %i[show index]
   before_action :authenticate_user!, except: %i[index show]
+
   
   
 
@@ -14,6 +15,7 @@ class CategoriesController < ApplicationController
   def show
   @query = @category.posts.ransack(params[:q])
   post_setter(@query)
+
 
   
 

@@ -2,15 +2,15 @@
       
       
       <div class="mx-auto center rw50">
-        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_location_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bs mokka-ph l-cornered", placeholder:"Search here..." %>
+        <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_location_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bb mokka-ph l-cornered", placeholder:"Search here..." %>
 
-          <%= f.button :submit, class: "button is-warning r-cornered ", style: "border: 2px solid #654321;border-left:none;" do %>
-            <i class="fa-solid fa-magnifying-glass"></i>
+          <%= f.button :submit, class: "button is-warning r-cornered ", style: "border: 2px solid black;border-left:none;" do %>
+            <i class="fa-solid fa-magnifying-glass secondary-t bold"></i>
           <% end %>
           <%= render 'component/filters/filterbox'%>
       </div>
 
-    <section class="home-nav mt-4 p-2 home-nav-border">
+    <section class="home-nav mt-4 p-2 home-nav-border light-primary">
         <label class="custom-radio">
             <%= f.radio_button :season_or_brand_verification_or_brand_badge_or_brand_styles_name_or_brand_location_or_category_name_or_tags_name_or_color_or_brand_tags_id_eq_any, ' ', checked: true, oninput: 'this.form.requestSubmit();' %> 
             <div class="radio-style">

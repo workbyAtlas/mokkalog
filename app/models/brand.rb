@@ -1,6 +1,7 @@
 #require 'tf-idf-similarity'
 class Brand < ApplicationRecord
   extend FriendlyId
+
   validates :name, uniqueness: true, presence: true, length:{ maximum: 25}
   #validate :unique_name_case_insensitive
   validates :body, length: {maximum: 6000}, allow_blank: true
@@ -9,7 +10,7 @@ class Brand < ApplicationRecord
 
   validate :check_for_image
   validate :check_for_banner
-  validates :styles, presence: true, length: { maximum: 5 }
+
   validates :link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:60}
   validates :ig_link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:60}
   validates :x_twitter, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:60}
@@ -18,7 +19,6 @@ class Brand < ApplicationRecord
   validate :unique_name_case_insensitive
 
   friendly_id :name, use: %i[slugged finders history]
-	has_many :posts, dependent: :destroy
 
   has_one_attached :image
   has_one_attached :banner
@@ -28,6 +28,7 @@ class Brand < ApplicationRecord
   has_rich_text :body
   belongs_to :user
 
+  has_many :posts, dependent: :destroy
   has_many :styleables, dependent: :destroy
   has_many :styles, through: :styleables
 
@@ -35,6 +36,10 @@ class Brand < ApplicationRecord
   has_many :tags, through: :brand_tag_assocs
 
   scope :grouped_by_day, -> { group_by_day(:created_at) }
+
+  validates :styles, length: { maximum: 5 }
+
+
 
 
   def similarity_to(other_brand)
@@ -73,6 +78,8 @@ class Brand < ApplicationRecord
     ["brandables", "image_attachment", "image_blob", "posts", "user","styles","tags"]
   end
 
+
+  #SO MESSY UNDER HERE:(
   def image_brand
     image.variant(resize_to_fill: [300,300]).processed
   end
@@ -98,16 +105,12 @@ class Brand < ApplicationRecord
         errors.add(:image, "The file must be, JPEG, PNG, or WEBP")
       end
   end
+
   def check_for_banner
       if banner.attached? && !banner.content_type.in?(%w[image/jpeg image/png image/webp])
         errors.add(:banner, "The file must be, JPEG, PNG, or WEBP")
       end
   end
-
-
-
-
-
 
   def unique_name_case_insensitive
     if Brand.exists?(name: name.downcase)

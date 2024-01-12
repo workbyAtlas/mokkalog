@@ -1,0 +1,9 @@
+<div class="">
+	<div class="bold"><u>Brand Image</u></div>
+    <%= render "image_preview", form: form, brand: brand %>
+</div>
+<div class="">
+	<div class="secondary-t bold"><u>Basic Information</u></div>
+	<%= form.text_field :name, class:"input is-small mokka-ph mt-2", placeholder:"Name" %>
+	<%= form.text_field :link, class:"input is-small mokka-ph", placeholder:"Link, Please include https://" %>
+</div>

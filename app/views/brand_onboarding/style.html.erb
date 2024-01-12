@@ -1,0 +1,26 @@
+<%=form_for @brand, url: wizard_path, method: :put do |form|%>
+  <% if @brand.errors.any? %>
+    <%=render 'component/error', errors: @brand.errors%>
+  <% end %>
+
+<div class="taller">
+<div class="title is-4 center secondary-t mt-6">Tell us more about <span class="ml-1"><%=@brand.name%></span></div>
+
+<div class="mx-auto center-down">
+  <div class="mr-3">Which style describes <%=@brand.name%> the most? Please choose up to 5.</div>
+  <div class="style-filter-grid bs cornered p-1">
+
+    <% Style.pluck(:name).each do |style_name| %>
+      <div>
+        <label class="m-checkbox mid-cbox">
+          <%= check_box_tag "brand[styles][]", style_name, @brand.styles.map(&:name).include?(style_name), class:"checkbox"%>
+          <span class="m-checkmark"><%=style_name%></span>
+        </label>
+      </div>
+    <% end %>
+  </div>
+</div>
+
+<div class="center"><%=form.submit "Continue", class:" my-3 button is-warning bold", style:"border: 1px solid #654321"%></div>
+</div>
+<%end%>

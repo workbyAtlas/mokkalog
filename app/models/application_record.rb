@@ -45,7 +45,8 @@ class ApplicationRecord < ActiveRecord::Base
     elsif size == "fourfour"
       image.variant(resize_to_fit: [400,400]).processed
     end
-      
+    
+    #image.variant(resize_to_fill: [350,400]).processed if size == "post"
   end
 
   #Check for Inapporpirate Words

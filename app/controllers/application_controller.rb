@@ -30,6 +30,7 @@ class ApplicationController < ActionController::Base
 	def set_necessary_variables
 	    @blank = Brand.find(1)
 
+
 	end
 
 	def set_filter_var
@@ -92,9 +93,19 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def post_setter(q)
-    	@posts_prior = q.result(distinct: true).includes(:tags, :brand, :category)
-    	@posts_prior = @posts_prior.order(views: :desc)
-    	@posts = Kaminari.paginate_array(@posts_prior).page(params[:page]).per(20)
+		# Subquery for distinct records
+		subquery = q.result(distinct: true).includes(:tags, :brand, :category)
+
+		# Convert subquery to SQL
+		subquery_sql = subquery.to_sql
+
+		# Outer query for random ordering
+		@posts_prior = Post.from("(#{subquery_sql}) as posts").order(Arel.sql('RANDOM()'))
+
+		# Paginate with Kaminari
+		@posts = Kaminari.paginate_array(@posts_prior.to_a).page(params[:page]).per(20)
+
+
 	end
 
 end

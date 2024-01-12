@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_12_05_221309) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_12_022436) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -135,6 +135,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_221309) do
     t.string "slug"
     t.string "badge"
     t.text "metadesc"
+    t.string "collab"
+    t.string "influencer"
+    t.string "apparel"
+    t.integer "influencer_rating"
+    t.integer "apparel_rating"
+    t.string "tiktok"
     t.index ["slug"], name: "index_brands_on_slug", unique: true
     t.index ["user_id"], name: "index_brands_on_user_id"
   end
@@ -314,7 +320,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_12_05_221309) do
     t.string "unlock_token"
     t.string "slug"
     t.integer "onboard", default: 0
-    t.integer "coins", default: 40
+    t.integer "coins", default: 10
     t.integer "tokens", default: 1
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
     t.index ["email"], name: "index_users_on_email", unique: true

@@ -6,16 +6,17 @@
 <div class="rw50 mx-auto taller">
     <div class="title is-4 center secondary-t text-center mt-6">Tell us more about <span class="ml-1"><%=@brand.name%></span></div>
 	<div class="center">Write a short description about <%=@brand.name%></div>
+    <br/>
     <div class="bs cornered p-2 lgrey mx-auto">
     <u><%= form.label "Description", class:"label mt-2 secondary-t" %></u>
     <div class="white-b">
     <%= form.rich_text_area :body, placeholder:"Write a short description!" %>
     </div>
   </div>
-
-<div class="center">
-	<%=form.submit "Continue", class:" my-2 button is-warning bold", style:"border: 1px solid #654321"%>
-	<%=link_to "Skip", next_wizard_path, class:"ml-2 button is-warning bold is-light"%>
+<br/>
+<div class="center my-2">
+	<%=form.submit "Continue", class:"mokka-btn btn-warning button"%>
+	<%=link_to "Skip", next_wizard_path, class:"ml-2 mokka-btn btn-l-warning button"%>
 		
 </div>
 </div>

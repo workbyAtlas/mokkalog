@@ -4,17 +4,16 @@ class Brand < ApplicationRecord
 
   validates :name, uniqueness: true, presence: true, length:{ maximum: 25}
   #validate :unique_name_case_insensitive
-  validates :body, length: {maximum: 6000}, allow_blank: true
+  validates :body, length: {maximum: 4000}, allow_blank: true
   validates :header, length: {maximum:2000}, allow_blank: true
-  validates :brand_text, length: {maximum:40}, allow_blank: true
 
   validate :check_for_image
   validate :check_for_banner
 
+  validates :styles, length: { maximum: 5, message: "Too many styles! Please choose up to 5!" }
   validates :link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:60}
   validates :ig_link, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:60}
   validates :x_twitter, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true, length:{maximum:60}
-
 
   validate :unique_name_case_insensitive
 
@@ -37,7 +36,7 @@ class Brand < ApplicationRecord
 
   scope :grouped_by_day, -> { group_by_day(:created_at) }
 
-  validates :styles, length: { maximum: 5 }
+
 
 
 
@@ -102,13 +101,13 @@ class Brand < ApplicationRecord
 
   def check_for_image()
       if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/webp])
-        errors.add(:image, "The file must be, JPEG, PNG, or WEBP")
+        errors.add(:image, "file must be, JPEG, PNG, or WEBP")
       end
   end
 
   def check_for_banner
       if banner.attached? && !banner.content_type.in?(%w[image/jpeg image/png image/webp])
-        errors.add(:banner, "The file must be, JPEG, PNG, or WEBP")
+        errors.add(:banner, "file must be, JPEG, PNG, or WEBP")
       end
   end
 

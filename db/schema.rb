@@ -319,6 +319,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_022436) do
     t.integer "failed_attempts"
     t.string "unlock_token"
     t.string "slug"
+    t.integer "sign_in_count", default: 0, null: false
     t.integer "onboard", default: 0
     t.integer "coins", default: 10
     t.integer "tokens", default: 1

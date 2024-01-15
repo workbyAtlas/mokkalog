@@ -5,12 +5,12 @@
 	<div class="title is-4 center secondary-t"><%=@brand.name%> is a great name!</div>
 
 	<div class="">
-		<div class="bold center">Let's upload a profile picture for the brand.</div>
+		<div class="center text-center">Let's upload a profile picture for your brand.</div>
 	    <%= render "brands/image_preview", form: form, brand: @brand %>
 
-		<div class="center">
-			<%=form.submit "Continue", class:" my-2 button is-warning bold", style:"border: 1px solid #654321"%>
-			<%=link_to "Skip", next_wizard_path, class:"ml-2 button is-warning bold is-light"%>
+		<div class="center my-2">
+			<%=form.submit "Continue", class:"mokka-btn btn-warning button" %>
+			<%=link_to "Skip", next_wizard_path, class:"ml-2 mokka-btn btn-l-warning button"%>
 				
 		</div>
 	</div>

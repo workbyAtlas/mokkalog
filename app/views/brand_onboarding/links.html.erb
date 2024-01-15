@@ -2,26 +2,33 @@
   <% if @brand.errors.any? %>
     <%=render 'component/error', errors: @brand.errors%>
   <% end %>
-<div class="rw50 bold mx-auto taller">
-  <div class="title is-4 center secondary-t mt-6">Where can we find <span class="ml-1"><%=@brand.name%></span>?</div>
+<div class="rw50 mx-auto taller">
+  <div class="title is-4 center secondary-t mt-6">
+    Where can we find <span class="ml-1"><%=@brand.name%></span>?
+  </div>
 
 
 
   <div class="flexed center-h mt-1">
-    <div class="mr-1">Origin:</div>
-    <%= form.select :location, @brand.countries_name.invert, { include_blank: true }, { data: { controller: 'slim' }} %>
+    <div class="mx-auto rw50 flexed">
+      <div class="mr-1">Origin:</div>
+      <%= form.select :location, @brand.countries_name.invert, { include_blank: true }, { data: { controller: 'slim' }} %>
+    </div>
   </div>
+  <br/>
 
-  <div class="">
+  <div>
   <div class="secondary-t bold center"><u>Social</u></div>
-  <div class="center">When putting the links for the social please include https://</div>
-  <%= form.text_field :ig_link, class:"input mokka-ph mt-2", placeholder:"Instagram" %>
-  <%= form.text_field :x_twitter, class:"input mokka-ph", placeholder:"Twitter/X" %>
-  <%= form.text_field :tiktok, class:"input mokka-ph", placeholder:"TikTok" %>
+    <div class="center">When putting the links for the social please include https://</div>
+    <div class="rw50 mx-auto">
+      <%= form.text_field :ig_link, class:"input mokka-ph mt-2", placeholder:"Instagram" %>
+      <%= form.text_field :x_twitter, class:"input mokka-ph", placeholder:"Twitter/X" %>
+      <%= form.text_field :tiktok, class:"input mokka-ph", placeholder:"TikTok" %>
+    </div>
   </div>
   <div class="center mt-2">
-  <%=form.submit "Continue", class:"button is-warning bold"%>
-  <%=link_to "Skip", next_wizard_path, class:"ml-2 button is-warning bold is-light"%>
+  <%=form.submit "Continue", class:"mokka-btn btn-warning button"%>
+  <%=link_to "Skip", next_wizard_path, class:"ml-2 mokka-btn btn-l-warning button"%>
   </div>
 </div>
 <%end%>

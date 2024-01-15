@@ -10,8 +10,10 @@
 <div class="rw50 mx-auto taller">
   <div class="title is-4 mt-6 center secondary-t">Let's get started!</div>
 	<div class="secondary-t bold center">What is the name of your brand?</div>
-	<%= form.text_field :name, class:"input mokka-ph mt-2", placeholder:"Name" %>
-	<%= form.text_field :link, class:"input mokka-ph", placeholder:"Website Link (Please include https:// )" %>
+    <div class="rw50 mx-auto">
+  	 <%= form.text_field :name, class:"input mokka-ph mt-2", placeholder:"Name" %>
+  	 <%= form.text_field :link, class:"input mokka-ph", placeholder:"Website Link (Please include https:// )" %>
+    </div>
   <div class="center">
     <%= form.submit "Continue", class:"button is-warning bold m-2", style:"border:1px solid #654321;"%>
     <%=link_to "Back", welcome_path, class:"button is-warning is-light bold "%>

@@ -1,7 +1,7 @@
 <%@title = @post.brand.name + " " + @post.title%>
 <div class="d-none" id="share"><%=request.url%></div>
 <section class="section p-2">
-  <%= link_to 'Back', :back, class:"button is-warning bold mb-3", style:"border:solid 1px #654321;" %>
+  <%= link_to 'Back', :back, class:"mokka-btn btn-warning m-shadow mb-3"%>
   <div class="columns">
       <%=render "posts/components/image_holder"%>
 
@@ -41,8 +41,8 @@
             <%= render "posts/components/like_btn_public", post: @post%>
             <%end%>  
           </div>
-          <div class="mx-1 mb-4 button is-warning" style="border: 2px solid #654321;" onclick="showdiv('visitmodal')">Visit</div>
-          <div class="mx-1 mb-4 button green-btn" style="border: 2px solid #206644;" onclick="copy('share','share-button')" id="share-button">Share</div>
+          <div class="mx-1 mb-4 button is-warning bold secondary-t" style="border: 2px solid #654321;" onclick="showdiv('visitmodal')">Visit</div>
+          <div class="mx-1 mb-4 button green-btn bold" style="border: 2px solid #206644;" onclick="copy('share','share-button')" id="share-button">Share</div>
 
           <%if current_user%>
           <%=render 'posts/components/favorite_btn', post: @post, fav_status: current_user.favorited?(@post)%>
@@ -50,7 +50,7 @@
 
             <div class="button bs mx-1">
                 <div class="hover">
-                <span class="material-symbols-outlined mt-1">
+                <span class="material-symbols-outlined bold mt-1">
                 checkroom
                 </span>
                 <div class="hover-content center">Add to Closet</div>

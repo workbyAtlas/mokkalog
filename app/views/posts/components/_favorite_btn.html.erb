@@ -4,7 +4,7 @@
 <%if fav_text == "fav"%>
     <%= button_to favorite_post_path(id: post.id), class:"button bs mx-1" do %>
     <span class="hover">
-        <span class="material-symbols-outlined mt-1" style="color:#654321;">
+        <span class="material-symbols-outlined mt-1 bold" style="color:#654321;">
         checkroom
         </span>
         <span class="hover-content">Add to Closet</span>
@@ -13,7 +13,7 @@
 <%else%>
     <%= button_to favorite_post_path(id: post.id), class:"button p-btn bs mx-1" do %>
     <span class="hover">
-        <span class="material-symbols-outlined mt-1" style="color:#654321;">
+        <span class="material-symbols-outlined mt-1 bold" style="color:#654321;">
         checkroom
         </span>
         <span class="hover-content">Remove from Closet</span>

@@ -21,7 +21,9 @@
 			<span class="nav-link">Profile</span>
 			<div class="dropdown-content">
 				<div><%=link_to "My Page", user_path(current_user), class:"nav-link center"%></div>
+				<%if current_user.brands.count > 0%>
 				<div><%=link_to "My Brand", dashboard_path(current_user), class:"nav-link center"%></div>
+				<%end%>
 				<div><%=link_to "Customize", edit_user_registration_path, class:"nav-link center"%></div>
 			<hr class="bst m-1" />
 			<div class="center">

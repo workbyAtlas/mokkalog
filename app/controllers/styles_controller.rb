@@ -18,7 +18,8 @@ class StylesController < ApplicationController
     @brands = @style.brands
     @categories = Category.all
     @locations = @brands.pluck(:location).reject(&:blank?).uniq
-    
+        
+
     
 
   end

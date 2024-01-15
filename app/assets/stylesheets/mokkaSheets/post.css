@@ -95,7 +95,7 @@
 .img-small-container{flex:1;}
 .image-big-container{flex:1;}
 
-.detail-style{min-height:75px; min-width:200px;}
+.detail-style{min-height:75px; width:200px;}
 .similar-section{height:450px;}
 
 .form-line{border: 1px solid hsl(0, 0%, 86%);}

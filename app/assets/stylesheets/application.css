@@ -41,12 +41,18 @@
 .helv{font-family:"helvetica";}
 
 .taller{min-height:450px;}
+.little-taller{min-height:300px;}
 .mobile-text{font-size:14px;}
 .mobile-small-text{font-size:12px;}
 .like-btn-location{top:-5px;right:-5px;}
 
 .button.bss{border:1px solid #5A3A31;}
 .button.bss:hover{border:1px solid #5A3A31;}
+
+
+.m-shadow{
+  box-shadow: 2px 2px 1px 0px rgba(0, 0, 0, 0.4);
+}
 
 /*HTML FORMAT*/
 tr{padding:15px;}
@@ -362,6 +368,10 @@ transform: translateY(-30px);
 /*INDEX ROOT*/
 .mobile-collapse{}
 .root_search{width:30%;}
+
+.rec-carousel-l{position:absolute;top:48%; left:5%;}
+.rec-carousel-r{position:absolute;top:48%; right:5%;}
+
 .carousel-lbtn{position:absolute;top:48%; left:0%;}
 .carousel-rbtn{position:absolute;top:48%; right:0%;}
 .caro-lbtn{position:absolute;top:50%; left:3%;}

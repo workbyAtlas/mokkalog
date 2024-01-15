@@ -93,17 +93,13 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def post_setter(q)
-		# Subquery for distinct records
-		subquery = q.result(distinct: true).includes(:tags, :brand, :category)
 
-		# Convert subquery to SQL
-		subquery_sql = subquery.to_sql
 
-		# Outer query for random ordering
-		@posts_prior = Post.from("(#{subquery_sql}) as posts").order(Arel.sql('RANDOM()'))
+	    @posts_prior = q.result(distinct: true).includes(:tags, :brand, :category)
+	    shuffled_posts = @posts_prior.to_a.shuffle
+	    @posts = Kaminari.paginate_array(shuffled_posts).page(params[:page]).per(20)
 
-		# Paginate with Kaminari
-		@posts = Kaminari.paginate_array(@posts_prior.to_a).page(params[:page]).per(20)
+
 
 
 	end

@@ -1,14 +1,23 @@
 <%# Comment Form--------------------------------------------------%>
 <%if user_signed_in?%>
-<section class="section">
-<%= render partial: 'comments/form' , locals: {commentable: @post} %>
-</section>
+
+  <%= render partial: 'comments/form' , locals: {commentable: @post} %>
+
 <%end%>
 <%# Comment Section------------------------------------------------%>
+<hr/>
+<%if @comments.count > 0%>
+  <section class="section center-down p-0 little-taller">
+    <% @comments.each do |comment| %>
+      <%= render partial: 'comments/comment', locals: {commentable: @post, comment: comment} %>
+    <% end %>
+  </section>
 
-<section class="section center-down p-0">
-<% @comments.each do |comment| %>
-  <%= render partial: 'comments/comment', locals: {commentable: @post, comment: comment} %>
-<% end %>
-</section>
+<%else%>
+  <section class="section little-taller">
+    <div class="center text-center">Currently there are no comments</div>
+    <div class="center text-center">Be the first one to leave a comment:)</div>
+
+  </section>
+<%end%>
 

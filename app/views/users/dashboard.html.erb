@@ -1,37 +1,78 @@
 <style>html{background-color:#f5f5f5;}</style>
-<%@title = @user.username%>
-<div class="center title is-4 secondary-t">Dashboard</div>
+<%@title = "dashboard " + @user.username%>
 
 
-<%=render 'users/dashboard/general'%>
+<section class="section">
+	<div class="title is-3 secondary-t">Dashboard: <i class="title is-4 secondary-t"><%=@brand.name%></i></div>
+	<br/>
 
-<%if true == false%>
-<section data-controller="dashboard">
-<aside class="dashboard-menu p-2" data-dashboard-target="menu">
-	<ul class="dashboard-menu-list">
-		<li data-action="click->dashboard#openMain1" data-dashboard-target="list1" class="bold">General</li>
-		<li data-action="click->dashboard#openMain2" data-dashboard-target="list2">Analytics</li>
-		<li data-action="click->dashboard#openMain3" data-dashboard-target="list3">Upgrades</li>
-	</ul>
-</aside>
+	<div class="columns">
+		<div class="column p-2">
+			<div class="bs mx-auto dashboard-grid cornered dashboard-column m-shadow">
 
-<section class="dashboard-main">
+				<%=link_to brand_path(@brand),target:"_blank", class:"dashboard-btn hover m-2" do%>
+						<div class="dashboard-icon"><i class="fa-solid fa-eye fa-2xl"></i></div>
+						<div class="hover-content">See Brand Page</div>
+				<%end%>
 
+				<%=link_to edit_brand_path(@brand),target:"_blank", class:"dashboard-btn hover m-2" do%>
+						<div class="dashboard-icon"><i class="fa-solid fa-pen-to-square fa-2xl"></i></div>
+						<div class="hover-content">Edit <%=@brand.name%></div>
+				<%end%>
 
-<div data-dashboard-target="Main1">
-<%=render 'users/dashboard/general'%>
-</div>
+				<%=link_to new_post_path,target:"_blank", class:"dashboard-btn hover m-2" do%>
+						<div class="dashboard-icon"><i class="fa-solid fa-shirt fa-2xl"></i></div>
+						<div class="hover-content">Add New Listing</div>
+				<%end%>
 
-<div data-dashboard-target="Main2" class="d-none">
-<%=render 'users/dashboard/analytic'%>
-</div>
+				<%=link_to root_path,target:"_blank", class:"dashboard-btn hover m-2" do%>
+						<div class="dashboard-icon"><i class="fa-solid fa-coins fa-2xl"></i></div>
+						<div class="hover-content">Coming Soon</div>
+				<%end%>
 
-<div data-dashboard-target="Main3" class="d-none">
-<%=render 'users/dashboard/upgrade'%>
-</div>
+				<%=link_to brand_path(@brand),target:"_blank", class:"dashboard-btn hover m-2" do%>
+						<div class="dashboard-icon"><i class="fa-solid fa-chart-simple fa-2xl"></i></div>
+						<div class="hover-content">Coming Soon</div>
+				<%end%>
 
+				<%=link_to brand_path(@brand),target:"_blank", class:"dashboard-btn hover m-2" do%>
+						<div class="dashboard-icon"><i class="fa-solid fa-circle-question fa-2xl"></i></div>
+						<div class="hover-content">FAQ</div>
+				<%end%>
+			</div>
+		</div>
+		<div class="column p-2">
+			<div class="bs cornered dashboard-column m-shadow">
+				<div class="bold center">Statistics</div>
+				<ul class="ml-4">
+					<li>Views: <%=@brand.views%></li>
+					<li>Listing: <%=@brand.posts.count%></li>
+					<li>Coins: <%=@user.coins%></li>
+					<li><u class="bold">Badges</u></li>
+				</ul>
+				<div class="bs cornered m-2 p-2  badge-h">
+					<%if @brand.verification == "True"%>
+					<div class="center mt-2">Please apply for our badge system @Discord</div>
+					<%else%>
+					<div class="mx-auto">
+					<%= render 'component/badges/verified', size: "lg"%>
+					</div>
+					<%end%>
+				</div>
+			</div>
+		</div>		<div class="column p-2">
+			<div class="bs cornered dashboard-column m-shadow">
+				<div class="bold center">Notifications</div>
+
+				<div class="bs cornered p-2 m-1 m-shadow"><%=@brand.name%> was created on <%=@brand.created_at.strftime("%Y-%m-%d")%></div>
+
+			</div>
+		</div>
+	</div>
+	<br/>
+	<div class="title is-4 secondary-t mt-3 center">Under Construction</div>
 
 </section>
-</section>
-<%end%>
 
+
+ 

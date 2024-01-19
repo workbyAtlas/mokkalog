@@ -223,7 +223,7 @@ transform: translateY(-30px);
 
 
 /*PRIME COLOR#cxbb595;*/
-.prime{background-color:#cbb595;}
+.prime{background-color:#dccdc9;}
 .prime-t{color:#cbb595;}
 .b{border: 2px solid #cbb595;}
 .border-purp-top{border:1px solid; border-color:#5A3A31;}
@@ -412,6 +412,23 @@ transform: translateY(-30px);
 .comment-b{display:inline;}
 .no-style{list-style-type:none;}
 .mokka-carousel{height:550px;}
+
+.square-swatch{
+  height:200px;
+  width: 200px;
+  background-color: white;
+  border-radius:25px;
+  display: flex;
+  justify-content: center;
+  align-items: center; 
+  flex-direction:column;
+  cursor:pointer;
+}
+
+.square-swatch:hover{
+  border:2px solid #654321;
+  background-color: #dccdc9;
+}
 
 @media (max-width: 1600px){
     .d-none-laptop{display: none;}

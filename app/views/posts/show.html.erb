@@ -1,21 +1,19 @@
 <%@title = @post.brand.name + " " + @post.title%>
 <div class="d-none" id="share"><%=request.url%></div>
 <section class="section p-2">
-  <%= link_to 'Back', :back, class:"mokka-btn btn-warning m-shadow mb-3"%>
+  <div class="mb-4">
+    <%= link_to 'Back', :back, class:"mokka-btn btn-warning m-shadow mb-3"%>
+    <%if @badges == true%>
+        <span class="float-r mr-4"><%=render "posts/components/badges"%></span>
+    <%end%>
+  </div>
   <div class="columns">
-      <%=render "posts/components/image_holder"%>
+      <%=render "posts/show_components/image_holder"%>
 
     <div class="column bpx">
 
       <div class="show-info">
-      
-        <%if @badges == true%>
-        <div style="width:100%;">
-          <span class="float-r"><%=render "posts/components/badges"%></span>
-        </div>
-        <%end%>
         <div class="mt-3 mb-0 title is-3 secondary-t text-center"><%=@post.title %></div>
-
 
             <div class="my-2 title is-5"><%=link_to @post.branded, @post.brand, class:"s-link"%></div>
 
@@ -41,8 +39,8 @@
             <%= render "posts/components/like_btn_public", post: @post%>
             <%end%>  
           </div>
-          <div class="mx-1 mb-4 button is-warning bold secondary-t" style="border: 2px solid #654321;" onclick="showdiv('visitmodal')">Visit</div>
-          <div class="mx-1 mb-4 button green-btn bold" style="border: 2px solid #206644;" onclick="copy('share','share-button')" id="share-button">Share</div>
+          <%=render 'posts/show_components/visit_button'%>
+          <div class="mx-1 button green-btn bold mb-4" style="border: 2px solid #206644;" onclick="copy('share','share-button')" id="share-button">Share</div>
 
           <%if current_user%>
           <%=render 'posts/components/favorite_btn', post: @post, fav_status: current_user.favorited?(@post)%>
@@ -57,9 +55,6 @@
               </div>
             </div>
           <%end%>
-
-
-          <div><%#= link_to "Closet", closets_update_path(post: @post), id: 'closet_link, class:"mb-4 button is-danger" %></div>
         </div>
         <%# DEV BOX------------------------------------------%>
 
@@ -72,9 +67,9 @@
         </div>
 <%end%>
         <%# TAG BOX-------------------------------------------%>
-        <%= render 'posts/components/tag_for_post'%>
+        <%= render 'posts/show_components/tag_for_post'%>
         <%# INFO BOX-------------------------------------------%>
-        <%= render "posts/components/info_box"%>
+        <%= render "posts/show_components/info_box"%>
 
       </div> 
     </div>
@@ -112,16 +107,11 @@
 <div data-tab-target="tab3" class="d-none"><%= render 'posts/components/tabs/detail'%></div>
 </section>
 
+<div class="d-none" id="visitmodal">
+<%=render 'posts/show_components/visit_modal'%>
+</div>
 
-<%if @visit_modal == true%>
-<div class="d-none" id="visitmodal">
-<%=render 'posts/components/visit_modal'%>
-</div>
-<%else%>
-<div class="d-none" id="visitmodal">
-<%=render 'posts/components/visit_modal_og'%>
-</div>
-<%end%>
+
 
 
 

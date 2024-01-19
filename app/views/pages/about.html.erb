@@ -1,4 +1,74 @@
-   <%@title = "About"%>
+<%@title = "About"%>
+
+<style>
+
+   .aboutpage{
+      background-color: #EDB88B;
+
+   }
+   .square-swatch{
+      height:200px;
+      width: 200px;
+      background-color: white;
+      border-radius:25px;
+      display: flex;
+      justify-content: center;
+      align-items: center; 
+      flex-direction:column;
+      cursor:pointer;
+   }
+
+   .square-swatch:hover{
+      border:2px solid #654321;
+      background-color: #dccdc9;
+   }
+
+   .bs{
+      background-color: #dccdc9;
+   }
+
+</style>
+<section data-controller="about">
+   <div class="title is-2 secondary-t center mt-4">What is Mokkalog?</div>
+   <section class="flexed-wc lgrey p-2">
+      <div class="square-swatch m-3 m-shadow bs" data-about-target="btn1" data-action="click->about#openTab1">
+         <div class="mb-2"><i class="fa-solid fa-mug-hot fa-2xl"></i></div>
+         <div class="title is-5 secondary-t">Mokkalog</div>
+      </div>
+      <div class="square-swatch m-3 m-shadow" data-about-target="btn2" data-action="click->about#openTab2">
+         <div class="mb-2"><i class="fa-solid fa-magnifying-glass fa-2xl"></i></div>
+         <div class="title is-5 secondary-t">Discover</div>
+      </div>
+      <div class="square-swatch m-3 m-shadow" data-about-target="btn3" data-action="click->about#openTab3">
+         <div class="mb-2"><i class="fa-solid fa-tree fa-2xl"></i></div>
+         <div class="title is-5 secondary-t">Brand Growth</div>
+      </div>
+      <div class="square-swatch m-3 m-shadow" data-about-target="btn4" data-action="click->about#openTab4">
+         <div class="mb-2"><i class="fa-solid fa-circle-nodes fa-2xl"></i></div>
+         <div class="title is-5 secondary-t">Fashion Hub</div>
+      </div>
+   </section>
+   <section class="lgrey section">
+      <div class="bs cornered rw70 mx-auto p-4" style="background-color:#f5f5f5;">
+         <div data-about-target="tab1"><%=render 'pages/about_components/main'%></div>
+         <div data-about-target="tab2" class="d-none"><%=render 'pages/about_components/discover'%></div>
+         <div data-about-target="tab3" class="d-none"><%=render 'pages/about_components/brand'%></div>
+         <div data-about-target="tab4" class="d-none"><%=render 'pages/about_components/hub'%></div>
+         <br/>
+         Follow our progress & get updates @
+
+      <a href="https://instagram.com/mokkalog" target="_blank">
+         <i class="fa-brands fa-instagram fa-xl mx-2" style="color:#5A3A31;"></i>
+      </a>
+
+      <a href="https://discord.gg/7eCH3PaU" target="_blank">
+         <i class="fa-brands fa-discord fa-xl" style="color:#5A3A31;"></i>
+      </a> 
+      </div>
+   </section>
+</section>
+
+<%if true == false%>
    <section class="section center-down">
 
 
@@ -23,7 +93,7 @@
    </div>
 
    <br />
-   <%if true == false%>
+
    <div class="mt-5 title is-4" style="color:#654321;">How are we different?</div>
 
    <div class="bs p-5 rw50 cornered secondary-t">
@@ -61,7 +131,11 @@
       <a href="" ><i class="fa-brands fa-discord fa-lg" style="color:#654321;"></i></a>
    </div>
    </div>
-   <%end%>
+
    </section>
+
+<%end%>
+
+
 
 

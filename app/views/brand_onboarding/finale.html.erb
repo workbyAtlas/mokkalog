@@ -3,18 +3,17 @@
 
 
 	<div class="mx-auto center-down">
-		<div class="center bold">Things to do:</div>
+		<div class="bold">Things to do:</div>
 		<ul>
 			<li>
-				<%=link_to "Now you can start listing your clothing on our platform!", new_post_path, class:"s-link", target:"_blank"%>
+				<%=link_to "Start listing your clothing!", new_post_path, class:"s-link", target:"_blank"%>
 			</li>
 			<li>
-				<%=link_to "Check out your brand page!", brand_path(@brand), class:"s-link", target:"_blank"%></li>
-			<li>
-				<%=link_to "Browse your competition or potential collaborators:)", brands_path, class:"s-link", target:"_blank"%>
-					
+				<%=link_to "Check out your brand page!", brand_path(@brand), class:"s-link", target:"_blank"%>		
 			</li>
-			<li>Read more about Mokkalog & what we can do for you</li>
+			<li>
+				<%=link_to "Browse your competition or potential collaborators:)", brands_path, class:"s-link", target:"_blank"%>	
+			</li>
 			<li>
 				<a href="https://discord.gg/7eCH3PaU" class="s-link" target="_blank">
 					Join our discord for latest update & customer support.
@@ -24,8 +23,5 @@
 		<br/>
 		<%=link_to "I will explore on my own!", root_path, class:"mokka-btn btn-warning center"%>
 	</div>
-
-
-
 </div>
 

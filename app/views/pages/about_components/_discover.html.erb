@@ -1,0 +1,48 @@
+<div id="about-title" class="title is-4 secondary-t center mt-3">Discover</div>
+<div id="about-body-1" class="mt-2">
+Mokkalog hosts thousands of brand from all corners of the world & variety style of clothing. Because we have so many choices, some clothing might not be for you.
+<br/>
+We are constantly upgrading our design so it is easy for you to browse from selections you like with a sprinkle of something new.
+</div>
+
+<div class="mt-2">
+<span id="bold3"class="bold">Open Platform:</span>
+<span id="about-body-3">
+Mokkalog is an open listing platform, which means that if you've recently launched your own clothing brand, you're welcome to feature your products on our platform.
+</span>
+</div>
+
+<div class="mt-2">
+<span id="bold2"class="bold">Badges:</span>
+<span id="about-body-2">
+Mokkalog is introducing a badge system to easily navigate through thousands of brands. Any brands with badges are verified through our team & are a trustworthy brand. You can read more about the badge system <%=link_to "here.", badges_path, class:"s-link"%> But here is a brief summary.
+</span>
+<div class="columns my-4 mx-auto">
+	<div class="column center-down">
+		<%=render 'component/badges/verified', size: "lg"%>
+		<div class="bold mt-2">Verified Badge</div>
+		<div class="text-center">Verified</div>
+	</div>
+	<div class="column center-down">
+		<%=render 'component/badges/certified', size: "lg"%>
+		<div class="bold mt-2">Golden Mug</div>
+		<div class="text-center">Editor's Choice</div>
+	</div>
+	<div class="column center-down">
+		<%=render 'component/badges/sustain', size: "lg"%>
+		<div class="bold mt-2">Green Sapling</div>
+		<div class="text-center">Sustainable Spirit</div>
+	</div>
+	<div class="column center-down">
+		<%=render 'component/badges/handmade', size: "lg"%>
+		<div class="bold mt-2">Ruby Sicssor</div>
+		<div class="text-center">Handcrafted</div>
+	</div>
+	<div class="column center-down">
+		<%=render 'component/badges/global', size: "lg"%>
+		<div class="bold mt-2">Blue Globe</div>
+		<div class="text-center">Global Shipping</div>
+	</div>
+</div>
+</div>
+

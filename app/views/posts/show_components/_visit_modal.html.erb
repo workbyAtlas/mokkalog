@@ -1,0 +1,18 @@
+<div class="modal is-active">
+  <div class="modal-background" onclick="hidediv('visitmodal')"></div>
+  <div class="modal-content rw50">
+  <div class="notification has-background-white bp">
+    <div id="idpicker" style="display:none;"><%=@post.id%></div>
+    <div class="title is-4 center text-center"><u>Links</u></div>
+    <div class="text-center center">You are about to visit:</div>
+    <%=link_to "Close", "#", onclick:"hidediv('visitmodal')", class:"delete"%>
+    <div class=" m-4 bs cornered p-2 lgrey">
+    <%=render 'posts/show_components/visit_link', link: @post.web_link, icon:"fa-solid fa-link mr-2"%>      
+	</div>
+
+
+
+
+</div>
+</div>
+</div>

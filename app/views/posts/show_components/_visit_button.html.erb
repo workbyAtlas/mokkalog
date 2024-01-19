@@ -1,0 +1,9 @@
+<%if @post.web_link.empty?%>
+	<div class="button is-warning bold secondary-t" disabled style="border:2px solid #654321;">No Link</div>
+<%else%>
+	<%if @badges == true%>
+		<div class="mx-1 mb-4"><%=link_to "Visit", @post.web_link, class:"button is-warning bold secondary-t" , target:"_blank", style:"border:2px solid #654321;"%></div>
+	<%else%>
+		<div class="mx-1 mb-4 button is-warning bold secondary-t" style="border: 2px solid #654321;" onclick="showdiv('visitmodal')">Visit</div>
+	<%end%>
+<%end%>

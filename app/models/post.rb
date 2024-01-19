@@ -6,7 +6,7 @@ class Post < ApplicationRecord
 	validates :body, length: {maximum: 6000}, allow_blank: true
 
 	#Links
-  validates :web_link, format: { with: /\Ahttps?:\/\//, message: 'should start with http:// or https://' }, allow_blank: true
+  validates :web_link, format: { with: /\Ahttps?:\/\//, message: 'should start with http:// or https://' }, allow_blank: false
   validates :amazon_link, format: { with: /\Ahttps?:\/\//, message: 'should start with http:// or https://' }, allow_blank: true
   validates :grailed, format: { with: /\Ahttps?:\/\//, message: 'should start with http:// or https://' }, allow_blank: true
 

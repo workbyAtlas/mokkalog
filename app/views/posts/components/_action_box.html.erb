@@ -1,0 +1,48 @@
+<div class="">
+	<div class="mt-3 mb-0 title is-3 secondary-t text-center"><%=@post.title %></div>
+
+
+	<div class="my-2 title is-5 text-center center"><%=link_to @post.branded, @post.brand, class:"s-link"%></div>
+
+
+	<div class="center">
+	  <%if @post.archive == "archived"%>
+	    <span class="tag bs">archived</span>
+	    <%= number_to_currency(@post.price) if @post.price.present?%>
+	  <%elsif @post.archive == "project" %>
+	    <span class="tag bs">project</span>
+	    <%= number_to_currency(@post.price) if @post.price.present?%>
+	  <%else%>
+	    <%=if @post.price.blank? then "#N/A" else number_to_currency(@post.price) end%>
+	  <%end%>  
+	</div>
+
+    <div class="mt-4 bsb flexed">
+      <%#LIKE BUTTON%>
+      <div class="mx-1 mb-4">
+        <%if current_user%>
+        <%= render "posts/like_btn_private", post: @post, like_status: current_user.liked?(@post) %>
+        <%else%>
+        <%= render "posts/components/like_btn_public", post: @post%>
+        <%end%>  
+      </div>
+      <div class="mx-1 mb-4 button is-warning bold secondary-t" style="border: 2px solid #654321;" onclick="showdiv('visitmodal')">Visit</div>
+      <div class="mx-1 mb-4 button green-btn bold" style="border: 2px solid #206644;" onclick="copy('share','share-button')" id="share-button">Share</div>
+
+      <%if current_user%>
+      <%=render 'posts/components/favorite_btn', post: @post, fav_status: current_user.favorited?(@post)%>
+      <%else%>
+
+        <div class="button bs mx-1">
+            <div class="hover">
+            <span class="material-symbols-outlined bold mt-1">
+            checkroom
+            </span>
+            <div class="hover-content center">Add to Closet</div>
+          </div>
+        </div>
+      <%end%>
+    </div>
+
+
+</div>

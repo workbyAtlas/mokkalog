@@ -1,53 +1,55 @@
-<section class="section">
-	<div class="center title is-3 secondary-t text-center">What brings you to Mokkalog?</div>
+<style>
+   .square-swatch{
+      width:350px;
+      height:350px;
+      padding: 1.5rem;
+   }
+
+   .square-swatch:hover{
+      background-color:white;
+   }
+</style>
+<div class="title is-2 secondary-t center mt-4">What brings you to Mokkalog?</div>
+<section class="flexed-wc lgrey p-2">
+   <div class="square-swatch m-3 m-shadow">
+      <div class="bold secondary-t">Browse</div>
+      <div class="content">
+         <ul>
+            <li>Discover innovative & underrated brands</li>
+            <li>Get recommendations based on your likes</li>
+            <li>Customize your Profile Page</li>
+            <li>Leave Reviews, Info, & Sell!</li>
+            <li>Exclusive discounts from our partners!</li>
+         </ul>
+         <div><%=link_to "Start Exploring", browse_path, class:"mokka-btn btn-warning center"%></div>
+      </div>
+   </div>
+
+   <div class="square-swatch m-3 m-shadow">
+      <div class="bold secondary-t">Brand Owner</div>
+      <div class="content">
+         <ul>
+            <li>Upload your clothing to a wider audience</li>
+            <li>Find resources for small & growing brands</li>
+            <li>Find potential brands & creators who are open to collaboration</li>
+            <li>Become part of Mokkalog Partner Program</li>
+         </ul>
+         <div><%=link_to "Brand Onboarding", new_brand_path, class:"mokka-btn btn-warning center"%></div>
+      </div>
+   </div>
+   <div class="square-swatch m-3 m-shadow">
+      <div class="bold secondary-t">Retailer</div>
+      <div class="content">
+         <ul>
+            <li>Do you carry clothings on our site? Start uploading links that directs to your site.</li>
+            <li>Find potential brands to stock in your store</li>
+            <li>Become part of Mokkalog Partner Program</li>
+            <li>Email: inquiry@mokkalog.com</li>
+         </ul>
+         <div><%= mail_to "inquiry@mokkalog.com", "Contact Us", class:"button is-warning bold center", style:"border: 1px solid #654321"%></div>
+      </div>
+   </div>
 
 </section>
 
-<section class="section columns">
-	<div class="column bs cornered lgrey m-4">
-		<div class="title is-4 secondary-t center">Browse</div>
-		<div class="content">
-		<ul>
-			<li>Discover innovative & underrated brands</li>
-			<li>Get recommendations based on your likes</li>
-			<li>Customize your Profile Page</li>
-			<li>Leave Reviews, Info, & Sell!</li>
-			<li>Exclusive discounts from our partners!</li>
-		</ul>
-		</div>
-		<div><%=link_to "Start exploring", browse_path, class:"button is-warning bold center", style:"border: 1px solid #654321;"%></div>
-	</div>
-	<div class="column bs cornered lgrey m-4">
-		<div class="title is-4 secondary-t center">Brand Owner</div>
-		<div class="content">
-		<ul>
-			<li>Upload your clothing to a wider audience</li>
-			<li>Find resources for small & growing brands</li>
-			<li>Find potential brands & creators who are open to collaboration</li>
-			<li>Become part of Mokkalog Partner Program</li>
-		</ul>
-		</div>
-		<div><%=link_to "Brand Onboarding", new_brand_path, class:"button is-warning bold center", style:"border: 1px solid #654321;"%></div>
-	</div>
-	<div class="column bs cornered lgrey m-4">
-		<div class="title is-4 secondary-t center">Retailers</div>
-		<div class="content">
-		<ul>
-			<li>Upload links that directs you to your store for products you carry</li>
-			<li>Find potential brands to stock in your store</li>
-			<li>Become part of Mokkalog Partner Program</li>
-			<li>Email: inquiry@mokkalog.com</li>
-		</ul>
-		</div>
-		<div>
-			<%= mail_to "inquiry@mokkalog.com", "Contact Us", class:"button is-warning bold center", style:"border: 1px solid #654321"%></div>
-	</div>
 
-
-</section>
-
-
-<section class="flexed">
-
-</section>
-   

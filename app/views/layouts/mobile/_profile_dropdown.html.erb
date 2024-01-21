@@ -1,0 +1,22 @@
+
+<div class="mobile-dropdown">
+<div class="mt-1 title is-7">Profile</div>
+
+<div class="mobile-dropdown-content mobile-profile-dropdown">
+
+	<div class="mt-2 secondary-t">
+		<div><%=link_to "My Page", user_path(current_user), class:"mobile-nav-link center"%></div>
+		<%if current_user.brands.count > 0%>
+			<div><%=link_to "My Brand", dashboard_path(current_user), class:"mobile-nav-link center"%></div>
+		<%end%>
+		<div><%=link_to "Customize", edit_user_registration_path, class:"mobile-nav-link center"%></div>
+		<hr class="bst m-1" />
+		<div class="center">
+			<strong class="secondary-t"><%=button_to "Log Out", destroy_user_session_path, method: :delete, data:{turbo_method: :delete}, class:"button-like-text mobile-nav-link"%></strong>
+		</div>
+
+
+	</div>
+	<br/>
+</div>
+</div>

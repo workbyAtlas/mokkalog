@@ -1,19 +1,14 @@
 
 <%= form_for(resource, as: resource_name, url: registration_path(resource_name)) do |f| %>
   <%= render "devise/shared/error_messages", resource: resource %>
-<section class="center-down">
+<section class="center-down taller">
 
   <div class="mt-2 mb-4 rw30">
     <div class="cornered bs prime center-down p-4">
-      <span class="title is-4 m-2 secondary-t">Sign Up for Mokka</span>
-      <span><strong class="secondary-t">Why should I make an account?</strong></span>
+      <span class="title is-4 m-2 secondary-t">Sign Up for Mokkalog</span>
       <div class="secondary-t" style="text-align:center;">
         <ul>
-          <li><%=link_to "Have your own profile page", user_path(1), class:"s-link"%></li>
-          <li>Upload you own clothing</li>
-          <li>Be part of the loop</li>
-          <br/>
-          <li class="has-text-white bold">We promise we won't spam you.</li>
+          <li class="bold">We promise we won't spam you.</li>
         </ul>
       </div>
     </div>
@@ -24,19 +19,6 @@
     
 <div class="rw30 p-3 cornered bs">
 
-<div class="columns mb-1">
-  <div class="column">
-    <div class="control">
-      <%= f.text_field :name, class:"input is-small mokka-ph", placeholder: "First Name"%>
-    </div>
-  </div>
-
-  <div class="column">
-    <div class="control">
-      <%= f.text_field :last_name, class:"input is-small mokka-ph", placeholder:"Last Name" %>
-    </div>
-  </div>
-  </div>
 
   <div class="field">
     <div class="control">
@@ -44,15 +26,9 @@
     </div>
   </div>
   
-  <div class="field">
-    <div class="control">
-      <%= f.text_field :username, class:"input is-small mokka-ph", placeholder:"Username" %>
-    </div>
-</div>
   <hr class="bst"/>
 
   <div class="field">
-    <label class="label secondary-t">Password</label>
     <div class="control">
 
     <%= f.password_field :password, autocomplete: "new-password", class:"input is-small mokka-ph", placeholder:"Password" %>
@@ -65,8 +41,8 @@
   </div>
   </div>
 
-  <div class="actions">
-    <%= f.submit "Sign up", class:"button is-warning float-r bold", style:"border-color:#654321;color:#654321;" %>
+  <div class="center">
+    <%= f.submit "Sign up", class:"button is-warning bold rw90", style:"border-color:#654321;color:#654321;" %>
     <%#f.button "check", formaction: check_users_path%>
   </div>
 </div>

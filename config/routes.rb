@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   get 'home' => 'posts#home'
   
   resources :brand_onboarding
+  resources :after_sign_up
   resources :styles
   resources :categories
   resources :tags

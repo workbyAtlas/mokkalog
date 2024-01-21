@@ -1,0 +1,73 @@
+.mobile-nav{
+	display:none;
+	position:fixed;
+	bottom:0%;
+	width:100vw;
+	height:60px;
+}
+
+.mobile-nav div{
+
+}
+
+.mobile-nav-icon{
+	color:#5A3A31;
+}
+
+.mobile-dropdown {
+  }
+.mobile-dropdown-content {
+    display: none;
+    position: fixed;
+    background-color:#dccdc9;
+    width:100vw;
+    bottom:60px;
+    box-sizing: border-box;
+    left:0;
+    border-radius: 25px 25px 0px 0px;
+    z-index: 1;
+    border: 1px solid #5A3A31;
+  }
+
+ .mobile-profile-dropdown{
+ 	height:120px;
+  }
+  .mobile-brand-dropdown{
+  	height:250px;
+  	overflow-y:scroll;
+  }
+ .mobile-dropdown-overlay {
+    display: none; /* Hidden by default */
+    position: fixed;
+    top: 60px;
+    left: 0;
+    width: 100vw;
+    height: 400px;
+    background-color: rgba(0, 0, 0, 0.5); /* Semi-transparent black */
+    z-index: 0; /* Behind the dropdown */
+}
+
+.mobile-dropdown:hover .mobile-dropdown-content{display: block;}
+.mobile-dropdown:hover .mobile-dropdown-overlay{display: block;}
+
+
+.mobile-nav-link{
+	color:#5A3A31;
+	font-weight:bold;
+
+}
+.logo-desc{
+	right:39%; 
+	top:6%;
+}
+
+@media screen and (max-width: 481px){
+    .mobile-nav{display:none;}
+
+
+}
+
+@media (max-width: 480px){
+    .mobile-nav{display:block;}
+    .logo-desc{right:16%; top:5.5%;}
+}

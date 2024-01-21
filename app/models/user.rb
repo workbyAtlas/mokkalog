@@ -6,13 +6,14 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :lockable
 
-  validates :username, uniqueness: true, presence: true
+  validates :name, length: { maximum: 20 }
+  validates :last_name, length: { maximum: 20 }, allow_blank: true
+
+  
   #validates :link1, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true
   #validates :link2, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true
   validates :link1_title, length: { maximum: 20 }, allow_blank: true
   validates :link2_title, length: { maximum: 20 }, allow_blank: true
-  validates :name, length: { maximum: 20 }
-  validates :last_name, length: { maximum: 20 }, allow_blank: true
   validates :description, length: { maximum: 500 }, allow_blank: true
 
   has_one_attached :avatar
@@ -34,6 +35,16 @@ class User < ApplicationRecord
   #editor
   enum role: [:user, :editor, :mod,:developer, :admin]
   after_initialize :set_default_role, :if => :new_record?
+
+  #Onboarding(Wicked)
+  attr_accessor :current_step
+
+  validates :username, uniqueness: true, presence: true, if: :username_step?
+
+  def username_step?
+    current_step == :username
+  end
+
   def set_default_role
     self.role ||= :user
   end

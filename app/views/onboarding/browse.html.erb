@@ -4,20 +4,25 @@
    .bs{
       background-color: #dccdc9;
    }
+   @media (max-width: 480px) {
+     .onboarding3{
+       width: 103px;
+       height:103px;
+     }
 
 </style>
 <section data-controller="about">
-   <div class="title is-2 secondary-t center mt-4">Welcome <%=@current_user.username%>!</div>
+   <div class="title is-2 secondary-t center mt-4 text-center">Welcome <%=@current_user.username%>!</div>
    <section class="flexed-wc lgrey p-2">
-      <div class="square-swatch m-3 m-shadow bs" data-about-target="btn1" data-action="click->about#openTab1">
+      <div class="square-swatch onboarding3 m-3 m-shadow bs" data-about-target="btn1" data-action="click->about#openTab1">
          <div class="mb-2"><i class="fa-solid fa-magnifying-glass fa-2xl"></i></div>
          <div class="title is-5 secondary-t">Explore</div>
       </div>
-      <div class="square-swatch m-3 m-shadow" data-about-target="btn2" data-action="click->about#openTab2">
+      <div class="square-swatch onboarding3 m-3 m-shadow" data-about-target="btn2" data-action="click->about#openTab2">
          <div class="mb-2"><i class="fa-solid fa-gear fa-2xl"></i></div>
          <div class="title is-5 secondary-t">Customize</div>
       </div>
-      <div class="square-swatch m-3 m-shadow" data-about-target="btn4" data-action="click->about#openTab4">
+      <div class="square-swatch onboarding3 m-3 m-shadow" data-about-target="btn4" data-action="click->about#openTab4">
          <div class="mb-2"><i class="fa-brands fa-instagram fa-2xl"></i></div>
          <div class="title is-5 secondary-t">Follow Us</div>
       </div>

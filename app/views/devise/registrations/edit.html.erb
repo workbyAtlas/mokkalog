@@ -77,97 +77,20 @@
       </div>  
     </div>
       <%# INPUT NAME ENDS %>
-
-    <div>@<u><%=@user.username%></u></div>
-    <div class="mt-2 title is-6">
-      Views: <%=@user.views%> | Entries Added:<%=@user.posts.size%> | <span class="tag bs Container">Share +</span>
-    </div>
     <%# LINKS---------------------------------------------------------- %>
     <div class="bs p-4 cornered">
-    <div>
-    <div class="title is-5">Containers</div>
-    <div class="subtitle is-7 mb-2">Container can be a link or a title. The first input is the title for the container and the second input is the body. If you put a valid link(must start with "http:// or https://" the body will convert to a link.
-    </div>
-    <div class="b p-2 cornered"><div>
-    <div class=" mt-2 title is-6 mb-2">Example:</div>
-    <div class="title is-7 mb-0">Link:</div>    
-    <div>
-      <strong>IG:</strong>
-      <%=link_to "https://www.instagram.com" , "https://instagram.com", target: "_blank", class:"tag bp"%>
-    </div> 
-
-    <div class="title is-7 mt-2 mb-0">Not-Link:</div>    
-    <div>
-      <strong>Favorite Place:</strong>
-      Mokka
-    </div>
-
-    <div class="title is-7 mt-2 mb-0">If Title is blank:</div>    
-    <div class="mx-2">
-      <%=link_to "https://www.instagram.com" , "https://instagram.com", target: "_blank", class:"tag bp"%>
-    </div>
-    </div>
-    </div>
-    <hr class="bst" />
-    <%=f.label "Container 1", class:"label mb-0"%>
-    <div class="flexed">
-      <%= f.text_field :link1_title, class:"input is-small mokka-ph", style:"width:20%;", placeholder: "Title" %>
-      <strong class="mx-1">:</strong>
-      <%= f.text_field :link1, class:"input is-small mokka-ph", style:"width:60%;", placeholder:"Body" %>
-    </div>
-
-    <%=f.label "Container 2", class:"label mb-0 mt-2"%>
-    <div class="flexed">
-      <%= f.text_field :link2_title, class:"input is-small mokka-ph", style:"width:20%;", placeholder:"Title" %>
-      <strong class="mx-1">:</strong>
-      <%= f.text_field :link2, class:"input is-small mokka-ph", style:"width:60%;", placeholder:"Body" %>
-    </div>
-
-    </div>
-    <%#=LINKS END%>
-    <hr class="bst"/>
-    <%=f.label "Bio", class:"label"%>
+    <%=f.label "Bio", class:"label secondary-t"%>
     <div class="my-4 profile-desc">
         <%= f.text_area :description, class:"textarea mokka-ph", placeholder:"write a short description about yourself." %>
     </div>
+
   </div>
+  <div class="mt-2"><%= f.submit "Update", class:"mokka-btn btn-warning float-r" %></div>
   </div>
 </div>
 </section>
 <%#BIO SECTION END%>
-
-<%if true == false%>
-<section class="bp mx-auto rw50 mt-4 p-4 cornered">
-<div class="title is-5 center"><u>Customize</u></div>
-<div class="columns">
-  <div class="column center-down">
-    <label class="label">Primary Color</label>
-    <span class="select">
-      <%= f.select :primary_color, ['#cbb595;', '#c88595;', '#9f5f9f;' ], class:"option-form"%>
-    </span>
-  </div>
-
-  <div class="column center-down">
-    <label class="label">Secondary Color</label>
-    <span class="select">
-      <%= f.select :secondary_color, ['#cbb595;', '#c88595;', '#9f5f9f;' ], class:"option-form"%>
-    </span>
-  </div>
-
-    <div class="column center-down">
-    <label class="label">Text Color</label>
-    <span class="select">
-      <%= f.select :text_color, ['black','white', '#c88595;', '#9f5f9f;' ], class:"option-form"%>
-    </span>
-  </div>
-
-</div>
-
-</section>
-<%end%>
-<div class="rw50 mx-auto mt-2 mb-6">
-<%= f.submit "Update", class:"button is-warning float-r" %>
-</div>        
+       
 <% end %>
 <br/><br/>
 <% if  true == false%>

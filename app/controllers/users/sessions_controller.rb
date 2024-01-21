@@ -32,7 +32,7 @@ class Users::SessionsController < Devise::SessionsController
       # Redirect to a custom path for the first sign-in
       # For example, you can redirect to a welcome page or an onboarding process
       current_user.update(onboard: 1)
-      welcome_path
+      after_sign_up_path(:username)
 
     else
       root_path

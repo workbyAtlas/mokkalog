@@ -1,0 +1,22 @@
+<%=form_for @user, method: :put,url: wizard_path do |f|%>
+  <% if @user.errors.any? %>
+    <%=render 'component/error', errors: @user.errors%>
+  <% end %>
+
+<div class="rw50 mx-auto taller">
+  <div class="secondary-t bold center">Tell me more about yourself.</div>
+    <div class="rw50 mx-auto columns mt-2">
+      <div class="column"><%= f.text_field :name, class:"input mokka-ph mt-2", placeholder:"Username" %></div>
+      <div class="column"><%= f.text_field :last_name, class:"input mokka-ph mt-2", placeholder:"Username" %></div>
+    </div>
+  <div class="center">
+    <%= f.submit "Continue", class:"button is-warning bold mt-4", style:"border:1px solid #654321;"%>
+  </div>
+</div>
+
+
+
+ <%end%>
+
+
+

@@ -1,7 +1,10 @@
 <%= search_form_for @query, data: {turbo_frame: :results, turbo_action: 'advance'}, url: home_path, html: { class: "form-inline" } do |f| %>
       
       
-      <div class="mx-auto center rw40">
+      <div class="mx-auto center rw50">
+        
+        <%=render 'component/filters/c_type'%>
+
         <%= f.search_field :title_or_color_or_material_or_tags_name_or_brand_name_or_category_name_or_brand_location_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bb mokka-ph l-cornered", placeholder:"Search here..." %>
 
           <%= f.button :submit, class: "button is-warning r-cornered ", style: "border: 2px solid black;border-left:none;" do %>

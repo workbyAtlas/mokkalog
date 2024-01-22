@@ -2,7 +2,11 @@
 <div class="d-none" id="share"><%=request.url%></div>
 <section class="section p-2">
   <div class="mb-4">
-    <%= link_to 'Back', :back, class:"mokka-btn btn-warning m-shadow mb-3"%>
+    <% if :back == edit_post_path(@post) %>
+      <%=link_to "Back", brand_path(@post.brand)%>
+    <%else%>
+      <%= link_to 'Back', :back, class:"mokka-btn btn-warning m-shadow mb-3"%>
+    <%end%>
     <%if @badges == true%>
         <span class="float-r mr-4"><%=render "posts/components/badges"%></span>
     <%end%>

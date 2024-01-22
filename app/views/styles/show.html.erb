@@ -28,7 +28,7 @@
     <div class="center bold mb-4 p-2 bottom-bg">Showing <%=@posts_prior.count%> clothings</div>
     <section class="flexed-wc post-container mx-auto">
     <% @posts.each do |post| %>
-      <div class=""><%= render "posts/post", post: post, like_status: current_user.liked?(post) %></div>
+      <div class=""><%= render "posts/post", post: post%></div>
     <% end %>
     </section>
 

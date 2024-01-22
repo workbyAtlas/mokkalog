@@ -2,8 +2,6 @@
 .home-nav{overflow-x:hidden;display:flex; justify-content: center;position:relative;}
 
 
-
-
 .home-nav-border{border-top: 1px solid #DCDCDC;}
 .cnav-btn-box{min-width:70px;height:70px;margin:0.5rem;}
 .cnav-filter-box{border:2px solid black; cursor:pointer;position: relative; height:}

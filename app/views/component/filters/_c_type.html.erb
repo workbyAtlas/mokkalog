@@ -1,0 +1,15 @@
+<div class="ctypegrid mr-2 d-none-mobile">
+	<div>
+	  <label class="ctype-checkbox">
+	  <%= check_box_tag('q[c_type_i_cont_any][]', "W", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
+	  <%#= check_box_tag('q[material_i_cont_any][]', x, false) %>
+	  <span class="ctype-checkmark l-cornered"><i class="fa-solid fa-person-dress fa-lg"></i></span>
+	  </label>
+	</div>
+	<div>
+	  <label class="ctype-checkbox">
+	  <%= check_box_tag('q[c_type_i_cont_any][]', "M", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
+	  <span class="ctype-checkmark r-cornered" style="left:55px;"><i class="fa-solid fa-person fa-lg"></i></span>
+	  </label>
+	</div>
+</div>

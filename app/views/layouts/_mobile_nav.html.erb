@@ -1,4 +1,4 @@
-<section class="mobile-nav lgrey bs-1">
+<section class="mobile-nav prime bs-1">
 	<div class="columns is-mobile m-0 p-0">
 		<div class="column">
 			<%= link_to about_path, class:"center-down" do %>
@@ -7,8 +7,9 @@
 			<%end%>	
 		</div>
 		<div class="column">
-				<div class="center-down">
+				<div class="mobile-dropdown center-down">
 					<div class=""><i class="fa-solid fa-magnifying-glass mobile-nav-icon fa-lg"></i></div>
+					<div class="mt-1 title is-7">Explore</div>
 					<%=render 'layouts/mobile/explore_dropdown'%>
 				</div>
 		</div>
@@ -19,15 +20,17 @@
 			<%end%>	
 		</div>
 			<div class="column">
-				<div class="center-down">
+				<div class="mobile-dropdown center-down">
 					<div class=""><i class="fa-solid fa-mug-hot mobile-nav-icon fa-lg"></i></div>
+					<div class="mt-1 title is-7">Brands</div>
 					<%=render 'layouts/mobile/brand_dropdown'%>
 				</div>
 			</div>
 		<%if user_signed_in?%>
 			<div class="column">
-				<div class="center-down">
+				<div class="mobile-dropdown center-down">
 					<div class=""><i class="fa-solid fa-user mobile-nav-icon fa-lg"></i></div>
+					<div class="mt-1 title is-7">Profile</div>
 					<%=render 'layouts/mobile/profile_dropdown'%>
 				</div>
 			</div>

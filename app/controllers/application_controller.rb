@@ -7,6 +7,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_user_roles
 	before_action :set_necessary_variables
 
+
 	#before_action :lockdown
 	def set_user_roles
 	 @auth = false
@@ -96,8 +97,8 @@ class ApplicationController < ActionController::Base
 
 
 	    @posts_prior = q.result(distinct: true).includes(:tags, :brand, :category)
-	    shuffled_posts = @posts_prior.to_a.shuffle
-	    @posts = Kaminari.paginate_array(shuffled_posts).page(params[:page]).per(20)
+	    rearranged_posts = @posts_prior
+	    @posts = Kaminari.paginate_array(rearranged_posts).page(params[:page]).per(20)
 
 
 

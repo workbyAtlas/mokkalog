@@ -6,17 +6,12 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :lockable
 
+  has_one_attached :avatar
   validates :name, length: { maximum: 20 }
   validates :last_name, length: { maximum: 20 }, allow_blank: true
-
-  
-  #validates :link1, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true
-  #validates :link2, format: { with: /\Ahttps:\/\//, message: "should start with 'https://" }, allow_blank: true
-  validates :link1_title, length: { maximum: 20 }, allow_blank: true
-  validates :link2_title, length: { maximum: 20 }, allow_blank: true
   validates :description, length: { maximum: 500 }, allow_blank: true
 
-  has_one_attached :avatar
+  #Associations
   has_many :posts
   has_many :brands
   has_many :blogs
@@ -26,28 +21,27 @@ class User < ApplicationRecord
 
   has_many :favoritables, dependent: :destroy
   has_many :favorited_posts, through: :favoritables, source: :post
-
   has_many :pagelinks, dependent: :destroy
 
   before_destroy :reassign_posts
 
-  #regular user
-  #editor
+  #User Role
   enum role: [:user, :editor, :mod,:developer, :admin]
   after_initialize :set_default_role, :if => :new_record?
 
-  #Onboarding(Wicked)
-  attr_accessor :current_step
+  def set_default_role
+    self.role ||= :user
+  end
 
+  #Onboarding(Wicked)------------------------------------------------------
+  attr_accessor :current_step
   validates :username, uniqueness: true, presence: true, if: :username_step?
 
   def username_step?
     current_step == :username
   end
 
-  def set_default_role
-    self.role ||= :user
-  end
+
 
   def should_generate_new_friendly_id?
    username_changed? || slug.blank?

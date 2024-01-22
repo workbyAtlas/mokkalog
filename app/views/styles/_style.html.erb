@@ -1,7 +1,3 @@
-
-<%# style.styleables.each do |styleable| %>
-  <%#= render 'brands/components/brand_mokka', brand: styleable.style %>
-  <%# end %>
 <div class="lgrey px-3 pt-3 pb-0 cornered m-2 brand-card">
 
   <span class="mx-auto">
@@ -11,13 +7,14 @@
     <div class="center"><%=image_tag(@blank.image_brand, class:"cornered")%></div>
     <% end %>
 
-    <div class="p-link center d-none-mobile">
-      <%=link_to style.shorter_name(style.name,15,10), style,data: {turbo_frame: "_top"}, class:"s-link bold", style:"text-align:center;" %>
+    <div class="p-link center d-none-mobile text-center">
+      <%=link_to style.name, style,data: {turbo_frame: "_top"}, class:"s-link bold", style:"text-align:center;" %>
     </div>
 
-    <div class="p-link d-none-desktop">
-      <%=link_to style.shorter_name(style.name,20,15), style,data: {turbo_frame: "_top"}, class:"s-link bold center", style:"text-align:center;" %>
+    <div class="p-link d-none-desktop center text-center">
+      <%=link_to style.name, style,data: {turbo_frame: "_top"}, class:"s-link bold center", style:"text-align:center;" %>
     </div>
+    <div class="center text center"><%#style.posts.count%></div>
   </span>
 
 </div>

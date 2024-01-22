@@ -50,6 +50,9 @@ class PostsController < ApplicationController
   # GET /posts/1 or /posts/1.json
   def show
     @blank = Brand.find(1)
+    @type = "Neutral" if @post.c_type == "MW"
+    @type = "Men" if @post.c_type == "M"
+    @type = "Women" if @post.c_type == "W"
 
     if not current_user == @post.user
       @post.update(views: @post.views + 1)

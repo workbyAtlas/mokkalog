@@ -1,0 +1,27 @@
+<%if user_signed_in?%>
+
+	<span class="flexed" id="<%="post_#{post.id} private_likes"%>">
+	<%= button_to like_post_path(post), class: "button button-like-text mr-1", method: :post, form: { data: { turbo: true } } do %>
+		<%if current_user.liked?(post)%>
+			<%=post.likes.count%>
+			<i class="fa-solid fa-heart fa-lg mx-1 mred"></i>
+
+		<%else%>
+			<%=post.likes.count%>
+			<i class="fa-regular fa-heart fa-lg mx-1 mred"></i>
+		<%end%>
+
+	<%end%>
+
+	</span>
+<%else%>
+	<%= link_to new_user_session_path, class: "button button-like-text mr-1" do %>
+		<%=post.likes.count%>
+		<i class="fa-regular fa-heart fa-lg ml-5 mred"></i>
+		 
+	<%end%>
+
+<%end%>
+
+
+

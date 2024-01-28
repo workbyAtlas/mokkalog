@@ -36,11 +36,7 @@
         <div class="mt-4 bsb flexed">
           <%#LIKE BUTTON%>
           <div class="mx-1 mb-4">
-            <%if current_user%>
-            <%= render "posts/like_btn_private", post: @post, like_status: current_user.liked?(@post) %>
-            <%else%>
-            <%= render "posts/components/like_btn_public", post: @post%>
-            <%end%>  
+            <%=render 'posts/components/like_button', post:@post%>
           </div>
           <%=render 'posts/show_components/visit_button'%>
           <div class="mx-1 button green-btn bold mb-4" style="border: 2px solid #206644;" onclick="copy('share','share-button')" id="share-button">Share</div>

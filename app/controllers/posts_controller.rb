@@ -175,7 +175,16 @@ def quick
 
   def like
     @post = Post.find(params[:id])
-    current_user.like_for_post(@post)
+    if current_user.liked?(@post)
+      current_user.unlike(@post)
+    else
+      current_user.like(@post)
+    end
+
+    #respond_to do |format|
+    #  format.html { redirect_to post_path(@post) }
+    #end
+
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: private_stream
@@ -236,7 +245,7 @@ def quick
 
     def private_stream
       private_target = "post_#{@post.id} private_likes"
-      turbo_stream.replace(private_target, partial: "likes/private_button", locals:{post: @post, like_status: current_user.liked?(@post)})
+      turbo_stream.replace(private_target, partial: "posts/components/like_button", locals:{post: @post})
     end
 
     def private_fav_stream

@@ -68,15 +68,21 @@ Rails.application.routes.draw do
 
   resources :posts do
     collection do
-      post :check  
+      post :check
     end
+    
+    member do
+      post :like
+    end
+      
+    
     resources :pagelinks
     resources :comments, only: :create
     #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
     #get "visit"
   end
 
-  post 'like/:id', to: 'posts#like', as: 'like_post'
+  #post 'like/:id', to: 'posts#like', as: 'like_post'
   post 'favorite/:id', to: 'posts#favorite', as: 'favorite_post'
 
   #resources :pagelinks, only: [:destroy, :edit, :update]

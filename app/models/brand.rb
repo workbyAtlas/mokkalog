@@ -34,6 +34,11 @@ class Brand < ApplicationRecord
   has_many :brand_tag_assocs, dependent: :destroy
   has_many :tags, through: :brand_tag_assocs
 
+  has_many :likeables, as: :likeable, dependent: :destroy
+  has_many :likes, through: :likeables, source: :user
+
+  
+
   scope :grouped_by_day, -> { group_by_day(:created_at) }
 
 
@@ -56,6 +61,7 @@ class Brand < ApplicationRecord
     # Assuming you want to use the opposite of your similarity metric
     1 / (1 + similarity_to(other_brand))
   end
+
 
   def should_generate_new_friendly_id?
     name_changed? || slug.blank?

@@ -15,6 +15,7 @@ class UsersController < ApplicationController
 
     @closet_post = @user.favorited_posts
     @liked_posts = @user.liked_posts
+    @followed_brands = @user.liked_brands
   end
 
   def setting

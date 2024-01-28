@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
   root 'posts#home'
   get 'home' => 'posts#home'
+
+  #TEST
+  get 'payment' => 'pages#payment'
   
   resources :brand_onboarding
   resources :after_sign_up
@@ -20,12 +23,14 @@ Rails.application.routes.draw do
   resources :brands do
     member do
       delete :purge_banner
+      post :like
     end
   end
   
   
 
   get 'users/profile'
+
 
   devise_for :users, controllers: {
     sessions: 'users/sessions',

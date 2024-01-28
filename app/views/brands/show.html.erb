@@ -25,13 +25,23 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
       <div class="mobile-square-img"><%=image_tag (@blank.image_as_thumbnail), class:"cornered" %></div>
     <% end %>
       <div class="center">
-      <div class="title is-3 mx-5 mb-0 mt-2" style="color:<%=@brand.brand_text%>"><%=@brand.name%></div>
+        <div>
+          <div class="title is-3 mx-5 mb-0 mt-2" style="color:<%=@brand.brand_text%>">
+            <%=@brand.name%>
+          </div>
+          <%= render 'brands/components/like_button', brand:@brand%>
+        </div>
       </div>
+
     </div>
 
 
     <div class="rw50 m-4" style="color:<%=@brand.brand_text%>"><%=@brand.header%></div>
+
 </section>
+
+
+
 
 
 <br/>

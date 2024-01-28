@@ -1,12 +1,21 @@
 <section class="section">
+	<div class="bold center"><u>Liked Brands:</u></div>
+	<div class="">
+	<% @followed_brands.each do |brand| %>
+
+		<%= render brand%>
+
+	<%end%>
+	</div>
+</section>
+
+
+<section>
 	<div class="bold center"><u>Liked Clothing:</u></div>
 	<div class="flexed-wc">
 	<% @liked_posts.each do |post| %>
 
-	<div class="bs m-1 center-down post-card cornered p-1">
-			<%= image_tag(post.image_handler(post.image,"normal")) if post.image.attached? %>
-		<%=link_to post.titled, post, class:"s-link" %>
-	</div>
+	<%= render post%>
 
 	<%end%>
 	</div>

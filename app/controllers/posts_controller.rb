@@ -175,7 +175,7 @@ def quick
 
   def like
     @post = Post.find(params[:id])
-    current_user.like(@post)
+    current_user.like_for_post(@post)
     respond_to do |format|
       format.turbo_stream do
         render turbo_stream: private_stream
@@ -328,7 +328,7 @@ def quick
 
     # Only allow a list of trusted parameters through.
     def post_params
-      params.require(:post).permit(:title, :body, :price, :color, :category_id, :sub_category, :web_link, :likes, :image, :tags, :brand_id, 
+      params.require(:post).permit(:title, :body, :price, :color, :category_id, :sub_category, :web_link, :image, :tags, :brand_id, 
         :name, :user_id, :c_type, :amazon_link, :material, :image1, :image2, :image3, :archive, :grailed, :season)
     end
 end

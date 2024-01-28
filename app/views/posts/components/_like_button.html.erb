@@ -15,12 +15,10 @@
 
 	</span>
 <%else%>
-	<%= link_to new_user_session_path, class: "button button-like-text mr-1" do %>
+	<button class="button button-like-text mr-1">
 		<%=post.likes.count%>
-		<i class="fa-regular fa-heart fa-lg ml-5 mred"></i>
-		 
-	<%end%>
-
+		<i class="fa-regular fa-heart fa-lg mx-1 mred"></i>	 
+	</button>
 <%end%>
 
 

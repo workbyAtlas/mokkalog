@@ -69,16 +69,6 @@ class BrandsController < ApplicationController
 
   end
 
-  # GET /brands/new
-  def new
-    if current_user.tokens > 0
-      @brand = Brand.new
-    else
-      redirect_to root_path, notice: "You don't have any Brand Token left, please reach out to our admins."
-
-    end
-
-  end
 
   # GET /brands/1/edit
   def edit
@@ -141,6 +131,19 @@ class BrandsController < ApplicationController
     redirect_to brands_path, notice: 'Brand was successfully destroyed.'
   end
 
+  def like
+    @brand = Brand.find(params[:id])
+    if current_user.liked?(@brand)
+      current_user.unlike(@brand)
+    else
+      current_user.like(@brand)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to brand_path(@brand) }
+    end
+  end
+
   def purge_banner
     @brand = Brand.find(params[:id])
     @brand.banner.purge
@@ -164,6 +167,24 @@ class BrandsController < ApplicationController
           brand.styles << Style.find_or_create_by(name: style)
         end
       end
+    end
+
+
+
+    def private_stream
+      private_target = "brand_#{@brand.id}_private_likes"
+      turbo_stream.replace(private_target, partial: "brands/components/like_button", locals:{brand: @brand, like_status: current_user.liked?(@brand)})
+    end
+
+    # GET /brands/new
+    def new
+      if current_user.tokens > 0
+        @brand = Brand.new
+      else
+        redirect_to root_path, notice: "You don't have any Brand Token left, please reach out to our admins."
+
+      end
+
     end
 
     def create_or_delete_brands_tags(brand, tags)
@@ -191,6 +212,6 @@ class BrandsController < ApplicationController
     def brand_params
       params.require(:brand).permit(:name, :image, :user_id, :body, :views, :link, :banner,
        :brand_color, :brand_text, :header, :last_edited, :ig_link, :gallery1,:gallery2,:gallery3,
-       :styles, :verification, :location, :x_twitter, :badge)
+       :styles, :verification, :location, :x_twitter, :badge, :likes)
     end
 end

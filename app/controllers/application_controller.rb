@@ -97,7 +97,7 @@ class ApplicationController < ActionController::Base
 
 
 	    @posts_prior = q.result(distinct: true).includes(:tags, :brand, :category)
-	    rearranged_posts = @posts_prior
+	    rearranged_posts = @posts_prior.to_a.shuffle
 	    @posts = Kaminari.paginate_array(rearranged_posts).page(params[:page]).per(20)
 
 

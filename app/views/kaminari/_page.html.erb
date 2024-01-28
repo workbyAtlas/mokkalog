@@ -1,10 +1,10 @@
 
 <% if page.current? %>
-  <li>
+  <li data-action="click->pagy#scrollToTop">
     <%= content_tag :a, page, rel: page.rel, class: 'pagination-link prime secondary-t bs' %>
   </li>
 <% else %>
-  <li>
+  <li data-action="click->pagy#scrollToTop">
     <% data ||= {} %>
     <%= link_to page, url, rel: page.rel, data: data, class: 'pagination-link bs' %>
   </li>

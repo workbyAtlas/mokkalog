@@ -1,7 +1,8 @@
 
 
 <%= paginator.render do %>
-  <nav class="pagination is-centered">
+  <nav class="pagination is-centered" data-controller="pagy">
+
     <ul class="pagination-list">
       <%= first_page_tag unless current_page.first? %>
       <%= prev_page_tag unless current_page.first? %>

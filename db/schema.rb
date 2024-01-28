@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_12_022436) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_25_210344) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -214,10 +214,11 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_022436) do
 
   create_table "likeables", force: :cascade do |t|
     t.bigint "user_id", null: false
-    t.bigint "post_id", null: false
+    t.bigint "likeable_id", null: false
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.index ["post_id"], name: "index_likeables_on_post_id"
+    t.string "likeable_type"
+    t.index ["likeable_id"], name: "index_likeables_on_likeable_id"
     t.index ["user_id"], name: "index_likeables_on_user_id"
   end
 
@@ -342,7 +343,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_12_022436) do
   add_foreign_key "comments", "users"
   add_foreign_key "favoritables", "posts"
   add_foreign_key "favoritables", "users"
-  add_foreign_key "likeables", "posts"
+  add_foreign_key "likeables", "posts", column: "likeable_id"
   add_foreign_key "likeables", "users"
   add_foreign_key "pagelinks", "posts"
   add_foreign_key "pagelinks", "users"

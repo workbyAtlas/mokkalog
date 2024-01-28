@@ -18,6 +18,14 @@ class User < ApplicationRecord
 
   has_many :likeables, dependent: :destroy
   has_many :liked_posts, through: :likeables, source: :post
+  has_many :liked_brands, through: :likeables, source: :likeable, source_type: 'Brand'
+  #has_many :likeables, dependent: :destroy
+
+
+
+
+
+
 
   has_many :favoritables, dependent: :destroy
   has_many :favorited_posts, through: :favoritables, source: :post
@@ -47,16 +55,37 @@ class User < ApplicationRecord
    username_changed? || slug.blank?
   end
 
-  def liked?(post)
-    liked_posts.include?(post)
+  def like(likeable)
+    likeables.find_or_create_by(likeable: likeable)
   end
-  def like(post)
-    if liked_posts.include?(post)
-      liked_posts.destroy(post)
-    else
-      liked_posts << post
-    end
 
+  def unlike(likeable)
+    likeables.where(likeable: likeable).destroy_all
+  end
+
+  def like_for_post(likeable)
+    existing_like = Likeable.find_by(likeable: likeable, user_id: id)
+
+    if existing_like
+      # Unlike the post
+      existing_like.destroy
+    else
+      # Like the post
+      Likeable.create(likeable: likeable, user_id: id)
+    end
+  end
+
+  def liked?(likeable)
+    likeables.exists?(likeable: likeable)
+  end
+
+
+  def liked_brands
+    Brand.joins(:likeables).where(likeables: {user_id: id})  
+  end
+
+  def liked_posts
+    Post.joins(:likeables).where(likeables: { user_id: id })
   end
 
   def favorited?(post)

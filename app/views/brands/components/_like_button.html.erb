@@ -1,0 +1,23 @@
+<%if user_signed_in?%>
+	<span class="flexed mx-5">
+	<%= button_to like_brand_path(brand), class: "button button-like-text mr-1", method: :post, form: { data: { turbo: true } } do %>
+		<%if current_user.liked?(brand)%>
+			<i class="fa-solid fa-heart fa-lg mx-1 mred"></i>
+			<%brand.likes.count%> <span style="color:<%=@brand.brand_text%>"><%=brand.likes.count%>  Following</span>
+		<%else%>
+			<i class="fa-regular fa-heart fa-lg mx-1 mred"></i>
+			<%brand.likes.count%> <span style="color:<%=@brand.brand_text%>">Click to Follow</span>
+		<%end%>
+
+	<%end%>
+	</span>
+<%else%>
+	<%= link_to new_user_session_path, class: "button button-like-text mr-1" do %>
+		<i class="fa-regular fa-heart fa-lg ml-5 mred"></i>
+		<%brand.likes.count%> <span style="color:<%=@brand.brand_text%>">Sign In to Follow</span>
+	<%end%>
+
+<%end%>
+
+
+

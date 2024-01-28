@@ -33,8 +33,13 @@ class Post < ApplicationRecord
 	belongs_to :brand
 	belongs_to :category, optional: true
 
-	has_many :likeables, dependent: :destroy
-	has_many :likes, through: :likeables, source: :user
+	#has_many :likeables, dependent: :destroy
+	#has_many :likes, through: :likeables, source: :user
+
+	has_many :likeables, as: :likeable, dependent: :destroy
+  has_many :likes, through: :likeables, source: :user
+
+  
 
 	has_many :favoritables, dependent: :destroy
 	has_many :favorites, through: :favoritables, source: :user

@@ -1,4 +1,5 @@
 <style>html{background-color:#f5f5f5;}</style>
+
 <%@title = "dashboard " + @user.username%>
 
 
@@ -27,15 +28,15 @@
 
 				<%=link_to root_path,target:"_blank", class:"dashboard-btn hover m-2" do%>
 						<div class="dashboard-icon"><i class="fa-solid fa-coins fa-2xl"></i></div>
-						<div class="hover-content">Coming Soon</div>
+						<div class="hover-content">Payment Plan</div>
 				<%end%>
 
-				<%=link_to brand_path(@brand),target:"_blank", class:"dashboard-btn hover m-2" do%>
+				<%=link_to root_path ,target:"_blank", class:"dashboard-btn hover m-2" do%>
 						<div class="dashboard-icon"><i class="fa-solid fa-chart-simple fa-2xl"></i></div>
 						<div class="hover-content">Coming Soon</div>
 				<%end%>
 
-				<%=link_to brand_path(@brand),target:"_blank", class:"dashboard-btn hover m-2" do%>
+				<%=link_to guideline_path, target:"_blank", class:"dashboard-btn hover m-2" do%>
 						<div class="dashboard-icon"><i class="fa-solid fa-circle-question fa-2xl"></i></div>
 						<div class="hover-content">FAQ</div>
 				<%end%>

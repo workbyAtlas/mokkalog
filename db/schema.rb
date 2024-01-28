@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_01_25_210344) do
+ActiveRecord::Schema[7.0].define(version: 2024_01_28_014313) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -343,7 +343,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_01_25_210344) do
   add_foreign_key "comments", "users"
   add_foreign_key "favoritables", "posts"
   add_foreign_key "favoritables", "users"
-  add_foreign_key "likeables", "posts", column: "likeable_id"
   add_foreign_key "likeables", "users"
   add_foreign_key "pagelinks", "posts"
   add_foreign_key "pagelinks", "users"

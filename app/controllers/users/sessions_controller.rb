@@ -9,14 +9,24 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  # def create
-  #   super
-  # end
+  def create
+    redirect_to root_path
+  end
 
   # DELETE /resource/sign_out
-  # def destroy
-  #   super
-  # end
+  def destroy
+    if current_user.email == "demo@mokkalog.com"
+      current_user.update(name: nil)
+      current_user.update(username: nil)
+      current_user.update(last_name: nil)
+      current_user.posts.destroy_all
+      current_user.brands.destroy_all
+      super
+    else
+      super
+    end
+
+  end
 
   protected
 
@@ -33,9 +43,14 @@ class Users::SessionsController < Devise::SessionsController
       # For example, you can redirect to a welcome page or an onboarding process
       current_user.update(onboard: 1)
       after_sign_up_path(:username)
-
     else
-      root_path
+      if current_user.email = "demo@mokkalog.com"
+        current_user.update(tokens:1)
+        current_user.update(coins:10)
+        demo_path
+      else
+        root_path
+      end
     end
   
   end

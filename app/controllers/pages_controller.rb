@@ -71,6 +71,7 @@ class PagesController < ApplicationController
   def admin_room
     @users =User.all
     @posts =Post.all
+    @demo_account =User.find_by(email: 'demo@mokkalog.com')
     @categories = Category.all
     # Assuming you have a User model with a 'confirmed_at' attribute
     @confirmed = User.where.not(confirmed_at: nil).count

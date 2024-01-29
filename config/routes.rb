@@ -61,6 +61,7 @@ Rails.application.routes.draw do
   get 'mokkalog'  => 'pages#mokkalog'
   get 'manage'    => 'pages#manage'
   get 'lockdown'  => 'pages#lockdown'
+  get 'demo'      => 'pages#demo'
 
   #get 'posts/:id/visit', to: 'posts#visit', as: 'post_visit'
   #get 'posts/:id/quick', to: 'posts#quick', as: 'post_quick'

@@ -108,9 +108,10 @@ def quick
   def new
 
     if current_user.coins > 0 
+      set_users_brand
       @post = Post.new
       #@user_brands = current_user.brands
-      set_users_brand
+      
     else
       redirect_to root_path, notice: "You don't have any coins left, please reach out to our admins."
     end
@@ -127,7 +128,7 @@ def quick
 
   # POST /posts or /posts.json
   def create
-
+    set_users_brand
     @post = Post.new(post_params.except(:tags))
     create_or_delete_posts_tags(@post, params[:post][:tags],)
     @post.user = current_user
@@ -238,7 +239,7 @@ def quick
       if @auth_e
       @user_brands = Brand.all
       else
-      @user_brands = current_user.brands + Brand.where(id: 1)
+      @user_brands = current_user.brands
       end
 
     end

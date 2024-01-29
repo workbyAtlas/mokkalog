@@ -12,9 +12,15 @@ class Users::RegistrationsController < Devise::RegistrationsController
   # end
 
   # POST /resource
-  # def create
-  #   super
-  # end
+  def create
+    if params[:user][:middle_name].present?
+    # Handle it as you see fit: render something, or redirect, or just ignore
+    redirect_to root_path
+    else
+      super
+    end
+
+  end
 
   # GET /resource/edit
   # def edit
@@ -46,9 +52,9 @@ class Users::RegistrationsController < Devise::RegistrationsController
     resource.update_without_password(params)
   end
 
-  def after_sign_up_path_for(resource)
-    #posts_path
-  end
+  #def after_sign_up_path_for(resource)
+  #  #posts_path
+  #end
 
   def after_update_path_for(resource)
     user_path(current_user)

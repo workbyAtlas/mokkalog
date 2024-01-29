@@ -101,6 +101,16 @@ class BrandsController < ApplicationController
     end
   end
 
+  def new
+    if current_user.tokens > 0
+      @brand = Brand.new
+    else
+      redirect_to root_path, notice: "You don't have any Brand Token left, please reach out to our admins."
+
+    end
+
+  end
+
   # PATCH/PUT /brands/1 or /brands/1.json
   def update
     create_or_delete_brands_tags(@brand, params[:brand][:tags])
@@ -177,15 +187,6 @@ class BrandsController < ApplicationController
     end
 
     # GET /brands/new
-    def new
-      if current_user.tokens > 0
-        @brand = Brand.new
-      else
-        redirect_to root_path, notice: "You don't have any Brand Token left, please reach out to our admins."
-
-      end
-
-    end
 
     def create_or_delete_brands_tags(brand, tags)
       brand.brand_tag_assocs.destroy_all

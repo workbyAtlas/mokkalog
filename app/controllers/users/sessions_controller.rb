@@ -9,9 +9,9 @@ class Users::SessionsController < Devise::SessionsController
   # end
 
   # POST /resource/sign_in
-  def create
-    redirect_to root_path
-  end
+  #def create
+  #  super
+  #end
 
   # DELETE /resource/sign_out
   def destroy
@@ -38,19 +38,22 @@ class Users::SessionsController < Devise::SessionsController
     #super(resource)
       # Redirect to a custom path for the first sign-in
       # For example, you can redirect to a welcome page or an onboarding process
-    if current_user.onboard == 0
-      # Redirect to a custom path for the first sign-in
-      # For example, you can redirect to a welcome page or an onboarding process
-      current_user.update(onboard: 1)
-      after_sign_up_path(:username)
+
+    if current_user.email == "demo@mokkalog.com"
+      current_user.onboard +=1
+      current_user.update(tokens:1)
+      current_user.update(coins:10)
+      demo_path
     else
-      if current_user.email = "demo@mokkalog.com"
-        current_user.update(tokens:1)
-        current_user.update(coins:10)
-        demo_path
+      if current_user.onboard == 0
+        # Redirect to a custom path for the first sign-in
+        # For example, you can redirect to a welcome page or an onboarding process
+        current_user.update(onboard: 1)
+        after_sign_up_path(:username)
       else
         root_path
       end
+
     end
   
   end

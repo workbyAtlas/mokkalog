@@ -1,30 +1,30 @@
-<div class="taller">
+<div class="taller" data-controller="about">
 	<div class="title is-4 center secondary-t mt-6 text-center">Congratulation <%=@brand.name%> is now live on Mokkalog!</div>
 
 
-	<div class="mx-auto center-down">
+	<div class="mx-auto center-down text-center">
 		<div class="bold">Things to do:</div>
 		<ul>
 			<li>
-				<%=link_to "Start listing your clothing!", new_post_path, class:"s-link", target:"_blank"%>
+				<%=link_to "Start listing your clothing!", new_post_path, class:"s-link", target:"_blank", data:{action: "click->about#strikeout"}%>
 			</li>
 			<li>
-				<%=link_to "Check out your brand page!", brand_path(@brand), class:"s-link", target:"_blank"%>		
+				<%=link_to "Check out your brand page!", brand_path(@brand), class:"s-link", target:"_blank", data:{action: "click->about#strikeout"}%>		
 			</li>
 			<li>
-				<%=link_to "Learn more abbout Mokkalog", browse_path, class:"s-link", target:"_blank"%>
+				<%=link_to "Learn more abbout Mokkalog", browse_path, class:"s-link", target:"_blank", data:{action: "click->about#strikeout"}%>
 			</li>
 			<li>
-				<%=link_to "Browse your competition or potential collaborators:)", brands_path, class:"s-link", target:"_blank"%>	
+				<%=link_to "Browse your competition or potential collaborators:)", brands_path, class:"s-link", target:"_blank", data:{action: "click->about#strikeout"} %>	
 			</li>
 			<li>
-				<a href="https://discord.gg/7eCH3PaU" class="s-link" target="_blank">
+				<a href="https://discord.gg/7eCH3PaU" class="s-link" target="_blank" data-action="click->about#strikeout">
 					Join our discord for latest update & customer support.
 				</a>
 			</li>
 		</ul>
 		<br/>
-		<%=link_to "I will explore on my own!", root_path, class:"mokka-btn btn-warning center"%>
+		<%=link_to "Explore on my own", root_path, class:"mokka-btn btn-warning center"%>
 	</div>
 </div>
 

@@ -66,13 +66,14 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
         <span>About</span>
       </a>
     </li>
-
+    <%if @gallery%>
     <li data-brand-target="galleryButton" data-action="click->brand#openGallery">
       <a>
         <span class="icon is-small"><i class="fa-regular fa-image" style="color:#654321;"></i></span>
         <span>Gallery</span>
       </a>
     </li>
+    <%end%>
 
     <li data-brand-target="analyticButton" data-action="click->brand#openAnalytic">
       <a>

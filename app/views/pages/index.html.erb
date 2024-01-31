@@ -5,6 +5,30 @@
 
 <%= render 'posts/components/searchbar_for_root'%>
 
+<section>
+    <div class="center title is-3 secondary-t mt-4">Featured Article</div>
+    <div class="columns">
+        <div class="column center">
+          <div>
+            <%=link_to (image_tag (@blog_1.cover), class:"blog_home_image cornered"), @blog_1%>
+            <div><%=link_to @blog_1.title, @blog_1, class:"blog-text bold sn-link"%></div>
+          </div>
+        </div>
+        <div class="column center">
+          <div>
+            <%=link_to (image_tag (@blog_2.cover), class:"blog_home_image cornered"), @blog_2%>
+            <div><%=link_to @blog_2.title, @blog_2, class:"blog-text bold sn-link"%></div>
+          </div>
+        </div>
+        <div class="column center">
+          <div>
+            <%=link_to (image_tag (@blog_3.cover), class:"blog_home_image cornered"), @blog_3%>
+            <div><%=link_to @blog_3.title, @blog_3, class:"blog-text bold sn-link"%></div>
+          </div>
+        </div>
+  </div> 
+</section>
+
 
 
 <br/>
@@ -38,29 +62,6 @@
 </section>
 
 <br/>
-<section>
-    <div class="center title is-3 secondary-t">Featured Article</div>
-    <div class="columns">
-        <div class="column center">
-          <div>
-            <%=link_to (image_tag (@blog_1.cover), class:"blog_home_image cornered"), @blog_1%>
-            <div><%=link_to @blog_1.title, @blog_1, class:"blog-text bold sn-link"%></div>
-          </div>
-        </div>
-        <div class="column center">
-          <div>
-            <%=link_to (image_tag (@blog_2.cover), class:"blog_home_image cornered"), @blog_2%>
-            <div><%=link_to @blog_2.title, @blog_2, class:"blog-text bold sn-link"%></div>
-          </div>
-        </div>
-        <div class="column center">
-          <div>
-            <%=link_to (image_tag (@blog_3.cover), class:"blog_home_image cornered"), @blog_3%>
-            <div><%=link_to @blog_3.title, @blog_3, class:"blog-text bold sn-link"%></div>
-          </div>
-        </div>
-  </div> 
-</section>
 
 <hr class="bst">
 

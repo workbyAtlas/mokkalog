@@ -37,5 +37,9 @@ export default class extends Controller {
     this.openTab(4);
   }
 
+  strikeout(){
+    event.target.style.textDecoration = "line-through";
+  }
+
 
 }

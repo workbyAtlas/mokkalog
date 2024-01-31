@@ -47,13 +47,19 @@ class BrandsController < ApplicationController
 
 
 
-    #@posts = @posts.order('created_at DESC').page(params[:page]).per(20)
+    
     
     @badges = false
 
     if @brand.verification == "True"
       @badges = true
     end
+
+    #Gallery
+    @gallery = false
+    @gallery = true if @brand.gallery1.attached?
+    @gallery = true if @brand.gallery2.attached?
+    @gallery = true if @brand.gallery3.attached?
 
     # For Analytics
     @top_posts = @posts_prior.order(views: :desc).limit(4)

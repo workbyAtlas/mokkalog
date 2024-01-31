@@ -119,7 +119,9 @@ class BrandsController < ApplicationController
 
   # PATCH/PUT /brands/1 or /brands/1.json
   def update
-    create_or_delete_brands_tags(@brand, params[:brand][:tags])
+    if @auth
+      create_or_delete_brands_tags(@brand, params[:brand][:tags])
+    end
 
 
     delete_styles(@brand, params[:brand][:styles],)

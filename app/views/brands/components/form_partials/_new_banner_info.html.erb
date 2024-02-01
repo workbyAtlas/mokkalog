@@ -1,1 +1,71 @@
-_new_banner_info.html.erb
+<div data-controller="banner">
+
+<br/>
+
+<%#IMAGE PREVIEW%>
+<div class="image-preview">
+<% if brand.banner.attached?%>
+  <section  class="section is-small relative banner-img t-cornered" 
+  style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= url_for brand.banner %>');background-size: cover;" data-banner-target="preview"> 
+<%else%>
+  <section  class="section is-small relative  prime t-cornered" data-banner-target="preview">
+<%end%>
+
+      <div class="flexed ">
+    <% if @brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
+      <div class="mobile-square-img"><%=image_tag (@brand.image_as_thumbnail), class:"cornered" %></div>
+    <% else %>
+      <div class="mobile-square-img"><%=image_tag (@blank.image_as_thumbnail), class:"cornered" %></div>
+    <% end %>
+      <div class="center">
+        <div>
+          <div class="title is-3 mx-5 mb-0 mt-2 secondary-t" data-banner-target="text">
+            <%=@brand.name%>
+          </div>
+          <div>
+            <i class="fa-regular fa-heart fa-lg ml-5 mred"></i>
+            <span data-banner-target="text3">Click to Follow</span>
+          </div>
+        </div>
+      </div>
+    </div>
+    <div class="rw50 m-4" data-banner-target="text2"><%=@brand.name%> is the coolest brand & your banner text goes here!</div>
+
+  </section>
+
+
+<%#FORM%>
+<div class="title is-4 center secondary-t mt-6">Above is a preview of your brand banner.</div>
+
+<div class="file is-warning center bold mt-4">
+  <label class="file-label">
+    <%= form.file_field :banner,
+    direct_upload: true,
+    data: { banner_target: "input", action: "change->banner#preview"}, class:"file-input" %>
+
+    <span class="file-cta", style="border: 1px solid #654321;">
+      <span class="file-icon">
+        <i class="fas fa-upload"></i>
+      </span>
+      <span class="file-label">
+        Primary file…
+      </span>
+    </span>
+  </label>
+</div>
+<div class="mx-auto text-center mt-2 rw70">Let's upload a banner photo to make it more personalized.<span class="bold">We recommend switching banner text to white when adding a brand image & it will make the words pop!</span></div>
+
+</div>
+  <div class="mx-auto rw50">
+    <div class="flexed center my-3">
+      <div class="label mr-2 secondary-t">Banner Text Color:</div>
+      <div class="select" data-banner-target="color" data-action="change->banner#color">
+        <%= form.select :brand_text, ["Brown", "White", "Black"], 
+              class: "input mokka-ph" %>
+      </div>
+    </div>
+    <%= form.text_field :header, class:"input mokka-ph", placeholder:"Banner Text"%>
+  </div>
+
+
+</div>

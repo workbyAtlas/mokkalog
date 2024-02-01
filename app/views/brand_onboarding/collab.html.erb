@@ -1,3 +1,10 @@
+<style>
+@media (max-width: 430px){
+  .float-r{float:none}
+
+    }
+</style>
+
 <%=form_for @brand, url: wizard_path, method: :put, data: { turbo: false } do |form|%>
   <% if @brand.errors.any? %>
     <%=render 'component/error', errors: @brand.errors%>

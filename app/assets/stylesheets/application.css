@@ -372,10 +372,10 @@ transform: translateY(-30px);
 .rec-carousel-l{position:absolute;top:48%; left:5%;}
 .rec-carousel-r{position:absolute;top:48%; right:5%;}
 
-.carousel-lbtn{position:absolute;top:48%; left:0%;}
-.carousel-rbtn{position:absolute;top:48%; right:0%;}
-.caro-lbtn{position:absolute;top:50%; left:3%;}
-.caro-rbtn{position:absolute;top:50%; right:3%;}
+.carousel-lbtn{position:absolute;top:48%; left:5%;}
+.carousel-rbtn{position:absolute;top:48%; right:5%;}
+.caro-lbtn{position:absolute;top:50%; left:5%;}
+.caro-rbtn{position:absolute;top:50%; right:5%;}
 /*HOTWIRE*/
 .image-preview{min-height:300px;}
 .image-preview-small{min-height:150px;}

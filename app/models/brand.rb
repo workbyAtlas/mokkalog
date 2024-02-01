@@ -106,13 +106,13 @@ class Brand < ApplicationRecord
   private
 
   def check_for_image()
-      if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/webp])
+      if image.attached? && !image.content_type.in?(%w[image/jpeg image/png image/webp image/avif])
         errors.add(:image, "file must be, JPEG, PNG, or WEBP")
       end
   end
 
   def check_for_banner
-      if banner.attached? && !banner.content_type.in?(%w[image/jpeg image/png image/webp])
+      if banner.attached? && !banner.content_type.in?(%w[image/jpeg image/png image/webp image/avif])
         errors.add(:banner, "file must be, JPEG, PNG, or WEBP")
       end
   end

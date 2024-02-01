@@ -2,28 +2,11 @@
   <% if @brand.errors.any? %>
     <%=render 'component/error', errors: @brand.errors%>
   <% end %>
+
+
+<%= render "brands/components/form_partials/new_banner_info", form: form, brand: @brand %>
   
 <div class="rw70 mx-auto">
-
-  <div class="title is-4 center secondary-t mt-6">Let's personalize your brand page!</div>
-<div class="center secondary-t bold"><u>Customize Brand Banner</u></div>
-<div class="mx-auto text-center">Let's add a banner image to make your brand page more personalized! <span class="bold">We recommend switching banner text to white when adding a brand image & it will make the words pop!</span></div>
-
-<%= render "brands/image_preview_for_banner", form: form, brand: @brand %>
-
-  <div class="mt-3">
-    <div class="mx-auto rw50">
-      <%= form.text_field :header, class:"textarea mokka-ph", placeholder:"Banner Text"%>
-    </div>
-    <div class="center mt-3">
-    <div class="flexed center-h">
-      <div class="label mr-2 secondary-t">Text Color:</div>
-      <div class="select float-r">
-        <%= form.select :brand_text, ["Brown","White","Black"], class:"input  mokka-ph"%>
-      </div>
-    </div>
-  </div>
-  </div>
 
 <div class="center my-2">
   <%=form.submit "Continue", class:"mokka-btn btn-warning button"%>
@@ -32,4 +15,6 @@
 </div>
 
 </div>
+
+
 <%end%>

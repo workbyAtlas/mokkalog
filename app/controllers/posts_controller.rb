@@ -102,7 +102,7 @@ def quick
 
   #@new_web_link = @post.web_link.start_with?('http://', 'https://') ? @web_link : "https://#{@web_link}"
 
-  end
+end
 
   # GET /posts/new
   def new
@@ -161,6 +161,23 @@ def quick
         format.json { render json: @post.errors, status: :unprocessable_entity }
       end
     end
+  end
+
+  def visit
+    @post = Post.find(params[:id])
+
+    if @post.visits.nil?
+      @post.update(visits: 1)
+    else
+      @post.update(visits: @post.visits + 1)
+    end
+
+    if @post.brand.verification == "True"
+      redirect_to @post.web_link, target:"_blank", allow_other_host: true
+    end
+
+    #render partial: 'posts/mokka_visit'
+
   end
 
   # DELETE /posts/1 or /posts/1.json
@@ -339,6 +356,6 @@ def quick
     # Only allow a list of trusted parameters through.
     def post_params
       params.require(:post).permit(:title, :body, :price, :color, :category_id, :sub_category, :web_link, :image, :tags, :brand_id, 
-        :name, :user_id, :c_type, :amazon_link, :material, :image1, :image2, :image3, :archive, :grailed, :season)
+        :name, :user_id, :c_type, :amazon_link, :material, :image1, :image2, :image3, :archive, :grailed, :season, :visits)
     end
 end

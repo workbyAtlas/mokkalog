@@ -58,8 +58,8 @@
 
 }
 .logo-desc{
-	right:39%; 
-	top:6%;
+	right:-35%; 
+	top:-25%;
 }
 
 @media screen and (max-width: 481px){
@@ -70,5 +70,5 @@
 
 @media (max-width: 480px){
     .mobile-nav{display:block;}
-    .logo-desc{right:16%; top:5.5%;}
+
 }

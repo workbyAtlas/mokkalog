@@ -63,17 +63,17 @@ Rails.application.routes.draw do
   get 'lockdown'  => 'pages#lockdown'
   get 'demo'      => 'pages#demo'
 
-  #get 'posts/:id/visit', to: 'posts#visit', as: 'post_visit'
-  #get 'posts/:id/quick', to: 'posts#quick', as: 'post_quick'
 
 
   resources :posts do
     collection do
       post :check
+
     end
     
     member do
       post :like
+      get :visit
     end
       
     
@@ -88,8 +88,6 @@ Rails.application.routes.draw do
 
   #resources :pagelinks, only: [:destroy, :edit, :update]
 
-    #get 'posts/:id/visit', to: 'posts#visit', as: 'visit_post'
-    #get "visit"
   
   # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
 

@@ -1,8 +1,19 @@
+<style>
+  a{
+    color:#5A3A31;
+    text-decoration:underline;
+  }
+  strong{
+    color:#5A3A31;
+  }
+</style>
 <%@title= @blog.title%>
 <section class="section prime is-medium relative">
   <%=link_to "Back", :back, class:"button is-warning hide-btn-r m-4 bold", style:"border:1px solid #654321;"%>
   <div class="title is-3 center secondary-t"><%=@blog.title%></div>
   <hr class="bst"/>
+  <div class="center"><%=@blog.user.username%></div>
+  <div class="center"><%=@blog.created_at.strftime("%B %d, %Y")%></div>
   <div class="center subtitle is-5 ">
 
 
@@ -21,7 +32,7 @@
 <div class="title is-4"><u>Dev Tool</u></div>
 <div>Pinned?:<%=@blog.pinned%></div>
 <div>Blog Type:<%=@blog.blog_type%></div>
-<div>Author:<%#=@blog.user.username%></div>
+<div>Author:<%=@blog.user.username%></div>
 <div>
   <%= link_to "Edit", edit_blog_path(@blog) %> |
   <%= link_to "Back", blogs_path %>

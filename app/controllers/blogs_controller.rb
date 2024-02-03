@@ -32,6 +32,14 @@ class BlogsController < ApplicationController
   # GET /blogs/1 or /blogs/1.json
   def show
     @comments =@blog.comments.order(created_at: :asc)
+
+    if not current_user == @blog.user
+      if @blog.views.nil?
+        @blog.update(views:1)
+      else
+        @blog.update(views: @blog.views + 1)
+      end
+    end
   end
 
   # GET /blogs/new

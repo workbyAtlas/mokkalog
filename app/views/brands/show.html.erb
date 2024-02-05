@@ -19,7 +19,7 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
         <%end%>
       </div>
       <div class="flexed ">
-    <% if @brand.image.content_type.in?(%w[image/jpeg image/png image/webp]) %>
+    <% if @brand.image.content_type.in?(%w[image/jpeg image/png image/webp image/avif]) %>
       <div class="mobile-square-img"><%=image_tag (@brand.image_as_thumbnail), class:"cornered" %></div>
     <% else %>
       <div class="mobile-square-img"><%=image_tag (@blank.image_as_thumbnail), class:"cornered" %></div>

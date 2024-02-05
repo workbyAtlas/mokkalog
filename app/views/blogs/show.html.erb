@@ -33,6 +33,7 @@
 <div>Pinned?:<%=@blog.pinned%></div>
 <div>Blog Type:<%=@blog.blog_type%></div>
 <div>Author:<%=@blog.user.username%></div>
+<div>Views:<%=@blog.views%></div>
 <div>
   <%= link_to "Edit", edit_blog_path(@blog) %> |
   <%= link_to "Back", blogs_path %>

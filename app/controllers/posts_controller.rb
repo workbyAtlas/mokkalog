@@ -1,7 +1,7 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: %i[show edit update]
-  before_action :authenticate_user!, except: %i[index show home]
+  before_action :authenticate_user!, except: %i[index show home visit]
   before_action :editing_privilage_post, only: %i[edit update]
   before_action :set_filter_var
 

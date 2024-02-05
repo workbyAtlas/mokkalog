@@ -44,6 +44,8 @@ class ApplicationRecord < ActiveRecord::Base
       image.variant(resize_to_fit: [400,400]).processed
     elsif size == "fourfour"
       image.variant(resize_to_fit: [400,400]).processed
+    elsif size == "small_brand_image"
+      image.variant(resize_to_fill:[60,60]).processed
     end
     
     #image.variant(resize_to_fill: [350,400]).processed if size == "post"

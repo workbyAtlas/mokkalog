@@ -20,4 +20,62 @@
 </div>
 </div>
 
+
+<%@title = @post.brand.name + " " + @post.title%>
+<div class="d-none" id="share"><%=request.url%></div>
+
+<section class="section p-2">
+  <div class="mb-4">
+
+    <%= link_to 'Close',"#", onclick:"window.close();", class:"mokka-btn btn-warning mb-3 m-shadow"%>
+
+    <%if @badges == true%>
+        <span class="float-r mr-4"><%=render "posts/components/badges"%></span>
+    <%end%>
+  </div>
+  <div class="columns">
+      <%=render "posts/show_components/image_holder"%>
+
+    <div class="column bpx">
+
+      <div class="show-info">
+        <div class="mt-3 mb-0 title is-3 secondary-t text-center"><%=@post.title %></div>
+
+            <div class="my-2 title is-5"><%=link_to @post.branded, @post.brand, class:"s-link"%></div>
+
+
+        <div>
+          <%if @post.archive == "archived"%>
+            <span class="tag bs">archived</span>
+            <%= number_to_currency(@post.price) if @post.price.present?%>
+          <%elsif @post.archive == "project" %>
+            <span class="tag bs">project</span>
+            <%= number_to_currency(@post.price) if @post.price.present?%>
+          <%else%>
+            <%=if @post.price.blank? then "#N/A" else number_to_currency(@post.price) end%>
+          <%end%>  
+        </div>
+
+        <div class="mt-4 bsb flexed">
+          <%#LIKE BUTTON%>
+          <div class="mx-1 mb-4">
+            <%=render 'posts/components/like_button', post:@post%>
+          </div>
+          <%=render 'posts/show_components/visit_button'%>
+          <div class="mx-1 button green-btn bold mb-4" style="border: 2px solid #206644;" onclick="copy('share','share-button')" id="share-button">Share</div>
+
+            <div class="button bs mx-1">
+                <div class="hover">
+                <span class="material-symbols-outlined bold mt-1">
+                checkroom
+                </span>
+                <div class="hover-content center">Add to Closet</div>
+              </div>
+            </div>
+        </div>
+        <%# DEV BOX------------------------------------------%>
+        <%= render 'posts/show_components/tag_for_post'%>
+        <%# INFO BOX-------------------------------------------%>
+        <%= render "posts/show_components/info_box"%>
+
 <%end%>

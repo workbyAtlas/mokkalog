@@ -1,6 +1,6 @@
 
 <%=form_with(model: [ commentable, Comment.new(commentable: commentable) ], local: true) do |f| %>
-  <div class="mx-auto rw70 notification bs">
+  <div class="mx-auto rw70 notification bs p-2">
      <div class="title is-5">Comment</div>
 
      <div class="flexed-c">
@@ -32,3 +32,32 @@
   </div>
 
    <% end %>
+<%if true== false%>
+    <div class="my-1">
+    <label class="color-cbox Brownbox">
+    <%= f.radio_button :c_type, "Log"%>
+    <span class="color-cmark Brownmark">Log</span>
+    </label>
+ </div>
+
+  <div class="my-1">
+    <label class="color-cbox Bluebox">
+    <%= f.radio_button :c_type, "Info"%>
+    <span class="color-cmark Bluemark">Info</span>
+    </label>
+ </div>
+
+ <div class="my-1">
+    <label class="color-cbox Redbox">
+    <%= f.radio_button :c_type, "Sell"%>
+    <span class="color-cmark Redmark">Sell</span>
+    </label>
+ </div>
+
+ <div class="my-1">
+    <label class="color-cbox mid-cbox Greenbox">
+    <%= f.radio_button :c_type, "Buy"%>
+    <span class="color-cmark Greenmark">Buy</span>
+    </label>
+ </div>
+ <%end%>

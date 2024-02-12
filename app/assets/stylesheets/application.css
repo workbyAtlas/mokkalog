@@ -403,6 +403,11 @@ transform: translateY(-30px);
 .errorbox{color:red; height:30px;}
 
 /*Comment*/
+.comment-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 columns with equal width */
+  min-height:45px;
+}
 .sscomment{
     width: 600px;
     height:150px;

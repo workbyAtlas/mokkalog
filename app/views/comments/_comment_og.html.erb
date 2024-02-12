@@ -1,6 +1,5 @@
 <div class="card rw50 my-2">
   <div class="card-content bs">
-
     <div class="media">
       <%#IMAGE%>
       <div class="media-left">
@@ -36,6 +35,8 @@
 	    <span class="tag is-danger my-1"><%=comment.c_type %></span>
       <%elsif comment.c_type == "Info" %>
       <span class="tag is-link my-1"><%=comment.c_type %></span>
+      <%elsif comment.c_type == "Log" %>
+      <span class="tag bs my-1">Log</span>
 	    <% end %>
   <%#ADD LINK IF LINK EXISTS%>
 			<%if comment.link.present? %>

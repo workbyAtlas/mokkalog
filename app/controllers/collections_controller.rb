@@ -1,15 +1,21 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: %i[ show edit update destroy ]
-  before_action :authenticate_user!
+  before_action :authenticate_user!, except: %i[index show]
   before_action :editor?
 
   # GET /collections or /collections.json
   def index
-    @collections = Collection.all
+
+    @query = Collection.ransack(params[:q])
+    @collections = @query.result(distinct: true)
   end
 
   # GET /collections/1 or /collections/1.json
   def show
+    @text_color = "white"
+      if not current_user == @collection.user
+      @collection.update(views: @collection.views + 1)
+    end
   end
 
   # GET /collections/new
@@ -25,6 +31,8 @@ class CollectionsController < ApplicationController
   def create
     @collection = Collection.new(collection_params.except(:posts))
     create_or_delete_collections_posts(@collection, params[:collection][:posts])
+    @collection.user = current_user
+    
 
     respond_to do |format|
       if @collection.save
@@ -78,6 +86,6 @@ class CollectionsController < ApplicationController
 
     # Only allow a list of trusted parameters through.
     def collection_params
-      params.require(:collection).permit(:likes, :views, :body, :title, :posts)
+      params.require(:collection).permit(:likes, :views, :body, :title, :posts, :image, :banner, :link, :c_type, :user_id)
     end
 end

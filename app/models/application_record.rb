@@ -34,10 +34,14 @@ class ApplicationRecord < ActiveRecord::Base
       image.variant(resize_to_fill: [100,100]).processed
     elsif size == "normal"
       image.variant(resize_to_fill: [200,200]).processed
+    elsif size =="small_post"
+      image.variant(resize_to_fill: [190,240]).processed
     elsif size == "big"
       image.variant(resize_to_fit: [400,500]).processed
     elsif size == "brand"
       image.variant(resize_to_fill: [300,300]).processed
+    elsif size == "post"
+      image.variant(resize_to_fill: [350,400]).processed
     elsif size == "quick"
       image.variant(resize_to_fit: [400,600]).processed
     elsif size == "gallery"

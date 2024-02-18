@@ -17,14 +17,21 @@
   </div>
 
   <div>
-    <%= form.label :likes, style: "display: block" %>
-    <%= form.number_field :likes %>
+    image
+    <%= form.file_field :image%>
+  </div>
+    <div>
+      banner
+    <%= form.file_field :banner%>
   </div>
 
   <div>
-    <%= form.label :views, style: "display: block" %>
-    <%= form.number_field :views %>
+    <%= form.label :link, style: "display: block" %>
+    <%= form.text_area :link %>
   </div>
+
+  <%= form.select :c_type, ["Brand","Lookbook","Showcase"],{},{data: {controller: "slim"}}%>
+   
 
   <div>
     <%= form.label :body, style: "display: block" %>

@@ -15,6 +15,7 @@ class User < ApplicationRecord
   has_many :posts
   has_many :brands
   has_many :blogs
+  has_many :collections
 
   has_many :likeables, dependent: :destroy
   has_many :liked_posts, through: :likeables, source: :post

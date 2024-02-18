@@ -1,0 +1,52 @@
+<div class="m-2 cornered small-post">
+  <%#Image%>
+  <div class="center">
+    <%if post.image.attached?%>
+      <%=link_to (image_tag (post.image_handler(post.image,"small_post")), class:"cornered"), post,data: {turbo_frame: "_top"}, target:"_blank"%>
+    <%else%>
+      <%=link_to (image_tag (@blank.image_handler(@blank.image,"small_post")), class:"cornered"), post,data: {turbo_frame: "_top"}, target:"_blank"%>
+    <%end%>   
+  </div>
+  <%#Brand Name & Title%>
+  <div class="mx-2">
+
+    <div class="d-none-mobile">
+      <div class="title is-5">
+        <%=link_to post.brand.name, post,data: {turbo_frame: "_top"}, target:"_blank", class:"secondary-t"%>    
+      </div>
+    </div>
+
+
+    <div class="bold d-none-desktop">
+      <%=link_to post.shorter_name(post.brand.name,20,15),post,data: {turbo_frame: "_top"}, target:"_blank", class:"secondary-t"%>
+    </div>
+
+    <div>
+      <span class="d-none-mobile"><%= post.shorter_name(post.title,20,15)%></span>
+      <span class="d-none-desktop mobile-text"><%= post. shorter_name(post.title,15,10)%></span>
+    </div>
+  </div>
+
+  <%#Price & Badge%>
+  <div class="columns d-none-mobile">
+    <div class="column">
+      <%=render 'posts/components/price', post:post%>
+    </div>
+    <%if post.brand.verification == "True" %>
+    <div class="column flexed-reverse flex-margin-25">
+      <%=render 'posts/components/badge_for_post', post:post%>
+    </div>
+    <%end%>
+    <%#<div class="flexed-end column"><%=post.likes.count%>
+  </div>
+
+  <div class="d-none-desktop">
+    <%=render 'posts/components/price',post:post%>
+    <div class="center">
+      <div class="flexed-reverse flex-margin-25"><%=render 'posts/components/badge_for_post', post:post%></div>
+    </div>  
+  </div>
+  <%#=render 'likes/private_button', post: post, like_status: like_status %>
+</div>
+
+

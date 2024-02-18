@@ -1,10 +1,53 @@
-<p style="color: green"><%= notice %></p>
+<style>
+  .s-link {
+    color: <%= @text_color %>;
+    text-decoration-color:<%=@text_color%>;
+  }
+</style>
 
-<%= render @collection %>
+<%if @collection.banner.attached?%>
+<section  class="section is-medium relative banner-img t-cornered" 
+style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= url_for@collection.banner %>');background-size: cover;">
+<%else%>
+<section class="section is-medium prime relative t-cornered">
+<%end%>
+<%= link_to 'Back', collections_path, class:"button is-warning bold mb-3 l-corner is-small d-none-windows", style:"border:solid 1px #654321;" %>
+<%= link_to 'Back', collections_path, class:"button is-warning bold mb-3 l-corner d-none-mobile", style:"border:solid 1px #654321;" %>
 
+      <div class="flexed ">
+    <% if @collection.image.attached?%>
+      <div class="mobile-square-img"><%=image_tag (@collection.image_handler(@collection.image,"normal")), class:"cornered" %></div>
+    <% else %>
+      <div class="mobile-square-img"><%=image_tag (@blank.image_as_thumbnail), class:"cornered" %></div>
+    <% end %>
+      <div class="center">
+        <div>
+          <div class="title is-3 mx-5 mb-0 mt-2" style="color:<%=@text_color%>">
+            <%=@collection.title%>
+          </div>
+          <div><%#= render 'collections/components/like_button', collection:@collection%></div>
+        </div>
+      </div>
+
+    </div>
+    <%if not @collection.link.empty?%>
+      <div><strong class="mr-2"><span class="tag bs"><i class="fa-solid fa-link" style="color:#654321"></i></span></strong><%=link_to @collection.link, @collection.link, target:"_blank", class:"s-link"%></div>
+    <%end%>
+    <div class="rw50 m-4" style="color:<%=@text_color%>"><%=@collection.body%></div>
+</section>
+
+<section class="flexed-wc post-container mx-auto mt-3"> 
+  <% @collection.collectibles.each do |collectible| %>
+      <%= render 'posts/post', post: collectible.post %>    
+  <% end %>
+</section>
+
+<%if @auth%>
 <div>
+  views:<%=@collection.views%>
   <%= link_to "Edit this collection", edit_collection_path(@collection) %> |
   <%= link_to "Back to collections", collections_path %>
 
   <%= button_to "Destroy this collection", @collection, method: :delete %>
 </div>
+<%end%>

@@ -223,6 +223,8 @@ transform: translateY(-30px);
 .black-t{color:black;}
 
 
+/*white*/
+.bw{border: 2px solid white;}
 /*PRIME COLOR#cxbb595;*/
 .prime{background-color:#dccdc9;}
 .prime-t{color:#cbb595;}
@@ -287,6 +289,7 @@ transform: translateY(-30px);
 .flexed{display:flex;}
 .flexed-w{display:flex;flex-wrap:wrap;}
 .flexed-wc{display:flex;flex-wrap:wrap;justify-content: center;}
+
 
 .flexed-baby{flex:1;}
 .flexed-c{display:flex;flex-direction:row;}

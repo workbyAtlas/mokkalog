@@ -1,0 +1,26 @@
+.small-post{
+width:200px;
+}
+
+.collection-image-grid{
+	display:grid;
+	grid-template-columns: repeat(3, 1fr);
+
+}
+.collection-card{display:flex;flex-wrap:wrap;justify-content:center;}
+.collection-last-box{
+	display:flex;
+	width:100px;
+	height:100px;
+	text-align: center;
+	justify-content: center;
+	align-items: center;
+	flex-direction:column;
+}
+
+@media (max-width: 480px){
+	.small-post{width:170px;}
+	.collection-card{display:block;}
+
+
+}

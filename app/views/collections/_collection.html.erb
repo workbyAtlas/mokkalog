@@ -1,17 +1,36 @@
-<div class="section-corner bb">
-  <p>
-    <strong>Title:</strong>
-    <%= collection.title %>
-  </p>
+<div class="cornered collection-card lgrey m-2 m-shadow bs-1">
 
-
-  <div class="flexed">
-    <% collection.collectibles.each do |collectible| %>
-      <div class="m-1">
-        <%= render 'posts/post', post: collectible.post %>    
-      </div>
-    <% end %>
+  <div class="small-post m-2 prime cornered m-shadow">
+    <div class="center">
+    <%=link_to(image_tag(collection.image_handler(collection.image,"post"), class:"cornered"), collection,data: {turbo_frame: "_top"})%>
+    </div>
+    <div class="p-1">
+    <div class="bold"><%=collection.title%></div>
+    <div class="tag bs"><%=collection.c_type%></div>
+    </div>
   </div>
+
+
+
+<div class="collection-image-grid">
+  <%collection.collectibles.take(5).each do |collectible|%>
+    <div class="mt-5 mx-1">
+      <%=image_tag(collectible.post.image_handler(collectible.post.image,"small"), class:"cornered m-shadow") %>
+    </div>
+  <% end %>
+
+    <%if collection.collectibles.count > 5 %>
+    <%=link_to collection, class:"secondary-t" do%>
+    <div class="mt-5 mx-1 collection-last-box bs cornered prime">
+      <div>+ <%=collection.collectibles.count - 5%></div>
+      
+      <div>See More</div>
+    </div>
+    <%end%>
+    <%end%>
+</div>
+
+
 
 </div>
 

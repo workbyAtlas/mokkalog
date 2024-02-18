@@ -16,3 +16,12 @@
   <%= render 'component/pagy', item:@brands%>
 <%end%>
 </section>
+
+<%if @auth%>
+<div class="center bold">Blanks</div>
+<section class="flexed-wc">
+  <%@blank_brands.each do |brand|%>
+  <%= render "brands/components/brand_mokka", brand: brand%>
+  <%end%>
+</section>
+<%end%>

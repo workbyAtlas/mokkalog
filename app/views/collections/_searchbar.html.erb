@@ -1,0 +1,25 @@
+<section class="section" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('cafe.jpeg') %>');background-size:cover;"> 
+<div class="center title is-5 my-4 white">Collections</div>
+<%= search_form_for @query, data: {turbo_frame: :results, turbo_action: 'advance'}, html: { class: "form-inline" } do |f| %> 
+  <div class="white mx-auto center rw40 my-2 bold">Look through our menu. You will find something you like.</div>
+  <div class="mx-auto center rw40">
+    <%= f.search_field :c_type_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bs mokka-ph l-cornered", placeholder:"Search here..." %>
+
+      <%= f.button :submit, class: "button is-warning r-cornered ", style: "border: 2px solid #654321;border-left:none;" do %>
+        <i class="fa-solid fa-magnifying-glass"></i>
+      <% end %>
+  </div>
+
+<section class="home-nav mt-4 p-2 home-nav-border">
+  <label class="custom-radio white">
+      <%= f.radio_button :c_type_or_title_eq_any, ' ', checked: true, oninput: 'this.form.requestSubmit();' %> 
+      <div class="radio-style">
+          <i class="fa-solid fa-home fa-xl mt-3"></i><div class="radio-font">All</div>
+      </div>
+  </label>
+  <%=render 'collections/radio_box', css:"fa-solid fa-book-open", word:"Lookbook", fill:"Lookbook", f:f%>
+  <%=render 'collections/radio_box', css:"fa-solid fa-star", word:"Showcase", fill:"Showcase", f:f%>
+  <%=render 'collections/radio_box', css:"fa-solid fa-mug-hot", word:"Brand", fill:"Brand", f:f%>
+</section>
+<%end%>
+</section>

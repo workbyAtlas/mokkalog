@@ -1,14 +1,31 @@
-<p style="color: green"><%= notice %></p>
+<%@title = "Collections"%>
+<style>
+.radio-style:hover{background-color: rgba(0, 0, 0, 0.5);}
 
-<h1>Collections</h1>
+.custom-radio input[type="radio"] {
+  opacity: 0;
+  position: absolute;
+}
 
-<div id="collections">
-  <% @collections.each do |collection| %>
-    <%= render collection %>
-    <p>
-      <%= link_to "Show this collection", collection %>
-    </p>
-  <% end %>
-</div>
+.custom-radio input[type="radio"]:checked + .radio-style {
+  font-weight:bold;
+  color:white;
+  border-bottom: 2px solid white;
+  border-right: 1px solid white;
+}
+</style>
 
-<%= link_to "New collection", new_collection_path %>
+<%=render 'searchbar'%>
+
+<%=turbo_frame_tag :results do%>
+  <div class="center bold my-2">Showing <%=@collections.count%> collections</div>
+  <section class="center">
+  <div class="flexed-wc">
+    <% @collections.each do |collection| %>
+      <%= render collection %>
+    <% end %>
+  </div>
+  </section> 
+<%end%>
+
+

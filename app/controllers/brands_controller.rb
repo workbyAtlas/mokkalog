@@ -7,9 +7,19 @@ class BrandsController < ApplicationController
 
   # GET /brands or /brands.json
   def index
-    @query = Brand.ransack(params[:q])
+    
     #brands = @query.result(distinct: true)
-
+    @blank_brands = []
+    new_brands = []
+    Brand.all.each do |brand|
+      if brand.posts.count == 0
+        @blank_brands << brand
+      else
+        new_brands << brand
+      end
+    end
+    new_brand_ids = new_brands.map(&:id) # Extract brand IDs
+    @query = Brand.where(id: new_brand_ids).ransack(params[:q])
     @brands_prior = @query.result(distinct: true).includes(:tags, :posts, :styles)
     shuffled_brands = @brands_prior.order('created_at DESC')
     #shuffled_brands = @brands_prior.to_a.shuffle

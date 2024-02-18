@@ -31,15 +31,11 @@ class Post < ApplicationRecord
 	has_many :tags, through: :taggables
 
 	belongs_to :brand
+	belongs_to :user
 	belongs_to :category, optional: true
-
-	#has_many :likeables, dependent: :destroy
-	#has_many :likes, through: :likeables, source: :user
 
 	has_many :likeables, as: :likeable, dependent: :destroy
   has_many :likes, through: :likeables, source: :user
-
-  
 
 	has_many :favoritables, dependent: :destroy
 	has_many :favorites, through: :favoritables, source: :user
@@ -50,7 +46,6 @@ class Post < ApplicationRecord
 	has_many :comments, as: :commentable, dependent: :destroy
 	has_many :pagelinks, dependent: :destroy
 
-	belongs_to :user
 	#before_save :downcase_fields
 	#SLUGS
   def custom_slug

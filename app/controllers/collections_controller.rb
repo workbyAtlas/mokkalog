@@ -1,7 +1,7 @@
 class CollectionsController < ApplicationController
   before_action :set_collection, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[index show]
-  before_action :editor?
+  before_action :editor?, except: %i[index show]
 
   # GET /collections or /collections.json
   def index
@@ -32,7 +32,7 @@ class CollectionsController < ApplicationController
     @collection = Collection.new(collection_params.except(:posts))
     create_or_delete_collections_posts(@collection, params[:collection][:posts])
     @collection.user = current_user
-    
+
 
     respond_to do |format|
       if @collection.save

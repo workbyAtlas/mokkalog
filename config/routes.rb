@@ -10,7 +10,11 @@ Rails.application.routes.draw do
   resources :styles
   resources :categories
   resources :tags
-  resources :collections
+  resources :collections do
+    member do
+      post :like
+    end
+  end
   resources :comments, only: [:destroy, :edit, :update]
   resources :blogs do
     resources :comments, only: [:create, :show]

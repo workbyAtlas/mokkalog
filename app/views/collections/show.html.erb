@@ -25,6 +25,10 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
           <div class="title is-3 mx-5 mb-0 mt-2" style="color:<%=@text_color%>">
             <%=@collection.title%>
           </div>
+          <div class="flexed">
+          <%= render 'collections/components/like_button', collection: @collection%>
+
+          </div>
           <div><%#= render 'collections/components/like_button', collection:@collection%></div>
         </div>
       </div>
@@ -35,6 +39,7 @@ style="background: linear-gradient(0deg,#00000088 30%, #ffffff44 100%),url('<%= 
     <%end%>
     <div class="rw50 m-4" style="color:<%=@text_color%>"><%=@collection.body%></div>
 </section>
+
 
 <section class="flexed-wc post-container mx-auto mt-3"> 
   <% @collection.collectibles.each do |collectible| %>

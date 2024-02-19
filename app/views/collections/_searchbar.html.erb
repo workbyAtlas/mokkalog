@@ -1,7 +1,7 @@
-<section class="section" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('cafe.jpg') %>');background-size:cover;"> 
+<section class="section" style="background: linear-gradient(0deg, #00000088 30%, #ffffff44 100%), url('<%= asset_path('porterjacket.jpg') %>');background-size:cover;"> 
 <div class="center title is-5 my-4 white">Collections</div>
 <%= search_form_for @query, data: {turbo_frame: :results, turbo_action: 'advance'}, html: { class: "form-inline" } do |f| %> 
-  <div class="white mx-auto center rw40 my-2 bold">Look through our menu. You will find something you like.</div>
+  <div class="white mx-auto center rw40 my-2 bold">Look through our Lookbook. You will find something right for you.</div>
   <div class="mx-auto center rw40">
     <%= f.search_field :c_type_i_cont_any, oninput: 'this.form.requestSubmit();', class:"input bs mokka-ph l-cornered", placeholder:"Search here..." %>
 
@@ -17,9 +17,9 @@
           <i class="fa-solid fa-home fa-xl mt-3"></i><div class="radio-font">All</div>
       </div>
   </label>
-  <%=render 'collections/radio_box', css:"fa-solid fa-book-open", word:"Lookbook", fill:"Lookbook", f:f%>
-  <%=render 'collections/radio_box', css:"fa-solid fa-star", word:"Showcase", fill:"Showcase", f:f%>
-  <%=render 'collections/radio_box', css:"fa-solid fa-mug-hot", word:"Brand", fill:"Brand", f:f%>
+  <%=render 'collections/radio_box', css:"fa-solid fa-book-open", word:"People", fill:"People", f:f%>
+  <%=render 'collections/radio_box', css:"fa-solid fa-star", word:"Events", fill:"Events", f:f%>
+  <%=render 'collections/radio_box', css:"fa-solid fa-mug-hot", word:"Brands", fill:"Brand", f:f%>
 </section>
 <%end%>
 </section>

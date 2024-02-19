@@ -32,6 +32,8 @@ class ApplicationRecord < ActiveRecord::Base
   def image_handler(image,size)
     if size == "small"
       image.variant(resize_to_fill: [100,100]).processed
+    elsif size == "collection"
+      image.variant(resize_to_fill: [110,110]).processed
     elsif size == "normal"
       image.variant(resize_to_fill: [200,200]).processed
     elsif size =="small_post"

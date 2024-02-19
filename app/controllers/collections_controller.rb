@@ -12,8 +12,13 @@ class CollectionsController < ApplicationController
 
   # GET /collections/1 or /collections/1.json
   def show
-    @text_color = "white"
-      if not current_user == @collection.user
+    if @collection.banner.attached?
+      @text_color = "white"
+    else
+      @text_color ="#5A3A31;"
+    end
+
+    if not current_user == @collection.user
       @collection.update(views: @collection.views + 1)
     end
   end
@@ -67,6 +72,22 @@ class CollectionsController < ApplicationController
       format.html { redirect_to collections_url, notice: "Collection was successfully destroyed." }
       format.json { head :no_content }
     end
+  end
+
+  def like
+    @collection = Collection.find(params[:id])
+    if current_user.liked?(@collection)
+      current_user.unlike(@collection)
+    else
+      current_user.like(@collection)
+    end
+
+    respond_to do |format|
+      format.html { redirect_to current_path }
+      private_target = "collection_#{@collection.id}_like_button"
+      format.turbo_stream { render turbo_stream: turbo_stream.replace(private_target, partial: 'collections/components/like_button', locals: { collection: @collection }) }
+    end
+
   end
 
   private

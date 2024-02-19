@@ -9,7 +9,7 @@ margin-right:0.5em;
 	grid-template-columns: repeat(3, 1fr);
 
 }
-.collection-card{display:flex;flex-wrap:wrap;justify-content:center;align-items: center;}
+.collection-card{display:flex;flex-wrap:wrap;justify-content:center;}
 .collection-last-box{
 	display:flex;
 	width:110px;

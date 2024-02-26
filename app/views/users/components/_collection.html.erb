@@ -1,0 +1,24 @@
+<section class="section">
+	<div class="bold center"><u>Collections:</u></div>
+	<div class="flexed-wc">
+	<% @collections.take(4).each do |collection| %>
+		<%=render "users/components/collection_for_profile", collection: collection%>
+	<%end%>
+	<%if @collections.count == 0 %>
+	<div class="center mt-2">No Collection Created</div>
+	<%end%>
+	</div>
+</section>
+
+
+<section>
+	<div class="bold center"><u>Liked Collections:</u></div>
+	<div class="flexed-wc">
+	<% @liked_collection.each do |collection| %>
+		<%=render "users/components/collection_for_profile", collection: collection%>
+	<%end%>
+	</div>
+	<%if @liked_collection.count == 0 %>
+	<div class="center mt-2">No Collection Liked</div>
+	<%end%>
+</section>

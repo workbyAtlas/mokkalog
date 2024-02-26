@@ -1,6 +1,5 @@
 class StylesController < ApplicationController
   before_action :set_style, only: %i[ show edit update destroy ]
-  before_action :set_filter_var, only: %i[show]
   before_action :mod?, except: %i[show index]
 
 
@@ -17,10 +16,12 @@ class StylesController < ApplicationController
 
     @brands = @style.brands
     @categories = Category.all
-    @locations = @brands.pluck(:location).reject(&:blank?).uniq
-        
 
-    
+        
+    better_filter_var
+    @locations = @brands.pluck(:location).reject(&:blank?).uniq
+    brands_us = @brands.where(location: "US")
+    @states = brands_us.pluck(:state).reject(&:blank?).uniq
 
   end
 

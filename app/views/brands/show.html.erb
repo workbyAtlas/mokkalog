@@ -1,4 +1,11 @@
 <%@title = @brand.name%>
+
+<% content_for :meta_description do %>
+  <meta name="title" content="<%=@brand.name%>">
+  <meta name="description" content="<%=@brand.name%> is an innovative and an interesting brand. Please check them out">
+<%end%>
+
+
 <% if @brand.banner.attached?%>
 <%if @auth or current_user == @brand.user%>
 <%= button_to "Delete Banner", purge_banner_brand_path(id: @brand.id), method: :delete, data: { turbo_confirm: 'Are you sure, you want to remove the banner?' }, class:"delete" %>

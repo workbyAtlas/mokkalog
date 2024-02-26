@@ -33,8 +33,12 @@
   cursor: pointer;
   transition: background-color 0.3s ease;
   border: 1px solid #5A3A31;
+  border-left: 2px solid #7a615a;
+  border-bottom:2px solid #7a615a;
   position:relative;
 }
+
+
 
 .dashboard-icon{
 	position: absolute;
@@ -61,4 +65,29 @@
 
 	
 }
+
+.pushablex {
+  background: #5A3A31;
+  border-radius: 8px;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  outline-offset: 4px;
+  width:80px;
+  height:80px;
+}
+.frontx {
+  display: block;
+  padding: 0.5 rem 1rem;
+  border-radius: 8px;
+  font-size: 1rem;
+  background: #ffe08a;
+  color: #5A3A31;
+  transform: translateY(-6px);
+  width:80px;
+  height:80px;
+}
+
+.pushable:active .frontx {
+  transform: translateY(-2px);
 }

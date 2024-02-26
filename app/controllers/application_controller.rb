@@ -1,7 +1,6 @@
 class ApplicationController < ActionController::Base
 	include Pagy::Backend
 	#after_action :track_action
-
 	before_action :set_query
 	before_action :set_query_brand
 	before_action :set_user_roles
@@ -44,8 +43,25 @@ class ApplicationController < ActionController::Base
 		@categories_accessory = @categories.where(subcats: "accessory")
 		@categories_misc = @categories.where(subcats: "misc")
 
-
+		@colors = ['White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Brown','Grey','Pink', 'Multi']
+		@materials = ["Undefined","Cotton", "Polyester", "Nylon", "Silk", "Wool", "Linen", "Spandex", "Denim", "Velvet",
+  "Chiffon", "Satin", "Rayon", "Leather", "Acrylic", "Cashmere", "Tencel", "Fleece", "Organza", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Abaca",
+  "Alpaca", "Apilon", "Bamboo", "Bioplastic", "Hemp", "Flax",
+  "Mylo", "Evernu", "Heavy Cotton", "MycoWork Leather", "Spider Silk", "Orange Fiber"]
 	end
+
+    def better_filter_var
+      @categories = Category.joins(:posts).where(posts: { id: @posts.map(&:id) }).distinct
+      @categories_top = @categories.where(subcats: "top")
+      @categories_female = @categories.where(subcats: "female")
+      @categories_bottom = @categories.where(subcats: "bottom")
+      @categories_outerwear = @categories.where(subcats: "outerwear")
+      @categories_headwear = @categories.where(subcats: "headwear")
+      @categories_accessory = @categories.where(subcats: "accessory")
+      @categories_misc = @categories.where(subcats: "misc")
+      @colors = @posts.pluck(:color).reject { |color| color == 'Undefined' }.uniq
+      @materials = @posts.pluck(:material).reject(&:blank?).uniq
+    end
 
 	def lockdown
 		if user_signed_in?
@@ -55,8 +71,6 @@ class ApplicationController < ActionController::Base
 			redirect_to lockdown_path
 		else
 			redirect_to new_user_session_path
-
-			
 		end
 
 	end
@@ -84,7 +98,6 @@ class ApplicationController < ActionController::Base
 	end
 
 	def blocker?
-		
 		redirect_to root_path
 	end
 
@@ -94,15 +107,9 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def post_setter(q)
-
-
 	    @posts_prior = q.result(distinct: true).includes(:tags, :brand, :category)
 	    rearranged_posts = @posts_prior.to_a.shuffle
 	    @posts = Kaminari.paginate_array(rearranged_posts).page(params[:page]).per(20)
-
-
-
-
 	end
 
 end

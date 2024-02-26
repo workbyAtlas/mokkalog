@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_02_18_203233) do
+ActiveRecord::Schema[7.0].define(version: 2024_02_25_192932) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -50,6 +50,16 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_18_203233) do
     t.bigint "blob_id", null: false
     t.string "variation_digest", null: false
     t.index ["blob_id", "variation_digest"], name: "index_active_storage_variant_records_uniqueness", unique: true
+  end
+
+  create_table "activities", force: :cascade do |t|
+    t.string "name"
+    t.bigint "post_id"
+    t.bigint "user_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["post_id"], name: "index_activities_on_post_id"
+    t.index ["user_id"], name: "index_activities_on_user_id"
   end
 
   create_table "ahoy_events", force: :cascade do |t|
@@ -143,6 +153,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_18_203233) do
     t.integer "apparel_rating"
     t.string "tiktok"
     t.integer "visits"
+    t.string "state"
     t.index ["slug"], name: "index_brands_on_slug", unique: true
     t.index ["user_id"], name: "index_brands_on_user_id"
   end
@@ -327,7 +338,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_18_203233) do
     t.string "unlock_token"
     t.string "slug"
     t.integer "onboard", default: 0
-    t.integer "coins", default: 10
+    t.integer "coins", default: 0
     t.integer "tokens", default: 1
     t.string "middle_name"
     t.index ["confirmation_token"], name: "index_users_on_confirmation_token", unique: true
@@ -338,6 +349,8 @@ ActiveRecord::Schema[7.0].define(version: 2024_02_18_203233) do
 
   add_foreign_key "active_storage_attachments", "active_storage_blobs", column: "blob_id"
   add_foreign_key "active_storage_variant_records", "active_storage_blobs", column: "blob_id"
+  add_foreign_key "activities", "posts"
+  add_foreign_key "activities", "users"
   add_foreign_key "blogs", "users"
   add_foreign_key "brand_tag_assocs", "brands"
   add_foreign_key "brand_tag_assocs", "tags"

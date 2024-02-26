@@ -1,6 +1,6 @@
 class BrandOnboardingController < ApplicationController
 	include Wicked::Wizard
-	steps :image, :style, :desc, :links, :banner, :collab, :gallery, :finale
+	steps :image, :style, :desc, :origin, :state, :links, :banner, :collab, :gallery,:confirmed, :finale
 
 	def show
 		@brand = Brand.find(session[:brand_id])
@@ -11,7 +11,7 @@ class BrandOnboardingController < ApplicationController
 		@brand = Brand.find(session[:brand_id])
 		
 		case step
-		when :image, :links, :banner, :gallery, :desc, :collab
+		when :image, :origin,:state, :links, :banner, :gallery, :desc, :collab
 			@brand.update(brand_params)
 			render_wizard @brand
 		when :style
@@ -41,6 +41,6 @@ class BrandOnboardingController < ApplicationController
     def brand_params
       params.require(:brand).permit(:name, :image, :user_id, :body, :views, :link, :banner,
        :brand_color, :brand_text, :header, :last_edited, :ig_link, :gallery1,:gallery2,:gallery3,
-       :styles, :verification, :location, :x_twitter, :badge)
+       :styles, :verification, :location, :x_twitter, :badge, :state)
     end
 end

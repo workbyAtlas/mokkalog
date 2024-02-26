@@ -21,13 +21,16 @@
     <div class="center center-h flex-margin">
 
 
+
 <% if not brand.location.blank?%>
 <%@c= ISO3166::Country.new(brand.location)%>
 <div class="hover">
 <div><%=@c.emoji_flag%></div>
-<div class="hover-content center"><%=brand.country_label%></div>
+<div class="hover-content center"><%=brand.location_view%></div>
 </div>
 <%end%>
+
+
 
 <%if brand.verification == "True"%>
 <div class="hover">

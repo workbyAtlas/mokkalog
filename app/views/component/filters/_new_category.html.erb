@@ -1,5 +1,6 @@
 <div class="bs cornered" data-controller="dropdown-box" style="border-bottom:none;">
 
+<%if not @categories_top.empty?%>
   <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown1">
   	Top<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
@@ -13,7 +14,9 @@
 		</div>
 	<%end%>
   </div>
+<%end%>
 
+<%if not @categories_bottom.empty?%>
   <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown2">
   	Bottom <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
@@ -27,7 +30,9 @@
 		</div>
 	<%end%>
   </div>
+<%end%>
 
+<%if not @categories_female.empty?%>
    <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown3">
   	Female <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
@@ -41,7 +46,9 @@
 		</div>
 	<%end%>
   </div>
+<%end%>
 
+<%if not @categories_outerwear.empty?%>
   <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown4">
   	Outerwear <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
@@ -55,8 +62,9 @@
 		</div>
 	<%end%>
   </div>
+<%end%>
 
-
+<%if not @categories_headwear.empty?%>
   <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown5">
   	Headwear<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
@@ -70,11 +78,12 @@
 		</div>
 	<%end%>
   </div>
+ <%end%>
 
+<%if not @categories_accessory.empty?%>
   <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown6">
   	Accessories<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
-
 	<div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown6">
 	<% @categories_accessory.each do |x| %>
 		<div class="my-1">
@@ -85,6 +94,9 @@
 		</div>
 	<%end%>
 	</div>
+<%end%>
+
+<%if not @categories_misc.empty?%>
   <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown7">
   	Misc<i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
@@ -99,6 +111,7 @@
 		</div>
 	<%end%>
 	</div>
+<%end%>
 </div>
 
 

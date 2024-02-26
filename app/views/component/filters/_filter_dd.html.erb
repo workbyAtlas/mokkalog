@@ -8,22 +8,22 @@
   </div>
 
   <%if not type == "brand"%>
+  
+  <%if not type == "style"%>
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown2">
+    Styles <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content p-2" data-dropdown-box-target="dropdown2">
+    <%= render 'component/filters/style'%>
+  </div>
+  <%end%>
+
   <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown1">
   	Brands <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
   </div>
   <div class="d-none dd-content p-2" data-dropdown-box-target="dropdown1">
   	<%= render 'component/filters/brand'%>
   </div>
-
-  <%if not type == "style"%>
-  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown2">
-  	Styles <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
-  </div>
-  <div class="d-none dd-content p-2" data-dropdown-box-target="dropdown2">
-  	<%= render 'component/filters/style'%>
-  </div>
-  <%end%>
-
     <%end%>
 
   <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown3">
@@ -32,14 +32,6 @@
   <div class="d-none dd-content p-2" data-dropdown-box-target="dropdown3">
   	<%= render 'component/filters/material'%>
   </div>
- <%if not type == "brand"%>
-  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown4">
-  	Origin <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
-  </div>
- 
-  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown4">
-    <%= render 'component/filters/location'%>
-  </div>
-  <%end%>
+
 
 </div>

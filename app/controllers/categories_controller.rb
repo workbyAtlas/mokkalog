@@ -3,6 +3,7 @@ class CategoriesController < ApplicationController
   before_action :mod?, except: %i[show index]
   before_action :authenticate_user!, except: %i[index show]
 
+
   
   
 
@@ -22,11 +23,17 @@ class CategoriesController < ApplicationController
 
 
   # Assuming @posts is a collection of Post objects
-  @brands = @posts.map(&:brand).uniq.compact
+  #@brands = @posts.map(&:brand).uniq.compact
+  @brands = Brand.where(id: @posts.pluck(:brand_id).uniq.compact)
+
 
   #@brands = @brands.order("LOWER(name)")
   @styles = Style.joins(:brands).where(brands: { id: @brands.map(&:id) }).distinct
+
+  better_filter_var
   @locations = @brands.pluck(:location).reject(&:blank?).uniq
+  brands_us = @brands.where(location: "US")
+  @states = brands_us.pluck(:state).reject(&:blank?).uniq
 
   end
 

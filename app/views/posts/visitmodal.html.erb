@@ -28,10 +28,6 @@
   <div class="mb-4">
 
     <%= link_to 'Close',"#", onclick:"window.close();", class:"mokka-btn btn-warning mb-3 m-shadow"%>
-
-    <%if @badges == true%>
-        <span class="float-r mr-4"><%=render "posts/components/badges"%></span>
-    <%end%>
   </div>
   <div class="columns">
       <%=render "posts/show_components/image_holder"%>
@@ -43,18 +39,10 @@
 
             <div class="my-2 title is-5"><%=link_to @post.branded, @post.brand, class:"s-link"%></div>
 
-
-        <div>
-          <%if @post.archive == "archived"%>
-            <span class="tag bs">archived</span>
-            <%= number_to_currency(@post.price) if @post.price.present?%>
-          <%elsif @post.archive == "project" %>
-            <span class="tag bs">project</span>
-            <%= number_to_currency(@post.price) if @post.price.present?%>
-          <%else%>
+            <div>
             <%=if @post.price.blank? then "#N/A" else number_to_currency(@post.price) end%>
-          <%end%>  
-        </div>
+            </div>
+
 
         <div class="mt-4 bsb flexed">
           <%#LIKE BUTTON%>

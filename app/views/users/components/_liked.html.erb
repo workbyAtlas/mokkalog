@@ -2,9 +2,10 @@
 	<div class="bold center"><u>Liked Brands:</u></div>
 	<div class="">
 	<% @followed_brands.each do |brand| %>
-
 		<div class="bs cornered my-2 lgrey"><%= render brand %></div>
-
+	<%end%>
+	<%if @followed_brands.count == 0 %>
+	<div class="center mt-2">Currently following no brands</div>
 	<%end%>
 	</div>
 </section>

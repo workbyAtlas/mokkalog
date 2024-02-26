@@ -3,10 +3,18 @@
   <head>
     <title>Mokkalog <%if @title.present?%>| <%end%><%=@title %></title>
     <meta name="viewport" content="width=device-width,initial-scale=1">
+
+<% if content_for?(:meta_description) %>
+  <%= yield :meta_description %>
+<%else%>
+    <meta name="title" content="Mokkalog">
     <meta name="description" content="
-Mokkalog is a fashion destination committed to curating an extensive collection of clothing from every corner of the globe. This unique platform empowers users with the ability to explore an endless array of fashion choices, including offerings from brands they may have never encountered before.">
-    <meta name="keywords" content="fashion, mens fashion, womens clothes, fashion blog, fashion start ups, underground fashion, new fashion brands, clothing, fashion archive">
+Mokkalog is a fashion platform to discover and shop clothing from innovative and rising fashion brands.">
+    <meta name="keywords" content="fashion,men fashion, women fashion, fashion blog, fashion start ups, underground fashion, new fashion brands, clothing, fashion archive">
     <meta name="author" content="Jihun Choi">
+
+<% end %>
+
 
 
 

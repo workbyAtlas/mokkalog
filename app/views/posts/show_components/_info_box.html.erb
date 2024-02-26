@@ -28,4 +28,16 @@
    </ul>
 </div>
 
+<%if current_user == @post.user or @auth_e%>
+<div id="dev-tool" class="relative notification m-shadow lgrey info-box bs">
+<div class="hide-btn" onclick="hidediv('dev-tool')">[hide]</div>
+   <div class="bold center">Visits</div>
+   <div class="center">Total Visits: <%=@post.activities.count%></div>
+   <div class="post-chart cornered p-2">
+   <%= line_chart @post.activities.group_by_day(:created_at).count, label:"Visits" %>
+   </div>
+
+</div>
+<%end%>
+
     

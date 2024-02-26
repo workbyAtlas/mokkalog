@@ -28,9 +28,10 @@
 
   <div class="bs cornered p-2 lgrey my-2">
     <div class="bold"><u>Additional Information</u></div>
-        <div class="flexed center-h mt-1">
+        <div class="my-2">
           <div class="mr-1">Origin:</div>
           <%= form.select :location, brand.countries_name.invert, { include_blank: true }, { data: { controller: 'slim' }} %>
+          <%= form.select :state, brand.states_name.invert, { include_blank: true }, { data: { controller: 'slim' }} %>
         </div>
 
         <div>

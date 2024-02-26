@@ -3,6 +3,7 @@
 <%@title = "dashboard " + @user.username%>
 
 
+
 <section class="section">
 	<div class="title is-3 secondary-t">Dashboard: <i class="title is-4 secondary-t"><%=@brand.name%></i></div>
 	<br/>
@@ -12,8 +13,10 @@
 			<div class="bs mx-auto dashboard-grid cornered dashboard-column m-shadow">
 
 				<%=link_to brand_path(@brand),target:"_blank", class:"dashboard-btn hover m-2" do%>
-						<div class="dashboard-icon"><i class="fa-solid fa-eye fa-2xl"></i></div>
-						<div class="hover-content">See Brand Page</div>
+						<span class="dashboard-btn-inside">
+							<div class="dashboard-icon"><i class="fa-solid fa-eye fa-2xl"></i></div>
+							<div class="hover-content">See Brand Page</div>
+						</span>
 				<%end%>
 
 				<%=link_to edit_brand_path(@brand),target:"_blank", class:"dashboard-btn hover m-2" do%>
@@ -28,7 +31,7 @@
 
 				<%=link_to root_path,target:"_blank", class:"dashboard-btn hover m-2" do%>
 						<div class="dashboard-icon"><i class="fa-solid fa-coins fa-2xl"></i></div>
-						<div class="hover-content">Payment Plan</div>
+						<div class="hover-content">Coming Soon</div>
 				<%end%>
 
 				<%=link_to root_path ,target:"_blank", class:"dashboard-btn hover m-2" do%>
@@ -71,7 +74,8 @@
 		</div>
 	</div>
 	<br/>
-	<div class="title is-4 secondary-t mt-3 center">Under Construction</div>
+
+	<%=render 'users/dashboard/analytic'%>
 
 </section>
 

@@ -1,5 +1,6 @@
 class UsersController < ApplicationController
   before_action :set_user, except: %i[setting]
+  before_action :mod?, only: %i[coin]
 
 
 
@@ -16,7 +17,20 @@ class UsersController < ApplicationController
     @closet_post = @user.favorited_posts
     @liked_posts = @user.liked_posts
     @followed_brands = @user.liked_brands
+
+    @collections = @user.collections
+    @liked_collection = @user.liked_collections
   end
+
+
+  def coin
+    if @auth
+      @user.update(coins: @user.coins + 10)
+      redirect_to adroom_path
+    end
+  
+  end
+
 
   def setting
   end
@@ -24,14 +38,21 @@ class UsersController < ApplicationController
   def dashboard
     if current_user.brands.count > 0
       @brands = @user.brands
-      @brand = @brands.min_by(&:id) 
-      @posts = Post.where(brand: @brands).all
-      @top_posts = @posts.order(views: :desc).limit(4)
-      target_brand = @brand  # Assuming @brand is your target brand
-      all_brands = Brand.where.not(id: target_brand.id)
+      if Rails.env.development?
+        @brand = Brand.find_by(id: 9)
+      else
+        @brand = @brands.min_by(&:id)
+      end
 
-      @top_similar_brands = all_brands.max_by(4){ |brand| target_brand.similarity_to(brand) }
-      @top_different_brands = all_brands.max_by(4) { |brand| target_brand.dissimilarity_to(brand) }
+      @q = @brand.posts.select('posts.*, COUNT(activities.id) AS activities_count')
+                       .left_joins(:activities)
+                       .group('posts.id')
+                       .ransack(params[:q])
+
+      @posts = @q.result(distinct: true).order(activities_count: :desc)
+
+      #@posts = Post.where(brand: @brands).all
+
     end
   end
 

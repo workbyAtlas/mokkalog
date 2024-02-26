@@ -71,12 +71,37 @@ class Brand < ApplicationRecord
     CS.countries.with_indifferent_access
   end
 
+  def states_name
+    CS.states(location)
+  end
+
+  def state_name
+    begin
+      ISO3166::Country[location].states[state].name
+    rescue StandardError => e
+      state
+    end
+
+  end
+
+  def location_view
+    if location == "US"
+      if state.nil?
+        countries_name[location]
+      else
+        ISO3166::Country[location].states[state].name
+      end
+    else
+      countries_name[location]
+    end
+  end
+
   def country_label
     countries_name[location]
   end
 
   def self.ransackable_attributes(auth_object = nil)
-    ["created_at", "id", "name", "views", "updated_at", "verification", "badge", "style_id","location"]
+    ["created_at", "id", "name", "views", "updated_at", "verification", "badge", "style_id","location", "state"]
   end
 
   def self.ransackable_associations(auth_object = nil)

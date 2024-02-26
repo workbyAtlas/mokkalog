@@ -4,18 +4,8 @@
   <% end %>
 <div class="rw50 mx-auto taller">
   <div class="title is-4 center secondary-t mt-6">
-    Where can we find <span class="ml-1"><%=@brand.name%></span>?
+    Let's make it easier to find your brand online!
   </div>
-
-
-
-  <div class="flexed center-h mt-1">
-    <div class="mx-auto rw50 flexed">
-      <div class="mr-1">Origin:</div>
-      <%= form.select :location, @brand.countries_name.invert, { include_blank: true }, { data: { controller: 'slim' }} %>
-    </div>
-  </div>
-  <br/>
 
   <div>
   <div class="secondary-t bold center"><u>Social</u></div>

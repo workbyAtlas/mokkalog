@@ -12,7 +12,7 @@
     </div>
 
     <% if not @brand.location.blank?%>
-    <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs"><%=@c.emoji_flag%></span></strong><%=@brand.country_label%></div>
+    <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs"><%=@c.emoji_flag%></span></strong><%=@brand.state_name%> , <%=@brand.country_label%></div>
     <%end%>  
 
     <div class="mx-4 mt-2"><strong class="mr-2"><span class="tag bs">link:</span></strong><%=link_to @brand.link, @brand.link, class:"s-link", target:"_blank"%></div>  

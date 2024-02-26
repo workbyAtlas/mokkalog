@@ -2,7 +2,7 @@
 <div class="color-filter-grid">
 
 
-  <% ['White','Black','Blue','Red','Yellow','Green','Orange','Purple','Navy','Olive','Beige','Brown','Grey','Pink', 'Multi'].each do |color| %>
+  <% @colors.each do |color| %>
  <div class="my-1">
     <label class="color-cbox <%=color + "box"%>">
     <%= check_box_tag('q[color_i_cont_any][]', color, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
@@ -12,4 +12,13 @@
 
 
   <%end%>
+
+   <div class="my-1">
+    <label class="color-cbox Brownbox">
+    <%= check_box_tag('q[color_i_cont_any][]', "Undefined", false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
+    <span class="color-cmark Brownmark">Undefined</span>
+    </label>
+ </div>
+
+
 </div>

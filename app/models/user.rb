@@ -6,32 +6,30 @@ class User < ApplicationRecord
   devise :database_authenticatable, :registerable,
          :recoverable, :rememberable, :validatable, :confirmable, :lockable
 
-  has_one_attached :avatar
   validates :name, length: { maximum: 20 }
+  validates :name, format: { with: /\A[a-zA-Z0-9]+\z/, message: "can only contain letters and numbers" }
+  validates :username, format: { with: /\A[a-zA-Z0-9_]+\z/, message: "can only contain letters, numbers, and underscores" }
+  
   validates :last_name, length: { maximum: 20 }, allow_blank: true
   validates :description, length: { maximum: 500 }, allow_blank: true
 
+
   #Associations
+  has_one_attached :avatar
   has_many :posts
   has_many :brands
   has_many :blogs
-  has_many :collections
+  has_many :collections #depedent destroy??
+  has_many :activities
+  has_many :pagelinks, dependent: :destroy
 
   has_many :likeables, dependent: :destroy
+
   has_many :liked_posts, through: :likeables, source: :post
   has_many :liked_brands, through: :likeables, source: :likeable, source_type: 'Brand'
-  #has_many :likeables, dependent: :destroy
-
-
-
-
-
-
 
   has_many :favoritables, dependent: :destroy
   has_many :favorited_posts, through: :favoritables, source: :post
-  has_many :pagelinks, dependent: :destroy
-
   before_destroy :reassign_posts
 
   #User Role
@@ -49,8 +47,6 @@ class User < ApplicationRecord
   def username_step?
     current_step == :username
   end
-
-
 
   def should_generate_new_friendly_id?
    username_changed? || slug.blank?
@@ -89,6 +85,10 @@ class User < ApplicationRecord
     Post.joins(:likeables).where(likeables: { user_id: id })
   end
 
+  def liked_collections
+    Collection.joins(:likeables).where(likeables: { user_id: id })
+  end
+
   def favorited?(post)
     favorited_posts.include?(post)
   end
@@ -98,24 +98,13 @@ class User < ApplicationRecord
     else
       favorited_posts << post
     end
-
   end
 
   def image_as_avatar
-    #return unless avatar.content_type.in?(%w[image/jpeg image/png image/webp])
-    #avatar.variant(resize_to_fill: [100,100]).processed if avatar.attached?
     avatar.variant(resize_to_fill: [60,60]).processed if avatar.attached?
   end
 
-  def image_as_avatar_blog
-    #return unless avatar.content_type.in?(%w[image/jpeg image/png image/webp])
-    #avatar.variant(resize_to_fill: [100,100]).processed if avatar.attached?
-    avatar.variant(resize_to_fill: [100,100]).processed if avatar.attached?
-  end
-
   def image_as_profile_page_pic
-    #return unless avatar.content_type.in?(%w[image/jpeg image/png image/webp])
-    #avatar.variant(resize_to_fill: [100,100]).processed if avatar.attached?
     avatar.variant(resize_to_fill: [200,200]).processed if avatar.attached?
   end
 

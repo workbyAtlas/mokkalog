@@ -1,0 +1,8 @@
+<% @states.each do |x| %>
+ <div class="my-1">
+    <label class="m-checkbox mid-cbox">
+    <%= check_box_tag('q[brand_state_i_cont_any][]', x, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();') %>
+    <span class="m-checkmark"><%=ISO3166::Country['US'].states[x].name%></span>
+    </label>
+ </div>
+<%end%>

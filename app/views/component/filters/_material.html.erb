@@ -2,10 +2,7 @@
   <div class="filter-grid">
 
 
-    <% ["Undefined","Cotton", "Polyester", "Nylon", "Silk", "Wool", "Linen", "Spandex", "Denim", "Velvet",
-  "Chiffon", "Satin", "Rayon", "Leather", "Acrylic", "Cashmere", "Tencel", "Fleece", "Organza", "Corduroy", "Micoworks", "MicroSilk", "Spinnova", "Abaca",
-  "Alpaca", "Apilon", "Bamboo", "Bioplastic", "Hemp", "Flax",
-  "Mylo", "Evernu", "Heavy Cotton", "MycoWork Leather", "Spider Silk", "Orange Fiber"].each do |x| %>
+    <% @materials.each do |x| %>
    <div class="my-1">
       <label class="m-checkbox">
       <%= check_box_tag('q[material_i_cont_any][]', x, false, data: { action: "change->catalog#checkboxToggle" },  oninput: 'this.form.requestSubmit();')%>

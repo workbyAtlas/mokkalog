@@ -1,0 +1,20 @@
+
+<div class="bs cornered" data-controller="dropdown-box" style="border-bottom:none;">
+ 
+ <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown1">
+  	States <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown1">
+    <%= render 'component/filters/states'%>
+  </div>
+
+
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown4">
+  	Countries <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown4">
+    <%= render 'component/filters/location'%>
+  </div>
+
+
+</div>

@@ -13,7 +13,7 @@
   <%=@users.count%> confirmed:<%=@confirmed%>
   <br/>
   <br/>
-  demo:<%=@demo_account.onboard%>
+  demo:<%#=@demo_account.onboard%>
 <table class="table">
 <tr>
   <th>ID</th>
@@ -24,6 +24,7 @@
   <th>Confirmed_at</th>
   <th>Coins</th>
   <th>Token</th>
+  <th>Add Coins</th>
 </tr>
 <% @users.each do |x| %>
 <tr>
@@ -35,6 +36,7 @@
   <td><%=x.confirmed_at%></td>
   <td><%=x.coins%></td>
   <td><%=x.tokens%></td>
+  <td><%=link_to "Add Coin", coin_path(x)%></td>
 
 </tr>
  

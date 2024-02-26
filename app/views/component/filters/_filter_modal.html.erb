@@ -25,9 +25,11 @@
 <br/>
 <div class="my-0 title is-5 secondary-t mb-2"><u>Other Filters</u></div>
 <%= render 'component/filters/filter_dd', type:type%>
-
-
-
+<br/>
+<%if not type == "brand"%>
+<div class="my-0 title is-5 secondary-t mb-2"><u>Locations:</u></div>
+<%= render 'component/filters/locations'%>
+<%end%>
 
 
 

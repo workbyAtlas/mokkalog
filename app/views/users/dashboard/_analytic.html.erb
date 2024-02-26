@@ -1,43 +1,18 @@
-<div class="columns m-1">
-	<div class="column p-1">
-		<div class="dashboard-top bs cornered yellow-bottom  p-2">
-			<div class="center title is-6 secondary-t my-2">Total Views</div>
-			<div class="center mt-4 title is-2 secondary-t my-2"><%=@posts.sum(&:views)%></div>
-		</div>
-	</div>
+<table class="table is-striped cornered mx-auto">
+	<th>Clothing</th>
+	<th><%= sort_link(@q, :title)%></th>
+	<th><%= sort_link(@q, :views)%></th>
+	<th>Visits</th>
+	<th>Chart</th>
 
-	<div class="column p-1">
-		<div class="dashboard-top bs cornered blue-bottom  p-2">
-			<div class="center title is-6 secondary-t my-2">Brand Likes</div>
-			<div class="center text-center"><%=link_to @brand.name, @brand, class:"mt-4 s-link title is-2 d-none-mobile"%></div>
-		</div>
-	</div>
+	<%@posts.each do |post|%>
+	<tr>
+		<td><%=image_tag(post.image_handler(post.image,"small"), class:"cornered")%></td>
+		<td><%=link_to post.title , post, target:"_blank",class:"s-link bold"%></td>
+		<td><%=post.views%></td>
+		<td><%=post.activities.count%></td>
+		<td><%= line_chart post.activities.group_by_day(:created_at).count, height:"150px", width:"200px"%></td>
 
-	<div class="column p-1">
-		<div class="dashboard-top bs cornered red-bottom  p-2">
-			<div class="center title is-6 secondary-t my-2">Total Apparel Likes</div>
-			<div class="center mt-4 title is-2 secondary-t my-2"><%=@user.coins%></div>
-		</div>
-	</div>
-</div>
-
-<div class=" p-2 cornered bs m-1">
-	<div class="title is-4 secondary-t mt-2 center"><u>Brand Comparison</u></div>
-	<div class="columns">
-		<div class="cornered p-2 column">
-			<div class="title is-4 secondary-t mt-2 center">Similar Brands</div>
-			<% @top_similar_brands.each do |brand| %>
-			  <div class="bs cornered my-2"><%= render brand %></div>
-			<% end %>
-		</div>
-
-
-		<div class="cornered p-2 column">
-			<div class="title is-4 secondary-t mt-2 center">Distinct Brands</div>
-			<% @top_different_brands.each do |brand| %>
-			  <div class="bs cornered my-2"><%= render brand %></div>
-			<% end %>
-		</div>
-
-	</div>
-</div>
+	</tr>
+	<%end%>
+</table>

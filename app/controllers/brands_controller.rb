@@ -2,7 +2,14 @@ class BrandsController < ApplicationController
   before_action :set_brand, only: %i[ show edit update destroy ]
   before_action :authenticate_user!, except: %i[index show]
   before_action :editing_privilage_brand, only: %i[edit update]
-  before_action :set_filter_var, only: %i[show]
+
+
+  def state_name(country_code, state_code)
+    country = ISO3166::Country[country_code]
+    state = country.states[state_code]
+    state.name if state
+  end
+
 
 
   # GET /brands or /brands.json
@@ -29,7 +36,13 @@ class BrandsController < ApplicationController
     @blank = Brand.find(1)
 
     @styles = Style.all
-    @locations = Brand.pluck(:location).reject(&:blank?).uniq
+    @locations = new_brands.pluck(:location).reject(&:blank?).uniq
+
+    
+    brands_us = new_brands.select { |brand| brand.location == "US" }
+
+    @states = brands_us.pluck(:state).reject(&:blank?).uniq
+    #@c = Countries['US']
 
 
     
@@ -42,6 +55,8 @@ class BrandsController < ApplicationController
 
     @blank = Brand.find(1) 
     @c = ISO3166::Country.new(@brand.location)
+
+
     if not current_user == @brand.user
       @brand.update(views: @brand.views + 1)
       #@brand.posts = @brand.posts.order('created_at DESC').page(params[:page]).per(16)
@@ -53,6 +68,8 @@ class BrandsController < ApplicationController
     @posts_prior = @posts_prior.order(views: :desc)
     @posts = Kaminari.paginate_array(@posts_prior).page(params[:page]).per(20)
 
+    better_filter_var
+    
     @styles = Style.all
 
 
@@ -220,6 +237,8 @@ class BrandsController < ApplicationController
 
 
 
+
+
     def editing_privilage_brand
       return if current_user.editor?
       return if current_user.mod?
@@ -231,6 +250,6 @@ class BrandsController < ApplicationController
     def brand_params
       params.require(:brand).permit(:name, :image, :user_id, :body, :views, :link, :banner,
        :brand_color, :brand_text, :header, :last_edited, :ig_link, :gallery1,:gallery2,:gallery3,
-       :styles, :verification, :location, :x_twitter, :badge, :likes)
+       :styles, :verification, :location, :x_twitter, :badge, :likes,:state)
     end
 end

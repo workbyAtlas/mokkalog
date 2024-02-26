@@ -60,7 +60,7 @@
     <div class="flexed center my-3">
       <div class="label mr-2 secondary-t">Banner Text Color:</div>
       <div class="select" data-banner-target="color" data-action="change->banner#color">
-        <%= form.select :brand_text, ["Brown", "White", "Black"], 
+        <%= form.select :brand_text, [['Brown','#654321;'],['White','White'],['Black','Black']], 
               class: "input mokka-ph" %>
       </div>
     </div>

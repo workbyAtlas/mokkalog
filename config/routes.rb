@@ -36,6 +36,7 @@ Rails.application.routes.draw do
   get 'users/profile'
 
 
+
   devise_for :users, controllers: {
     sessions: 'users/sessions',
     registrations: 'users/registrations',
@@ -45,6 +46,7 @@ Rails.application.routes.draw do
   get 'setting'   => 'users#setting'
   #get 'dashboard' => 'users#dashboard'
   get '/dashboard/:id', to: 'users#dashboard', as: 'dashboard'
+  get '/coin/:id', to: 'users#coin', as: 'coin'
 
   #PAGES  
   get 'about'     => 'pages#about'
@@ -78,6 +80,8 @@ Rails.application.routes.draw do
     member do
       post :like
       get :visit
+      get :visitmodal
+
     end
       
     

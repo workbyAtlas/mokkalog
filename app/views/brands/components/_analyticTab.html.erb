@@ -4,6 +4,19 @@
 <br/>
 <br/>
 
+<div class="center-down bs lgrey cornered">
+	<div class="title is-4 secondary-t mt-2">Top Clothings</div>
+	<div class="flexed-wc">
+		<%@top_posts.each do |x|%>
+
+		<%=render x%>
+
+		<%end%>
+	</div>
+</div>
+
+<br/>
+<br/>
 <div class=" p-2 cornered bs">
 	<div class="title is-4 secondary-t mt-2 center"><u>Brand Comparison</u></div>
 	<div class="columns">
@@ -25,18 +38,5 @@
 	</div>
 </div>
 
-<br/>
-<br/>
-<div class="center-down bs lgrey cornered">
-	<div class="title is-4 secondary-t mt-2">Top Clothings</div>
-	<div class="flexed-wc">
-		<%@top_posts.each do |x|%>
-		<div>
-		<%=render x%>
-		<div class="ml-2"><span class="bold">Views:</span> <%=x.views%></div>
-		<div class="ml-3"><span class="bold">Likes:</span> <%=x.likes.count%></div>
-		</div>
-		<%end%>
-	</div>
-</div>
+
 </section>

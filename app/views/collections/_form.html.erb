@@ -11,9 +11,10 @@
     </div>
   <% end %>
 
+<div class="rw50 mx-auto">
   <div>
     <%= form.label :title, style: "display: block" %>
-    <%= form.text_field :title %>
+    <%= form.text_field :title, class:"input" %>
   </div>
 
   <div>
@@ -27,7 +28,7 @@
 
   <div>
     <%= form.label :link, style: "display: block" %>
-    <%= form.text_area :link %>
+    <%= form.text_field :link, class:"input" %>
   </div>
 
   <%= form.select :c_type, ["Brand","People","Event"],{},{data: {controller: "slim"}}%>
@@ -35,16 +36,17 @@
 
   <div>
     <%= form.label :body, style: "display: block" %>
-    <%= form.text_area :body %>
+    <%= form.text_area :body, class:"textarea" %>
   </div>
 
   <div>
     <%= form.label :post, style: "display: block" %>
-    <%= form.text_field :posts, value: collection.posts.map(&:id).join(",") %>
+    <%= form.text_field :posts, value: collection.posts.map(&:id).join(","),class:"input" %>
 
   </div>
 
   <div>
     <%= form.submit %>
   </div>
+</div>
 <% end %>

@@ -4,6 +4,7 @@
   <p class="modal-card-title bold secondary-t center">Filters</p>
   <div class="delete" data-action="click->catalog#filterToggle"></div>
 </header>
+
 <section class="modal-card-body">
 <!-- Content ... -->
 <br/>
@@ -81,20 +82,35 @@
 		</div>
 	<%end%>
 </div>
-
-
 <!--Category -->
 
 
 
+<br/>
+<br/>
+<div class="bs cornered" data-controller="dropdown-box" style="border-bottom:none;">
+
+ <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown1">
+    States <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown1">
+    <%= render 'brands/components/states'%>
+  </div>
 
 
+  <div class="multi-dd-item p-2" data-action="click->dropdown-box#openDropdown2">
+    Countries <i class="fa-solid fa-caret-down fa-xl mt-2" style="float:right;"></i>
+  </div>
+  <div class="d-none dd-content category-filter-grid p-2" data-dropdown-box-target="dropdown2">
+    <%= render 'brands/components/location'%>
+  </div>
 
-
+</div>
 
 
 
 </section>
+
 <footer class="modal-card-foot">
     <div>
 

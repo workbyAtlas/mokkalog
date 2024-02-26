@@ -1,50 +1,37 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: %i[show edit update]
-  before_action :authenticate_user!, except: %i[index show home visit]
+  before_action :authenticate_user!, except: %i[index show home visit visitmodal]
   before_action :editing_privilage_post, only: %i[edit update]
   before_action :set_filter_var
 
- 
-
-  
-
   # GET /posts or /posts.json
   def home
-
     @query = Post.ransack(params[:q])
     post_setter(@query)
     @brands = Brand.all
     @styles = Style.all
+    
     @locations = @brands.pluck(:location).reject(&:blank?).uniq
-    
-    
-
-    
+    brands_us = @brands.where(location: "US")
+    @states = brands_us.pluck(:state).reject(&:blank?).uniq
 
   end
 
   def index
- 
     @brands = Brand.all
     @brands = @brands.order("LOWER(name)")
-
     @styles = Style.all
-
     #Ransack and Pagy
     @query = Post.ransack(params[:q])
     @posts_prior = @query.result(distinct: true).includes(:tags, :brand, :category)
     shuffled_posts = @posts_prior.to_a.shuffle
     @posts = Kaminari.paginate_array(shuffled_posts).page(params[:page]).per(16)
-
-    
-
     #Turbo
     respond_to do |format|
       format.html
       format.turbo_stream # This is the key part for Turbo Streams
     end
-
   end
 
   # GET /posts/1 or /posts/1.json
@@ -54,7 +41,7 @@ class PostsController < ApplicationController
     @type = "Men" if @post.c_type == "M"
     @type = "Women" if @post.c_type == "W"
 
-    if not current_user == @post.user
+    if not current_user == @post.user or not @auth
       @post.update(views: @post.views + 1)
     end
 
@@ -166,18 +153,38 @@ end
   def visit
     @post = Post.find(params[:id])
 
-    if @post.visits.nil?
-      @post.update(visits: 1)
+    if not current_user == @post.user or not @auth_e
+      if user_signed_in?
+        @activity = @post.activities.build(name:"post_visit", post_id:@post.id, user_id: current_user.id)
+      else
+        @activity = @post.activities.build(name:"post_visit", post_id:@post.id)
+      end 
+
+      if @activity.save
+        if @post.brand.verification == "True"
+          redirect_to @post.web_link, target:"_blank", allow_other_host: true
+        else
+          redirect_to visitmodal_post_path(@post)
+
+        end
+      else
+      # Error saving activity
+        redirect_to @post, alert: 'Failed to record visit.'
+      end
     else
-      @post.update(visits: @post.visits + 1)
+
+      if @post.brand.verification == "True"
+        redirect_to @post.web_link, target:"_blank", allow_other_host: true
+      else
+        redirect_to visitmodal_post_path(@post)
+
+      end
     end
 
-    if @post.brand.verification == "True"
-      redirect_to @post.web_link, target:"_blank", allow_other_host: true
-    end
+  end
 
-    #render partial: 'posts/mokka_visit'
-
+  def visitmodal
+    @post = Post.find(params[:id])
   end
 
   # DELETE /posts/1 or /posts/1.json

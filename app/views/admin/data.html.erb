@@ -3,16 +3,24 @@
 	<th><%= sort_link(@q, :title)%></th>
 	<th><%= sort_link(@q, :views)%></th>
 	<th>Visits</th>
+	<th>Old Visit</th>
 	<th>Chart</th>
 
 	<%@posts.each do |post|%>
 	<tr>
-		<td><%=image_tag(post.image_handler(post.image,"small"), class:"cornered")%></td>
+		<td><%if post.image.attached?%>
+				<%=image_tag(post.image_handler(post.image,"small"), class:"cornered")%>
+			<%end%>		
+		</td>
 		<td><%=link_to post.title , post, target:"_blank",class:"s-link bold"%></td>
 		<td><%=post.views%></td>
 		<td><%=post.activities.count%></td>
+		<td><%=post.visits%></td>
 		<td><%= line_chart post.activities.group_by_day(:created_at).count, height:"80px", width:"160px"%></td>
 
 	</tr>
 	<%end%>
 </table>
+
+
+<%= render 'component/pagy', item:@posts%>

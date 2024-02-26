@@ -1,6 +1,7 @@
 #require 'tf-idf-similarity'
 class Brand < ApplicationRecord
   extend FriendlyId
+  attr_accessor :total_activities_count
 
   validates :name, uniqueness: true, presence: true, length:{ maximum: 25}
   #validate :unique_name_case_insensitive

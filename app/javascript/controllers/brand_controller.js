@@ -16,8 +16,12 @@ export default class extends Controller {
   this.aboutButtonTarget.classList.remove("is-active-prime")
   this.aboutTabTarget.classList.add("d-none")
 
-  this.authorButtonTarget.classList.remove("is-active-prime")
-  this.authorTabTarget.classList.add("d-none")
+  try{  
+    this.authorButtonTarget.classList.remove("is-active-prime")
+    this.authorTabTarget.classList.add("d-none")
+  } catch(error){
+
+  }
 
   this.galleryButtonTarget.classList.remove("is-active-prime")
   this.galleryTabTarget.classList.add("d-none")
@@ -34,8 +38,12 @@ export default class extends Controller {
   this.productButtonTarget.classList.remove("is-active-prime")
   this.productTabTarget.classList.add("d-none")
 
-  this.authorButtonTarget.classList.remove("is-active-prime")
-  this.authorTabTarget.classList.add("d-none")
+  try{  
+    this.authorButtonTarget.classList.remove("is-active-prime")
+    this.authorTabTarget.classList.add("d-none")
+  } catch(error){
+
+  }
 
   this.galleryButtonTarget.classList.remove("is-active-prime")
   this.galleryTabTarget.classList.add("d-none")
@@ -85,9 +93,13 @@ export default class extends Controller {
 
   this.aboutButtonTarget.classList.remove("is-active-prime")
   this.aboutTabTarget.classList.add("d-none")
+  
+  try{  
+    this.authorButtonTarget.classList.remove("is-active-prime")
+    this.authorTabTarget.classList.add("d-none")
+  } catch(error){
 
-  this.authorButtonTarget.classList.remove("is-active-prime")
-  this.authorTabTarget.classList.add("d-none")
+  }
 
   this.galleryButtonTarget.classList.remove("is-active-prime")
   this.galleryTabTarget.classList.add("d-none")

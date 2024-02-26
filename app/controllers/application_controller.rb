@@ -107,9 +107,9 @@ class ApplicationController < ActionController::Base
 	protected
 
 	def post_setter(q)
-	    @posts_prior = q.result(distinct: true).includes(:tags, :brand, :category)
-	    rearranged_posts = @posts_prior.to_a.shuffle
-	    @posts = Kaminari.paginate_array(rearranged_posts).page(params[:page]).per(20)
+    @posts_prior = q.result(distinct: true).includes(:tags, :brand, :category)
+    rearranged_posts= @posts_prior.shuffle(random: Random.new(42))
+    @posts = Kaminari.paginate_array(rearranged_posts).page(params[:page]).per(20)
 	end
 
 end

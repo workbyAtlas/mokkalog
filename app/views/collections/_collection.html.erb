@@ -1,5 +1,4 @@
-<div class="cornered collection-card lgrey m-2 m-shadow">
-
+<div class="lgrey m-shadow flexed p-1 m-1 cornered">
   <div class="small-post my-2 prime cornered m-shadow">
     <div class="">
     <%=link_to(image_tag(collection.image_handler(collection.image,"post"), class:"collection_image cornered"), collection,data: {turbo_frame: "_top"})%>
@@ -9,32 +8,30 @@
 
       <div class="tag bs"><%=collection.c_type%></div>
       <div class="abs collection-like"><%=render 'collections/components/like_button', collection:collection%></div>
-
-
     </div>
   </div>
 
-
-
-<div class="collection-image-grid">
-  <%collection.collectibles.take(5).each do |collectible|%>
-    <div class="mt-5 mx-1">
-      <%=image_tag(collectible.post.image_handler(collectible.post.image,"collection"), class:"cornered m-shadow") %>
+  <div class="collection-image-grid">
+  <%collection.collectibles.take(3).each do |collectible|%>
+    <div class="mt-2 mx-2">
+      <%=image_tag(collectible.post.image_handler(collectible.post.image,"small"), class:"cornered m-shadow") %>
     </div>
   <% end %>
 
-    <%if collection.collectibles.count > 5 %>
+
+    <%if collection.collectibles.count > 3 %>
     <%=link_to collection, class:"secondary-t",data: {turbo_frame: "_top"} do%>
-    <div class="mt-5 mx-1 collection-last-box bs cornered prime">
-      <div class="bold">+ <%=collection.collectibles.count - 5%></div>
+    <div class="mt-2 mx-2 collection-last-box cornered">
+      <div class="bold">+ <%=collection.collectibles.count - 3%></div>
       
       <div class="bold">See More</div>
     </div>
     <%end%>
     <%end%>
-</div>
-
-
+  </div>
 
 </div>
+
+
+
 

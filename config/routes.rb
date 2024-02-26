@@ -69,6 +69,9 @@ Rails.application.routes.draw do
   get 'lockdown'  => 'pages#lockdown'
   get 'demo'      => 'pages#demo'
 
+  get 'database'  => 'admin#data'
+  get 'branddata' => 'admin#brand_data'
+
 
 
   resources :posts do

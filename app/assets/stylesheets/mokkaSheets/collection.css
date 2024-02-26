@@ -1,19 +1,21 @@
 .small-post{
-width:200px;
+width:160px;
 margin-left:0.5em;
 margin-right:0.5em;
 }
 
 .collection-image-grid{
 	display:grid;
-	grid-template-columns: repeat(3, 1fr);
+	grid-template-columns: repeat(2, 1fr);
 
 }
 .collection-card{display:flex;flex-wrap:wrap;justify-content:center;}
 .collection-last-box{
+	background-color: #dccdc9;
+	border: 2px solid #5A3A31;
 	display:flex;
-	width:110px;
-	height:110px;
+	width:100px;
+	height:100px;
 	text-align: center;
 	justify-content: center;
 	align-items: center;
@@ -26,8 +28,9 @@ margin-right:0.5em;
 
 @media (max-width: 480px){
 	.small-post{width:80%; margin-left:auto;margin-right:auto;}
-	.collection-card{display:block;}
-	.collection-last-box{width:110px; height:110px;}
+	.collection-card{display:flex; width:auto;}
+	.collection-image-grid{display:block;}
+	.collection-last-box{background-color: transparent; border:none; height:50px;}
 	.collection_image{width:100%;}
 
 

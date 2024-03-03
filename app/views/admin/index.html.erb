@@ -1,0 +1,16 @@
+<%= line_chart @activities.group_by_day(:created_at).count%>
+
+<table>
+
+	<th>activies</th>
+	<th>type</th>
+
+
+<%@activities.each do |a|%>
+<tr>
+	<td><%=a.name%></td>
+	<td><%=a.user_id%></td>
+</tr>
+<%end%>
+
+</table>

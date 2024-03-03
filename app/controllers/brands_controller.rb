@@ -1,14 +1,7 @@
 class BrandsController < ApplicationController
-  before_action :set_brand, only: %i[ show edit update destroy ]
+  before_action :set_brand, only: %i[ show edit update destroy analysis]
   before_action :authenticate_user!, except: %i[index show]
   before_action :editing_privilage_brand, only: %i[edit update]
-
-
-  def state_name(country_code, state_code)
-    country = ISO3166::Country[country_code]
-    state = country.states[state_code]
-    state.name if state
-  end
 
 
 
@@ -174,6 +167,18 @@ class BrandsController < ApplicationController
     #Post.where(brand_id: brand.id).update_all(brand_id: nil)
     brand.destroy
     redirect_to brands_path, notice: 'Brand was successfully destroyed.'
+  end
+
+  def analysis
+
+    @q = @brand.posts.ransack(params[:q])
+    #@query = @brand.posts.order(created_at: :desc)
+    @posts_prior = @q.result(distinct: true).includes(:tags, :brand, :category)
+    @posts = @posts_prior.order(views: :desc)
+
+
+    @activities = Activity.includes(:post).where(post_id: @posts.map(&:id))
+
   end
 
   def like

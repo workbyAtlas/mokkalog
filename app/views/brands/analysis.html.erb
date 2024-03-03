@@ -1,0 +1,41 @@
+<%# line_chart @activities.group_by_day(:created_at).count%>
+<%@title = @brand.name + " Analysis"%>
+
+
+<section class="section is-medium section-corner-top prime">
+<%= link_to 'Back', :back, class:"button is-warning bold mb-3 cornered", style:"border:solid 1px #654321;" %>
+	<div class="center title is-3 secondary-t">
+		Analytics for <%=@brand.name%>
+	</div>
+	<hr class="bst"/>
+
+</section>
+
+
+<div class="center mx-auto rw50">
+<%= line_chart @activities.group_by_day(:created_at).count%>
+</div>
+
+<table class="table is-striped cornered mx-auto prime bs-1">
+	<th><span class="secondary-t">Clothing</span></th>
+	<th><%= sort_link(@q, :title, class:"s-link")%></th>
+	<th><%= sort_link(@q, :views, class:"s-link")%></th>
+	<th><span class="secondary-t">Visits</span></th>
+	<th><span class="secondary-t">Detail</span></th>
+	<th><span class="secondary-t">Chart</span></th>
+
+	<%@posts.each do |post|%>
+	<tr>
+		<td><%if post.image.attached?%>
+				<%=image_tag(post.image_handler(post.image,"small"), class:"cornered")%>
+			<%end%>		
+		</td>
+		<td><%=link_to post.title , post, target:"_blank",class:"sn-link bold"%></td>
+		<td><%=post.views%></td>
+		<td><%=post.activities.count%></td>
+		<td><%=render 'brands/components/analysis_detail', post:post%></td>
+		<td><%= line_chart post.activities.group_by_day(:created_at).count, height:"80px", width:"160px"%></td>
+
+	</tr>
+	<%end%>
+</table>

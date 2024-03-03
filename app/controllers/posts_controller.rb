@@ -154,6 +154,7 @@ end
     @post = Post.find(params[:id])
 
     if not current_user == @post.user or not @auth_e
+
       if user_signed_in?
         @activity = @post.activities.build(name:"post_visit", post_id:@post.id, user_id: current_user.id)
       else

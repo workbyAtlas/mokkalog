@@ -2,6 +2,9 @@ class AdminController < ApplicationController
 	before_action :mod?
 
 
+	def index
+		@activities = Activity.all
+	end
 	def data
 		@posts = Post.all
 		@brands = Brand.all

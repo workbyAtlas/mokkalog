@@ -28,6 +28,7 @@ Rails.application.routes.draw do
     member do
       delete :purge_banner
       post :like
+      get :analysis
     end
   end
   
@@ -71,6 +72,7 @@ Rails.application.routes.draw do
 
   get 'database'  => 'admin#data'
   get 'branddata' => 'admin#brand_data'
+  get 'admin' => 'admin#index'
 
 
 

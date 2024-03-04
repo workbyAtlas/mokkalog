@@ -2,14 +2,14 @@
     <div class="center">
     	<div class="relative">
     	<%=link_to "mokkalog", root_path, class:"title is-3 mt-2 sn-link molive" %>
-    	<span class="abs logo-desc">(alpha2.0)</span>
+    	<span class="abs logo-desc">(alpha2.1)</span>
     	</div>
     </div>
     <hr />
 
     <div class="nav-link-holder" id="nav-bar">
 		<%= link_to "About", about_path,        class:"nav-link mx-5 mb-3" %>
-		<%= link_to "Discover", discover_path,        class:"nav-link mx-5 mb-3" %>
+		<%= link_to "Collections", collections_path,        class:"nav-link mx-5 mb-3" %>
 		<%= render 'layouts/brand_dropdown' %>
 		<%= render 'layouts/catalog'%>
 		<% if user_signed_in? %>

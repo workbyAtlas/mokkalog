@@ -45,7 +45,7 @@ class Post < ApplicationRecord
 
 	has_many :comments, as: :commentable, dependent: :destroy
 	has_many :pagelinks, dependent: :destroy
-	has_many :activities
+	has_many :activities, dependent: :destroy
 
 	#before_save :downcase_fields
 	#SLUGS

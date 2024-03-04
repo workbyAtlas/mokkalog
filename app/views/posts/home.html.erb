@@ -3,10 +3,7 @@
 </style>
 
 <section data-controller="catalog">
-	<div class="center my-2">
-		<%=link_to "Collections", collections_path, class:"s-link bold"%>
-		<span class="tag is-danger mb-2" style="height:15px;width:25px;font-size:8px;right:0px;">NEW</span>
-	</div>
+
 	<%= render 'posts/home_components/filter'%>
 	<%=turbo_frame_tag :results do%>
 

@@ -20,7 +20,7 @@ class BrandsController < ApplicationController
     end
     new_brand_ids = new_brands.map(&:id) # Extract brand IDs
     @query = Brand.where(id: new_brand_ids).ransack(params[:q])
-    @brands_prior = @query.result(distinct: true).includes(:tags, :posts, :styles)
+    @brands_prior = @query.result(distinct: true).includes(:tags, :posts, :styles).order(created_at: :desc)
     @brands = Kaminari.paginate_array(@brands_prior).page(params[:page]).per(20)
     #@brands = @brands.order('created_at ASC').page(params[:page]).per(16)
     @blank = Brand.find(1)

@@ -5,6 +5,16 @@ class ApplicationController < ActionController::Base
 	before_action :set_query_brand
 	before_action :set_user_roles
 	before_action :set_necessary_variables
+	before_action :check_ip_address
+
+  def check_ip_address
+    banned_ips = ['3.224.220.101', '23.22.35.162'] # Define your list of banned IPs here
+
+    if banned_ips.include?(request.remote_ip)
+      #redirect_to root_path
+      render plain: "Our website is under construction. At the moment.", status: :forbidden
+    end
+  end
 
 
 	#before_action :lockdown

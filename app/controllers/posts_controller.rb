@@ -154,11 +154,11 @@ end
     @post = Post.find(params[:id])
 
     if not current_user == @post.user or not @auth_e
-
+      ip_address = request.remote_ip
       if user_signed_in?
-        @activity = @post.activities.build(name:"post_visit", post_id:@post.id, user_id: current_user.id)
+        @activity = @post.activities.build(name:"post_visit", post:@post, user_id: current_user.id, location: ip_address)
       else
-        @activity = @post.activities.build(name:"post_visit", post_id:@post.id)
+        @activity = @post.activities.build(name:"post_visit", post:@post, location: ip_address)
       end 
 
       if @activity.save

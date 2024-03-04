@@ -21,10 +21,7 @@ class BrandsController < ApplicationController
     new_brand_ids = new_brands.map(&:id) # Extract brand IDs
     @query = Brand.where(id: new_brand_ids).ransack(params[:q])
     @brands_prior = @query.result(distinct: true).includes(:tags, :posts, :styles)
-    shuffled_brands = @brands_prior.order('created_at DESC')
-    #shuffled_brands = @brands_prior.to_a.shuffle
-    
-    @brands = Kaminari.paginate_array(shuffled_brands).page(params[:page]).per(20)
+    @brands = Kaminari.paginate_array(@brands_prior).page(params[:page]).per(20)
     #@brands = @brands.order('created_at ASC').page(params[:page]).per(16)
     @blank = Brand.find(1)
 

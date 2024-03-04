@@ -8,7 +8,7 @@ class ApplicationController < ActionController::Base
 	before_action :check_ip_address
 
   def check_ip_address
-    banned_ips = ['3.224.220.101', '23.22.35.162'] # Define your list of banned IPs here
+    banned_ips = ['3.224.220.101', '23.22.35.162','52.70.240.171'] # Define your list of banned IPs here
 
     if banned_ips.include?(request.remote_ip)
       #redirect_to root_path

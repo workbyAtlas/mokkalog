@@ -89,7 +89,7 @@ gem "chartkick", "~> 5.0"
 gem "groupdate", "~> 6.3"
 gem 'pagy', '~> 0.6.0'
 gem 'wicked'
-
+gem 'geoip', '~> 1.6', '>= 1.6.1'
 
 #gem 'omniauth'
 #gem 'omniiauth-google-oauth2'

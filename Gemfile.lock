@@ -127,6 +127,7 @@ GEM
     ffi (1.15.5)
     friendly_id (5.5.0)
       activerecord (>= 4.0.0)
+    geoip (1.6.4)
     globalid (1.1.0)
       activesupport (>= 5.0)
     groupdate (6.3.0)
@@ -302,6 +303,7 @@ DEPENDENCIES
   debug
   devise
   friendly_id (~> 5.5)
+  geoip (~> 1.6, >= 1.6.1)
   groupdate (~> 6.3)
   image_processing (~> 1.2)
   importmap-rails

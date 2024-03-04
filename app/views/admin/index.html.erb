@@ -1,19 +1,47 @@
+<section class="flexed-wc lgrey p-2">
+	<%=link_to branddata_path, class:"square-swatch m-3 m-shadow bs" do%>
+	    <div class="mb-2"><i class="fa-solid fa-mug-hot secondary-t fa-2xl"></i></div>
+        <div class="title is-6 mt-1 secondary-t">Brands</div>
+	<%end%>
+
+	<%=link_to database_path, class:"square-swatch m-3 m-shadow bs" do%>
+	    <div class="mb-2"><i class="fa-solid fa-shirt secondary-t fa-2xl"></i></div>
+        <div class="title is-6 mt-1 secondary-t">Clothing</div>
+	<%end%>
+
+	<%=link_to adroom_path, class:"square-swatch m-3 m-shadow bs" do%>
+	    <div class="mb-2"><i class="fa-solid fa-gear fa-2xl secondary-t"></i></div>
+        <div class="title is-6 mt-1 secondary-t">Config</div>
+	<%end%>
+	<%=link_to adroom_path, class:"square-swatch m-3 m-shadow bs" do%>
+	    <div class="mb-2"><i class="fa-solid fa-torii-gate secondary-t fa-2xl"></i></div>
+        <div class="title is-6 mt-1 secondary-t">Symmetry</div>
+	<%end%>
+</section>
 <%= line_chart @activities.group_by_day(:created_at).count%>
 
-<table class="table">
 
-	<th>activies</th>
-	<th>type</th>
-	<th>IP</th>
+<%=render 'searchbar'%>
 
-
-<%@activities.each do |a|%>
-<tr>
-	<td><%=a.name%></td>
-	<td><%=a.user%></td>
-	<td><%=a.location%></td>
-	<td><%=a.post.title%></td>
-</tr>
-<%end%>
-
-</table>
+<%#turbo_frame_tag :results do%>
+	<div class="center bold"><%=@activities_ordered.count%> Activities</div>
+	<table class="table center is-striped">
+		<th>Date</th>
+		<th>User</th>
+		<th>IP</th>
+		<th>Brand</th>
+		<th>Verified?</th>
+		<th>Name</th>
+		<%@activities_ordered.each do |a|%>
+		<tr>
+			<td><%=a.created_at.in_time_zone('Eastern Time (US & Canada)').strftime('%b %d, %Y %I:%M %p %Z')%></td>
+			<td><%if not a.user.nil?%><%=link_to a.user.username, user_path(a.user)%><%end%></td>
+			<td><%=a.location%></td>
+			<td><%=a.post.brand.name%></td>
+			<td><%if a.post.brand.verification == "True"%><i class="fa-solid fa-circle-check"><%end%></td>
+			<td><%=link_to a.post.title, post_path(a.post), target:"_blank"%></td>
+		</tr>
+		<%end%>
+	</table>
+	<%= render 'component/pagy', item:@activities_ordered%>
+<%#end%>

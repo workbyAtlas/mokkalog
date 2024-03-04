@@ -17,7 +17,6 @@
 		<td><%=post.activities.count%></td>
 		<td><%=post.visits%></td>
 		<td><%= line_chart post.activities.group_by_day(:created_at).count, height:"80px", width:"160px"%></td>
-
 	</tr>
 	<%end%>
 </table>

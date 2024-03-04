@@ -10,6 +10,7 @@ Rails.application.routes.draw do
   resources :styles
   resources :categories
   resources :tags
+  resources :activities
   resources :collections do
     member do
       post :like

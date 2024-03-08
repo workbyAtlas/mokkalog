@@ -7,7 +7,7 @@ class CollectionsController < ApplicationController
   def index
 
     @query = Collection.ransack(params[:q])
-    @collections = @query.result(distinct: true).order(updated_at: :desc)
+    @collections = @query.result(distinct: true).order(created_at: :desc)
   end
 
   # GET /collections/1 or /collections/1.json

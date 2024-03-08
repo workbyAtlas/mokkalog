@@ -5,7 +5,7 @@ class ApplicationController < ActionController::Base
 	before_action :set_query_brand
 	before_action :set_user_roles
 	before_action :set_necessary_variables
-	before_action :check_ip_address
+
 
   def check_ip_address
     banned_ips = ['3.224.220.101', '23.22.35.162','52.70.240.171'] # Define your list of banned IPs here

@@ -153,14 +153,42 @@ end
   def visit
     @post = Post.find(params[:id])
 
-    if not current_user == @post.user or not @auth_e
+    
+    banned_ips = ['3.224.220.101', '23.22.35.162','52.70.240.171','::1']
+    banned_patterns = ['185.191.171','157.55.39','207.46.13','40.77.167','52.167.144','66.249.64','85.208.96','1']
+    if current_user == @post.user or @auth
+      record = false
+     
+    else
       ip_address = request.remote_ip
+
+      if banned_ips.include?(ip_address) || banned_patterns.any? { |pattern| ip_address.include?(pattern) }
+        record = false
+         number = @blank.badge.to_i
+         @blank.badge = number + 1
+         @blank.save
+      else
+        record = true
+      end
+    end
+
+
+
+
+
+
+
+
+
+    if record 
       if user_signed_in?
+       # Define your list of banned IPs here
+
         @activity = @post.activities.build(name:"post_visit", post:@post, user_id: current_user.id, location: ip_address)
       else
         @activity = @post.activities.build(name:"post_visit", post:@post, location: ip_address)
       end 
-
+ 
       if @activity.save
         if @post.brand.verification == "True"
           redirect_to @post.web_link, target:"_blank", allow_other_host: true

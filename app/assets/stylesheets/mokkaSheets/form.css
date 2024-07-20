@@ -211,7 +211,7 @@
 
 .badgegrid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 columns with equal width */
+  grid-template-columns: repeat(3, 1fr); /* 5 columns with equal width */
   min-height:40px;
 }
 

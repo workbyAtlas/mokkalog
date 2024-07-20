@@ -1,13 +1,26 @@
 class PostsController < ApplicationController
 
   before_action :set_post, only: %i[show edit update]
-  before_action :authenticate_user!, except: %i[index show home visit visitmodal]
+  before_action :authenticate_user!, except: %i[index show home visit visitmodal archive]
   before_action :editing_privilage_post, only: %i[edit update]
   before_action :set_filter_var
 
   # GET /posts or /posts.json
   def home
     @query = Post.ransack(params[:q])
+    post_setter(@query)
+    @brands = Brand.all
+    @styles = Style.all
+    
+    @locations = @brands.pluck(:location).reject(&:blank?).uniq
+    brands_us = @brands.where(location: "US")
+    @states = brands_us.pluck(:state).reject(&:blank?).uniq
+
+  end
+
+
+  def archive
+    @query = Post.where(archive: "archived").ransack(params[:q])
     post_setter(@query)
     @brands = Brand.all
     @styles = Style.all

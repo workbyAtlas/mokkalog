@@ -2,7 +2,7 @@
 <div id="about-body-1" class="mt-2">
 The  goal of Mokkalog is to have clothing from all over the world & be inclusive to all styles of clothing.
 <br/>
-Because we have so many variety, some clothing might not be for you. We are constantly striving to improve our design so it is easy for you to browse from a selection you enjoy.
+But we also want to celebrate clothing that are exceptional. Badges are given to brands that celebrates certain values or a brand that everyone should at least give them a look.
 </div>
 
 <%if false%>
@@ -16,11 +16,9 @@ Mokkalog is an <span class="bold">open listing platform</span> meaning The cloth
 
 <div class="mt-2">
 <span id="bold2"class="bold">Badges:</span>
-<span id="about-body-2">
-The badge system is an easy way to navigate through clothing from verified brands. Brands with any type of badges have been verified by our team at Mokkalog. You can read more in detail <%=link_to "here.", badges_path, class:"s-link"%> But here is a brief summary of what each badges represent.
-</span>
+
 <div class="columns my-4 mx-auto">
-	<div class="column center-down">
+	<div class="column center-down d-none">
 		<%=render 'component/badges/verified', size: "lg"%>
 		<div class="bold mt-2">Verified Badge</div>
 		<div class="text-center">Verified</div>
@@ -40,7 +38,7 @@ The badge system is an easy way to navigate through clothing from verified brand
 		<div class="bold mt-2">Ruby Sicssor</div>
 		<div class="text-center">Handcrafted</div>
 	</div>
-	<div class="column center-down">
+	<div class="column center-down d-none">
 		<%=render 'component/badges/global', size: "lg"%>
 		<div class="bold mt-2">Blue Globe</div>
 		<div class="text-center">Global Shipping</div>

@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   root 'posts#home'
   get 'home' => 'posts#home'
+  get 'archive' => 'posts#archive'
 
   #TEST
   get 'payment' => 'pages#payment'
@@ -57,6 +58,7 @@ Rails.application.routes.draw do
   get 'discover'  => 'pages#index'
   get 'faq'       => 'pages#faq'
   get 'contact'   => 'pages#contact'
+
 
 
   #ONBOARDING

@@ -1,7 +1,7 @@
 class MollaController < ApplicationController
   before_action :set_current_chat, only: [:test, :talk, :destroy]
 
-  before_action :mod?
+  #before_action :mod?
 	def index
 		@mokkalab = "we in the stu"
 		@posts = Post.where(id: [84,85,86,87]) 
@@ -42,7 +42,7 @@ class MollaController < ApplicationController
     new_message = @chat.messages.create(prompt: prompt, content: get_ai_response(prompt),role:"no-post")
 
     @message = @chat.messages.last
-    @posts = Post.where(id: [84,85,86,87])
+    @posts = Post.where(id: [1700, 947,1986,573])
     respond_to do |format|
       format.turbo_stream
       format.html{redirect_to test_path}

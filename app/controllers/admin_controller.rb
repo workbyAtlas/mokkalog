@@ -1,4 +1,5 @@
 class AdminController < ApplicationController
+
 	before_action :mod?
 
 
@@ -43,4 +44,22 @@ class AdminController < ApplicationController
 
 		@brands = Kaminari.paginate_array(@brands).page(params[:page]).per(20)
 	end
+
+  def mokkalab
+  	
+    begin
+      response = OpenAI::Client.new.chat(
+        parameters: {
+          model: "gpt-4o-mini",
+          messages: [
+            { role: "system", content: "Your name is Molla a helpful and stylish assistant that helps user recommend type of clothing based on the event. You recommend color and type of clothing to wear. You recommend one top, one bottom, and one accessories." },
+            { role: "user", content: "Hey I am going on a boat party. What should I wear?" }
+          ]
+        }
+      )
+      @poem = response["choices"].first["message"]["content"]
+
+    rescue OpenAI::Error => e
+      @error = "An error occurred: #{e.message}"
+    end
 end

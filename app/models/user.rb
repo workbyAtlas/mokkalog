@@ -30,6 +30,8 @@ class User < ApplicationRecord
 
   has_many :favoritables, dependent: :destroy
   has_many :favorited_posts, through: :favoritables, source: :post
+
+  has_many :chats, dependent: :destroy
   before_destroy :reassign_posts
 
   #User Role

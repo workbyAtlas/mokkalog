@@ -80,4 +80,28 @@ class PagesController < ApplicationController
 
   def lockdown
   end
+
+
+
+  def mokkalabxx
+    begin
+      response = OpenAI::Client.new.chat(
+        parameters: {
+          model: "gpt-4o-mini",
+          messages: [
+            { role: "system", content: "Your name is Molla a helpful and stylish assistant that helps user recommend type of clothing based on the event. You recommend color and type of clothing to wear. You recommend one top, one bottom, and one accessories." },
+            { role: "user", content: "Hey I am going to meet my friend, I want something bayonetta style. recommend me something" }
+          ]
+        }
+      )
+      @poem = response["choices"].first["message"]["content"]
+
+    rescue OpenAI::Error => e
+      @error = "An error occurred: #{e.message}"
+    end
+  end
+
+  def merry
+  end
+
 end

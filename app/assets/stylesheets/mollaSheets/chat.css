@@ -1,0 +1,53 @@
+.chat-log-molla{
+	width:80%;
+	margin:auto;
+  background-color: yellow;
+	display: flex;
+	flex-direction: column;
+  overflow-y:scroll;
+  height:550px;
+}
+
+.chat-bubble {
+   /* Adjust the color as needed */
+  color: white;
+  padding: 10px 15px;
+  
+  display: inline-block;
+  position: relative;
+  max-width: 60%;
+  word-wrap: break-word;
+  margin-bottom: 10px;
+  margin-top: 0.7rem;
+
+}
+
+.chat-bubble p {
+  margin: 0;
+}
+
+.timestamp {
+  color: rgba(255, 255, 255, 0.6); /* Adjust the color for timestamp */
+  font-size: 12px;
+  position: absolute;
+  bottom: 5px;
+  right: 10px;
+}
+
+.chat-bubble.bot {
+  background-color:#dccdc9; /* Light grey color for received messages */
+  color:#5A4A31;
+  align-self: flex-start; /* Aligns the bubble to the left */
+  border-radius: 12px 12px 12px 0px;
+}
+
+.chat-bubble.user {
+  background-color: #c9dccd; /* Purple color for sent messages */
+  color: #5A3A31;
+  align-self: flex-end; /* Aligns the bubble to the right */
+  border-radius: 12px 12px 0px 12px;
+}
+
+.chat-item{
+	background-color:d;
+}

@@ -1,10 +1,17 @@
 Rails.application.routes.draw do
   root 'posts#home'
+  #root 'pages#merry'
+
+  get 'merry' => 'pages#merry'
   get 'home' => 'posts#home'
   get 'archive' => 'posts#archive'
 
   #TEST
   get 'payment' => 'pages#payment'
+
+
+
+
   
   resources :brand_onboarding
   resources :after_sign_up
@@ -58,6 +65,18 @@ Rails.application.routes.draw do
   get 'discover'  => 'pages#index'
   get 'faq'       => 'pages#faq'
   get 'contact'   => 'pages#contact'
+
+  get 'mokkalabbo'  => 'pages#mokkalab'
+  get 'mokkalab' => 'molla#index'
+
+
+  get 'test' => 'molla#test'
+  post 'molla/talk', to: 'molla#talk'
+  post 'molla/new_chat', to: 'molla#new_chat'
+  get 'molla/select_chat/:id', to: 'molla#select_chat', as: 'select_chat'
+  get 'molla/delete_chat/:id', to: 'molla#destroy', as: 'delete_chat'
+
+
 
 
 

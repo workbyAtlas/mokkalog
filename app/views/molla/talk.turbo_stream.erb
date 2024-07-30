@@ -1,0 +1,19 @@
+
+	<%=turbo_stream.append 'messages' do%>
+		<%=render partial:"messages/message", locals:{message: @message}%>
+
+		
+		<div class="flexed center mt-2 relative">
+			<button data-action="carousel#previous" class="button-like-text caro-lbtn">
+		  		<i class="fa-solid fa-arrow-left"></i>
+		  	</button>
+		 	 <button data-action="carousel#next" class="button-like-text caro-rbtn">
+		  		<i class="fa-solid fa-arrow-right"></i>
+		  	</button>
+
+		<%@posts.each do |post|%>
+			<%= render partial: 'posts/chat_post', locals: { post: post } %>
+		<%end%>
+
+		</div>
+	<%end%>

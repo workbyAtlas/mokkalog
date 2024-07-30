@@ -3,15 +3,9 @@
 	<span class="flexed" id="<%="post_#{post.id} private_likes"%>">
 	<%= button_to like_post_path(post), class: "button button-like-text mr-1", method: :post, form: { data: { turbo: true } } do %>
 		<%if current_user.liked?(post)%>
-	
-			<span class="no-count"><%=post.likes.count%></span>
-	
 			<i class="fa-solid fa-heart fa-lg mx-1 mred"></i>
 
 		<%else%>
-			
-			<span class="no-count"><%=post.likes.count%></span>
-		
 			<i class="fa-regular fa-heart fa-lg mx-1 mred"></i>
 		<%end%>
 
@@ -20,7 +14,7 @@
 	</span>
 <%else%>
 	<button class="button button-like-text mr-1">
-		<%=post.likes.count%>
+	
 		<i class="fa-regular fa-heart fa-lg mx-1 mred"></i>	 
 	</button>
 <%end%>

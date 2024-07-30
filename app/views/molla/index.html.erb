@@ -1,0 +1,58 @@
+<style>
+	html{
+		background-color: #f9f6ee;
+	}
+	.no-count{display:none;}
+</style>
+
+<%=render 'molla/component/vertical_nav'%>
+
+<section class="flexed">
+<div class="vertical-nav-skeleton"></div>
+
+
+<div class="console">
+
+	<div class="chat-log-molla mt-5">
+		<div class="chat-bubble chat-left m-shadow">Hey, welcome to Mokkalog! What are you look for today?</div>
+
+		<div class="chat-bubble chat-right prime secondary-t m-shadow">What is a Mokkalog?</div>
+
+		<div class="chat-bubble chat-left prime secondary-t m-shadow">Help you find something you need.</div>
+
+		<div class="chat-bubble chat-right prime secondary-t m-shadow">It is getting pretty chilly, got something for the winter?</div>
+
+
+		<div class="flexed center mt-2 relative">
+			<button data-action="carousel#previous" class="button-like-text caro-lbtn">
+		  		<i class="fa-solid fa-arrow-left"></i>
+		  	</button>
+		 	 <button data-action="carousel#next" class="button-like-text caro-rbtn">
+		  		<i class="fa-solid fa-arrow-right"></i>
+		  	</button>
+
+		<%@posts.each do |post|%>
+			<%= render partial: 'posts/chat_post', locals: { post: post } %>
+		<%end%>
+
+		</div>
+
+		<div class="chat-bubble chat-left prime secondary-t m-shadow">A collection to keep you warm on a cold night.</div>
+
+
+
+		<div class="chat-bubble chat-right prime secondary-t m-shadow">Dope!</div>
+		<div style="margin-top:200px">x</div>
+
+	</div>
+
+	<div class="console-input">
+		<div class="my-4"><%=render 'molla/component/input'%></div>
+	</div>
+
+
+</div>	
+
+
+</section>
+

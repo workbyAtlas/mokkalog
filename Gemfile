@@ -98,3 +98,6 @@ gem 'geoip', '~> 1.6', '>= 1.6.1'
 gem "friendly_id", "~> 5.5"
 gem 'country_state_select', '~> 3.2'
 gem 'countries', '~> 5.5'
+
+gem 'ruby-openai'
+gem "sidekiq", "~> 7.2.4"

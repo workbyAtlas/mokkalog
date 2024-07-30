@@ -1,0 +1,41 @@
+<style>
+	html{
+		background-color: #f9f6ee;
+	}
+</style>
+
+<section class="column">
+<div class="vertical-nav columns">
+	<div>
+
+
+	<%=link_to root_path, class:"v-nav-link" do %>
+	<div class="v-nav-item">
+		<i class="fa-solid fa-house mr-2"></i>
+		 <div>Home</div>
+	</div>
+	<%end%>
+
+	<%=link_to root_path, class:"v-nav-link" do %>
+	<div class="v-nav-item">
+		<i class="fa-solid fa-compass mr-2"></i>
+		<span>Explore</span>
+	</div>
+	<%end%>
+
+	
+</div>
+<div class="columns">
+<% if @poem %>
+  <p>Generated Poem:</p>
+  <pre><%= @poem %></pre>
+  <hr/>
+<% elsif @error %>
+  <p>Error: <%= @error %></p>
+<% end %>
+
+</div>	
+
+
+</section>
+

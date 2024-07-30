@@ -1,0 +1,73 @@
+<div class="vertical-nav">
+	<div>
+
+	<div class="v-nav-top my-2">
+		<div><i class="fa-solid fa-arrow-right fa-lg"></i></div>
+		<%=button_to molla_new_chat_path, method: :post, class:"button-like-text" do%>
+			<i class="fa-regular fa-pen-to-square fa-lg"></i>
+		<%end%>
+
+
+
+	</div>
+
+	<%=link_to mokkalab_path, class:"v-nav-link" do %>
+	<div class="v-nav-item">
+		<i class="fa-solid fa-mug-hot mr-2"></i>
+		<span>Mokkalog</span>
+	</div>
+	<%end%>
+
+	<%=link_to root_path, class:"v-nav-link" do %>
+	<div class="v-nav-item">
+		<i class="fa-solid fa-compass mr-2"></i>
+		<span>Explore</span>
+	</div>
+	<%end%>
+
+	<%=link_to root_path, class:"v-nav-link" do %>
+	<div class="v-nav-item">
+		<i class="fa-brands fa-microblog mr-2"></i>
+		 <div>Blogs</div>
+	</div>
+	<%end%>
+
+	<%=link_to about_path, class:"v-nav-link" do %>
+	<div class="v-nav-item">
+		<i class="fa-regular fa-circle-question mr-2"></i>
+		<span>About</span>
+	</div>
+	<%end%>
+
+	<hr class="mx-3" />
+
+	<%=link_to about_path, class:"v-nav-link" do %>
+	<div class="v-nav-item">
+		<i class="fa-solid fa-cookie mr-2"></i>
+		<span>About</span>
+	</div>
+	<%end%>
+	<%=link_to about_path, class:"v-nav-link" do %>
+	<div class="v-nav-item">
+		<i class="fa-solid fa-copyright mr-2"></i>
+		<span>Molla Ai</span>
+	</div>
+	<%end%>
+	<hr/>
+
+	<%@chats.each do |chat|%>
+
+		<%=link_to select_chat_path(chat), class:"v-nav-link" do %>
+			<div class="v-nav-item">
+				
+				<span class="mr-2"><%="Chat ##{chat.id}"%></span>
+			</div>
+
+		<%end%>
+		<% button_to 'Delete Chat', delete_chat_path(chat), method: :delete, data: { confirm: 'Are you sure?' }, class: 'button is-danger' %>
+
+
+	<%end%>
+
+</div>
+</div>

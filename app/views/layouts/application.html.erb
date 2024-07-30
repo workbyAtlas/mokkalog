@@ -38,13 +38,17 @@ Mokkalog is a fashion platform to discover and shop clothing from innovative and
   <body>
   
     <div style="max-width:1400px;margin:auto;">
-      <%= render "layouts/nav"   %>
+      <%if not @mokkalab == "we in the stu"%>
+      <%=render "layouts/nav"   %>
+      <%end%>
+
       <%= render "layouts/alert" %>
 
     
       <%= yield %>
-      <%= render 'layouts/mobile_nav'%>
-      <%= render "layouts/footer"%>
+      
+      <%#= render 'layouts/mobile_nav'%>
+
     </div>
 
 

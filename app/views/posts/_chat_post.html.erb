@@ -1,0 +1,15 @@
+  <div class="small-post my-2 prime cornered m-shadow bs">
+    <div class="">
+    <%=link_to(image_tag(post.image_handler(post.image,"post"), class:"collection_image cornered"), post,data: {turbo_frame: "_top"})%>
+    </div>
+    <div class="p-1">
+    <div class="bold"><%=link_to post.title, post,class:"sn-link", data:{turbo_frame:"_top"}%></div>
+    	<div class="v-nav-top p-0 m-0">
+	      <div class="tag bs bold">$ <%=post.price.to_i%></div>
+	      <div class=""><%=render 'posts/components/like_button', post:post%></div>
+      	</div>
+  
+    </div>
+  </div>
+
+

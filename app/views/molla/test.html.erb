@@ -1,0 +1,64 @@
+
+
+
+<style>
+  html{
+    background-color: #f9f6ee;
+  }
+  .no-count{display:none;}
+</style>
+
+<script>
+  document.addEventListener("DOMContentLoaded", function() {
+    var chatWindow = document.getElementById("messages");
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  });
+
+  function scrollToBottom() {
+    var chatWindow = document.getElementById("messages");
+    chatWindow.scrollTop = chatWindow.scrollHeight;
+  }
+</script>
+
+<%=render 'molla/component/vertical_nav'%>
+
+<section class="flexed">
+<div class="vertical-nav-skeleton"></div>
+
+
+<div class="console relative">
+  <div class="chat-log-molla mt-5" id="messages">
+    <%@messages.each do |message|%>
+      <%= render partial: 'messages/message', locals:{message: message}%>
+      <%end%>
+  </div>
+
+    
+
+
+
+  <div class="console-input">
+
+    <div class="my-4">
+      <%=form_with url: molla_talk_path, method: :post, local: true, data:{controller: "chat",action:"turbo:submit-end->chat#clear"} do |form|%>
+     <div class="mx-auto center rw50">
+      <%=render 'component/filters/c_type'%>
+      <%= form.text_field :prompt, class:"input bb mokka-ph l-cornered" %>
+      <%= form.button :submit, class: "button is-warning r-cornered ", style: "border: 2px solid black;border-left:none;" do %>
+        <i class="fa-solid fa-magnifying-glass secondary-t bold"></i>
+      <% end %>
+    </div>
+
+    <%end%>
+
+    </div>
+  </div>
+
+
+</div>  
+
+
+</section>
+
+
+

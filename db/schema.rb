@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2024_03_03_234946) do
+ActiveRecord::Schema[7.0].define(version: 2024_07_28_181527) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -166,6 +166,13 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_03_234946) do
     t.string "subcats"
   end
 
+  create_table "chats", force: :cascade do |t|
+    t.bigint "user_id", null: false
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.index ["user_id"], name: "index_chats_on_user_id"
+  end
+
   create_table "closets", force: :cascade do |t|
     t.bigint "post_id", null: false
     t.bigint "user_id", null: false
@@ -237,6 +244,17 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_03_234946) do
     t.string "likeable_type"
     t.index ["likeable_id"], name: "index_likeables_on_likeable_id"
     t.index ["user_id"], name: "index_likeables_on_user_id"
+  end
+
+  create_table "messages", force: :cascade do |t|
+    t.bigint "chat_id"
+    t.text "content"
+    t.string "role"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "prompt"
+    t.string "key_prompt"
+    t.index ["chat_id"], name: "index_messages_on_chat_id"
   end
 
   create_table "pagelinks", force: :cascade do |t|
@@ -338,7 +356,6 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_03_234946) do
     t.integer "failed_attempts"
     t.string "unlock_token"
     t.string "slug"
-    t.integer "sign_in_count", default: 0, null: false
     t.integer "onboard", default: 0
     t.integer "coins", default: 0
     t.integer "tokens", default: 1
@@ -357,6 +374,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_03_234946) do
   add_foreign_key "brand_tag_assocs", "brands"
   add_foreign_key "brand_tag_assocs", "tags"
   add_foreign_key "brands", "users"
+  add_foreign_key "chats", "users"
   add_foreign_key "closets", "posts"
   add_foreign_key "closets", "users"
   add_foreign_key "collectibles", "collections"
@@ -365,6 +383,7 @@ ActiveRecord::Schema[7.0].define(version: 2024_03_03_234946) do
   add_foreign_key "favoritables", "posts"
   add_foreign_key "favoritables", "users"
   add_foreign_key "likeables", "users"
+  add_foreign_key "messages", "chats"
   add_foreign_key "pagelinks", "posts"
   add_foreign_key "pagelinks", "users"
   add_foreign_key "posts", "brands"

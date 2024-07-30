@@ -66,32 +66,7 @@ class MollaController < ApplicationController
     
 
 
-  def talkked
-    prompt = params[:prompt]
-    client = OpenAI::Client.new
-    response = client.chat(
-      parameters: {
-        model: "gpt-4o-mini",
-        messages: [{ role: "user", content: prompt}],
-        max_tokens:150
-        }
-      )
 
-    @response = response["choices"].first["message"]["content"]
-
-    @prompts_and_responses = session[:prompts_and_responses] || []
-    @prompts_and_responses << {prompt:prompt, response:@response}
-    session[:prompts_and_responses] = @prompts_and_responses
-
-
-
-
-    respond_to do |format|
-      format.turbo_stream
-      format.html{redirect_to test_path}
-    end    
-    
-  end
   private
 
 
@@ -116,24 +91,6 @@ class MollaController < ApplicationController
     response = response["choices"].first["message"]["content"]
 
     end
-  end
-
-
-  def get_ai_responsex(prompt)
-    @history << { role: "user", content: prompt }
-
-    response = @client.chat(
-      parameters: {
-        model: "gpt-4o-mini",
-        messages: @history,
-        max_tokens: 150
-      }
-    )
-    
-    message = response["choices"].first["message"]["content"]
-    @history << { role: "assistant", content: message }
-
-    message
   end
 
 

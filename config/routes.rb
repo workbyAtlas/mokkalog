@@ -1,7 +1,6 @@
 Rails.application.routes.draw do
   root 'posts#home'
   #root 'pages#merry'
-
   get 'merry' => 'pages#merry'
   get 'home' => 'posts#home'
   get 'archive' => 'posts#archive'

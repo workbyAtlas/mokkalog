@@ -31,9 +31,7 @@
 		  		<i class="fa-solid fa-arrow-right"></i>
 		  	</button>
 
-		<%@posts.each do |post|%>
-			<%= render partial: 'posts/chat_post', locals: { post: post } %>
-		<%end%>
+
 
 		</div>
 
@@ -47,7 +45,7 @@
 	</div>
 
 	<div class="console-input">
-		<div class="my-4"><%=render 'molla/component/input'%></div>
+		<div class="my-4"><%#=render 'molla/component/input'%></div>
 	</div>
 
 

@@ -1,14 +1,11 @@
 class AdminController < ApplicationController
-
 	before_action :mod?
-
 
 	def index
 		@activities = Activity.all
 		@q = @activities.ransack(params[:q])
 		@activities_ordered = @q.result(distinct: true).includes(:post, :user).order(created_at: :desc)
 		@activities_ordered = Kaminari.paginate_array(@activities_ordered).page(params[:page]).per(100)
-
 	end
 
 	def data

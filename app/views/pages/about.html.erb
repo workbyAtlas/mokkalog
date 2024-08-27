@@ -1,6 +1,9 @@
 <%@title = "About"%>
 
 <style>
+
+@import url('https://fonts.googleapis.com/css2?family=Fira+Code:wght@300..700&display=swap');
+
    .aboutpage{
       background-color: #EDB88B;
    }
@@ -8,8 +11,20 @@
       background-color: #dccdc9;
    }
 
+ .fira-code-<uniquifier> {
+  font-family: "Fira Code", monospace;
+  font-optical-sizing: auto;
+  font-weight: <weight>;
+  font-style: normal;
+}
+
+.fira {
+  font-family: 'Fira Code', monospace;
+  text-align: center;
+}
 </style>
-<section data-controller="about" >
+
+<section data-controller="about">
    <div class="title is-2 secondary-t center mt-4">What is Mokkalog?</div>
    <section class="flexed-wc lgrey p-2">
       <div class="square-swatch m-3 m-shadow bs" data-about-target="btn1" data-action="click->about#openTab1">
@@ -32,7 +47,7 @@
    </section>
    <section class="lgrey" style="min-height:400px;">
       <br/><br/>
-      <div class="bs cornered rw70 mx-auto p-4" style="background-color:#f5f5f5;">
+      <div class="bs cornered rw70 mx-auto p-4 fira" style="background-color:#f5f5f5;">
          <div data-about-target="tab1"><%=render 'pages/about_components/hub'%></div>
          <div data-about-target="tab2" class="d-none"><%=render 'pages/about_components/main'%></div>
          <div data-about-target="tab3" class="d-none"><%=render 'pages/about_components/discover'%></div>

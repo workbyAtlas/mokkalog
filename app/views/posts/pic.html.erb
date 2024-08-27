@@ -1,0 +1,27 @@
+<style>
+	body{color:black; overflow-x:none;}
+</style>
+
+
+<section data-controller="catalog">
+
+	<%= render 'posts/home_components/filter'%>
+	<%=turbo_frame_tag :results do%>
+
+
+
+	<div class="center bold my-2">Showing <%=@posts_prior.count%> clothings</div>
+	<section class="flexed-wc post-container mx-auto">
+	<% @posts_choice.each do |post| %>
+		<div class=""><%=render post%><%#= render "posts/post", post: post, like_status: current_user.liked?(post) %></div>
+	<% end %>
+	<% @posts.each do |post| %>
+		<div class=""><%=render post%><%#= render "posts/post", post: post, like_status: current_user.liked?(post) %></div>
+	<% end %>
+	</section>
+
+
+<%= render 'component/pagy', item:@posts%>
+	<%end%>
+
+</section>

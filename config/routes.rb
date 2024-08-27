@@ -3,6 +3,7 @@ Rails.application.routes.draw do
   #root 'pages#merry'
   get 'merry' => 'pages#merry'
   get 'home' => 'posts#home'
+  get 'pic' => 'posts#pic'
   get 'archive' => 'posts#archive'
 
   #TEST

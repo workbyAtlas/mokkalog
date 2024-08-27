@@ -11,6 +11,18 @@ class PostsController < ApplicationController
     post_setter(@query)
     @brands = Brand.all
     @styles = Style.all
+    @posts_choice = Post.where(id: [1803,24,869,705,377, 47,1751, 1333,1689, 1986]) 
+    @locations = @brands.pluck(:location).reject(&:blank?).uniq
+    brands_us = @brands.where(location: "US")
+    @states = brands_us.pluck(:state).reject(&:blank?).uniq
+
+  end
+
+  def pic
+    @query = Post.ransack(params[:q])
+    post_setter(@query)
+    @brands = Brand.all
+    @styles = Style.all
     
     @locations = @brands.pluck(:location).reject(&:blank?).uniq
     brands_us = @brands.where(location: "US")

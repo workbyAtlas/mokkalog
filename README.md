@@ -5,7 +5,7 @@ Hello, Mokkalog has been a fun project for me to combine what I love: app develo
 Things you may want to cover:
 
 * I never really intended this to be for public viewing so please excuse my syntaxes and nonsensical commit messages
-* The spirit of Mokkalog has moved on to molla.ai so check us out there!
+* The spirit of Mokkalog has moved on to [molla.ai](https://molla.ai) so check us out there!
 
 Skills I learned working on this project
 * devise - confirmable, lockable, registerable

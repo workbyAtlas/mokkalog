@@ -5,6 +5,7 @@ Hello, Mokkalog has been a fun project for me to combine what I love: app develo
 Things you may want to cover:
 
 * I have been using this project to self learn ruby on rails and was not my intention to make this project public, so please excuse my syntaxes and such. (one of the big reason why I decided to start a new project at molla.ai trying to get rid of all the techical debt I have acquired in this project)
+* This was my first big project since than I have learned to write better code, keep my controllers organized with concerns and services, and think about scaling blindingly following tutorials online.
 * The spirit of Mokkalog has moved on to [molla.ai](https://molla.ai) so check us out there!
 
 Skills I learned working on this project
